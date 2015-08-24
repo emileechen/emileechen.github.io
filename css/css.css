@@ -1,0 +1,111 @@
+
+@font-face {
+    font-family: 'BebasNeue';
+    src: url('BebasNeue.otf');
+}
+@font-face {
+    font-family: 'Cocomat';
+    src: url('cocomat.ttf');
+}
+@font-face {
+    font-family: 'Generica';
+    src: url('Generica.otf');
+}
+@font-face {
+    font-family: 'GenericaB';
+    src: url('Generica Bold.otf');
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('Roboto-Light.ttf');
+}
+
+body, html {
+	font-family: 'Roboto';
+	color: white;
+	font-size: 19px;
+	background-color: #9E9E9E;
+	text-align: justify;
+	height: 100%;
+}
+
+h1 {
+	font-family: 'Generica';
+	text-align: center;
+	font-size: 8vw;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .3em;
+}
+
+h2 {
+	font-family: 'BebasNeue';
+	text-align: center;
+	font-size: 4rem;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .25em;
+	margin: 10px;
+}
+
+.box {
+	height: 100%;
+}
+
+.bigBox {
+	position: relative;
+	top: 50%;
+	transform: translate(0, -50%);
+	margin: 25px;
+	border: #CECECE solid 2px;
+	padding: 50px;
+}
+
+.nav {
+	text-align: center;
+	padding: 20px;
+}
+
+.navBox {
+	width: 200px;
+	height: 50px;
+	display: inline-block;
+	color: white;
+	border: white solid 2px;
+}
+.navText {
+	position: relative;
+	top: 50%;
+	transform: translate(0, -50%);
+	font-family: 'Generica';
+	font-size: 22px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 5px;
+}
+
+.navBox:hover {
+	background: white;
+	color: #9E9E9E;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+
+.content {
+	width: 80%;
+	padding: 10px;
+	margin: auto;
+	text-align: justify;
+}
+
+.info {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.info .label {
+	color: #CECECE;
+	padding-right: 15px;
+}
+
+
