@@ -1,0 +1,271 @@
+<html>
+
+
+<head>
+	<title>CS184 - Emilee Chen</title>
+	<link rel="stylesheet" type="text/css" href="css.css"> 
+</head>
+
+
+<body>
+	<div id="wrap">
+		<div id="header">
+			<div id="name">
+				Emilee Chen
+			</div>
+			<div id="info">
+				<span class="face"><img src="photo.jpg" align="right"></span>
+				cs184-an <br>
+				echen at berkeley dot edu
+				<br><br>
+				This is my CS184 project website for Spring 2015. I am a Canadian who likes eating and sleeping and sometimes <a href="http://piquantly.tumblr.com/" target="_blank">draws</a> and <a href="http://ohmyitslav.tumblr.com/" target="_blank">animates</a>. Yes, I do say 'eh' and I do spell it 'colour'.
+				<br>
+				Disclaimer: My hair is going to change a lot. Probably.
+				<br><br>
+			<a href="ass0.html" class="links">ASSIG00</a>
+			<a href="ass1.html" class="links">ASSIG01</a>
+			<a href="ass2.html" class="links">ASSIG02</a>
+			<a href="ass3.html" class="links">ASSIG03</a>
+			<!-- <a href="http://inst.cs.berkeley.edu/~CS184-ap/ass4/" target="_blank" class="links">ASSIG04</a> -->
+			<br><br>
+			</div>
+		</div>
+
+
+
+		<div id="content">
+
+			<h1>Assignment 2</h1>
+
+			This assignment was done in collaboration with <a href="http://inst.cs.berkeley.edu/~CS184-ap" target="_blank">Casey Currey-Wilson</a>.
+			<br><br>
+
+			The goal of this assignment is to implement a raytracer that can trace both spheres and polygons using Phong shading that supports shadows, reflections, linear transformations on objects, and saves the rendered image into a image file. Below are images that show examples demonstrating these options.
+
+			<br><br>
+
+			Unlike the previous assignment, the only command line argument that you can pass in is a text file name. The program will read instructions from that text file, since it's likely to have a large amount of commands at once.
+
+			<br><br>
+			
+			<table class="single">
+				<tr><td>
+					<img src="images/image-00.png">
+				</td></tr>
+				<tr><td>
+					Basic Phong shading of a sphere. <br>
+					<a href="input-00.txt" target="_blank">input-00.txt</a> <br>
+					19.1162052155 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-01.png">
+				</td></tr>
+				<tr><td>
+					Shadow of a sphere on another sphere from a point light, with no falloff. <br>
+					<a href="input-01.txt" target="_blank">input-01.txt</a> <br>
+					17.4989938736 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-02.png">
+				</td></tr>
+				<tr><td>
+					Shadow of a sphere on another sphere from a point light, with linear falloff. <br>
+					<a href="input-02.txt" target="_blank">input-02.txt</a> <br>
+					17.5297920704 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-03.png">
+				</td></tr>
+				<tr><td>
+					Shadow of a sphere on another sphere from a point light, with quadratic falloff.<br>
+					<a href="input-03.txt" target="_blank">input-03.txt</a> <br>
+					18.3793301582 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-04.png">
+				</td></tr>
+				<tr><td>
+					Shadow of a sphere on another sphere from a directional light.<br>
+					<a href="input-04.txt" target="_blank">input-04.txt</a> <br>
+					17.3179521561 sec
+
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-05.png">
+				</td></tr>
+				<tr><td>
+					Shadow of a sphere on a triangle.<br>
+					<a href="input-05.txt" target="_blank">input-05.txt</a> <br>
+					38.5402169228 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-06.png">
+				</td></tr>
+				<tr><td>
+					Spheres reflecting each other with a recursion depth of 3.<br>
+					<a href="input-06.txt" target="_blank">input-06.txt</a> <br>
+					33.1157798767 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-07.png">
+				</td></tr>
+				<tr><td>
+					A set of spheres and a reflective triangle.<br>
+					<a href="input-07.txt" target="_blank">input-07.txt</a> <br>
+					52.1394910812 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-08.png">
+				</td></tr>
+				<tr><td>
+					A single sphere.<br>
+					<a href="input-03.txt" target="_blank">input-08.txt</a> <br>
+					13.339828968 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-09.png">
+				</td></tr>
+				<tr><td>
+					A single sphere with scaling.<br>
+					<a href="input-09.txt" target="_blank">input-09.txt</a> <br>
+					30.8666820526 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-10.png">
+				</td></tr>
+				<tr><td>
+					A single sphere with scaling and translation.<br>
+					<a href="input-10.txt" target="_blank">input-10.txt</a> <br>
+					33.4214379787 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-11.png">
+				</td></tr>
+				<tr><td>
+					A single sphere with scaling, translation, and rotation.<br>
+					<a href="input-11.txt" target="_blank">input-11.txt</a> <br>
+					33.6132218838 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-12.png">
+				</td></tr>
+				<tr><td>
+					A pretty trippy flower. &#9880;<br>
+					<a href="input-12.txt" target="_blank">input-12.txt</a> <br>
+					266.844189882 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-13.png">
+				</td></tr>
+				<tr><td>
+					Triangle from OBJ file with interpolated vertex normals and Phong shading.<br>
+					<a href="input-13.txt" target="_blank">input-13.txt</a> <br>
+					49.2965290546 sec
+				</td></tr>
+			</table>
+			<br>
+			<table class="single">
+				<tr><td>
+					<img src="images/image-14.png">
+				</td></tr>
+				<tr><td>
+					A dodecahedron OBJ with point and directional light reflected against a quadrilateral background.<br>
+					<a href="input-14.txt" target="_blank">input-14.txt</a> <br>
+					2467.05825496 sec
+				</td></tr>
+			</table>
+
+			<br><br>
+
+			For future improvements, implement an AABB tree to help render faster. (Right now it's ridiculously slow which makes me sad because I really wanted to make some pretty pictures from pretty .obj files.)
+
+			<br><br>
+			
+			<h1>Extra Credit</h1>
+
+			For extra credit, we implemented a variety of features that allow more versatility in image saving.
+
+			<br><br>
+
+			<b>Image Format:</b> imf ext <br>
+			Specifies the image output format, where ext can be 'png', 'tif', or 'jpg'. The default is png.
+			<br>
+
+			<br><br>
+
+			<b>Image Size:</b> ssz w h <br>
+			Specifies the image's dimensions, where w and h are positive integers. The default is 1000x500.
+			<br>
+
+			<br><br>
+
+			<b>Image Filename Saving System:</b> <br>
+			All saved images are named "image-nn.xxx" where nn is a number (01, 02, etc.) an xxx is an extention. When saving, the program first checks to see if a certain filename is already taken, so that each tim running the program will output images with incrementing filenames.
+			<br><br>
+			<img src="images/ass2_imgsave.jpg" width="800">
+
+			<br><br>
+
+			<b>Text File:</b> txt des <br>
+			Output a text file along with the image file named "notes-nn" where nn corresponds to the image's filename's nn, where des can be anything, and can also be left blank. The file will contain the command line input for the image, the amount of time it took the program to run when tracing that image, and the provided description.
+			<br><br>
+
+			<h1>Sources/References Used</h1>
+			<a href="http://inst.eecs.berkeley.edu/~cs184/fa09/raytrace_journal.php" target="_blank">Raytracer Implementation Journal</a> - Used as general implemenation guide and for various sample examples.<br>
+			<a href="https://docs.google.com/a/berkeley.edu/presentation/d/1WPU3qzW2FV2n7tDy-N_5TFD52KKErzRxgdB7zulJ5bI" target="_blank">CS 184 Discussion Slides from Stephen Bailey, Feb. 26</a> <br>
+			<a href="https://pypi.python.org/pypi/Pillow/2.1.0" target="_blank">Pillow</a> - Imaging library <br>
+			<a href="http://www.numpy.org/" target="_blank">NumPy</a> - Used for solving systems of equations and inverting matrices.<br>
+			<a href="http://www.nandnor.net/?p=86" target="_blank">Loading Wavefront OBJ files with Python</a> - OBJ parser reference code. <br>
+			<a href="http://www.opengl-tutorial.org/beginners-tutorials/tutorial-7-model-loading/" target="_blank">Tutorial 7 : Model loading</a> - OBJ parser tutorial <br>
+			<a href="http://www.programiz.com/python-programming/examples/multiply-matrix" target="_blank">Python Program to Multiply Two Matrices</a> - Matrix multiplication code using nested list comprehension <br>
+			<a href="http://www-inst.eecs.berkeley.edu/~cs184-cz/ass2/simple/" target="_blank">Simple Examples from cs184-cz</a> <br>
+			<a href="http://people.sc.fsu.edu/~jburkardt/data/obj/dodecahedron.obj" target="_blank">dodecahedron.obj</a> - A OBJ file containing a dodecahedron that we used for one of our examples.
+
+			<br><br>
+			<br><br>
+
+		</div>
+	</div>
+
+</body>
+
+</html>
