@@ -48,6 +48,40 @@ h2 {
 	margin: 10px;
 }
 
+.cred {
+	position: fixed;
+	left: 10px;
+	bottom: 0;
+	padding: 10px;
+	font-size: 11px;
+	font-family: 'Roboto';
+	text-transform: uppercase;
+}
+
+.pagn {
+	position: fixed;
+	left: 50%;
+	transform: translate(-50%, 0);
+	top: 0;
+	padding: 10px;
+	font-size: 12px;
+	font-family: 'Roboto';
+	text-transform: uppercase;
+}
+.pagn a {
+	color: white;
+}
+
+.top {
+	position: fixed;
+	right: 10px;
+	bottom: 0;
+	padding: 10px;
+	font-size: 11px;
+	font-family: 'Roboto';
+	text-transform: uppercase;
+}
+
 .box {
 	height: 100%;
 }
@@ -64,6 +98,10 @@ h2 {
 .nav {
 	text-align: center;
 	padding: 20px;
+}
+
+.smoothScroll {
+	text-decoration: none;
 }
 
 .navBox {
