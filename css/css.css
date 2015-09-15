@@ -19,11 +19,19 @@
     font-family: 'Roboto';
     src: url('Roboto-Light.ttf');
 }
+@font-face {
+    font-family: 'Futura';
+    src: url('Futura Oblique.ttf');
+}
+
+
+
+
 
 body, html {
-	font-family: 'Roboto';
+	font-family: 'Futura';
 	color: white;
-	font-size: 19px;
+	font-size: 20px;
 	background-color: #9E9E9E;
 	text-align: justify;
 	height: 100%;
@@ -100,6 +108,7 @@ h2 {
 	margin: 25px 125px;
 	border: #CECECE solid 2px;
 	padding: 50px;
+	background-color: rgba(184,184,184, 0.7);
 }
 
 .nav {
@@ -144,6 +153,38 @@ h2 {
 	text-align: justify;
 }
 
+
+
+
+
+/* PROJECTS */
+
+.content .proj {
+	display: inline-block;
+	overflow: hidden;
+	height: 500px;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	background-color: black;
+}
+
+.content .proj img {
+	height: 120%;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	opactiy: 1;
+}
+
+.content .proj img:hover {
+	opacity: 0.4;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+
+
+
+
+
 .info {
 	text-transform: uppercase;
 	letter-spacing: 2px;
@@ -154,6 +195,10 @@ h2 {
 }
 
 
+
+
+
+/* BACKGROUND */
 
 #triangle { 
 	position: fixed;
