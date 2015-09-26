@@ -1,0 +1,903 @@
+
+<html>
+
+
+<head>
+	<title>Emilee Chen - CS194-26 Project 1</title>
+	<link rel="stylesheet" type="text/css" href="css.css"> 
+</head>
+
+
+<body>
+	<div id="wrap">
+
+		<div id="header">
+
+			<div id="name">
+				CS194-26 &#8226; Project 1 &#8226; Emilee Chen <br>
+				<div id="sub">
+					Images of the Russian Empire: Colourizing the Prokudin-Gorskii photo collection
+				</div>
+			</div>
+			<div id="info-container">
+				<div id="info">
+					<p>
+						CS194-26 FA'15 <br>
+						Emilee Chen (cs194-bb) <br>
+						echen at berkeley dot edu
+					</p>
+					<p>
+						This is the first project for the class <a href="http://inst.eecs.berkeley.edu/~cs194-26/fa15/" target="_blank">CS194-26: Image Manipulation and Computational Photography</a> taught by Professor Alexei Efros at UC Berkeley.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="content">
+			<h1>I. Introduction</h1>
+				<p>
+					From 1907 to 1915, Sergei Mikhailovich Prokudin-Gorskii, a Russian chemist and photographer, travelled around Russia documenting the Russian Empire with colour photography. He was able to do this on black and white film, by taking three exposures of the same scene with red, green, and blue filters. The three photographs can then can be projected through red, green, and blue filters which superimposes into a single, fully coloured photograph when aligned correctly.
+				</p>
+
+				<p>
+					The Library of Congress purchased these plates from Prokudin-Gorskii's heirs, and scanned these glass plates and uploaded <a href="http://www.loc.gov/pictures/collection/prok/" target="_blank">the collection</a> online. The goal of this project is to write a program that can take these RGB scans and align the three images and combine to display them in full colour the way they were meant to be viewed.
+				</p>
+
+
+				<table width="20%" align="right">
+					<tr><td>
+							<img src="img/cathedral_a.jpg">
+					</td></tr>
+					<tr><td>
+							The original cathedral.jpg showing the three channels that it will be cropped into.
+					</td></tr>
+				</table>
+
+			<h1>II. Image Alignment</h1>
+
+				<p>
+					To recreate these photographs, the three separate red, green, and blue filtered images (from now on to be referred to as the R, G, B channels) must be aligned correctly.
+				</p>
+
+				<p>
+					This is my step by step approach:
+					<ol>
+						<p>
+							<li>Crop the original image into three separate channel images by simply using height / 3 as each channel's height.</li>
+							i.e. The red channel would have the corners (0, height * 2, width, height * 3)
+						</p>
+
+						<p>
+							<li>Crop each channel by some arbitrary percentage on each side.</li>
+							This is done so that the meat of the image can be considered in the alignment, without the borders and other blemishes affecting any calculations.
+						</p>
+
+						<table width="70%">
+							<tr>
+								<td><img src="img/cathedral_b.jpg"></td>
+								<td><img src="img/cathedral_c.jpg"></td>
+								<td><img src="img/cathedral_d.jpg"></td>
+							</tr>
+							<tr><td colspan="3">
+									The images above show the area of the channels that will be used in aligning.
+							</td></tr>
+						</table>
+
+						<p>
+							<li>Align the cropped red and green channels to the blue channel to get (x, y) displacements for both channels.</li>
+							There are many algorithms that can be used to achieve this, and shall be discussed below.
+						</p>
+
+						<p>
+							<li>Apply the displacements onto the uncropped versions of their corresponding channels.</li>
+							This step is taken instead of skipping directly to merging in order to preserve as much of the image as possible.
+						</p>
+
+						<table align="right" width="200px">
+							<tr>
+								<td><img src="img/cathedral_e.gif"></td>
+							</tr>
+							<tr><td>
+								A cool GIF representation of cathedral.jpg shifting (12, 3) for red and (5, 2) for green.
+							</td></tr>
+						</table>
+
+						<p>
+							<li>Merge the three channels together into one final image and save.</li>
+						</p>
+
+					</ol>
+				</p>
+
+				<h2>Na&#239;ve Algorithms</h2>
+					<p>
+						There are many image aligning methods, but the simplest, if na&#239;ve, way is to exhaustively compare the R, G, and B channels to find matches in intensity. To align the images, the R and G channels are being compared against the B channel separately in some arbitrary x, y shift range. I chose to use a <b>31 by 31 search range</b> (shifts 15 pixels left, right, up, and down). There are two simple algorithms to make this comparison and decide what shift amount will make the best alignment:
+					</p>
+
+					<p>
+						<b>Sum of Squared Differences (SSD)</b>
+							<div class="code">ssd = sum( sum( (image1 - image2) ^ 2 ) )</div> <br>
+							The SSD is an enumeration of similarities in colour intensities. The smaller this value, the smaller the difference, and thus, the better the match.
+					</p>
+
+					<p>
+						<b>Normalized Cross Correlation (NCC)</b>
+							<div class="code">ncc = innerproduct( image1 / ||image1||, image2 / ||image2|| )</div> <br>
+							NCC normalizes the image being shifted, and then takes the inner product of that image and the one it is being compared to as a vector. The larger this value, the closer the two images are, and thus, the better the match.
+					</p>
+
+					<p>
+						Aligning the provided images with SSD and NCC gave me the same displacement values for each image. The resulting full colour images are displayed below, along with their corresponding file names and full sized images. Note that the displacement values are actually (y, x). e.g. (5, -2) means shift 5 down, and 2 left.
+					</p>
+
+					<center>
+						<table>
+							<tr>
+								<td>
+									<img src="img/cathedral.jpg">
+									<div class="code sub">
+										cathedral.jpg <br>
+										R: (12, 3) <br>
+										G: (5, 2) <br>
+										<a href="img/cathedral.jpg" target="_blank">[x]</a>
+									</div>
+								</td>
+								<td>
+									<img src="img/monastery.jpg">
+									<div class="code sub">
+										monastery.jpg <br>
+										R: (3, 2) <br>
+										G: (-3, 2) <br>
+										<a href="img/monastery.jpg" target="_blank">[x]</a>
+									</div>
+								</td>
+								<td>
+									<img src="img/nativity.jpg">
+									<div class="code sub">
+										nativity.jpg <br>
+										R: (7, 1) <br>
+										G: (3, 1) <br>
+										<a href="img/nativity.jpg" target="_blank">[x]</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/settlers.jpg">
+									<div class="code sub">
+										settlers.jpg <br>
+										R: (14, -1) <br>
+										G: (7, 1) <br>
+										<a href="img/settlers.jpg" target="_blank">[x]</a>
+									</div>
+								</td>
+								<td>
+									<img src="img/tobolsk.jpg">
+									<div class="code sub">
+										tobolsk.jpg <br>
+										R: (6, 3) <br>
+										G: (3, 3) <br>
+										<a href="img/tobolsk.jpg" target="_blank">[x]</a>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</center>
+
+					<p>
+						Although both methods gave the same result, SSD is a slighty faster calculation than NCC, with SSD completing the alignments in around 3 seconds, and NCC in around 6 seconds.
+					</p>
+
+					<center>
+						<table>
+							<tr>
+								<td>
+								</td>
+								<td>
+									<b>SSD</b>
+								</td>
+								<td>
+									<b>NCC</b>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>cathedral.jpg</b>
+								</td>
+								<td>
+									2.64537906647 seconds
+								</td>
+								<td>
+									5.76754999161 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>monastery.jpg</b>
+								</td>
+								<td>
+									3.01922702789 seconds
+								</td>
+								<td>
+									5.31478595734 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>nativity.jpg</b>
+								</td>
+								<td>
+									3.13875508308 seconds
+								</td>
+								<td>
+									5.24833297729 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>settlers.jpg</b>
+								</td>
+								<td>
+									2.9219288826 seconds
+								</td>
+								<td>
+									5.18062806129 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>tobolsk.jpg</b>
+								</td>
+								<td>
+									2.94660711288 seconds
+								</td>
+								<td>
+									6.85429000854 seconds
+								</td>
+							</tr>
+						</table>
+					</center>
+
+
+
+				<h2>Image Pyramid</h2>	
+
+				<table width="40%" align="right">
+					<tr><td>
+							<img src="img/pyramid.png">
+					</td></tr>
+					<tr><td>
+							This is a visual representation of an image pyramid using the blue channel of the image bridge.jpg.
+					</td></tr>
+				</table>
+
+				<p>
+					Exhaustively searching through the entire image works for the previous JPEG files since they were all relatively low resolution. Attempting to align the larger TIFF files that are all around 4000 by 3000, the na&#239;ve method can no longer get the job done in a reasonable amount of time.
+				</p>
+
+				<p>
+					This is where image pyramids come in. The basic concept is that a smaller image would be much faster to search through. An image pyramid is a series of images that are resized smaller and smaller going up the levels of the pyramid. Even though a smaller image would be a lower resolution, it can provide an approximate value to shift.
+				</p>
+
+				<p>
+					A couple of values must be set before the process can be used. First, we have to decide how much smaller the resized image will be than the image below. I chose to go with decreasing by <b>a factor of 2</b>. We then have to set the number of levels in the pyramid. I chose to expand the pyramid until the image's width or height is under <b>200 pixels</b>. For these TIFF files that are around 4000 by 3000, that is 5 levels, including the base (original, unresized image). SSD or NCC will be used, though this time the search will be within a <b>15 by 15 search range</b>.
+				</p>
+
+				<p>
+					Here is the step by step process:
+					<ol>
+						<p>
+							<li>Crop the original image to its R, G, B channels and then crop off an arbitrary amount so that we only use the centre of the image to make comparisons.</li>
+						</p>
+
+						<p>
+							<li>Create an image pyramid for each channel.</li>
+							Size down the width and height by half with each level and did this until the highest level has width less than 200 pixels.
+						</p>
+
+						<p>
+							<li>Search through a cropped section of each level of the red and green pyramids against the blue pyramid with SSD or NCC to get displacement values.</li>
+							The image has to be cropped smaller or else there is no decrease in computation speed. After testing, the best crop amount seems to be a 200 x 200 pixel patch in the centre. The displacement amount has to be doubled each time we move down a level to preserve the relative displacement.
+						</p>
+
+						<p>
+							<li>Apply the displacements onto the uncropped versions of their corresponding channels.</li>
+						</p>
+
+						<p>
+							<li>Merge the three channels together into one final image and save.</li>
+						</p>
+
+					</ol>
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/bridge.jpg">
+								<div class="code sub">
+									bridge.tif <br>
+									R: (69, 8) <br>
+									G: (13, -4) <br>
+									<a href="img/bridge.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/harvesters.jpg">
+								<div class="code sub">
+									harvesters.tif <br>
+									R: (124, 17) <br>
+									G: (60, 19) <br>
+									<a href="img/harvesters.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/lady.jpg">
+								<div class="code sub">
+									lady.tif <br>
+									R: (112, 10) <br>
+									G: (49, 7) <br>
+									<a href="img/lady.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/melons.jpg">
+								<div class="code sub">
+									melons.tif <br>
+									R: (180, 12) <br>
+									G: (77, 4) <br>
+									<a href="img/melons.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/onion_church.jpg">
+								<div class="code sub">
+									onion_church.tif <br>
+									R: (108, 36) <br>
+									G: (50, 26) <br>
+									<a href="img/onion_church.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/self_portrait.jpg">
+								<div class="code sub">
+									self_portrait.tif <br>
+									R: (175, 37) <br>
+									G: (77, 29) <br>
+									<a href="img/self_portrait.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/three_generations.jpg">
+								<div class="code sub">
+									three_generations.tif <br>
+									R: (108, 13) <br>
+									G: (49, 17) <br>
+									<a href="img/three_generations.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/turkmen.jpg">
+								<div class="code sub">
+									turkmen.tif <br>
+									R: (117, 30) <br>
+									G: (56, 22) <br>
+									<a href="img/turkmen.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/workshop.jpg">
+								<div class="code sub">
+									workshop.tif <br>
+									R: (105, -12) <br>
+									G: (53, 0) <br>
+									<a href="img/workshop.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</center>
+
+					<table width="15%" align="right">
+						<tr><td>
+								<img src="img/emir_b.jpg">
+						</td></tr>
+						<tr><td>
+								Emir's robe has very significant difference in intensity across the R, G, and B channels.
+						</td></tr>
+					</table>
+
+					<p>
+						Once again, SSD and NCC gave me the same results, with SSD slighty faster than NCC, with SSD at around 15-17 seconds, and NCC at around 20 seconds.
+					</p>
+
+
+					<center>
+						<table>
+							<tr>
+								<td>
+								</td>
+								<td>
+									<b>SSD</b>
+								</td>
+								<td>
+									<b>NCC</b>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>bridge.tif</b>
+								</td>
+								<td>
+									13.7140870094 seconds
+								</td>
+								<td>
+									14.0207099915 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>harvesters.tif</b>
+								</td>
+								<td>
+									18.6445329189 seconds
+								</td>
+								<td>
+									20.7564790249 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>lady.tif</b>
+								</td>
+								<td>
+									15.0626921654 seconds
+								</td>
+								<td>
+									19.761646986 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>melons.tif</b>
+								</td>
+								<td>
+									21.7461268902 seconds
+								</td>
+								<td>
+									20.1103210449 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>onion_church.tif</b>
+								</td>
+								<td>
+									20.0455958843 seconds
+								</td>
+								<td>
+									22.6522738934 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>self_portrait.tif</b>
+								</td>
+								<td>
+									17.4606361389 seconds
+								</td>
+								<td>
+									32.0704319477 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>three_generations.tif</b>
+								</td>
+								<td>
+									13.7146379948 seconds
+								</td>
+								<td>
+									17.5942869186 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>turkmen.tif</b>
+								</td>
+								<td>
+									17.5983920097 seconds
+								</td>
+								<td>
+									15.437732935 seconds
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<b>workshop.tif</b>
+								</td>
+								<td>
+									17.8079559803 seconds
+								</td>
+								<td>
+									21.5742030144 seconds
+								</td>
+							</tr>
+						</table>
+					</center>
+
+
+					<p>
+						However, I did run into an issue with one of the images, emir.tif. Unlike the other images so far, the centre of this image is predominantly blue. As you can observe in the channels, the gown is "dark" in the red channel as there is very little amounts of red in the full colour photo. Since the gown is at completely different ends of the intensity spectrum for the red and blue channels, the algorithm will not align the channels as expected. This prompted me to look into other alignment methods.
+					</p>
+
+
+			<h1>III. Edge Detection</h1>
+
+				<p>
+					Comparison in colour intenstities has its limitations, and does not work in some cases. Edge detection does a comparison between the changes in intensities instead. There are many approaches to edge detection such as Sobel edge detection and Canny edge detection.
+				</p>
+
+				<h2>Sobel Edge Detection</h2>
+
+					The Sobel operator uses a horizontal (x) kernel and a vertical (y) kernel which are convolved with the image it is applied on to calculate the derivates. I implemented my own convolution, but it was slow and took around 20 seconds to apply the Sobel operator on one of the smaller JPEG images. So, I then used <div class="code">signal.convolve2d()</div> from SciPy instead.
+
+					<center>
+						<table>
+							<tr>
+								<td><img src="img/emir_c.jpg"></td>
+								<td><img src="img/emir_d.jpg"></td>
+								<td><img src="img/emir_e.jpg"></td>
+							</tr>
+							<tr><td colspan="3">
+								These are the R, G, and B images after the Sobel operator are applied to them. Although there are some differences in intensity, the matching algorithms can now use the edges for aligning.
+							</td></tr>
+						</table>
+					</center>
+
+					<p>
+						The process of aligning images with edge detection isn't much different except for an added step. The Sobel operator is applied to each image before comparison using SSD or NCC.
+					</p>
+
+					<center>
+						<table>
+							<tr>
+								<td>
+									<img src="img/emir_a.jpg">
+									<div class="code sub">
+										emir.tif <br>
+										R: (58, 22) <br>
+										G: (48, 23) <br>
+										<a href="img/emir_a.jpg" target="_blank">[x]</a>
+									</div>
+								</td>
+								<td>
+									<img src="img/emir.jpg">
+									<div class="code sub">
+										emir.tif <br>
+										R: (106, 41) <br>
+										G: (48, 23) <br>
+										<a href="img/emir.jpg" target="_blank">[x]</a>
+								</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									Here is a comparison of emir.tif with and without edge detection. The alignment is dramatically improved. 
+								</td>
+							</tr>
+						</table>
+					</center>
+
+					<center>
+						<table>
+							<tr>
+								<td>
+									<img src="img/olgin_bridge_a.jpg">
+									<div class="code sub">
+										olgin_bridge.jpg <br>
+										R: (14, -1) <br>
+										G: (0, -15) <br>
+										<a href="img/olgin_bridge_a.jpg" target="_blank">[x]</a>
+									</div>
+								</td>
+								<td>
+									<img src="img/olgin_bridge.jpg">
+									<div class="code sub">
+										olgin_bridge.jpg <br>
+										R: (14, -1) <br>
+										G: (6, 1) <br>
+										<a href="img/olgin_bridge.jpg" target="_blank">[x]</a>
+									</div>
+								</td>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									Here is a comparison of <a href="http://www.loc.gov/pictures/collection/prok/item/prk2000001118/" target="_blank">olgin_bridge.jpg</a> with and without edge detection. This is a different example of when edge detection would come in handy. Unlike emir.tif, olgin_bridge.jpg is not predominatly one colour but has a lot of colour warping.
+								</td>
+							</tr>
+						</table>
+					</center>
+
+
+			<h1>IV. Automatic Contrast</h1>
+
+				<p>
+					In some images, certain features may not be as distinguishable as you would like. Increasing the contrast of an image creates a larger difference in luminance.
+				</p>
+
+				<p>
+					The idea of contrast adjustment is that the minimum and maximum intensities are not at 0 and 255 respectively, and the intensity values can be scaled to have them at the true minimum and maximum values. I ran into a problem implementing the filter this way. All the images that I have tested already have 0 and 255 as their minimum and maximum values, so I had to think of another way to find a scaling factor.
+				</p>
+
+				<p>
+					I decided that I would simply create a contrast filter that the user can input a scaling factor for. The filter scales the luminance by some value 1 + n, with n being the inputted scaling factor. After playing around with various values, I decided up on <b>0.2</b> as the scaling factor that works the best.
+				</p>
+
+				<p>
+					Below is a series of the image with various scaling factors applied to them. Notice that negative scaling factors are allowed as well, though at n = 1, the image becomes completely grey.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/entrance_-8.jpg">
+								<div class="code sub">
+									-0.8 <br>
+									<a href="img/entrance_-8.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/entrance_-6.jpg">
+								<div class="code sub">
+									-0.6 <br>
+									<a href="img/entrance_-6.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/entrance_-4.jpg">
+								<div class="code sub">
+									-0.4 <br>
+									<a href="img/entrance_-4.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/entrance_-2.jpg">
+								<div class="code sub">
+									-0.2 <br>
+									<a href="img/entrance_-2.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/entrance.jpg">
+								<div class="code sub">
+									entrance.jpg <br>
+									R: (12, 2) <br>
+									G: (5, 1) <br>
+									<a href="img/entrance.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/entrance_04.jpg">
+								<div class="code sub">
+									+0.4 <br>
+									<a href="img/entrance_04.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/entrance_08.jpg">
+								<div class="code sub">
+									+0.8 <br>
+									<a href="img/entrance_08.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/entrance_12.jpg">
+								<div class="code sub">
+									+1.2 <br>
+									<a href="img/entrance_12.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">
+								The series of images above is <a href="http://www.loc.gov/pictures/collection/prok/item/prk2000001411/" target="_blank">entrance.jpg</a> with various levels of contrast applied to it. The original (bottom left) image seems faded. Increasing the contrast of this image makes it look much clearer.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+			<h1>V. Automatic White Balancing</h1>
+
+				<p>
+					In some images, the "white-est" colour is the image is not pure white and is rather tinted another colour. White balancing elimintes this tint. This is accomplished by finding the "white-est" RGB value, some (r, g, b), and scaling each R, G, B channel by 255/r, 255/g, and 255/b respectively.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/bridge.jpg">
+								<div class="code sub">
+									<a href="img/bridge.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/bridge_a.jpg">
+								<div class="code sub">
+									<a href="img/bridge_a.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/tree.jpg">
+								<div class="code sub">
+									<a href="img/tree.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/tree_a.jpg">
+								<div class="code sub">
+									<a href="img/tree_a.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">
+								The images on the left are the originals, and the images on the right are the results after white balancing.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					Although the images above show significant difference that improved the overall quality, white balancing for most the images did not change them very much. This is because the white-est values for these images were close to pure white already. Some examples are shown below.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/monastery.jpg">
+								<div class="code sub">
+									<a href="img/monastery" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/monastery_a.jpg">
+								<div class="code sub">
+									-whb <br>
+									<a href="img/monastery_a.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/cathedral.jpg">
+								<div class="code sub">
+									<a href="img/cathedral.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/cathedral_f.jpg">
+								<div class="code sub">
+									<a href="img/cathedral_f.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">
+								There is barely a perceptable difference between these images.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+
+			<h1>VI. Hubble Space Telescope Imagery</h1>
+
+				<p>
+					There are other applications of merging several images using individual colour channels. Images taken in astronomy are not necessarily in the visible spectrum, but we can assign these channel some arbitrary colours to create coloured images.
+				</p>
+
+				<table align="right" width="30%">
+					<tr>
+						<td>
+							<img src="img/hubble.jpg">
+								<div class="code sub">
+									<a href="img/hubble.jpg" target="_blank">[x]</a>
+								</div>
+						</td>
+
+					</tr>
+					<tr><td>
+						Final product using the three CYM channels.
+					</td></tr>
+				</table>
+
+				<table>
+					<tr>
+						<td><img src="img/hubble_1.jpg"></td>
+						<td><img src="img/hubble_2.jpg"></td>
+						<td><img src="img/hubble_3.jpg"></td>
+					</tr>
+					<tr><td colspan="3">
+						The above images are different wavelength images of HST_10419_11 from <a href="http://hla.stsci.edu/" target="_blank">Hubble Legacy Archive</a>.
+					</td></tr>
+				</table>
+				<table>
+					<tr>
+						<td><img src="img/hubble_a.jpg"></td>
+						<td><img src="img/hubble_b.jpg"></td>
+						<td><img src="img/hubble_c.jpg"></td>
+					</tr>
+					<tr><td colspan="3">
+						The same images above after applying magenta (255, 0, 255), cyan (0, 255, 255), and yellow (255, 255, 0) filters on them respectively.
+					</td></tr>
+				</table>
+
+				<p>
+					Unlike the images in the Prokudin-Gorskii collection, these images do not seem to need to be aligned. (I'm assuming because these telescopes are quite stable.) I simply applied an arbitrary colour to each image and superimposed them. These colours were chosen simply because they looked pretty to me, and any combination of colours can be used to achieve different results.
+				</p>
+
+				<p>
+					The next step would be to implement image rotation and cropping to eliminate the outer grey portion.
+				</p>
+
+
+
+			<h1>VII. More Examples</h1>
+
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/fresco.jpg">
+								<div class="code sub">
+									fresco.jpg <br>
+									R: (10, -2) <br>
+									G: (6, 0) <br>
+									<a href="img/fresco.jpg" target="_blank">[x]</a>, 
+									<a href="http://www.loc.gov/pictures/collection/prok/item/prk2000002117/" target="_blank">[s]</a> 
+								</div>
+							</td>
+							<td>
+								<img src="img/rose.jpg">
+								<div class="code sub">
+									rose.jpg <br>
+									R: (14, -2) <br>
+									G: (7, 0) <br>
+									<a href="img/rose.jpg" target="_blank">[x]</a>, 
+									<a href="http://www.loc.gov/pictures/collection/prok/item/prk2000002173/" target="_blank">[s]</a> 
+								</div>
+							</td>
+							<td>
+								<img src="img/gospel.jpg">
+								<div class="code sub">
+									gospel.jpg <br>
+									R: (14, -8) <br>
+									G: (7, -3) <br>
+									<a href="img/gospel.jpg" target="_blank">[x]</a>, 
+									<a href="http://www.loc.gov/pictures/collection/prok/item/prk2000002188/" target="_blank">[s]</a> 
+								</div>
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+		</div>
+
+	</div>
+</body>
+
+</html>
