@@ -1,0 +1,546 @@
+
+<html>
+
+
+<head>
+	<title>Emilee Chen - CS194-26 Project 3</title>
+	<link rel="stylesheet" type="text/css" href="css.css"> 
+</head>
+
+
+<body>
+	<div id="wrap">
+
+		<div id="header">
+
+			<div id="name">
+				CS194-26 &#8226; Project 3 &#8226; Emilee Chen <br>
+				<div id="sub">
+					Fun with Frequencies
+				</div>
+			</div>
+			<div id="info-container">
+				<div id="info">
+					<p>
+						CS194-26 FA'15 <br>
+						Emilee Chen (cs194-bb) <br>
+						echen at berkeley dot edu
+					</p>
+					<p>
+						This is the third project for the class <a href="http://inst.eecs.berkeley.edu/~cs194-26/fa15/" target="_blank">CS194-26: Image Manipulation and Computational Photography</a> taught by Professor Alexei Efros at UC Berkeley.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="content">
+			<h1>I. Unsharp Masking Sharpen</h1>
+
+				<p>
+					Although it may seem counterintuitive, unsharp masking is actually a technique used to sharpen images. Unsharp masking is the technique of adding (some multiple alpha of) the high frequencies of an image to the original image, thus accentuating the high frequency components of the image. The high frequencies of the image, also called the Laplacian, is found by subtracting the low frequencies, which is found by smoothing the original image with a Gaussian filter, away from the original image.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/ramen_grey_0.0.jpg">
+								<div class="code sub">
+									original <br>
+									<a href="img/ramen_grey_0.0.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/ramen_grey_0.5.jpg">
+								<div class="code sub">
+									&alpha; = 0.5 <br>
+									<a href="img/ramen_grey_0.5.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/ramen_grey_1.0.jpg">
+								<div class="code sub">
+									&alpha; = 1.0 <br>
+									<a href="img/ramen_grey_1.0.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/ramen_grey_5.0.jpg">
+								<div class="code sub">
+									&alpha; = 5.0 <br>
+									<a href="img/ramen_grey_5.0.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								Gaussian filter of varying alphas applied to ramen.jpg.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					As can be observed from the series of images above, the higher the alpha, the more "sharp" the images become, though at a high enough alpha, some of the edges become white. Below are some close ups on the image above with more alpha values. I have decided that an alpha of 0.5 is the best.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td class="no"><img src="img/ramen_grey_0.0c.jpg">
+								<div class="code sub">&alpha; = 0</div>
+							</td>
+							<td class="no"><img src="img/ramen_grey_0.25c.jpg">
+								<div class="code sub">&alpha; = 0.25</div>
+							</td>
+							<td class="no"><img src="img/ramen_grey_0.5c.jpg">
+								<div class="code sub">&alpha; = 0.5</div>
+							</td>
+							<td class="no"><img src="img/ramen_grey_1.0c.jpg">
+								<div class="code sub">&alpha; = 1.0</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="no"><img src="img/ramen_grey_2.0c.jpg">
+								<div class="code sub">&alpha; = 2.0</div>
+							</td>
+							<td class="no"><img src="img/ramen_grey_5.0c.jpg">
+								<div class="code sub">&alpha; = 5.0</div>
+							</td>
+							<td class="no"><img src="img/ramen_grey_10.0c.jpg">
+								<div class="code sub">&alpha; = 10.0</div>
+							</td>
+							<td class="no"><img src="img/ramen_grey_25.0c.jpg">
+								<div class="code sub">&alpha; = 25.0</div>
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+				<h2>Bells and Whistles</h2>
+
+				<p>
+					I also implemented a colourized version of the unsharp masking technique. It is essentially the same except that I subtract a greyscale version of the Laplacian from the full colour image. Results can be seen below.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/ramen_colour_0.0.jpg">
+								<div class="code sub">
+									original <br>
+									<a href="img/ramen_colour_0.0.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/ramen_colour_0.5.jpg">
+								<div class="code sub">
+									&alpha; = 0.5 <br>
+									<a href="img/ramen_colour_0.5.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/ramen_colour_1.0.jpg">
+								<div class="code sub">
+									&alpha; = 1.0 <br>
+									<a href="img/ramen_colour_1.0.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/ramen_colour_5.0.jpg">
+								<div class="code sub">
+									&alpha; = 5.0 <br>
+									<a href="img/ramen_colour_5.0.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+
+			<h1>II. Hybrid Image</h1>
+
+				<p>
+					Hybrid images can be created by combining the high frequencies of one with the the low frequencies of another image. This can be accomplished because it's more difficult to distinguish high frequency feature from further away than low frequency features and vice versa. This means that if we are able to composite the high frequencies of one image onto the low frequencies of another image, we will create a hybrid image that looks like one thing from afar, and something else up close!
+				</p>
+
+				<p>
+					Although it will be difficult to make out the details of the low frequency image from up close, it will still interfere with our view of the high frequency image. If the images are similar and aligned properly, this interferance is minimalized. I chose to use the images of a cake and a pie, since they're both vaguely ellipical.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/cake.jpg">
+							</td>
+							<td>
+								<img src="img/cake_fft.jpg">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/pie.jpg">
+							</td>
+							<td>
+								<img src="img/pie_fft.jpg">
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					I applied a low-pass filter, which is a standard 2D Gaussian filter (the same as the one from the previous section) of sigma <b>8</b>, to the cake, and a high-pass filter, which is the Laplacian (the Laplacian of the image is the original subtracted by the Gaussian-filtered image, also used in the previous section) of sigma <b>3</b>, to the pie. These sigma values are chosen through guessing and checking.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/cake-pie_low.jpg">
+							</td>
+							<td>
+								<img src="img/cake-pie_low-fft.jpg">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/cake-pie_high.jpg">
+							</td>
+							<td>
+								<img src="img/cake-pie_high-fft.jpg">
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					Beside these images are their the 2D Fourier transforms, which we can use to observe the effects of these filters and combinations. The pie's 2D Fourier transforms has rotated somewhat. Also, note how in the cake's 2D Fourier transforms how the low frequency values (white reprsents high frequency, and black represents low frequency) are eliminated.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/cake-pie.jpg">
+							</td>
+							<td>
+								<img src="img/cake-pie_fft.jpg">
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					Woo! You can now look at both a cake and pie at the same time. This is what I call late night food blog browsing efficiency. But also look at the 2D Fourier transforms as well. We can see see both the low-pass and high-pass frequency images' features in it. Pretty neat!
+				</p>
+
+				<p>
+					I also attempted to create an hybrid image of a shark and an image of a dolphin. I took care to pick images of the animals that matched in pose, since the high frequency features will still be visible from further away. (And then I remembered belatedly that sharks' tails don't work the same way as dolphins' do... derp. It was so much more difficult than I thought it would be.)
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/dolphin.jpg">
+							</td>
+							<td>
+								<img src="img/shark.jpg">
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					However, as we can see from the results below, this did not work quite as well as I would have hoped. Since the sea around the image of the shark is dark coloured, just like the shark, there is not a lot of distinctive edges. With the shark going through the high-pass filter, portions of the tail and fin are barely distinct.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/dolphin-shark.jpg">
+							</td>
+							<td>
+								<img src="img/shark-dolphin.jpg">
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					I thought long and hard about what other images I wanted to create hybrids of. It hit me all of a sudden. I had an entire collection of selfies from my little sister, Nina. And her expressions are marvelous, I tell you. Actually, don't just take my word for it, feast your eyes upon them for you can find them below.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/nina1.jpg">
+							</td>
+							<td>
+								<img src="img/nina3.jpg">
+							</td>
+							<td>
+								<img src="img/nina_hybrid1.jpg">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/nina4.jpg">
+							</td>
+							<td>
+								<img src="img/nina2.jpg">
+							</td>
+							<td>
+								<img src="img/nina_hybrid2.jpg">
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+				<h2>Bells and Whistles</h2>
+
+				<p>
+					I also experimented with using colour Gaussian and Laplacians. Unfortunately, my first attempt used a relatively colour-less image with the high-pass filter. As you can see below, even when both filters allow for colour, there is not much difference compared to colour low-pass and grey high-pass.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/nina_hybrid_2a.jpg">
+							</td>
+							<td>
+								<img src="img/nina_hybrid_2b.jpg">
+							</td>
+							<td>
+								<img src="img/nina_hybrid_2c.jpg">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Colour low-pass; colour high-pass
+							</td>
+							<td>
+								Grey low-pass; colour high-pass
+							</td>
+							<td>
+								Colour low-pass; grey high-pass
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					I tried once again, swapping the images for low-pass and high-pass, since the image of Nina in the alarmingly blue sweater is quite colourful. Now, we can observe that when the high-pass image is in colour, the it creates an unappealing bright highlight on the low-pass image that does not go away even from far away. However, colour low-pass combined with grey high-pass works quite well, as the colour of Nina face is the same in both images, and that is the most prevalent colour in both images of Nina.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/nina_hybrid_3a.jpg">
+							</td>
+							<td>
+								<img src="img/nina_hybrid_3b.jpg">
+							</td>
+							<td>
+								<img src="img/nina_hybrid_3c.jpg">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Colour low-pass; colour high-pass
+							</td>
+							<td>
+								Grey low-pass; colour high-pass
+							</td>
+							<td>
+								Colour low-pass; grey high-pass
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+			<h1>III. Gaussian and Laplacian Stacks</h1>
+
+				<p>
+					hihi
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td><img src="img/dali_gaussian0.jpg">
+								<div class="code sub">&sigma; = 1</div>
+							</td>
+							<td><img src="img/dali_gaussian1.jpg">
+								<div class="code sub">&sigma; = 2</div>
+							</td>
+							<td><img src="img/dali_gaussian2.jpg">
+								<div class="code sub">&sigma; = 4</div>
+							</td>
+							<td><img src="img/dali_gaussian3.jpg">
+								<div class="code sub">&sigma; = 8</div>
+							</td>
+							<td><img src="img/dali_gaussian4.jpg">
+								<div class="code sub">&sigma; = 16</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="5">Gaussian stack for Salvador Dali's painting of Lincoln and Gala</td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td><img src="img/dali_laplacian0.jpg">
+								<div class="code sub">&sigma; = 1</div>
+							</td>
+							<td><img src="img/dali_laplacian1.jpg">
+								<div class="code sub">&sigma; = 2</div>
+							</td>
+							<td><img src="img/dali_laplacian2.jpg">
+								<div class="code sub">&sigma; = 4</div>
+							</td>
+							<td><img src="img/dali_laplacian3.jpg">
+								<div class="code sub">&sigma; = 8</div>
+							</td>
+							<td><img src="img/dali_laplacian4.jpg">
+								<div class="code sub">&sigma; = 16</div>
+							</td>
+						</tr>
+						<tr>
+							<td><img src="img/dali_laplacian_n0.jpg">
+								<div class="code sub">&sigma; = 1</div>
+							</td>
+							<td><img src="img/dali_laplacian_n1.jpg">
+								<div class="code sub">&sigma; = 2</div>
+							</td>
+							<td><img src="img/dali_laplacian_n2.jpg">
+								<div class="code sub">&sigma; = 4</div>
+							</td>
+							<td><img src="img/dali_laplacian_n3.jpg">
+								<div class="code sub">&sigma; = 8</div>
+							</td>
+							<td><img src="img/dali_laplacian_n4.jpg">
+								<div class="code sub">&sigma; = 16</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="5">Laplacian stack of Lincon and Gala, with the upper row being the true Laplacian stack, and the lower row normalized for visibility. </td>
+						</tr>
+					</table>
+				</center>
+
+				<center>
+					<table>
+						<tr>
+							<td><img src="img/cake-pie_gaussian0.jpg">
+								<div class="code sub">&sigma; = 1</div>
+							</td>
+							<td><img src="img/cake-pie_gaussian1.jpg">
+								<div class="code sub">&sigma; = 2</div>
+							</td>
+							<td><img src="img/cake-pie_gaussian2.jpg">
+								<div class="code sub">&sigma; = 4</div>
+							</td>
+							<td><img src="img/cake-pie_gaussian3.jpg">
+								<div class="code sub">&sigma; = 8</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">Gaussian stack of the cake-pie hybrid from the previous section</td>
+						</tr>
+						<tr>
+							<td><img src="img/cake-pie_laplacian0.jpg">
+								<div class="code sub">&sigma; = 1</div>
+							</td>
+							<td><img src="img/cake-pie_laplacian1.jpg">
+								<div class="code sub">&sigma; = 2</div>
+							</td>
+							<td><img src="img/cake-pie_laplacian2.jpg">
+								<div class="code sub">&sigma; = 4</div>
+							</td>
+							<td><img src="img/cake-pie_laplacian3.jpg">
+								<div class="code sub">&sigma; = 8</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">Laplacian stack of the cake-pie hybrid</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					This project is reminding me a lot about surrealist art. I thought back specifically to the research I had done for a sculpture class last semester and remembered this sculpture that is hauntingly eerie, yet beautiful for its realism. I created Gaussian and Laplacian stacks out of Choi Xoo Ang's sculpture. At alpha = 8, the sculpture is barely recognizable as hands, and looks like a pair of wings.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td><img src="img/hands_gaussian0.jpg">
+								<div class="code sub">&sigma; = 1</div>
+							</td>
+							<td><img src="img/hands_gaussian1.jpg">
+								<div class="code sub">&sigma; = 2</div>
+							</td>
+						</tr>
+						<tr>
+							<td><img src="img/hands_gaussian2.jpg">
+								<div class="code sub">&sigma; = 4</div>
+							</td>
+							<td><img src="img/hands_gaussian3.jpg">
+								<div class="code sub">&sigma; = 8</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">Gaussian stack of Choi Xoo Ang's sculpture</td>
+						</tr>
+						<tr>
+							<td><img src="img/hands_laplacian0.jpg">
+								<div class="code sub">&sigma; = 1</div>
+							</td>
+							<td><img src="img/hands_laplacian1.jpg">
+								<div class="code sub">&sigma; = 2</div>
+							</td>
+						</tr>
+						<tr>
+							<td><img src="img/hands_laplacian2.jpg">
+								<div class="code sub">&sigma; = 4</div>
+							</td>
+							<td><img src="img/hands_laplacian3.jpg">
+								<div class="code sub">&sigma; = 8</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">Laplacian stack of Choi Xoo Ang's sculpture</td>
+						</tr>
+					</table>
+				</center>
+
+
+			<h1>IV. Multiresolution Blending</h1>
+
+				<p>
+					hihi
+				</p>
+
+
+
+		</div>
+
+	</div>
+</body>
+
+</html>
