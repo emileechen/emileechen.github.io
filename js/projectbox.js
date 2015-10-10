@@ -28,11 +28,11 @@ function setHeight() {
 }
 
 function hoverr(id) {
-	proj1.style.width = (width/projnum) * 0.7 + "px";
-	proj2.style.width = (width/projnum) * 0.7 + "px";
-	proj3.style.width = (width/projnum) * 0.7 + "px";
-	proj4.style.width = (width/projnum) * 0.7 + "px";
-	id.style.width = (width/projnum) * (1 + (0.3 * (projnum - 1))) + "px";
+	proj1.style.width = (width/projnum) * 0.4 + "px";
+	proj2.style.width = (width/projnum) * 0.4 + "px";
+	proj3.style.width = (width/projnum) * 0.4 + "px";
+	proj4.style.width = (width/projnum) * 0.4 + "px";
+	id.style.width = (width/projnum) * (1 + (0.6 * (projnum - 1))) + "px";
 }
 
 
