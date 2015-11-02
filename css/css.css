@@ -162,25 +162,24 @@ h2 {
 .content .proj {
 	display: inline-block;
 	overflow: hidden;
-	height: 500px;
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
-	background-color: black;
 }
 
 .content .proj img {
-	height: 120%;
+	opactiy: 1;
+	height: 100%;
+	padding: 0;
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
-	opactiy: 1;
 }
 
 .content .proj img:hover {
-	opacity: 0.4;
+	border-radius: 50%;
+	opacity: 0.8;
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
 }
-
 
 
 
