@@ -30,7 +30,7 @@
 body, html {
 	font-family: 'Futura';
 	color: white;
-	font-size: 20px;
+	font-size: 2vmin;
 	background-color: #9E9E9E;
 	text-align: justify;
 	height: 100%;
@@ -48,7 +48,7 @@ a {
 h1 {
 	font-family: 'Roboto';
 	text-align: center;
-	font-size: 2vw;
+	font-size: 2vmin;
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: .3em;
@@ -58,7 +58,7 @@ h1 {
 h2 {
 	font-family: 'BebasNeue';
 	text-align: center;
-	font-size: 2.5vm;
+	font-size: 4vmin;
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: .1em;
@@ -76,18 +76,18 @@ table {
     margin: 0;
     margin-left:auto; 
     margin-right:auto;
-    width: 100vh;
+    width: 100vmin;
 }
 table img {
     position: absolute;
-    width: 50vh;
+    width: 50vmin;
     top: 0;
     left: 0;
 }
 table td {
 	padding: 0px 10px;
-	width: 50vh;
-	height: 50vh;
+	width: 50vmin;
+	height: 50vmin;
 	position: relative;
     overflow: hidden;
 }
