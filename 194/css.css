@@ -64,6 +64,9 @@ h2 {
 	letter-spacing: .1em;
 	margin-top: 0px;
 }
+h2:hover {
+	text-decoration: underline;
+}
 
 
 /*** PROJECTS ***/
@@ -80,12 +83,13 @@ table {
 }
 table img {
     position: absolute;
-    width: 50vmin;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
 }
 table td {
-	padding: 0px 10px;
+	padding: 0px 20px;
 	width: 50vmin;
 	height: 50vmin;
 	position: relative;
