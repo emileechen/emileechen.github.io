@@ -163,6 +163,7 @@ h2 {
 }
 
 .content .proj {
+	position: relative;
 	display: inline-block;
 	overflow: hidden;
 	-webkit-transition-duration: 0.3s;
@@ -184,6 +185,18 @@ h2 {
 	opacity: 0.8;
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
+}
+
+.descr {
+	width: calc(100% - 20px);
+	padding: 10px;
+	position: absolute;
+	top: 8vw;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+/*	background-color: rgba(0, 0, 0, 0.5);*/
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: black;
 }
 
 
