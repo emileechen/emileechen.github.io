@@ -1,0 +1,42 @@
+> Casey Currey-Wilson				> Emilee Chen
+> cs184-ap							> cs184-an
+
+A S S I G N M E N T  # 4 :
+
+██╗███╗   ██╗██╗   ██╗███████╗██████╗ ███████╗███████╗    ██╗  ██╗██╗███╗   ██╗███████╗███╗   ███╗ █████╗ ████████╗██╗ ██████╗███████╗
+██║████╗  ██║██║   ██║██╔════╝██╔══██╗██╔════╝██╔════╝    ██║ ██╔╝██║████╗  ██║██╔════╝████╗ ████║██╔══██╗╚══██╔══╝██║██╔════╝██╔════╝
+██║██╔██╗ ██║██║   ██║█████╗  ██████╔╝███████╗█████╗      █████╔╝ ██║██╔██╗ ██║█████╗  ██╔████╔██║███████║   ██║   ██║██║     ███████╗
+██║██║╚██╗██║╚██╗ ██╔╝██╔══╝  ██╔══██╗╚════██║██╔══╝      ██╔═██╗ ██║██║╚██╗██║██╔══╝  ██║╚██╔╝██║██╔══██║   ██║   ██║██║     ╚════██║
+██║██║ ╚████║ ╚████╔╝ ███████╗██║  ██║███████║███████╗    ██║  ██╗██║██║ ╚████║███████╗██║ ╚═╝ ██║██║  ██║   ██║   ██║╚██████╗███████║
+╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝    ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝╚══════╝
+                                                                                                                                      
+Platform: OS X
+Language: Python 2.7
+
+Source code submitted by: Casey Currey-Wilson (cs184-ap)
+Located at: /~cs184-ap/ass4/
+Primary source file is: kinematics.py
+
+Required to run:
+	NumPy - http://www.numpy.org/
+	PyGame - http://www.pygame.org/
+	PyOpenGL - http://pyopengl.sourceforge.net/
+
+Assignment web page:
+http://inst.cs.berkeley.edu/~cs184-ap/ass4.html
+
+
+Program does not need to be compiled. Because Python.
+
+Run using "python kinematics.py" followed by the x, y and z values of the initial goal point, followed by the lengths of each segment.
+	Example: "python kinematics.py 1 2 0 2 0.8 4 2.3 1 .7"
+
+Outside sources used:
+CS184 Lecture Slides from Professor O'Brien
+Peter Shirley and Steve Marschner's Fundamentals of Computer Graphics
+Parametric equation of a circle - http://math.stackexchange.com/questions/73237/parametric-equation-of-a-circle-in-3d-space
+PyOpenGL - http://pyopengl.sourceforge.net/
+Pygame - http://www.pygame.org/
+NumPy - http://www.numpy.org/
+Inverse Kinematics in Python - https://studywolf.wordpress.com/2013/04/11/inverse-kinematics-of-3-link-arm-with-constrained-minimization-in-python/
+Jacobian in NumPy - http://www.quantstart.com/articles/Jacobi-Method-in-Python-and-NumPy
