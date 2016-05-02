@@ -9,7 +9,7 @@ function pad(n) {
 }
 
 function initializeImages() {
-	var n = 22;
+	var n = 23;
 	var container = document.getElementById("grid");
 
 	for (i = 1; i <= n; i++) {
