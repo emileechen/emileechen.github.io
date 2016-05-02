@@ -3,9 +3,6 @@
 @import url(https://fonts.googleapis.com/css?family=Old+Standard+TT);
 
 
-
-/*** BASIC ***/
-
 body, html {
 	font-family: 'Old Standard TT', sans-serif;
 	color: #1A1A1A;
@@ -74,11 +71,23 @@ h1 {
 	margin: 0vw 1vw 1vw 0vw;
 }
 
+.pic-contain {
+	width: 20vw;
+	height: 20vw;
+	padding: 1vw 0vw 0vw 1vw;
+}
+
 .pic {
 	width: 20vw;
 	height: 20vw;
-	marign: auto;
-	padding: 1vw 0vw 0vw 1vw;
+	position: absolute;
+	opacity: 1;
+    transition: opacity 0.2s linear;
+}
+
+.hide:hover {
+	opacity: 0;
+    transition: opacity 0.2s linear;
 }
 
 
