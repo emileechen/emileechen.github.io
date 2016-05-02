@@ -19,7 +19,7 @@ body, html {
 h1 {
 	font-family: 'Montserrat';
 	text-align: justify;
-	font-size: 36px;
+	font-size: 32px;
 	font-weight: normal;
 	text-transform: uppercase;
 }
@@ -32,6 +32,20 @@ h1 {
 	margin: 0 0 50px 0;
 }
 
+#title {
+	font-family: 'Montserrat';
+	font-size: 42px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: white;
+	border: white solid 3px;
+	position: absolute;
+	padding: 5px 25px;
+	top: 60vh;
+	right: 25px;
+}
+
 .photo-box {
 	width: 100%;
 	display: flex;
@@ -40,7 +54,7 @@ h1 {
 
 .bleed {
 	width: 100%;
-	height: 70vh;
+	height: 75vh;
 	object-fit: cover;
 	marign: auto;
 }
@@ -83,7 +97,6 @@ h1 {
 	position: absolute;
 	opacity: 1;
     transition: opacity 0.2s linear;
-    transition-delay: .5s;
 }
 
 .hide:hover {

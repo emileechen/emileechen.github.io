@@ -5,7 +5,7 @@ window.onload = function() {
 };
 
 function pad(n) {
-    return n > 9 ? "" + n: "0" + n;
+    return n > 9 ? "" + n : "0" + n;
 }
 
 function initializeImages() {
@@ -28,6 +28,14 @@ function initializeImages() {
 		piccontain.appendChild(p);
 		container.appendChild(piccontain);
 	}
+
+	piccontain = document.createElement("div");
+	piccontain.setAttribute('class', 'pic-contain');
+	blank = document.createElement('img');
+	blank.setAttribute('class', 'pic');
+	blank.setAttribute('src', "blank.jpg");
+	piccontain.appendChild(blank);
+	container.appendChild(piccontain);
 }
 
 
