@@ -15,6 +15,22 @@ function refreshLocations() {
 }
 
 
+// Unhide #go-to-top when past the splash page.
+
+$(window).scroll(function() {
+	var start = 100;
+	if ($(this).scrollTop() > start) {
+	    $("#go-to-top:hidden").css('visibility', 'visible');
+	    $("#go-to-top:hidden").fadeIn('slow');
+	}
+	else {
+		$("#go-to-top:visible").fadeOut('slow');
+	}
+});
+
+
+
+
 // $(window).on("scroll", function(e) {
 //  	var scrollTop = $(window).scrollTop();
 //  	refreshLocations();
