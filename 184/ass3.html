@@ -1,0 +1,334 @@
+<html>
+
+
+<head>
+	<title>CS184 - Emilee Chen</title>
+	<link rel="stylesheet" type="text/css" href="css.css"> 
+</head>
+
+
+<body>
+	<div id="wrap">
+		<div id="header">
+			<div id="name">
+				Emilee Chen
+			</div>
+			<div id="info">
+				<span class="face"><img src="photo.jpg" align="right"></span>
+				cs184-an <br>
+				echen at berkeley dot edu
+				<br><br>
+				This is my CS184 project website for Spring 2015. I am a Canadian who likes eating and sleeping and sometimes <a href="http://piquantly.tumblr.com/" target="_blank">draws</a> and <a href="http://ohmyitslav.tumblr.com/" target="_blank">animates</a>. Yes, I do say 'eh' and I do spell it 'colour'.
+				<br>
+				Disclaimer: My hair is going to change a lot. Probably.
+				<br><br>
+			<a href="ass0.html" class="links">ASSIG00</a>
+			<a href="ass1.html" class="links">ASSIG01</a>
+			<a href="ass2.html" class="links">ASSIG02</a>
+			<a href="ass3.html" class="links">ASSIG03</a>
+			<a href="ass4.html" class="links">ASSIG04</a>
+			<!-- <a href="http://inst.cs.berkeley.edu/~CS184-ap/ass4/" target="_blank" class="links">ASSIG04</a> -->
+			<br><br>
+			</div>
+		</div>
+
+
+
+		<div id="content">
+
+			<h1>Assignment 3</h1>
+
+			This assignment was done in collaboration with <a href="http://inst.cs.berkeley.edu/~CS184-ap" target="_blank">Casey Currey-Wilson</a>.
+			<br><br>
+
+			The goal of this assignment is to write a program that will convert input from a B&eacute;zier surface representation (a .bez file with patches made with 4 curves with 4 control points) to polygon representation (using either uniform or adaptive technique, both of which are implemented) and display it with OpenGL.
+
+			<br><br>
+
+			Our program is done in Python 2.7, so to run it, simply use the command: <br>
+			<center><div class="code">python bezier.py input.bez 0.1 -a</div><br></center>
+			Replacing <div class="code">input.bez</div> with your desired input file name, and <div class="code">0.1</div> with your desired subdivision parameter. The <div class="code">-a</div> flag is optional and indicates adaptive subdivision. Uniform tessellation is the default.
+			
+			<br><br>
+
+			There are various commands that can be used when the objected is rendered in a window to view the object differently (at various angles, different shading etc.). They are detailed below:<br>
+			<ul>
+				<li>"s" - Toggles between flat and smooth shading
+				<li>"w" - Toggles between filled and wireframe mode
+				<li>"&larr;, &uarr;, &rarr;, &darr;" - Rotates object
+				<li>"&#x21E7;" (shift) + "&larr;, &uarr;, &rarr;, &darr;" - Translates object
+				<li>"+, -" - Zooms in and out; "=" also works for zooming in
+			</ul>
+			
+
+			<br><br>
+
+			The files used in the examples below are <a href="ass3/test.bez">test.bez</a>, <a href="ass3/teapot.bez">teapot.bez</a>, and <a href="ass3/simple.bez">simple.bez</a>. The first two were given as example files with the assignment. The third one we made by writing simple coordinates.
+			<br>
+
+			<br><br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<div class="code">python bezier.py test.bez 0.1</div>
+					<br><br>
+				</tr>
+				<tr>
+					<td>Initial render with uniform tessellation in default wireframe mode.</td>
+					<td>After maniputating the object with rotations and transformations.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-00.png"></td>
+					<td><img src="images/ass3/image-01.png"></td>
+				</tr>
+
+				<tr>
+					<td>Filled mode with flat shading.</td>
+					<td>Filled mode with smooth shading.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-02.png"></td>
+					<td><img src="images/ass3/image-03.png"></td>
+				</tr>
+			</table>
+
+			<br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<div class="code">python bezier.py test.bez 0.5</div>
+					<br><br>
+				</tr>
+				<tr>
+					<td>Initial render, uniform tessellation, u = 0.5.</td>
+					<td>After maniputation.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-05.png"></td>
+					<td><img src="images/ass3/image-06.png"></td>
+				</tr>
+			</table>
+
+			<br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<div class="code">python bezier.py test.bez 0.25</div>
+					<br><br>
+				</tr>
+				<tr>
+					<td>Initial render, uniform tessellation, u = 0.25.</td>
+					<td>After maniputation.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-07.png"></td>
+					<td><img src="images/ass3/image-08.png"></td>
+				</tr>
+			</table>
+
+			<br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<div class="code">python bezier.py test.bez 0.1 -a</div>
+					<br><br>
+				</tr>
+				<tr>
+					<td>Initial render with adaptive subdivision in default wireframe mode.</td>
+					<td>After maniputating the object with rotations and transformations.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-13.png"></td>
+					<td><img src="images/ass3/image-14.png"></td>
+				</tr>
+
+				<tr>
+					<td>Filled mode with flat shading.</td>
+					<td>Filled mode with smooth shading.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-15.png"></td>
+					<td><img src="images/ass3/image-16.png"></td>
+				</tr>
+			</table>
+
+			<br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<div class="code">python bezier.py test.bez 0.01 -a</div>
+					<br><br>
+				</tr>
+				<tr>
+					<td>Initial render, adaptive subdivision, u = 0.01.</td>
+					<td>After maniputation.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-17.png"></td>
+					<td><img src="images/ass3/image-18.png"></td>
+				</tr>
+
+				<tr>
+					<td>Filled mode with flat shading.</td>
+					<td>Filled mode with smooth shading.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-19.png"></td>
+					<td><img src="images/ass3/image-20.png"></td>
+				</tr>
+			</table>
+
+
+			<br><br>
+
+			Here is a brief demonstration of the commands that manipulate the rendered object within the pygame window. <br>
+			(Excuse it being awkward and stutter-y... I'm not very good at using the controls.)
+			<br><br>
+			<img src="images/ass3/image-04.gif" width="100%">
+			<br><br>
+
+			<br><br>
+
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<div class="code">python bezier.py teapot.bez 0.1</div>
+					<br><br>
+				</tr>
+				<tr>
+					<td>Initial render with uniform tessellation in default wireframe mode.</td>
+					<td>After maniputation.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-09.png"></td>
+					<td><img src="images/ass3/image-10.png"></td>
+				</tr>
+
+				<tr>
+					<td>Filled mode with flat shading.</td>
+					<td>Filled mode with smooth shading.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-11.png"></td>
+					<td><img src="images/ass3/image-12.png"></td>
+				</tr>
+			</table>
+
+			<br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<div class="code">python bezier.py teapot.bez 0.1</div>
+					<br><br>
+				</tr>
+				<tr>
+					<td>Initial render, uniform tessellation, u = 0.1.</td>
+					<td>After maniputation.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-21.png"></td>
+					<td><img src="images/ass3/image-22.png"></td>
+				</tr>
+
+				<tr>
+					<td>Filled mode with flat shading.</td>
+					<td>Filled mode with smooth shading.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-23.png"></td>
+					<td><img src="images/ass3/image-24.png"></td>
+				</tr>
+			</table>
+
+			<br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<div class="code">python bezier.py teapot.bez 0.1 -a</div>
+					<br><br>
+				</tr>
+				<tr>
+					<td>Initial render with adaptive subdivision in default wireframe mode.</td>
+					<td>After maniputating the object with rotations and transformations.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-25.png"></td>
+					<td><img src="images/ass3/image-26.png"></td>
+				</tr>
+
+				<tr>
+					<td>Filled mode with flat shading.</td>
+					<td>Filled mode with smooth shading.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-27.png"></td>
+					<td><img src="images/ass3/image-28.png"></td>
+				</tr>
+			</table>
+
+
+			<br><br>
+
+			And here's a gif of a spinning teapot wireframe just because we think it's cool!
+			<br><br>
+			<img src="images/ass3/image-29.gif" width="100%">
+			<br><br>
+
+			<br><br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<div class="code">python bezier.py simple.bez 0.25</div>
+					<br><br>
+				</tr>
+				<tr>
+					<td>Initial render with uniform tessellation in default wireframe mode.</td>
+					<td>After maniputation.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-30.png"></td>
+					<td><img src="images/ass3/image-31.png"></td>
+				</tr>
+
+				<tr>
+					<td>Filled mode with flat shading.</td>
+					<td>Filled mode with smooth shading.</td>
+				</tr>
+				<tr>
+					<td><img src="images/ass3/image-32.png"></td>
+					<td><img src="images/ass3/image-33.png"></td>
+				</tr>
+			</table>
+
+			<br><br>
+
+			Unfortunately we did not have enough time to find a way to export Maya models to a .bez file format. We made a cup in Maya, and converted its surfaces to B&eacute;zier patches that we wanted to render, though.
+			<br><br>
+
+			<center>
+			<img src="images/ass3/cup.png" width="50%">
+			</center>
+
+			<br><br>
+
+			<h1>Sources/References Used</h1>
+			CS184 Lecture Slides from Professor O'Brien, Lecture #14: Curves and Surfaces<br>
+			Peter Shirley and Steve Marschner's Fundamentals of Computer Graphics <br>
+			<a href="http://www.numpy.org/" target="_blank">NumPy</a> - Used NumPy arrays and etc.<br>
+			<a href="http://pyopengl.sourceforge.net/" target="_blank">PyOpenGL</a> <br>
+			<a href="http://www.pygame.org/" target="_blank">Pygame</a> <br>
+			<a href="http://www.cs.uml.edu/~haim/teaching/cg/resources/presentations/427/AngelCG20_shading_OpenGL.pdf" target="_blank">OpenGL lighting slides</a> <br>
+			<a href="http://www.cs.mtu.edu/~shene/COURSES/cs3621/NOTES/spline/Bezier/de-casteljau.html" target="_blank">Finding a Point on a B&eacute;zier Curve: De Casteljau's Algorithm</a> - De Casteljau Algorithm pseudocode <br>
+			<a href="http://pythonprogramming.net/opengl-rotating-cube-example-pyopengl-tutorial/" target="_blank">OpenGL with PyOpenGL introduction and creation of Rotating Cube</a> - PyOpenGL mesh example <br>
+			<a href="http://code.activestate.com/recipes/325391-open-a-glut-window-and-draw-a-sphere-using-pythono/" target="_blank">Open a GLUT window and draw a sphere using Python/OpenGL (Python recipe) by Rick Muller</a> - PyOpenGL shading example <br>
+
+
+			<br><br>
+			<br><br>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<html>
+
+
+<head>
+	<title>CS184 - Emilee Chen</title>
+	<link rel="stylesheet" type="text/css" href="css.css"> 
+</head>
+
+
+<body>
+	<div id="wrap">
+		<div id="header">
+			<div id="name">
+				Emilee Chen
+			</div>
+			<div id="info">
+				<span class="face"><img src="photo.jpg" align="right"></span>
+				cs184-an <br>
+				echen at berkeley dot edu
+				<br><br>
+				This is my CS184 project website for Spring 2015. I am a Canadian who likes eating and sleeping and sometimes <a href="http://piquantly.tumblr.com/" target="_blank">draws</a> and <a href="http://ohmyitslav.tumblr.com/" target="_blank">animates</a>. Yes, I do say 'eh' and I do spell it 'colour'.
+				<br>
+				Disclaimer: My hair is going to change a lot. Probably.
+				<br><br>
+			<a href="ass0.html" class="links">ASSIG00</a>
+			<a href="ass1.html" class="links">ASSIG01</a>
+			<a href="ass2.html" class="links">ASSIG02</a>
+			<a href="ass3.html" class="links">ASSIG03</a>
+			<a href="ass4.html" class="links">ASSIG04</a>
+			<!-- <a href="http://inst.cs.berkeley.edu/~CS184-ap/ass4/" target="_blank" class="links">ASSIG04</a> -->
+			<br><br>
+			</div>
+		</div>
+
+
+
+		<div id="content">
+
+			<h1>Assignment 4</h1>
+
+			This assignment was done in collaboration with <a href="http://inst.cs.berkeley.edu/~CS184-ap" target="_blank">Casey Currey-Wilson</a>.
+			
+			<br><br>
+
+			<a href="ass4/README">README</a>, <a href="ass4/kinematic.py">kinematic.py</a>
+			
+			<br><br>
+
+			This assignment implements an inverse kinematics solver and uses it to animate an arm tracking a moving target in 3D. The animations below demonstrate five-segment and seven-segment arms tracking a goal point that moves around a circle in 3D space, which becomes semi-transparent to indicate its intersection with a grid along the X-Z plane.
+
+			<br><br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<td>Animation 1 (5 segments):<br>
+						<span class="code">python kinematic.py 1 2 0 2 0.8 4 2.3 1.7 -m</span><br><br></td>
+				</tr>
+				<tr>
+					<td><img src="images/ass4_a.gif"></td>
+				</tr>
+			</table>
+
+			<br><br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<td>Animation 2 (7 segments):<br>
+						<span class="code">python kinematic.py 1 2 0 2 0.8 4 2.3 1 1.3 1.7 -m</span><br><br></td>
+				</tr>
+				<tr>
+					<td><img src="images/ass4_b.gif"></td>
+				</tr>
+			</table>
+
+			<br><br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<td>Animation 3 (7 segments, larger circle, different camera perspective):<br>
+						<span class="code">python kinematic.py 1 2 0 2 0.8 4 2.3 1 1.3 1.7 -m</span><br><br></td>
+				</tr>
+				<tr>
+					<td><img src="images/ass4_c.gif"></td>
+				</tr>
+			</table>
+
+			<br><br>
+
+			The solver is also robust to out-of-reach targets, pointing as close as possible to a goal point it cannot reach, as demonstrated by the animation below.
+
+			<br><br>
+
+			<table class="doublew" align="center">
+				<tr colspan="2">
+					<td>Animation 4 (Out-Of-Reach target):<br>
+						<span class="code">python kinematic.py 0 0.3 4 0.4 0.4 0.6 0.8</span><br><br></td>
+				</tr>
+				<tr>
+					<td><img src="images/ass4_d.gif"></td>
+				</tr>
+			</table>
+
+			<br><br>
+			
+
+			<h1>Sources/References Used</h1>
+				CS184 Lecture Slides from Professor O'Brien<br>
+				Peter Shirley and Steve Marschner's Fundamentals of Computer Graphics <br>
+				<a href="http://www.numpy.org/" target="_blank">NumPy</a> - Used NumPy arrays and etc.<br>
+				<a href="http://pyopengl.sourceforge.net/" target="_blank">PyOpenGL</a> <br>
+				<a href="http://www.pygame.org/" target="_blank">Pygame</a> <br>
+
+				<a href="http://math.stackexchange.com/questions/73237/parametric-equation-of-a-circle-in-3d-space" target="_blank">Parametric equation of a circle</a> <br>
+				<a href="https://studywolf.wordpress.com/2013/04/11/inverse-kinematics-of-3-link-arm-with-constrained-minimization-in-python/" target="_blank">Inverse Kinematics in Python</a> <br>
+				<a href="https://www.quantstart.com/articles/Jacobi-Method-in-Python-and-NumPy" target="_blank">Jacobin in NumPy</a> <br>
+
+
+			<br><br>
+			<br><br>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

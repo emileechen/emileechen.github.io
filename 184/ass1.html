@@ -1,0 +1,227 @@
+<html>
+
+
+<head>
+	<title>CS184 - Emilee Chen</title>
+	<link rel="stylesheet" type="text/css" href="css.css"> 
+</head>
+
+
+<body>
+	<div id="wrap">
+		<div id="header">
+			<div id="name">
+				Emilee Chen
+			</div>
+			<div id="info">
+				<span class="face"><img src="photo.jpg" align="right"></span>
+				cs184-an <br>
+				echen at berkeley dot edu
+				<br><br>
+				This is my CS184 project website for Spring 2015. I am a Canadian who likes eating and sleeping and sometimes <a href="http://piquantly.tumblr.com/" target="_blank">draws</a> and <a href="http://ohmyitslav.tumblr.com/" target="_blank">animates</a>. Yes, I do say 'eh' and I do spell it 'colour'.
+				<br>
+				Disclaimer: My hair is going to change a lot. Probably.
+				<br><br>
+			<a href="ass0.html" class="links">ASSIG00</a>
+			<a href="ass1.html" class="links">ASSIG01</a>
+			<a href="ass2.html" class="links">ASSIG02</a>
+			<a href="ass3.html" class="links">ASSIG03</a>
+			<a href="ass4.html" class="links">ASSIG04</a>
+			<!-- <a href="http://inst.cs.berkeley.edu/~CS184-ap/ass4/" target="_blank" class="links">ASSIG04</a> -->
+			<br><br>
+			</div>
+		</div>
+
+
+
+		<div id="content">
+
+			<h1>Assignment 1</h1>
+
+			This assignment was done in collaboration with <a href="http://inst.cs.berkeley.edu/~CS184-ap" target="_blank">Casey Currey-Wilson</a>.
+			<br><br>
+
+			The goal of this assignment is to create a program that displays a spherical shape shaded using the Phong Illumination Model for point and directional lights. The program can be customized (colour, light directions, etc.) through the command line. Below are some basic examples demonstrating these options.
+
+			<br><br>
+
+			<table class="double">
+				<tr>
+					<td>
+						<img src="images/ass1_a.png">
+					</td>
+					<td>
+						<img src="images/ass1_b.png">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Diffuse only shading from a single point light source. <br>
+						<div class="code">-pl 400 400 400 0.7 0.7 0.7 -kd 0.588 0.392 0.666</div>
+					</td>
+					<td>
+						Specular only shading from a single point light source. <br>
+						<div class="code">-pl 400 400 400 0.7 0.7 0.7 -ks 0.8 0.8 0.8 -sp 13</div>
+					</td>						
+				</tr>
+			</table>
+
+			<br>
+
+			<table class="double">
+				<tr>
+					<td>
+						<img src="images/ass1_c.png">
+					</td>
+					<td>
+						<img src="images/ass1_d.png">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Specular only shading from a single directional light source. <br>
+						<div class="code">-dl 400 400 400 0.7 0.7 0.7 -ks 0.8 0.8 0.8 -sp 13</div>
+					</td>
+					<td>
+						Combined specular and diffuse shading from a single light source. <br>
+						<div class="code">-pl 400 400 400 0.7 0.7 0.7 -kd 0.588 0.392 0.666 -ka 0.1 0 0.2 -ks 0.8 0.8 0.8 -sp 13</div>
+					</td>						
+				</tr>
+			</table>
+
+			<br>
+
+			<table class="double">
+				<tr>
+					<td>
+						<img src="images/ass1_e.png">
+					</td>
+					<td>
+						<img src="images/ass1_f.png">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Two light sources: point light and directional light. <br>
+						<div class="code">-pl 400 400 400 0.7 0.7 0.7 -dl 1 0 -1 0.6 0.1 0.4 -kd 1 1 0 -ka 0.1 0 0.1 -ks 0.8 0.8 0.8 -sp 13</div>
+					</td>
+					<td>
+						Three point lights. <br>
+						<div class="code">-ka 0.05 0.05 0.05 -kd 1 1 1 -ks 1 1 1 -sp 64 -pl 2 2 2 0.66 0.46 0.82 -pl -2 2 2 0.48 0.46 0.82 -pl 0 -2 2 0.82 0.46 0.8</div>
+					</td>						
+				</tr>
+			</table>
+
+			<br><br>
+
+			When the window is resized, the circular shape still occupies the majority (or more specifically, 90% of the window's smaller dimension) of the display, which is demonstrated below.
+
+			<br><br>
+
+			<center>
+				<img src="images/ass1_size.png">
+			</center>
+
+
+			<br><br>
+			<br><br>
+			
+			<h1>Extra Credit</h1>
+
+			For extra credit, we implemented several further customizations that can also be accessed through the command line.
+
+			<br><br>
+
+			<b>Toon Shading:</b> -tn v <br>
+			Creates silhouette that acts as a border. v is the number of shades there will be in the render. Though, since the calculation for shades is separate for RBG, the image will actually have v^3 different colours.
+
+			<br><br>
+
+			<table class="double">
+				<tr>
+					<td>
+						<img src="images/ass1_toona.png">
+					</td>
+					<td>
+						<img src="images/ass1_toonb.png">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Original sphere with point lights and a directional light. <br>
+						<div class="code">-ka 0.05 0.05 0.05 -kd 1 1 1 -ks 1 1 1 -sp 10 -pl 1 0.6 2 0.7 0.9 0.1 -pl -1 0.9 0.5 0.9 0.05 0.65 -dl 0.5 0.8 0.2 0.1 0.7 0.9</div>
+					</td>
+					<td>
+						With toon option at v = 4. <br>
+						<div class="code">-ka 0.05 0.05 0.05 -kd 1 1 1 -ks 1 1 1 -sp 10 -pl 1 0.6 2 0.7 0.9 0.1 -pl -1 0.9 0.5 0.9 0.05 0.65 -dl 0.5 0.8 0.2 0.1 0.7 0.9 -tn 4</div>
+					</td>						
+				</tr>
+			</table>
+
+			<br>
+
+			<table class="double">
+				<tr>
+					<td>
+						<img src="images/ass1_toonc.png">
+					</td>
+					<td>
+						<img src="images/ass1_toond.png">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						With toon option at v = 10. <br>
+						<div class="code">-ka 0.05 0.05 0.05 -kd 1 1 1 -ks 1 1 1 -sp 10 -pl 1 0.6 2 0.7 0.9 0.1 -pl -1 0.9 0.5 0.9 0.05 0.65 -dl 0.5 0.8 0.2 0.1 0.7 0.9 -tn 10</div>
+					</td>
+					<td>
+						With toon option at v = 20. <br>
+						<div class="code">-ka 0.05 0.05 0.05 -kd 1 1 1 -ks 1 1 1 -sp 10 -pl 1 0.6 2 0.7 0.9 0.1 -pl -1 0.9 0.5 0.9 0.05 0.65 -dl 0.5 0.8 0.2 0.1 0.7 0.9 -tn 20</div>
+					</td>						
+				</tr>
+			</table>
+
+			<br><br>
+
+			<b>Multiple Spheres:</b> -ts<br>
+			Creates two identically shaded spheres in the same window.
+
+			<br><br>
+
+			<table class="double">
+				<tr>
+					<td>
+						<img src="images/ass1_mula.png">
+					</td>
+					<td>
+						<img src="images/ass1_mulb.png">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="code">-ka 0.1 0.1 0.3 -kd 0.5 0.5 0.5 -ks 0.7 0.7 0.7 -sp 20 -dl 2 0.6 -2 0 0.9 0.9 -pl 3 -3 3 0.2 0.8 0.1 -ts</div>
+					</td>
+					<td>
+						<div class="code">-ka 0.2 0.2 0.2 -kd 0.5 0.5 0.5 -ks 0.7 0.7 0.7 -sp 16 -pl 2 2 2 1 0.5 0.45 -pl -2 -2 2 0.45 0.9 1 -ts</div>
+					</td>						
+				</tr>
+			</table>
+
+			<br><br>
+			<br><br>
+
+			Sources/References used: <br>
+			<a href="
+			http://inst.eecs.berkeley.edu/~cs184/sp15/assignments/ass1/example_01.zip">Example code from CS 184 TAs</a> <br>
+			<a href="http://eigen.tuxfamily.org/index.php?title=Main_Page" target="_blank">Eigen (linear algebra library)</a> <br>
+			<a href="http://sunandblackcat.com/tipFullView.php?l=eng&topicid=15" target="_blank">Sun & Black Cat's Non-photorealistic Rendering (Cel shading)</a> - Pseudocode "shadeIntensity = ceil(intensity * numShades)/numShades".
+
+			<br><br>
+			<br><br>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

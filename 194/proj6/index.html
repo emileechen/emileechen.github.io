@@ -1,0 +1,439 @@
+
+<html>
+
+
+<head>
+	<title>Emilee Chen - CS194-26 Project 6</title>
+	<link rel="stylesheet" type="text/css" href="css.css"> 
+</head>
+
+
+<body>
+	<div id="wrap">
+
+		<div id="header">
+
+			<div id="name">
+				CS194-26 &#8226; Project 6 &#8226; Emilee Chen <br>
+				<div id="sub">
+					Lightfield Camera
+				</div>
+			</div>
+			<div id="info-container">
+				<div id="info">
+					<p>
+						CS194-26 FA'15 <br>
+						Emilee Chen (cs194-bb) <br>
+						echen at berkeley dot edu
+					</p>
+					<p>
+						This is the sixth project for the class <a href="http://inst.eecs.berkeley.edu/~cs194-26/fa15/" target="_blank">CS194-26: Image Manipulation and Computational Photography</a> taught by Professor Alexei Efros at UC Berkeley.
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div id="content">
+
+			<h1>I. Introduction</h1>
+
+				<table width="31%" align="right">
+					<tr><td>
+						<img src="img/grid.jpg">
+						<div class="code subbb">
+							<a href="img/grid.jpg" target="_blank">[x]</a>
+						</div>
+					</td></tr>
+					<tr><td>
+						Centre portion of the 17 by 17 Tarot Cards and Crystal Ball light light field grid.
+					</td></tr>
+				</table>
+
+				<p>
+					Interesting effects can be created with light fields. Using images from the <a href="http://lightfield.stanford.edu/lfs.html" target="_blank">Stanford Light Field Archive</a>, I was able to create depth refocusing and aperture adjustment effects.
+				</p>
+
+
+			<h1>II. Depth Refocusing</h1>
+
+				<p>
+					When an image is focused at a certain distance, features at different distances become unfocused, or blurred. To achieve this effect, each image in the light field (which can be visualized as a grid of images) is shifted towards the centre image by a value proportional to how far away from the centre it is multiplied by some scaling factor.
+				</p>
+
+				<p>
+					Take the Tarot Cards and Crystal Ball (small angular extent) that is used below, for example. The light field is 17 by 17 images, which can be imagined to be arranged in a square grid with the centre being (0, 0) as visualized in the image to the right. The image one right of the centre at (1, 0) should be shifted <span class="code">1 * scale</span> pixels to the left. The image at (-2, 3) should be shifted <span class="code">2 * scale</span> pixels to the right, and <span class="code">3 * scale</span> pixels down.
+				</p>
+
+				<p>
+					The scaling factor <span class="code">scale</span> affects where the focus of the resulting image is. I have made it so that my program will output a series of images from a scale of -3 to 3, for a total of 30 images. Some of these images will end up being completely blurry because it try to focus on a depth that is out of the range of the image, depending on how the light field is cropped.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td colspan="3">
+								<img src="img/out_08_08_-890.447388_990.432007.png">
+								<div class="code subbb">
+									centre image
+								</div>
+							</td>
+							<td colspan="3">
+								<img src="img/crystal.gif">
+								<div class="code subbb">
+									animated sequence
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<img src="img/crystal_-7.jpg">
+								<div class="code subbb">
+									focused near, -1.4
+								</div>
+							</td>
+							<td colspan="2">
+								<img src="img/crystal_0.jpg">
+								<div class="code subbb">
+									focused middle, 0.0
+								</div>
+							</td>
+							<td colspan="2">
+								<img src="img/crystal_5.jpg">
+								<div class="code subbb">
+									focused far, 1.0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="6">
+								Tarot Cards and Crystal Ball. Animated sequence at 100ms per frame with scale from -1.6 to 1.2.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					I also chose to use this depth refocusing technique on the Lego Knights light field. I chose it specifically because of its very clear foreground (the lego people) and background (the wall) distinction. The very regular dots that extend all along the floor is also a feature that allows for the animated sequence to have a very striking effect. We are able to see very easily what depth the focus is at every image.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/out_08_08_-451.696411_1034.911865.png">
+								<div class="code subbb">
+									centre image
+								</div>
+							</td>
+							<td>
+								<img src="img/lego.gif">
+								<div class="code subbb">
+									animated sequence
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								Lego Knights. Animated sequence at 100ms per frame with scale from -1.8 to 2.2.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/lego_-9.jpg">
+								<div class="code subbb">
+									-1.8
+								</div>
+							</td>
+							<td>
+								<img src="img/lego_-5.jpg">
+								<div class="code subbb">
+									-1.0
+								</div>
+							</td>
+							<td>
+								<img src="img/lego_0.jpg">
+								<div class="code subbb">
+									focused centre, 0.0
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/lego_4.jpg">
+								<div class="code subbb">
+									0.8
+								</div>
+							</td>
+							<td>
+								<img src="img/lego_7.jpg">
+								<div class="code subbb">
+									1.4
+								</div>
+							</td>
+							<td>
+								<img src="img/lego_11.jpg">
+								<div class="code subbb">
+									2.2
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								The Lego Knights image, focusing on (from the top left going across each row) the front row of lego floor dots, the front two lego people's closer hands then further hands, the back lego person, the  lego floor dots behind the back lego person, and the back wall.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+			<h1>III. Aperture Adjustment</h1>
+
+				<p>
+					I was also able to create the effect of an image taken with different sized apertures with light fields. Each n by n light field can have aperture sizes 0 to n. To produce the image with aperture <span class="code">size = m</span> I simply averaged the centre m by m images in the grid. For exmaple, to get <span class="code">size = 1</span>, the images (-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 0), (0, 1), (1, -1), (1, 0), and (1, 1).
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/bunny_aper.gif">
+								<div class="code subbb">
+									animated sequence
+								</div>
+							</td>
+							<td>
+								<img src="img/bunny_aper_0.jpg">
+								<div class="code subbb">
+									0
+								</div>
+							</td>
+							<td>
+								<img src="img/bunny_aper_2.jpg">
+								<div class="code subbb">
+									2
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/bunny_aper_4.jpg">
+								<div class="code subbb">
+									4
+								</div>
+							</td>
+							<td>
+								<img src="img/bunny_aper_6.jpg">
+								<div class="code subbb">
+									6
+								</div>
+							</td>
+							<td>
+								<img src="img/bunny_aper_8.jpg">
+								<div class="code subbb">
+									8
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								The Stanford Bunny. Animated sequence at 100ms per frame.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/lego_aper.gif">
+								<div class="code subbb">
+									animated sequence
+								</div>
+							</td>
+							<td>
+								<img src="img/lego_aper_0.jpg">
+								<div class="code subbb">
+									0
+								</div>
+							</td>
+							<td>
+								<img src="img/lego_aper_2.jpg">
+								<div class="code subbb">
+									2
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/lego_aper_4.jpg">
+								<div class="code subbb">
+									4
+								</div>
+							</td>
+							<td>
+								<img src="img/lego_aper_6.jpg">
+								<div class="code subbb">
+									6
+								</div>
+							</td>
+							<td>
+								<img src="img/lego_aper_8.jpg">
+								<div class="code subbb">
+									8
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								The Lego Knights. Animated sequence at 100ms per frame.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+			<h1>IV. Using Real Data</h1>
+
+				<p>
+					I attempted to create my own light field by taking a total of 25 pictures (for a 5 by 5 light field) of a cluttered portion of my desk with my iPhone. Unfortunately, I am not really capable of moving the phone by exact units and so this light field is irregular, as can be seen below.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/02_00.jpg">
+								<div class="code subbb">
+									(-2, 0)
+								</div>
+							</td>
+							<td>
+								<img src="img/02_02.jpg">
+								<div class="code subbb">
+									(0, 0)
+								</div>
+							</td>
+							<td>
+								<img src="img/02_04.jpg">
+								<div class="code subbb">
+									(2, 0)
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								A portion of my light field.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					Although irregular, my light field is not horrendous enough to produce completely appalling results. I had to use much larger scales, since the distance (as in, how far right I moved before I snapped the next picture) is much larger than the distances of the light fields I used from the archive. <span class="code">At scale = 4</span>, the focus is at the top of the small whiteboard. <span class="code">At scale = 9</span>, the tip of the glue bottle. <span class="code">At scale = 24</span>, the further edge of my mug. <span class="code">At scale = 30</span>, the closer edge of my mug.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/desk.gif">
+								<div class="code subbb">
+									animated sequence
+								</div>
+							</td>
+							<td>
+								<img src="img/desk_20.jpg">
+								<div class="code subbb">
+									4
+								</div>
+							</td>
+							<td>
+								<img src="img/desk_45.jpg">
+								<div class="code subbb">
+									9
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="img/desk_80.jpg">
+								<div class="code subbb">
+									16
+								</div>
+							</td>
+							<td>
+								<img src="img/desk_120.jpg">
+								<div class="code subbb">
+									24
+								</div>
+							</td>
+							<td>
+								<img src="img/desk_150.jpg">
+								<div class="code subbb">
+									30
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								My desk after depth refocusing. Animated sequence at 100ms per frame.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					The aperture adjustment behaved as expected. The blurred portions are less smooth because the light field is considerably smaller (25 vs. 289 images).
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/desk_aper_0.jpg">
+								<div class="code subbb">
+									0
+								</div>
+							</td>
+							<td>
+								<img src="img/desk_aper_1.jpg">
+								<div class="code subbb">
+									1
+								</div>
+							</td>
+							<td>
+								<img src="img/desk_aper_2.jpg">
+								<div class="code subbb">
+									2
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								My desk after aperture adjustment of various sizes.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+			<h1>V. Conclusion</h1>
+
+				<p>
+					Lightfield camera are quite fascinating. I am very fond of photographs that are either focused on a close object with blurred background or focused on a faraway object with burred foreground, so it's interesting to think that I could potentially just go out into the world with a lightfield camera and produce many images at various depths and decide which I like best later.
+				</p>
+
+		</div>
+
+	</div>
+</body>
+
+</html>

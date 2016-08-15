@@ -1,0 +1,387 @@
+
+<html>
+
+
+<head>
+	<title>CS194-26 Project 2</title>
+	<link rel="stylesheet" type="text/css" href="css.css"> 
+</head>
+
+
+<body>
+	<div id="wrap">
+
+		<div id="header">
+
+			<div id="name">
+				CS194-26 &#8226; Project 2 &#8226; Emilee C. & Casey CW. <br>
+				<div id="sub">
+					Building a Pinhole Camera
+				</div>
+			</div>
+			<div id="info-container">
+				<div id="info">
+					<p>
+						CS194-26 FA'15<br>
+						Emilee Chen (cs194-bb), echen at berkeley dot edu<br>
+						Casey Currey-Wilson (cs194-cc), currey-wilsonc at berkeley dot edu<br>
+						
+					</p>
+					<p>
+						This is the second project for the class <a href="http://inst.eecs.berkeley.edu/~cs194-26/fa15/" target="_blank">CS194-26: Image Manipulation and Computational Photography</a> taught by Professor Alexei Efros at UC Berkeley.
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="content">
+
+			<h1>I. Introduction</h1>
+				<p>
+					A pinhole camera, or camera obscura, is a simple optical device that focuses light through a small hole onto the back wall of an enclosed box, creating a two-dimensional, vertically-flipped image of the outside world on the inside. The original pinhole cameras were often the size of rooms, designed for people to walk inside and admire the image within. Later, smaller models were used to project images onto a canvas for a painter to replicate. Eventually, the invention of photochemical film allowed for the basic camera obscura design to record its images on celluloid, allowing for an indexical representation of the world for the first time.
+				</p>
+
+				<p>
+					Today, the types of images produced by a pinhole camera can be recorded by attaching a digital camera to the box, next to the pinhole, and photographing the opposite wall where the image is projected.
+				</p>
+			
+
+			<h1>II. Creating a Basic Pinhole Camera</h1>
+
+				<center>
+					<table width="25%" align="right">
+						<tr>
+							<td><img src="img/materials.jpg"></td>
+						</tr>
+						<tr><td>
+							The materials that went into making the pinhole camera.
+						</td></tr>
+					</table>
+				</center>
+
+				<p>
+					Creating a pinhole camera is actually quite simple, and most of the materials are easily accessible. Any container that can be light proofed and cut into can be used. 
+				</p>
+
+				<p>
+					Below is a list of the materials that we used when we created our pinhole camera:
+				</p>
+				<ul>
+					<li> Cardboard box - the main structure of the camera </li>
+					<li> Black paper - to line the inside of the box</li>
+					<li> White paper - a plane for images to be projected on to</li>
+					<li> Black masking tape - to light proof the box</li>
+					<li> Digital camera with long exposure capabilities </li>
+					<li> Needle or pin - to create the pinhole(s)</li>
+				</ul>
+
+				<p>
+					First and foremost, we found a light proof-able container. We chose to use a small cardboard box. The shape and dimensions of the container is very important, as it must have a side that is large enough to be used as a plane for the image to be projected onto.
+				</p>
+
+				<p>
+					After deciding upon a container and identifying a side of the plane to be the "back" of the camera, we completely light proofed the box using black masking tape and black construction paper to reduce stray light.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td><img src="img/wip_a.jpg"></td>
+							<td><img src="img/wip_b.jpg"></td>
+							<td><img src="img/wip_d.jpg"></td>
+						</tr>
+						<tr><td colspan="3">
+							The box must be completely sealed to prevent light leaks. 
+						</td></tr>
+					</table>
+				</center>
+
+				<center>
+					<table width="25%" align="right">
+						<tr>
+							<td><img src="img/aperture.jpg"></td>
+						</tr>
+						<tr><td>
+							.1mm, 3mm, 5mm apertures made with masking tape.
+						</td></tr>
+					</table>
+				</center>
+
+				<p>
+					On the "front" of the camera, we cut two holes: one for the pinhole, and the other for the digital camera to fit in. The camera hole must be tight, to keep the box light proof, and as close to the centre of the box, for the camera to capture as much of the image plane as possible.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td><img src="img/wip_c.jpg"></td>
+							<td><img src="img/wip_e.jpg"></td>
+						</tr>
+						<tr><td colspan="2">
+							The "front" of the pinhole camera.
+						</td></tr>
+					</table>
+				</center>
+
+				<p>
+					We then created three different pinholes with sizes 5mm, 3mm, and 0.1mm. We used a reinforced piece of masking tape to allow for an easy switch between the apertures. The holes were made with a pin and enlarged with a pen. It was difficult to make the larger holes perfectly round, so that may have caused interference with the images.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td><img src="img/camera_a.jpg"></td>
+							<td><img src="img/camera_b.jpg"></td>
+							<td><img src="img/camera_c.jpg"></td>
+						</tr>
+						<tr><td colspan="3">
+							The completed pinhole camera.
+						</td></tr>
+					</table>
+				</center>
+
+
+
+			<h1>III. Pinhole Camera Results</h1>
+
+				<p>
+					We ran into a couple of issues when we went to take the photographs. Our pinhole camera container was not completely sealed and the inner cardboard box flaps were falling inwards, causing shadows to appear on the images. We did not have any supplies with us, so we had to take the photos with the camera as is.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td><img src="img/photo_a5u.jpg"></td>
+							<td><img src="img/photo_a3u.jpg"></td>
+							<td><img src="img/photo_a1u.jpg"></td>
+						</tr>
+						<tr><td colspan="3">
+							The images before processing are upside down and flipped.
+						</td></tr>
+					</table>
+				</center>
+
+				<p>
+					The images were then processed (cropped, flipped, etc.), and are shown below.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/photo_a5.jpg">
+								<div class="code sub">
+									<a href="img/photo_a5.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/photo_a3.jpg">
+								<div class="code sub">
+									<a href="img/photo_a3.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Taken with 5mm aperture</td>
+							<td>Taken with 3mm aperture</td>
+						</tr>	
+						<tr>
+							<td>
+								<img src="img/photo_a1.jpg">
+								<div class="code sub">
+									<a href="img/photo_a1.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+
+							<td>
+								<img src="img/photo_a.jpg">
+								<div class="code sub">
+									<a href="img/photo_au.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Taken with .1mm aperture</td>
+							<td>Taken with a digital camera.</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					When we use a smaller pinhole, the image is much more faded (especially in the case of the pinprick), and the colors are far less vivid, because much less light is hitting the image plane and the light is affected by diffraction. However, the depth of field is very large, so the entire image is in focus. When we use a larger pinhole, the image is brighter and the colors are more vivid, but the larger aperture means that the depth of field is shallower. Because it is impossible to change the focus point in a pinhole camera, the images are out of focus unless the subject is very close to the focus point.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/photo_e5.jpg">
+								<div class="code sub">
+									<a href="img/photo_e5.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/photo_e3.jpg">
+								<div class="code sub">
+									<a href="img/photo_e3.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Taken with 5mm aperture</td>
+							<td>Taken with 3mm aperture</td>
+						</tr>	
+						<tr>
+							<td>
+								<img src="img/photo_e1.jpg">
+								<div class="code sub">
+									<a href="img/photo_e1.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+
+							<td>
+								<img src="img/photo_e.jpg">
+								<div class="code sub">
+									<a href="img/photo_eu.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Taken with .1mm aperture</td>
+							<td>Taken with a digital camera.</td>
+						</tr>
+					</table>
+				</center>
+
+				<p>
+					The self portrait below is an example of photographing an object fairly close to our pinhole camera. The image is better captured with the 5mm aperture.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td>
+								<img src="img/photo_d5.jpg">
+								<div class="code sub">
+									<a href="img/photo_d5.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/photo_d3.jpg">
+								<div class="code sub">
+									<a href="img/photo_d3.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+							<td>
+								<img src="img/photo_d1.jpg">
+								<div class="code sub">
+									<a href="img/photo_d1.jpg" target="_blank">[x]</a>
+								</div>
+							</td>
+						</tr>
+						<tr><td colspan="3">Self portraits taken with 5mm, 3mm, and .1mm aperture from left to right.</td></tr>
+					</table>
+				</center>
+
+
+
+				<center>
+					<table>
+						<tr>
+							<td><img src="img/photo_b5.jpg"></td>
+							<td><img src="img/photo_b3.jpg"></td>
+							<td><img src="img/photo_b1.jpg"></td>
+						</tr>
+						<tr>
+							<td><img src="img/photo_c5.jpg"></td>
+							<td><img src="img/photo_c3.jpg"></td>
+							<td><img src="img/photo_c1.jpg"></td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								Some more examples, each with the three different aperture sizes.
+							</td>
+						</tr>
+					</table>
+				</center>
+
+			
+			<h1>IV. Other Camera Obscura Designs</h1>
+
+				<p>
+					Our basic pinhole camera creation is not the only form of camera obscura. Any light proof box that only allows a pinhole of light will do.
+				</p>
+
+				<p>
+					The distance from the pinhole to the projection plane must be carefully chosen to have a reasonable field of view. If the distance is increased, we can create a <b>pinhole telescope</b>. The field of view would be greatly decreased, but the image would be zoomed in.
+				</p>
+
+				<p>
+					Another example would be an <b>IMAX-style dome or sphere pinhole camera</b>, in which the image is projected from a pinhole on one side onto the entire inner surface, albeit with significant barrel distortion.
+				</p>
+
+
+			<h1>V. Light Painting</h1>
+
+				<p>
+					Below are two images derived from light painting with a flashlight about 2 feet away from the pinhole in a darkened room. The light painting effects occur because the camera captures all light that enters it during its 15 second exposure, so the motion of a light source creates a freeform white line.	
+				</p>
+
+				<p>
+					Once again, the images are flipped vertically and horizontally when raw. We raised the contrast as well as flipped the images to made the lines more obvious. Some portions of the "hi" image are cut off, because the flashlight moved out of the field of view of the pinhole.
+				</p>
+
+				<center>
+					<table>
+						<tr>
+							<td><img src="img/light_a.jpg"></td>
+							<td><img src="img/light_au.jpg"></td>
+						</tr>
+						<tr>
+							<td><img src="img/light_b.jpg"></td>
+							<td><img src="img/light_bu.jpg"></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								
+							</td>
+						</tr>
+					</table>
+				</center>
+
+
+			<h1>VI. Long Exposure Fun</h1>
+
+				<p>
+					After taking the light painting images with the pinhole camera, we decided to have some fun playing with taking long exposure photographs with a digital camera. Digital cameras are much more sensitive to light than pinhole cameras. Therefore, it is easy to light paint over a visible background using a digital camera. With a pinhole camera, it is difficult to perceive any information other than the painted light in a dark environment.
+				</p>
+
+				<p>
+					We also have access to a polaroid camera. We had wanted to create a pinhole polaroid camera, placing polaroid film inside the camera on the image plane, but we were not able to pop the chemical packets and roll the chemicals onto the film and place it into the camera in time before the film developed. Nevertheless, we used the polaroid camera's long exposure capabilities and were able to take some cool photos!
+				</p>
+
+				<center>
+					<table width="45%" style="display: inline-block">
+						<tr>
+							<td><img src="img/light_c.jpg"></td>
+						</tr>
+						<tr><td>
+							So wow. Much pretty.
+						</td></tr>
+					</table>
+					<table width="45%" style="display: inline-block">
+						<tr>
+							<td><img src="img/polaroid.jpg"></td>
+						</tr>
+						<tr><td>
+							3 hip.
+						</td></tr>
+					</table>
+				</center>
+
+		</div>
+
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+
+@font-face {
+    font-family: 'BebasNeue';
+    src: url('BebasNeue.otf');
+}
+@font-face {
+    font-family: 'Cocomat';
+    src: url('cocomat.ttf');
+}
+@font-face {
+    font-family: 'Generica';
+    src: url('Generica.otf');
+}
+@font-face {
+    font-family: 'GenericaB';
+    src: url('Generica Bold.otf');
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('Roboto-Light.ttf');
+}
+@font-face {
+    font-family: 'Futura';
+    src: url('Futura Oblique.ttf');
+}
+
+
+/*** BASIC ***/
+
+body, html {
+	font-family: 'Futura';
+	color: white;
+	font-size: 2vmin;
+	background-color: #9E9E9E;
+	text-align: justify;
+	height: 100%;
+	margin: 0;
+}
+
+
+/*** TEXT ***/
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+h1 {
+	font-family: 'Roboto';
+	text-align: center;
+	font-size: 2vmin;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .3em;
+	margin-bottom: 0px;
+}
+
+h2 {
+	font-family: 'BebasNeue';
+	text-align: center;
+	font-size: 4vmin;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	margin-top: 0px;
+}
+h2:hover {
+	text-decoration: underline;
+}
+
+
+/*** PROJECTS ***/
+
+table {
+	border: 0;
+	text-align: center;
+    border-collapse: collapse;
+    align: center;
+    margin: 0;
+    margin-left:auto; 
+    margin-right:auto;
+    width: 100vmin;
+}
+table img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+table td {
+	padding: 0px 20px;
+	width: 50vmin;
+	height: 50vmin;
+	position: relative;
+    overflow: hidden;
+}
+table td.info {
+	background-color: #000000;
+}
+
