@@ -1,5 +1,5 @@
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:300|Montserrat|Raleway|Sacramento);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300|Montserrat|Raleway:400,500|Sacramento);
 
 body, html {
 	font-family: 'Raleway';
@@ -20,21 +20,26 @@ a:hover {
 	color: #ab9cc5;
 }
 
-h2 {
-	font-family: 'Raleway';
-	font-size: 20px;
-	font-weight: normal;
-	text-transform: uppercase;
-	letter-spacing: .1em;
-	margin-bottom: .1em;
-	font-weight: bold;
-}
 
 h1 {
 	font-family: 'Sacramento';
 	text-align: center;
 	font-size: 100px;
 	font-weight: normal;
+}
+h2 {
+	font-family: 'Raleway';
+	font-size: 1.3em;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	margin-bottom: .1em;
+	font-weight: bold;
+}
+h3 {
+	font-size: 1.15em;
+	font-weight: 500;
+	margin-top: 1.5em;
 }
 
 .boldr {
@@ -163,10 +168,12 @@ img.circle {
 }
 .project-box:hover .proj-icon {
 	-webkit-filter: grayscale(0%);
+	transition-duration: 0.3s;
 }
 .project-box img {
 	width: 100%;
 	-webkit-filter: grayscale(100%);
+	transition-duration: 0.3s;
 }
 
 
@@ -246,15 +253,51 @@ img.circle {
 	background-color: #ab9cc5;
 }
 #nav-bar-links {
-	width: 100%;
 	padding: 25px;
 	height: auto;
 }
 #nav-bar-links a {
+	margin: 0 5px;
 	padding: 10px;
 	font-size: 14px;
 	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: .25em;
+	border: #ab9cc5 2px solid;
+}
+#nav-bar-links a:hover {
+	color: white;
+	border: white 2px solid;
+}
+.code {
+	font-size: 14px;
+	font-family: monospace;
+	display: inline-block;
+}
+.caption-btmrgt {
+	position: absolute;
+	text-align: right;
+	font-size: 12px;
+	bottom: 25px;
+	right: 0px;
+	background-color: rgba(255, 255, 255, 0.6);
+	padding: 5px 30px 5px 10px;
+}
+table.two-col {
+	align: center;
+	max-width: 1000px;
+	width: 100%;
+	padding: 15px;
+	margin-bottom: 10px;
+	background-color: #EEEEEE;
+    border-collapse: collapse;
+	font-size: 13px;
+}
+table.two-col td {
+	padding: 5px 5px 5px 5px;
+	position: relative;
+}
+table.two-col img {
+	width: 100%;
 }
 
