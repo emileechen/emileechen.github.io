@@ -101,10 +101,10 @@ h1 {
 	font-weight: normal;
 }
 
-.title-scroll{
+.title-scroll {
 	position: relative;
 }
-.title-fixed{
+.title-fixed {
 	position: absolute;
 	top: 0;
 }
