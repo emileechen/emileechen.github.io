@@ -161,8 +161,14 @@ img.circle {
 	margin: 10px;
 	flex-grow: 1;
 }
+.project-box .proj-icon {
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
 .project-box:hover .proj-icon {
 	-webkit-filter: grayscale(0%);
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
 }
 .project-box img {
 	width: 100%;
@@ -187,6 +193,12 @@ img.circle {
 	height: 2.5em;
 	display: inline-block;
 	border: #ab9cc5 solid 2px;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+.contact-link-box .contact-link-text {
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
 }
 .contact-link-box:hover {
 	background-color: #545454;
