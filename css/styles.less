@@ -1,6 +1,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Bitter|Rokkitt|Raleway|Open+Sans);
 
+@purple: #987FC5;
 
 body, html {
 	font-family: 'Open Sans';
@@ -13,7 +14,7 @@ body, html {
 
 b {
 /*	font-family: 'Rokkitt';*/
-	color: #987FC5;
+	color: @purple;
 /*	font-weight: normal;*/
 /*	font-size: 1.25em;*/
 }
@@ -53,7 +54,7 @@ img.circle {
 	width: 70%;
 	padding: 150px 0 10px 0;
 	margin: auto;
-	max-width: 850px;
+	max-width: 1000px;
 }
 
 .footer {
@@ -79,10 +80,13 @@ img.circle {
 	justify-content: space-between;
 	width: 100%;
 }
-.proj-item{
+.proj-item {
 	height: 200px;
+/*	margin: 10px;*/
+	flex-basis: 32%;
 	display: block;
-	padding: 10px;
-	margin: 10px;
 	border: black solid 1px;
+}
+.proj-content {
+	padding: 10px;
 }
