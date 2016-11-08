@@ -47,18 +47,18 @@ img.circle {
 
 .container {
 	height: auto;
-	width: 70%;
+	width: 80%;
 	max-width: 1000px;
 	padding: 100px 0 10px 0;
 	margin: auto;
 }
 
 .footer {
-	margin: auto;
-	width: 70%;
+	width: 80%;
 	max-width: 1000px;
 	padding: 5px 0 50px 0;
 	font-size: 0.9em;
+	margin: auto;
 }
 
 .icon {
@@ -71,20 +71,26 @@ img.circle {
 	padding-bottom: 0;
 }
 
+
+
 #projects {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-between;
 	width: 100%;
 }
+.proj-row {
+	display: flex;
+	flex-wrap: wrap;
+	height: 300px;
+	margin: -1em 0 1em -1em;
+}
 .proj-item {
-	height: 200px;
-	margin: 1% 0;
-	flex-basis: 32%;
-	display: block;
-	border: black solid 1px;
+	flex: 1;
+	padding: 1em 0 0 1em;
+	display: flex;
 }
 .proj-content {
+	flex: 1;
 	padding: 10px;
+	border: black solid 1px;
 }
+
+
