@@ -51,7 +51,7 @@ img.circle {
 	height: auto;
 	width: 80%;
 	max-width: 1000px;
-	padding: 100px 0 10px 0;
+	padding: 50px 0 10px 0;
 	margin: auto;
 }
 
@@ -98,12 +98,19 @@ img.circle {
 	display: flex;
 	align-items: center;
 	padding: 2em;
-	border: black solid 1px;
-	background-image: url('/194/proj1.jpg');
 	background-size: cover;
 	position: relative;
 }
-.proj-box:before{
+.proj1 {
+	background-image: url('/194/proj1.jpg');
+}
+.proj2 {
+	background-image: url('/194/proj2.jpg');
+}
+.proj3 {
+	background-image: url('/194/proj3.jpg');
+}
+.proj-box::before{
 	position: absolute;
 	content: '';
 	top: 0;
@@ -114,8 +121,9 @@ img.circle {
 	z-index: 0;
 	background-color: @purple;
 	opacity: 0;
+	transition-duration: .2s;
 }
-.proj-box:hover:before{
+.proj-box:hover::before{
 	display: block;
 	opacity: .8;
 	transition-duration: .2s;
