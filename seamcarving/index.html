@@ -8,9 +8,8 @@
 <html>
 	<head>
 		<title>Emilee Chen</title>
-		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet/less" type="text/css" href="/css/styles.less" />
-
 	</head>
 
 	<body>
@@ -20,9 +19,174 @@
 			<img src="/me.jpg" class="circle">
 
 			<h1>Seam Carving</h1>
-			<p>
-				words
-			</p>
+
+				<h2>I. Introduction</h2>
+
+				<p>
+					Ever had the struggle of finding a beautiful and fabulous landscape image that you want to use as your phone wallpaper, but when you try to crop it into a portrait image nothing looks good? Well, no need to worry, because seam carving (kind of) solves the problem! 
+				</p>
+
+				<p>
+					Seam carving is the process of resizing images by removing seams in the images while taking image content into consideration. A seam is a 8-connected path that extends from one side of the image to another. The seam is chosen by considering some energy function that differentiates the important (high energy) features from the unimportant (low energy) features. The seam with the least energy is selected and removed. This process can be repeated until the image is the appropriate size.
+				</p>
+
+
+				<h2>II. Implementation</h2>
+
+				<p>
+					There are many ways to define an energy fuction of an image, but the energy function I chose to use is a Sobel edge detection filter that I implemented. Looking at edges is a good way to determine where objects, and therefore important features, are.
+				</p>
+
+				<p>
+					Next, we must sum up the energies of each pixel along possible seams in the image to find the seam with the smallest total energy. This process, if done exhaustively can get very expensive very quickly. So instead, we use dynamic programming to do this calculationby creating a minimum energy path matrix and a path matrix. Each pixel has three possible paths to follow going down a row to reach an adjacent pixel: left, middle, and right. Iterating through each row in the image starting from the first, or top, row, we go through each pixel and determine which path it should take in order to minimize the summed energy. This energy path sum is placed the energy path matrix, and the path taken is placed into the path matrix. This value in the energy path matrix is used in the next row, and so on. The last row of the energy sum matrix is the total energies of the smallest total energies of seams starting from each bottm row pixel. The seam can be traced using the path matrix. All the pixels in the seam with the smallest total energy is deleted, and an image of 1 pixel less width is created. 
+				</p>
+
+				<p>
+					Seam carving with horizontal seams is done simply by rotation the chosen image by 90 degrees before carving and rotating it back to its original orientation before saving.
+				</p>
+
+			<h2>III. Results</h2>
+
+				<p>
+					Of the images I have been testing my seam carving with, this one I took of the Blue Angels this summer is one of the most successful. This is because there is a very distinct foreground and solid background. The bulk of the planes and the smoke coming from them are so nicely confined to just one area of the image, that there is a clear section of the image that allows continuous seams without going into any of the planes and smoke.
+				</p>
+
+				<p>
+					All the seam carved images of reduced size are shown with black padding to keep all the images the same size.
+				</p>
+
+				<div class="img-table">
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane.jpg">
+							<div class="code caption btmrgt">
+								original<br>
+								<a href="img/plane.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_energy.jpg">
+							<div class="code caption btmrgt">
+								original<br>
+								<a href="img/plane.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="img-table">
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_v10.jpg">
+							<div class="code caption btmrgt">
+								10 seams <br>
+								<a href="img/plane_v10.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_v50.jpg">
+							<div class="code caption btmrgt">
+								50 seams <br>
+								<a href="img/plane_v50.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_v100.jpg">
+							<div class="code caption btmrgt">
+								100 seams <br>
+								<a href="img/plane_v100.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_v200.jpg">
+							<div class="code caption btmrgt">
+								200 seams <br>
+								<a href="img/plane_v200.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="img-table cap">
+					<div class="img-table-box">
+						Vertical seam removal on the Blue Angels image with varying numbers of seams.
+					</div>
+				</div>
+
+				<div class="img-table">
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_h10.jpg">
+							<div class="code caption btmrgt">
+								10 seams <br>
+								<a href="img/plane_h10.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_h50.jpg">
+							<div class="code caption btmrgt">
+								50 seams <br>
+								<a href="img/plane_h50.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_h100.jpg">
+							<div class="code caption btmrgt">
+								100 seams <br>
+								<a href="img/plane_h100.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_h150.jpg">
+							<div class="code caption btmrgt">
+								150 seams <br>
+								<a href="img/plane_h150.jpg" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="img-table cap">
+					<div class="img-table-box">
+						Horizontal seam removal on the Blue Angels image with varying numbers of seams.
+					</div>
+				</div>
+
+				<div class="img-table">
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_v.gif">
+							<div class="code caption btmrgt">
+								<a href="img/plane_v.gif" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+					<div class="img-table-box">
+						<div class="img-table-item">
+							<img src="img/plane_h.gif">
+							<div class="code caption btmrgt">
+								<a href="img/plane_h.gif" target="_blank">[x]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="img-table cap">
+					<div class="img-table-box">
+						Process gifs of both the vertical seam removal up to 200 seams, and the horizontal seam removal up to 150 seams. The red lines indicate the seams that were removed at each iteration.
+					</div>
+				</div>
 
 		</div>
 
