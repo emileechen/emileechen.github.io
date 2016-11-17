@@ -19,9 +19,9 @@
 			<div class="side">
 
 				<div class="side-nav hidden">
-					<div class="side-nav-up">
+					<div class="side-nav-top">
 						<a class="smoothScroll" href="#">
-						<i class="fa fa-chevron-up" aria-hidden="true"></i> Up
+						<i class="fa fa-chevron-up" aria-hidden="true"></i> Top
 						</a>
 					</div>
 					<div class="side-nav-back">
@@ -48,7 +48,7 @@
 					</p>
 
 					<p>
-						Seam carving is the process of resizing images by removing seams in the images while taking image content into consideration. A seam is a 8-connected path that extends from one side of the image to another. The seam is chosen by considering some energy function that differentiates the important (high energy) features from the unimportant (low energy) features. The seam with the least energy is selected and removed. This process can be repeated until the image is the appropriate size.
+						Seam carving is the process of resizing images by removing seamsin the images while taking image content into consideration. A seam is a 8-connected path that extends from one side of the image to another. The seam is chosen by considering some energy function that differentiates the important (high energy) features from the unimportant (low energy) features. The seam with the least energy is selected and removed. This process can be repeated until the image is the appropriate size.
 					</p>
 
 
@@ -59,18 +59,18 @@
 					</p>
 
 					<p>
-						Next, we must sum up the energies of each pixel along possible seams in the image to find the seam with the smallest total energy. This process, if done exhaustively can get very expensive very quickly. So instead, we use dynamic programming to do this calculationby creating a minimum energy path matrix and a path matrix. Each pixel has three possible paths to follow going down a row to reach an adjacent pixel: left, middle, and right. Iterating through each row in the image starting from the first, or top, row, we go through each pixel and determine which path it should take in order to minimize the summed energy. This energy path sum is placed the energy path matrix, and the path taken is placed into the path matrix. This value in the energy path matrix is used in the next row, and so on. The last row of the energy sum matrix is the total energies of the smallest total energies of seams starting from each bottm row pixel. The seam can be traced using the path matrix. All the pixels in the seam with the smallest total energy is deleted, and an image of 1 pixel less width is created. 
+						Next, we must sum up the energies of each pixel along possible seamsin the image to find the seam with the smallest total energy. This process, if done exhaustively can get very expensive very quickly. So instead, we use dynamic programming to do this calculationby creating a minimum energy path matrix and a path matrix. Each pixel has three possible paths to follow going down a row to reach an adjacent pixel: left, middle, and right. Iterating through each row in the image starting from the first, or top, row, we go through each pixel and determine which path it should take in order to minimize the summed energy. This energy path sum is placed the energy path matrix, and the path taken is placed into the path matrix. This value in the energy path matrix is used in the next row, and so on. The last row of the energy sum matrix is the total energies of the smallest total energies of seamsstarting from each bottm row pixel. The seam can be traced using the path matrix. All the pixels in the seam with the smallest total energy is deleted, and an image of 1 pixel less width is created. 
 					</p>
 
 					<p>
-						Seam carving with horizontal seams is done simply by rotation the chosen image by 90 degrees before carving and rotating it back to its original orientation before saving.
+						Seam carving with horizontal seamsis done simply by rotation the chosen image by 90 degrees before carving and rotating it back to its original orientation before saving.
 					</p>
 
 
 					<h2>III. Results</h2>
 
 					<p>
-						Of the images I have been testing my seam carving with, this one I took of the Blue Angels is one of the most successful. This is because there is a very distinct foreground and solid background. The bulk of the planes and the smoke coming from them are nicely confined to just one area of the image so that there is a clear section of the image that allows continuous seams without going into any of the planes or smoke.
+						Of the images I have been testing my seam carving with, this one I took of the Blue Angels is one of the most successful. This is because there is a very distinct foreground and solid background. The bulk of the planes and the smoke coming from them are nicely confined to just one area of the image so that there is a clear section of the image that allows continuous seamswithout going into any of the planes or smoke.
 					</p>
 
 					<p>
@@ -103,7 +103,7 @@
 							<div class="img-table-item">
 								<img src="img/plane_v10.jpg">
 								<div class="code caption btmrgt">
-									10 seams <br>
+									10 seams<br>
 									<a href="img/plane_v10.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -112,7 +112,7 @@
 							<div class="img-table-item">
 								<img src="img/plane_v50.jpg">
 								<div class="code caption btmrgt">
-									50 seams <br>
+									50 seams<br>
 									<a href="img/plane_v50.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -121,7 +121,7 @@
 							<div class="img-table-item">
 								<img src="img/plane_v100.jpg">
 								<div class="code caption btmrgt">
-									100 seams <br>
+									100 seams<br>
 									<a href="img/plane_v100.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -130,7 +130,7 @@
 							<div class="img-table-item">
 								<img src="img/plane_v200.jpg">
 								<div class="code caption btmrgt">
-									200 seams <br>
+									200 seams<br>
 									<a href="img/plane_v200.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -147,7 +147,7 @@
 							<div class="img-table-item">
 								<img src="img/plane_h10.jpg">
 								<div class="code caption btmrgt">
-									10 seams <br>
+									10 seams<br>
 									<a href="img/plane_h10.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -156,7 +156,7 @@
 							<div class="img-table-item">
 								<img src="img/plane_h50.jpg">
 								<div class="code caption btmrgt">
-									50 seams <br>
+									50 seams<br>
 									<a href="img/plane_h50.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -165,7 +165,7 @@
 							<div class="img-table-item">
 								<img src="img/plane_h100.jpg">
 								<div class="code caption btmrgt">
-									100 seams <br>
+									100 seams<br>
 									<a href="img/plane_h100.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -174,7 +174,7 @@
 							<div class="img-table-item">
 								<img src="img/plane_h150.jpg">
 								<div class="code caption btmrgt">
-									150 seams <br>
+									150 seams<br>
 									<a href="img/plane_h150.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -206,7 +206,7 @@
 					</div>
 					<div class="img-table attach">
 						<div class="img-table-box">
-							Process gifs of both the vertical seam removal up to 200 seams, and the horizontal seam removal up to 150 seams. The red lines indicate the seams that were removed at each iteration.
+							Process gifs of both the vertical seam removal up to 200 seams, and the horizontal seam removal up to 150 seams. The red lines indicate the seamsthat were removed at each iteration.
 						</div>
 					</div>
 
@@ -240,7 +240,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_v25.jpg">
 								<div class="code caption btmrgt">
-									25 seams <br>
+									25 seams<br>
 									<a href="img/glassgarden_v25.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -249,7 +249,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_v50.jpg">
 								<div class="code caption btmrgt">
-									50 seams <br>
+									50 seams<br>
 									<a href="img/glassgarden_v50.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -258,7 +258,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_v100.jpg">
 								<div class="code caption btmrgt">
-									100 seams <br>
+									100 seams<br>
 									<a href="img/glassgarden_v100.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -269,7 +269,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_v150.jpg">
 								<div class="code caption btmrgt">
-									150 seams <br>
+									150 seams<br>
 									<a href="img/glassgarden_v150.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -278,7 +278,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_v200.jpg">
 								<div class="code caption btmrgt">
-									200 seams <br>
+									200 seams<br>
 									<a href="img/glassgarden_v200.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -287,7 +287,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_v300.jpg">
 								<div class="code caption btmrgt">
-									300 seams <br>
+									300 seams<br>
 									<a href="img/glassgarden_v300.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -304,7 +304,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_h10.jpg">
 								<div class="code caption btmrgt">
-									10 seams <br>
+									10 seams<br>
 									<a href="img/glassgarden_h10.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -313,7 +313,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_h25.jpg">
 								<div class="code caption btmrgt">
-									25 seams <br>
+									25 seams<br>
 									<a href="img/glassgarden_h25.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -322,7 +322,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_h50.jpg">
 								<div class="code caption btmrgt">
-									50 seams <br>
+									50 seams<br>
 									<a href="img/glassgarden_h50.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -333,7 +333,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_h100.jpg">
 								<div class="code caption btmrgt">
-									100 seams <br>
+									100 seams<br>
 									<a href="img/glassgarden_h100.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -342,7 +342,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_h150.jpg">
 								<div class="code caption btmrgt">
-									150 seams <br>
+									150 seams<br>
 									<a href="img/glassgarden_h150.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -351,7 +351,7 @@
 							<div class="img-table-item">
 								<img src="img/glassgarden_h200.jpg">
 								<div class="code caption btmrgt">
-									200 seams <br>
+									200 seams<br>
 									<a href="img/glassgarden_h200.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -389,7 +389,7 @@
 							<div class="img-table-item">
 								<img src="img/leaves_v50.jpg">
 								<div class="code caption btmrgt">
-									50 seams <br>
+									50 seams<br>
 									<a href="img/leaves_v50.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -398,7 +398,7 @@
 							<div class="img-table-item">
 								<img src="img/leaves_v100.jpg">
 								<div class="code caption btmrgt">
-									100 seams <br>
+									100 seams<br>
 									<a href="img/leaves_v100.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -407,7 +407,7 @@
 							<div class="img-table-item">
 								<img src="img/leaves_v200.jpg">
 								<div class="code caption btmrgt">
-									200 seams <br>
+									200 seams<br>
 									<a href="img/leaves_v200.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -424,7 +424,7 @@
 							<div class="img-table-item">
 								<img src="img/leaves_h50.jpg">
 								<div class="code caption btmrgt">
-									50 seams <br>
+									50 seams<br>
 									<a href="img/leaves_h50.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -433,7 +433,7 @@
 							<div class="img-table-item">
 								<img src="img/leaves_h150.jpg">
 								<div class="code caption btmrgt">
-									150 seams <br>
+									150 seams<br>
 									<a href="img/leaves_h150.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -442,7 +442,7 @@
 							<div class="img-table-item">
 								<img src="img/leaves_h300.jpg">
 								<div class="code caption btmrgt">
-									300 seams <br>
+									300 seams<br>
 									<a href="img/leaves_h300.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -509,7 +509,7 @@
 							<div class="img-table-item">
 								<img src="img/dog_v50.jpg">
 								<div class="code caption btmrgt">
-									50 seams <br>
+									50 seams<br>
 									<a href="img/dog_v50.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -518,7 +518,7 @@
 							<div class="img-table-item">
 								<img src="img/dog_v100.jpg">
 								<div class="code caption btmrgt">
-									100 seams <br>
+									100 seams<br>
 									<a href="img/dog_v100.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -527,7 +527,7 @@
 							<div class="img-table-item">
 								<img src="img/dog_v200.jpg">
 								<div class="code caption btmrgt">
-									200 seams <br>
+									200 seams<br>
 									<a href="img/dog_v200.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -544,7 +544,7 @@
 							<div class="img-table-item">
 								<img src="img/dog_h50.jpg">
 								<div class="code caption btmrgt">
-									50 seams <br>
+									50 seams<br>
 									<a href="img/dog_h50.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -553,7 +553,7 @@
 							<div class="img-table-item">
 								<img src="img/dog_h100.jpg">
 								<div class="code caption btmrgt">
-									100 seams <br>
+									100 seams<br>
 									<a href="img/dog_h100.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -562,7 +562,7 @@
 							<div class="img-table-item">
 								<img src="img/dog_h200.jpg">
 								<div class="code caption btmrgt">
-									200 seams <br>
+									200 seams<br>
 									<a href="img/dog_h200.jpg" target="_blank">[x]</a>
 								</div>
 							</div>
@@ -605,7 +605,7 @@
 						</div>
 
 						<p>
-							The energy values look quite similar overall, except that some portions are less pronounced than the Sobel Operator energy. The resulting seams however, show that this makes quite a difference. The edges of the seams where pixels were removed are noticable and create unappealing edges, which is especially pronounced at 200 seams removed.
+							The energy values look quite similar overall, except that some portions are less pronounced than the Sobel Operator energy. The resulting seamshowever, show that this makes quite a difference. The edges of the seamswhere pixels were removed are noticable and create unappealing edges, which is especially pronounced at 200 seamsremoved.
 						</p>
 
 						<div class="img-table">
@@ -613,7 +613,7 @@
 								<div class="img-table-item">
 									<img src="img/plane_v100.jpg">
 									<div class="code caption btmrgt">
-										sobel, 100 seams <br>
+										sobel, 100 seams<br>
 										<a href="img/plane_v100.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -622,7 +622,7 @@
 								<div class="img-table-item">
 									<img src="img/plane_v_g100.jpg">
 									<div class="code caption btmrgt">
-										gradient, 100 seams <br>
+										gradient, 100 seams<br>
 										<a href="img/plane_v_g100.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -633,7 +633,7 @@
 								<div class="img-table-item">
 									<img src="img/plane_v200.jpg">
 									<div class="code caption btmrgt">
-										sobel, 200 seams <br>
+										sobel, 200 seams<br>
 										<a href="img/plane_v200.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -642,7 +642,7 @@
 								<div class="img-table-item">
 									<img src="img/plane_v_g200.jpg">
 									<div class="code caption btmrgt">
-										gradient, 200 seams <br>
+										gradient, 200 seams<br>
 										<a href="img/plane_v_g200.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -656,7 +656,7 @@
 						</p>
 
 						<p>
-							In order to implement seam insertion, I had to change how seams were calculated. In seam removal, at each iteration, I used the new image of one pixel less width to create a new energy function and find the least energy seam from there. In seam insertion, however, this process would simply pick one least energy seam and insert that same seam however many times, which would look... odd. Therefore, we must find some n seams that do not repeat. This is accomplished by using the image with the red seams added to compute the energy. Since the red seam is a very high difference edge, our path finding will be kept from overlapping from previous paths.
+							In order to implement seam insertion, I had to change how seamswere calculated. In seam removal, at each iteration, I used the new image of one pixel less width to create a new energy function and find the least energy seam from there. In seam insertion, however, this process would simply pick one least energy seam and insert that same seam however many times, which would look... odd. Therefore, we must find some n seamsthat do not repeat. This is accomplished by using the image with the red seamsadded to compute the energy. Since the red seam is a very high difference edge, our path finding will be kept from overlapping from previous paths.
 						</p>
 
 						<div class="img-table">
@@ -664,7 +664,7 @@
 								<div class="img-table-item">
 									<img src="img/plane.jpg">
 									<div class="code caption btmrgt">
-										original <br>
+										original<br>
 										<a href="img/plane.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -673,7 +673,7 @@
 								<div class="img-table-item">
 									<img src="img/plane_ins_v_all.jpg">
 									<div class="code caption btmrgt">
-										all 100 seams <br>
+										all 100 seams<br>
 										<a href="img/plane_v_g100.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -684,7 +684,7 @@
 								<div class="img-table-item">
 									<img src="img/plane_ins_v100.jpg">
 									<div class="code caption btmrgt">
-										100 seams <br>
+										100 seams<br>
 										<a href="img/plane_ins_v100.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -704,7 +704,7 @@
 								<div class="img-table-item">
 									<img src="img/tile.jpg">
 									<div class="code caption btmrgt">
-										original <br>
+										original<br>
 										<a href="img/tile.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -713,7 +713,7 @@
 								<div class="img-table-item">
 									<img src="img/tile_ins_v_all.jpg">
 									<div class="code caption btmrgt">
-										all 100 seams <br>
+										all 100 seams<br>
 										<a href="img/tile_v_g100.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -724,7 +724,7 @@
 								<div class="img-table-item">
 									<img src="img/tile_ins_v100.jpg">
 									<div class="code caption btmrgt">
-										100 seams <br>
+										100 seams<br>
 										<a href="img/tile_ins_v100.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -740,17 +740,17 @@
 						</div>
 
 						<p>
-							This implementation has its downfalls. Since I am using red seams to steer future seams away from past seams, it will cause problems for images with high red channel content. This can be overcome by inverting the seams instead of colouring it red.
+							This implementation has its downfalls. Since I am using red seamsto steer future seamsaway from past seams, it will cause problems for images with high red channel content. This can be overcome by inverting the seamsinstead of colouring it red.
 						</p>
 
 						<h3>Object Removal</h3>
 
 						<p>
-							Objects can be removed from an image by adding a mask of negative weights to the energy of the image. This means that any seam going through the mask would have those negative energies added to it, and thus have a negative total energy, and those seams will be chosen to be removed first.
+							Objects can be removed from an image by adding a mask of negative weights to the energy of the image. This means that any seam going through the mask would have those negative energies added to it, and thus have a negative total energy, and those seamswill be chosen to be removed first.
 						</p>
 
 						<p>
-							I have had only limited success with object removal, however. At a certain number of seams removed, seams other than the ones going through the masked area would be chosen, leaving a small portion of the object remaining.
+							I have had only limited success with object removal, however. At a certain number of seamsremoved, seamsother than the ones going through the masked area would be chosen, leaving a small portion of the object remaining.
 						</p>
 
 						<div class="img-table">
@@ -758,7 +758,7 @@
 								<div class="img-table-item">
 									<img src="img/sunset.jpg">
 									<div class="code caption btmrgt">
-										original <br>
+										original<br>
 										<a href="img/sunset.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -777,7 +777,7 @@
 								<div class="img-table-item">
 									<img src="img/sunset_energy.jpg">
 									<div class="code caption btmrgt">
-										energy <br>
+										energy<br>
 										<a href="img/sunset_energy.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -786,7 +786,7 @@
 								<div class="img-table-item">
 									<img src="img/sunset_rmv_energy.jpg">
 									<div class="code caption btmrgt">
-										energy with mask <br>
+										energy with mask<br>
 										<a href="img/sunset_rmv_energy.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -798,7 +798,7 @@
 								<div class="img-table-item">
 									<img src="img/sunset_rmv_v30.jpg">
 									<div class="code caption btmrgt">
-										30 seams <br>
+										30 seams<br>
 										<a href="img/sunset_rmv_v30.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
@@ -807,7 +807,7 @@
 								<div class="img-table-item">
 									<img src="img/sunset_rmv_v60.jpg">
 									<div class="code caption btmrgt">
-										60 seams <br>
+										60 seams<br>
 										<a href="img/sunset_rmv_v60.jpg" target="_blank">[x]</a>
 									</div>
 								</div>
