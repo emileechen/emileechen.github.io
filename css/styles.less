@@ -1,5 +1,5 @@
 
-@import url(https://fonts.googleapis.com/css?family=Bitter|Rokkitt|Raleway|Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Raleway|Open+Sans);
 
 @purple: #987FC5;
 @purple50: rgba(152, 127, 197, 0.8);
@@ -29,16 +29,39 @@ a:hover {
 h1 {
 	font-family: 'Raleway';
 	margin-top: 2.5em;
-	font-size: 1.3em;
+	font-size: 1.4em;
 	text-transform: uppercase;
 }
 h2 {
 	font-family: 'Raleway';
-	margin-top: 1.25em;
+	margin-top: 1.75em;
+	margin-bottom: .25em;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+h3 {
+	font-family: 'Raleway';
+	// font-weight: normal;
 	margin-bottom: .25em;
 	font-size: 1.2em;
 }
 
+.hidden {
+	opacity: 0;
+}
+
+.code {
+	font-size: .8em;
+	font-family: monospace;
+	display: inline-block;
+}
+
+
+
+
+
+// M A I N  P A G E
 
 img.circle {
 	width: 30%;
@@ -48,18 +71,25 @@ img.circle {
 
 .container {
 	height: auto;
-	width: 80%;
-	max-width: 1000px;
-	padding: 7.5em 0 2em 0;
-	margin: auto;
-}
+	padding: 5em 0 2em 0;
+	display: flex;
+	justify-content: center;
 
-.footer {
-	width: 80%;
-	max-width: 1000px;
-	padding: 5px 0 50px 0;
-	font-size: 0.9em;
-	margin: auto;
+	.side {
+		flex: 1;
+	}
+	.main {
+		width: 80%;
+		max-width: 1000px;
+		flex-basis: auto;
+
+		.footer {
+			width: 100%;
+			padding: 50px 0 25px 0;
+			font-size: 0.9em;
+			margin: auto;
+		}
+	}
 }
 
 .icon {
@@ -99,6 +129,7 @@ img.circle {
 	padding: 2em;
 	background-size: cover;
 	position: relative;
+	width: 100%;
 }
 .proj1 {
 	background-image: url('/194/proj1.jpg');
@@ -128,6 +159,7 @@ img.circle {
 	transition-duration: .2s;
 }
 .proj-content {
+	width: 100%;
 	position: relative;
 	text-align: center;
 	color: white;
@@ -142,13 +174,26 @@ img.circle {
 
 
 
-.code {
+
+
+
+// P R O J E C T  P A G E S
+
+.side-nav {
+	position: fixed;
+	width: 8%;
+	height: 0;
+	left: 0;
+	top: 100px;
+	text-align: right;
 	font-size: .8em;
-	font-family: monospace;
-	display: inline-block;
+	text-transform: uppercase;
+	transition-duration: .2s;
+	@media (min-width: 1250px) {
+		left: 42%;
+		margin-left: -550px;
+	}
 }
-
-
 
 .img-table {
 	font-size: .9em;
