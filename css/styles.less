@@ -42,7 +42,6 @@ h2 {
 }
 h3 {
 	font-family: 'Raleway';
-	// font-weight: normal;
 	margin-bottom: .25em;
 	font-size: 1.2em;
 }
@@ -193,15 +192,22 @@ img.circle {
 		left: 42%;
 		margin-left: -550px;
 	}
+	div {
+		a:hover {
+			border-bottom: 0;
+			color: @purple;
+			font-weight: bold;
+		}
+	}
 }
 
 .img-table {
-	font-size: .9em;
-	background-color: #DDDDDD;
 	display: flex;
 	justify-content: space-around;
 	padding: 0 .5em .5em 0;
-	margin: 1em 0;
+	margin: 1em;
+	font-size: .9em;
+	background-color: #DDDDDD;
 }
 .img-table-box {
 	flex: 1;
