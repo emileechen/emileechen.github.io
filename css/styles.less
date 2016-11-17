@@ -3,6 +3,7 @@
 
 @purple: #987FC5;
 @purple50: rgba(152, 127, 197, 0.8);
+@accentfont: 'Raleway';
 
 body, html {
 	font-family: 'Open Sans';
@@ -27,13 +28,13 @@ a:hover {
 }
 
 h1 {
-	font-family: 'Raleway';
+	font-family: @accentfont;
 	margin-top: 2.5em;
 	font-size: 1.4em;
 	text-transform: uppercase;
 }
 h2 {
-	font-family: 'Raleway';
+	font-family: @accentfont;
 	margin-top: 1.75em;
 	margin-bottom: .25em;
 	font-size: 1.2em;
@@ -41,7 +42,7 @@ h2 {
 	font-weight: bold;
 }
 h3 {
-	font-family: 'Raleway';
+	font-family: @accentfont;
 	margin-bottom: .25em;
 	font-size: 1.2em;
 }
@@ -51,7 +52,6 @@ h3 {
 }
 
 .code {
-	font-size: .8em;
 	font-family: monospace;
 	display: inline-block;
 }
@@ -131,10 +131,10 @@ img.circle {
 	width: 100%;
 }
 .proj1 {
-	background-image: url('/194/proj1.jpg');
+	background-image: url('/seamcarving/icon.jpg');
 }
 .proj2 {
-	background-image: url('/194/proj2.jpg');
+	background-image: url('/facemorphing/icon.jpg');
 }
 .proj3 {
 	background-image: url('/194/proj3.jpg');
@@ -164,10 +164,23 @@ img.circle {
 	color: white;
 	opacity: 0;
 	transition-duration: .2s;
+	font-size: .9em;
 }
 .proj-box:hover .proj-content {
 	opacity: 1;
 	transition-duration: .2s;
+}
+.proj-title {
+	font-family: @accentfont;
+	margin-bottom: 1em;
+	padding: .5em;
+	border: 2px solid;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.proj-tags {
+	margin-top: 1em;
 }
 
 
@@ -228,6 +241,7 @@ img.circle {
 }
 
 .caption {
+	font-size: .8em;
 	position: absolute;
 	background-color: rgba(255, 255, 255, 0.5);
 	padding: .2em 1.5em .2em 1em;
