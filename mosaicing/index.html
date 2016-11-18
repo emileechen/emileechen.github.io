@@ -1,0 +1,692 @@
+
+			<!-- made by Emilee Chen
+					oct 2016
+						@ emileechen.github.io -->
+
+
+<!doctype html>
+<html>
+	<head>
+		<title>Emilee Chen</title>
+		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet/less" type="text/css" href="/css/styles.less" />
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<div class="side">
+
+				<div class="side-nav hidden">
+					<div class="side-nav-top">
+						<a class="smoothScroll" href="#">
+						<i class="fa fa-chevron-up" aria-hidden="true"></i> Top
+						</a>
+					</div>
+					<div class="side-nav-back">
+						<a class="smoothScroll" href="#">
+						<i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+						</a>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="main">
+
+				<img src="/me.jpg" class="circle">
+
+
+				<h1>Image Warping and Mosaicing</h1>
+
+					<h2>I. Introduction</h2>
+
+					<p>
+						The objective of this project is to be able to stitch a mosaic from a series of images with manually selected corresponding points. The process can be described in three steps:
+
+						<ol>
+							<p>
+								<li>Shoot images so that the transforms between them are projective.</li>
+								These images must be shot from the same point of view so that we can unproject, rotate, and then reproject (this is called homography) to align them.
+							</p>
+							<p>
+								<li>Recover the homography of the images.</li>
+								Given a series of (at least four) corresponding points on two images, we can estimate a homography and find a homography matrix. I referenced slides 25-30 from <a href="http://www.cse.psu.edu/~rtc12/CSE486/lecture16.pdf" target="_blank">Robert Collins' CSE486 Lecture Slides</a>.
+							</p>
+							<p>
+								<li>Warp images using the homography.</li>
+								Now that we have the parameters of hte homography, it is a simple process of inverse warping the image by H.
+							</p>
+							<p>
+								<li>Blend the warped images together.</li>
+								Finally, blend the two images together to create a (hopefully) seamless mosaic.
+							</p>
+						</ol>
+					</p>
+
+					<p>
+						To improve upon this, automatic mosaicing is also implemented. This entails the automatic selection of likely points and further refining those points and finding the correspondences. A more detailed, step by step explanation is available <a href="#auto">below</a>.
+					</p>
+
+
+					<h2>II. Image Rectification</h2>
+
+					<p>
+						After retreiving a homography matrix, whether or not the implemented warping is working correctly or not can be determined by using it to rectify an image. This is simply taking an image of an object from an angle for which we know the object's true shape, and morph the image into that shape.
+					</p>
+
+					<p>
+						I did this on a photo of the portrait I was working on. The picture was taken at an angle, so the drawing board is trapezoidal in the photo even though we know it to be rectangular. Image rectification recovers the rectangular drawing board as if it were viewed head on. The original points were chosen manually, and the new points were chosen manually as well, through guess and check to ensure the correct width to height ratios were used.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/studio.jpg">
+								<div class="code caption btmrgt">
+									original<br>
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/studio_rec.jpg">
+								<div class="code caption btmrgt">
+									rectified<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							Photo of my drawing setup in Kroeber one afternoon. Points were selected within the drawing board to create a rectangle around the paper and references.
+						</div>
+					</div>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/polaroid.jpg">
+								<div class="code caption btmrgt">
+									original<br>
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/polaroid_rec.jpg">
+								<div class="code caption btmrgt">
+									rectified<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							Photo of my polaroid wall. Points were selected to create a rectangle around the 5 by 4 fully pictured polaroids.
+						</div>
+					</div>
+
+					<p>
+						I discovered that there are images that don't look quite right when rectified. At first I tried to rectify this image of some bookshelves in Main Stacks. As you can see below, the rectified image looks oddly mishapen, especially in regards to the spinning handles. This is because the handles (as well as the signs) stick out from the flat surface of the bookshelves. When you look solely at the flat surface of the bookselves, though, they are correctly rectified.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/stacks.jpg">
+								<div class="code caption btmrgt">
+									original<br>
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/stacks_rec.jpg">
+								<div class="code caption btmrgt">
+									rectified<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							Photo of some bookshelves in Main Stacks. Points were selected to create a rectangle around the bookshelves on the right.
+						</div>
+					</div>
+
+
+					<h2>III. Mosaicing</h2>
+
+					<p>
+						Now that we know that our homography matrix is working, we can finally stitch some photos together and make mosaics! When I was first working on this project, I was in MLK, so I took some quick pictures with my iPhone for testing. I thought then that not having a tripod would produce unappealing ghosting in my mosaics, but as long as I tried my best to pivot my phone about where the camera is (and look very weird while doing it, I'm sure), the results were quite good. Unfortunately, since my phone does auto adjustments for brightness, contrast, exposure, etc. some of the images don't match each other in colour. I had to go in and manually adjust the image until it matched the others better.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/u/d.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/u/e.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/u/f.jpg">
+								<div class="code caption btmrgt">
+									original images<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/u_manual.jpg">
+								<div class="code caption btmrgt">
+									manually stitched<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							A series of photos taken in the Student Union one afternoon featuring studious Cal students. I manually stitched together these images with only translation and rotation to get a feel as to how the mosaic should look in the end.
+						</div>
+					</div>
+
+					<p>
+						To combine two images, we need at least four corresponding points from each image to make a homography matrix. I used around 10 points for each pair of images. When mosaicing two images together, I averaged the points and warped both images toward that average. When mosaicing three images together, I warped the left and right images towards the centre image.
+					</p>
+
+					<p>
+						To determine the size of the image image, I simply used the corresponding homography matrices on the left images' left corners, and the right images' right corners and took the min (for left image) or max (for right side) of the x and y values. This gives me some set of negative and positive numbers such as <span class="code">[-545, -267, 1065, 481]</span>, which are the min x value, min y value, max x value, and max y value of the final image. The size of the image can be easily found with these values, and all that is needed from there is to offset the pixels being put onto the final image by the min values.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/u_overwrite.jpg">
+								<div class="code caption btmrgt">
+									overwrite<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							The images overwrite each other when no blending technique is used, creating harsh edges.
+						</div>
+					</div>
+
+					<p>
+						Although the mosaic looks very nice and aligned in terms of features within the image, there are still obvious harsh edges where one image ends and another begins. Some blending technique must be used to eliminate these edges. I chose to implement linear blending. I simply took the x-axis range of where two images overlap (with the same process as finding the final image's width and height) and created a linear gradient into the next image. To calculate the weight is a simple <span class="code">1 - (x - (left edge x-value)) / ((right edge x-value) - (left edge x-value))</span>. Take 1 minus that value for the weight of the other image.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/u_linear.jpg">
+								<div class="code caption btmrgt">
+									linear blending<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							Linear blending across each image creates a smooth result.
+						</div>
+					</div>
+
+					<p>
+						This process does still leave some edges along the top and bottom of the images, but cropping can elimiate those edges without taking too much away from the mosaic. The reason linear blending worked so well is because the images and points were taken and chosen with care. If the homography did not correctly align the images, there would be ghosting, and the blending would not have worked as well as it did.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/u.jpg">
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							The final image looks quite seamless after cropping.
+						</div>
+					</div>
+
+					<p>
+						Below is a series of other images that I mosaic'd together with the same process.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/sunset/a.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/sunset/b.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/sunset/c.jpg">
+								<div class="code caption btmrgt">
+									original images<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/sunset_manual.jpg">
+								<div class="code caption btmrgt">
+									manually stitched<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/sunset_linear.jpg">
+								<div class="code caption btmrgt">
+									linear blending<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/sunset.jpg">
+								<div class="code caption btmrgt">
+									final<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							Tilden Park at sunset.
+						</div>
+					</div>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/union/b.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/union/c.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/union/d.jpg">
+								<div class="code caption btmrgt">
+									original images<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/union_manual.jpg">
+								<div class="code caption btmrgt">
+									manually stitched<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/union_linear.jpg">
+								<div class="code caption btmrgt">
+									linear blending<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/union.jpg">
+								<div class="code caption btmrgt">
+									final<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							View from the holiday Union Square ice rink.
+						</div>
+					</div>
+
+
+					<a name="auto"></a>
+					<h2>V. Automatic Mosaicing</h2>
+
+					<p>
+						Although the finished mosaics look quite nice, it is very time consuming to go through and find matching points for every image that you want to stitch. So, the key to automatic mosaic stitching is automatic corresponding point selection.
+					</p>
+
+					<p>
+						This process is actually quite simple, although it does require several rounds of pruning to ensure there are no false positives. The steps are outlined below:
+
+						<ol>
+							<p>
+								<li>Use the <b>Harris Interest Point Detector</b> method to find possible points of interest.</li>
+								It takes in an image and finds all the Harris corners in the image. I used the provided <a href="https://inst.eecs.berkeley.edu/~cs194-26/fa15/hw/proj7-stitch/harris.py" target="_blank">harris.py</a>.
+							</p>
+							<p>
+								<li>Use the <b>Adaptive Non-Maximal Suppression</b> strategy on the list of points.</li>
+								We want to restrict the maximum number of points in our list as feature matching in the next step is expensive. This strategy makes sure that we take a certain number of points that are spread evenly across the image, but also weighted according to how strong their respective corners are. 
+							</p>
+							<p>
+								<li>Extract the <b>feature descriptor</b> for each point.</li>
+								Points must be compared as a feature, which is basically the patch around a point. These descriptors are the 40 by 40 patch around the point downsized to 8 by 8.
+							</p>
+							<p>
+								<li><b>Feature match</b> each feature of each point.</li>
+								Each feature descriptor of the left image is compared against each feature descriptor of the right image using SSD to find the best fitting right feature for each left feature.
+							</p>
+							<p>
+								<li>Use 4 point <b>RANSAC</b> to compute a robust homography estimate.</li>
+								Randomly select four points from the list of possible corresponding points to create a homography and see how many of all the points match. Repeat for a set amount of trials. Select the best trial and use the non-discarded points to create a homography.
+							</p>
+						</ol>
+					</p>
+
+					<p>
+						I took the previous images of Tilden Park for which I had created a mosaic for with manually selected points to use automatic mosaicing on.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7b.jpg">
+								<div class="code caption btmrgt">
+									original images<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							View from the holiday Union Square ice rink.
+						</div>
+					</div>
+
+					<p>
+						The Harris corners of each image are found with the provided harris.py mentioned earlier.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7bharris1.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7bharris2.jpg">
+								<div class="code caption btmrgt">
+									harris corners<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							Each of the Harris corners found are plotted as points in red.
+						</div>
+					</div>
+
+					<p>
+						Adaptive Non-Maximal Suppression, or ANMS, is a strategy that selects only the most important and spread out <span class="code">n</span> points so that only a small amount of feature descriptors must be calculated and compared. I chose <span class="code">n = 300</span> as I tend to work with smaller images. To explain this method in a most basic sense: using each point's h value, we can find radi for each point, which ranks the importance of each point. I selected the top <span class="code">n</span> points with the maximum radius to continue on to the next step.
+					</p>
+
+					<p>
+						Since I used images that are on the small side, no points were pruned as there were less inital Harris corners than my maximum selected points.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7banms1.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7banms2.jpg">
+								<div class="code caption btmrgt">
+									after anms<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							Each of the interest points that weren't pruned by ANMS are plotted as points in blue.
+						</div>
+					</div>
+
+					<p>
+						Now that we have a reasonable number of points, the next step is to find corresponding points in the other image. To do this, we must consider the feature descriptor of each point. We want these feature descriptors to contain as much information as possible while being small so that the following step will be less computationally expensive. To prepare these feature descriptors, we need to massage it into a format that allows for easy and fast feature comparison computation. I took the 40 by 40 patch around each point and used a Gaussian blur on to before downsizing it to an 8 by 8 patch by selecting every 5th pixel to use in the new patch.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7bfeat1.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7bfeat2.jpg">
+								<div class="code caption btmrgt">
+									feature descriptors<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							All the features for each image.
+						</div>
+					</div>
+
+					<p>
+						Now that we have our feature descriptors for each image, we can use our basic SSD to see which feature in one images matches which feature of the other image the best.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7bmatch1.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7bmatch2.jpg">
+								<div class="code caption btmrgt">
+									after matching<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							Each of the points that got matched with a corresponding point are plotted as points in green.
+						</div>
+					</div>
+
+					<p>
+						Although our feature matching algorithm is quite good, there is still a chance of having outlier points. So, we use RANSAC to reject these remaining outliers. The idea is to select some random four points to create a homography matrix (transforming the left points to the right points) and apply it to all the left image points that we have and see how many of them match the corresponding right image points. The points that are within some <span class="code">epsilon</span> of their expected location are accepted as inlier and all other points are discarded as outliers. The number of votes, which is the number of inlier, is saved along with the list of inlier points.
+					</p>
+
+					<p>
+						This process is repeated some number of trials, t. I chose to use <span class="code">t = 500</span>, since I usually end up with only 20-50 set of points and it produces consistent results. I chose <span class="code">epsilon = 2</span> pixels as suggested by Professor Efros in class. I tried other values, but 2 seems to have the best results.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7bfinal1.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7bfinal2.jpg">
+								<div class="code caption btmrgt">
+									after ransac<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							The sets of points that weren't discarded as outliers are plotted as points in yellow.
+						</div>
+					</div>
+				
+					<p>
+						Finally, the point selection process is complete and we will have found a set of corresponding points for the two images. Then we take these points and stitch the images together with the homography matrix just as detailed in the previous section.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7b.jpg">
+								<div class="code caption btmrgt">
+									auto stitched mosaic<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/7a7bmanual.jpg">
+								<div class="code caption btmrgt">
+									manually stitched mosaic<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							The final, automatically stitched mosaic, along with a version with manually selected points.
+						</div>
+					</div>
+					
+					<p>
+						The final result looks better than the manually selected version, which is great! Below are some more examples.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/5b.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/5b.jpg">
+								<div class="code caption btmrgt">
+									original images<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/5b5cmanual.jpg">
+								<div class="code caption btmrgt">
+									final (manual) mosaic<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							View from the holiday Union Square ice rink.
+						</div>
+					</div>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/6c.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/6d.jpg">
+								<div class="code caption btmrgt">
+									original images<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/6c6d.jpg">
+								<div class="code caption btmrgt">
+									final (manual) mosaic<br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							From the food trucks beside Boalt Hall.
+						</div>
+					</div>
+
+
+
+				<div class="footer">
+					<a href="https://www.instagram.com/emileechen/" class="icon"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					<a href="https://github.com/emileechen" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
+					<a href="https://www.linkedin.com/in/emileechen" class="icon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+				</div>
+
+			</div>
+			
+			<div class="side">
+
+			</div>
+			
+		</div>
+
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/smoothscroll.js"></script>
+		<script type="text/javascript" src="/js/magicstuff.js"></script>
+		<script type="text/javascript" src="/css/less.js"></script>
+
+	</body>
+</html>
