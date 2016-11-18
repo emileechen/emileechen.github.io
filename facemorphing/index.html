@@ -465,6 +465,393 @@
 						Thankfully, there are databases out there that have this available. I used the <a href="http://fei.edu.br/~cet/facedatabase.html" target="_blank">FEI Face Database</a>, which is a database of Brazilian faces that come with files that have points for the eyebrows, eyes, nose, mouth, and face selected already. Unfortunately, this database has this is black and white, so the following images will not be in colour, but the same process can easily be applied to images with colour.
 					</p>
 
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/2a.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/64a.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/79a.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/99a.jpg">
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							Some examples of the images in the FEI Face Database.
+						</div>
+					</div>
+
+					<p>
+						Selecting a meaningful subset also helps to produce interesting results. Choosing a specific population subset such as Brazilians, male Brazilians, or female Brazilians, gives us meaningful results that tells us something about that subset. I ran my program on ten males, ten males, and a combination of seven female and seven males to produce three different mean faces.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/bm_mean.jpg">
+								<div class="code caption btmrgt">
+									male
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/ba_mean.jpg">
+								<div class="code caption btmrgt">
+									both
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/bf_mean.jpg">
+								<div class="code caption btmrgt">
+									female
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							The mean Brazilian faces when considering only male or female, and also both genders.
+						</div>
+					</div>
+
+					<p>
+						There are many interesting things that can be done with mean faces. We can take the shape of this mean shape, and morph another face's shape into the mean facial shape to make that person look like someone of that population.
+					</p>
+
+					<p>
+						Below, I attempted to make myself look like a Brazilian female. At first, I didn't add any of the mean face's colours, but it made the result look extremely unnatural and sharp in some places. So, I then used only some percentage of my face after shape warping and added some of the colouration of the mean face to it. This smooth out many odd shapes and provided a more pleasing result. I did the same thing to morph the Brazilian female into my facial shape.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/me-brazilian.jpg">
+								<div class="code caption btmrgt">
+									100%
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/me-brazilian_8.jpg">
+								<div class="code caption btmrgt">
+									80%
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/me-brazilian_6.jpg">
+								<div class="code caption btmrgt">
+									60%
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/me-brazilian_4.jpg">
+								<div class="code caption btmrgt">
+									40%
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/me-brazilian_2.jpg">
+								<div class="code caption btmrgt">
+									20%
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/bf_mean.jpg">
+								<div class="code caption btmrgt">
+									0%
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							My face warped into the mean Brazilian female geometry with various colouration ratios between my face and the mean Brazilian face.
+						</div>
+					</div>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/brazilian-me.jpg">
+								<div class="code caption btmrgt">
+									100%
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/brazilian-me_8.jpg">
+								<div class="code caption btmrgt">
+									80%
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/brazilian-me_6.jpg">
+								<div class="code caption btmrgt">
+									60%
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/brazilian-me_4.jpg">
+								<div class="code caption btmrgt">
+									40%
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/brazilian-me_2.jpg">
+								<div class="code caption btmrgt">
+									20%
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/me.jpg">
+								<div class="code caption btmrgt">
+									0%
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							The mean Brazilian female face warped into my face's geometry with various colouration ratios between my face and the mean Brazilian face.
+						</div>
+					</div>
+
+					<p>
+						I also took the composite photos of my pledge class and found the mean of our faces. Since there are eight boys and only four girls, the mean looks very masculine. Since nine of us are Asian, the result also looks very asian.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/alex.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/amanda.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/emileemu.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/james.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/jeff.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/jesse.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/james.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/justin.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/meg.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/rajeev.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/scott.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/sam.jpg">
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							The composite photos used in the Mu class mean face.
+						</div>
+					</div>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/mum_mean.jpg">
+								<div class="code caption btmrgt">
+									male
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/mu_mean.jpg">
+								<div class="code caption btmrgt">
+									both
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/muf_mean.jpg">
+								<div class="code caption btmrgt">
+									female
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							The mean Mu class faces when considering only male or female, and also both genders.
+						</div>
+					</div>
+
+
+					<h2>IV. Ethnicity Change</h2>
+
+					<p>
+						Changing the ethnicity of the face is quite simple, as long as we have some average face of that ethnicity. I was able to find some European average images on <a href="https://pmsol3.wordpress.com/2011/04/07/world-of-averages-europeave/" target="_blank">this blog</a>. There are three ways that this can be done: change the face's colouration to the average image's colouration, change the face's shape to the average image's shape, and change both the colouration and the shape of the image.
+					</p>
+
+					<p>
+						At first I tried using entirely my own colouration for the colour change, but it did not look at me at all. After experimenting, I decided that 70% my colouration and 30% the average face colouration gave the right balance such that it is recognizable as my face while using as much of the average face colouration as possible. Shape change looked disfigured when it used wholly my couration, so I experimented and settled on using 70% my colouration and 30% the average face colouration as well.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/english.jpg">
+								<div class="code caption toprgt">
+									english
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/mec-english_shape.jpg">
+								<div class="code caption toprgt">
+									change shape
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/mec-english_colour.jpg">
+								<div class="code caption toprgt">
+									change colour
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/mec-english_both.jpg">
+								<div class="code caption toprgt">
+									change both
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							The mean Mu class faces when considering only male or female, and also both genders.
+						</div>
+					</div>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/french.jpg">
+								<div class="code caption toprgt">
+									french
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/mec-french_shape.jpg">
+								<div class="code caption toprgt">
+									change shape
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/mec-french_colour.jpg">
+								<div class="code caption toprgt">
+									change colour
+								</div>
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/mec-french_both.jpg">
+								<div class="code caption toprgt">
+									change both
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach">
+						<div class="img-table-box">
+							My face given the average French shape, colour, and both shape and colour.
+						</div>
+					</div>
+
+					<p>
+						I think that changing both shape and colouration of my face came out with the most pleasing result. Although I do look more European, I definitely do not look European. This implementation can really only make one look half of their original race and half the intended race, not fully the intended race.
+					</p>
+
 
 				<div class="footer">
 					<a href="https://www.instagram.com/emileechen/" class="icon"><i class="fa fa-instagram" aria-hidden="true"></i></a>
