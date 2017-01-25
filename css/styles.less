@@ -1,5 +1,7 @@
+// lessc styles.less styles.css
 
-@import url(https://fonts.googleapis.com/css?family=Raleway|Open+Sans|Roboto);
+
+@import url(https://fonts.googleapis.com/css?family=Raleway|Open+Sans|Roboto|Fira+Sans:300);
 
 @purple: #987FC5;
 @purple50: rgba(152, 127, 197, 0.8);
@@ -7,9 +9,9 @@
 
 
 body, html {
-	font-family: 'Open Sans';
+	font-family: 'Fira Sans', sans-serif;
 	color: #4a4a4a;
-	font-size: 16px;
+	font-size: 17px;
 	background-color: white;
 	text-align: justify;
 	margin: 0;
@@ -30,17 +32,19 @@ a:hover {
 
 h1 {
 	font-family: @accentfont;
-	margin-top: 2.5em;
+	font-weight: bold;
+	letter-spacing: 0.025em;
+	margin: 4em 0 2.5em 0;
 	font-size: 1.4em;
 	text-transform: uppercase;
 }
 h2 {
 	font-family: @accentfont;
+	font-weight: bold;
 	margin-top: 1.75em;
-	margin-bottom: .25em;
+	margin-bottom: 1em;
 	font-size: 1.2em;
 	text-transform: uppercase;
-	font-weight: bold;
 }
 h3 {
 	font-family: @accentfont;
@@ -176,8 +180,9 @@ img.circle {
 			padding: .5em;
 			border: 2px solid;
 			font-size: 1.25em;
+			letter-spacing: 0.025em;
 			text-transform: uppercase;
-			font-weight: bold;
+			font-weight: normal;
 		}
 		.proj-tags {
 			font-size: 0.8em;
