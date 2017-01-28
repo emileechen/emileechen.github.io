@@ -52,6 +52,9 @@ img.circle {
   max-width: 200px;
   border-radius: 50%;
 }
+img.smaller {
+  width: 125px;
+}
 .container {
   height: auto;
   padding: 5em 0 2em 0;
