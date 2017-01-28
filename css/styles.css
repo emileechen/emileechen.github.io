@@ -68,7 +68,7 @@ img.circle {
 }
 .container .main .footer {
   width: 100%;
-  padding: 50px 0 25px 0;
+  padding: 5em 0 2em 0;
   font-size: 0.9em;
   margin: auto;
 }
@@ -81,34 +81,52 @@ img.circle {
   border-bottom: 0;
   padding-bottom: 0;
 }
+#info {
+  width: 65%;
+  min-width: 400px;
+}
+@media (max-width: 724px) {
+  #info {
+    width: 100%;
+  }
+}
 #projects {
-  width: 100%;
-}
-.proj-row {
   display: flex;
+  flex-wrap: wrap;
+  width: 102%;
+  margin: -1em 0 0 -1em;
   justify-content: space-around;
-  margin: -1em 0 1em -1em;
 }
-.proj-row .proj-item {
+#projects .proj-item {
   display: flex;
-  flex: 1 0 0px;
-  padding: 1em 0 0 1em;
+  padding: 0 0 1em 1em;
+  width: calc(31.33333%);
 }
-.proj-row .proj-item:hover {
+@media (max-width: 1100px) {
+  #projects .proj-item {
+    width: calc(47%);
+  }
+}
+@media (max-width: 724px) {
+  #projects .proj-item {
+    width: calc(100%);
+  }
+}
+#projects .proj-item:hover {
   border: 0;
 }
-.proj-row .proj-item:before {
+#projects .proj-item:before {
   content: '';
   display: table;
   padding-top: 100%;
   float: left;
   border: 0;
 }
-.proj-row .proj-link {
+#projects .proj-link {
   margin: 0;
   border: 0;
 }
-.proj-row .proj-box {
+#projects .proj-box {
   display: flex;
   align-items: center;
   padding: 2em;
@@ -116,7 +134,7 @@ img.circle {
   position: relative;
   width: 100%;
 }
-.proj-row .proj-box:before {
+#projects .proj-box:before {
   position: absolute;
   content: '';
   top: 0;
@@ -129,16 +147,16 @@ img.circle {
   opacity: 0;
   transition-duration: .2s;
 }
-.proj-row .proj-box:hover:before {
+#projects .proj-box:hover:before {
   display: block;
   opacity: .8;
   transition-duration: .2s;
 }
-.proj-row .proj-box:hover .proj-content {
+#projects .proj-box:hover .proj-content {
   opacity: 1;
   transition-duration: .2s;
 }
-.proj-row .proj-content {
+#projects .proj-content {
   width: 100%;
   position: relative;
   text-align: center;
@@ -147,7 +165,7 @@ img.circle {
   transition-duration: .2s;
   font-size: .9em;
 }
-.proj-row .proj-content .proj-title {
+#projects .proj-content .proj-title {
   font-family: 'Raleway';
   margin: 1em 0;
   padding: .5em;
@@ -157,7 +175,7 @@ img.circle {
   text-transform: uppercase;
   font-weight: normal;
 }
-.proj-row .proj-content .proj-tags {
+#projects .proj-content .proj-tags {
   font-size: 0.8em;
   margin-top: 1em;
   text-transform: uppercase;
