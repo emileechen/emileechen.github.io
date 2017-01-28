@@ -5,9 +5,9 @@ $(window).scroll(function() {
 	var scroll = $(window).scrollTop();
 
 	if (scroll > $(window).height()/2) {
-	    $(".side-nav").removeClass("hidden");
+	    $(".side-nav-top").removeClass("hidden");
 	}
 	else {
-	    $(".side-nav").addClass("hidden");
+	    $(".side-nav-top").addClass("hidden");
 	}
 });

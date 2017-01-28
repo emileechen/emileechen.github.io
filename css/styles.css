@@ -185,11 +185,14 @@ img.circle {
   width: 8%;
   height: 0;
   left: 0;
-  top: 100px;
   text-align: right;
   font-size: .8em;
   text-transform: uppercase;
   transition-duration: .2s;
+}
+.side-nav .side-nav-top {
+  position: relative;
+  top: 80vh;
 }
 @media (min-width: 1250px) {
   .side-nav {
@@ -206,9 +209,9 @@ img.circle {
   display: flex;
   justify-content: space-around;
   padding: 0 .5em .5em 0;
-  margin: 1em;
+  margin: 1em 0;
   font-size: .9em;
-  background-color: #DDDDDD;
+  background-color: white;
 }
 .img-table-box {
   flex: 1;
