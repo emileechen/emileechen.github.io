@@ -183,6 +183,53 @@ img.smaller {
   margin-top: 1em;
   text-transform: uppercase;
 }
+#projects .frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#projects .frames {
+  background: white;
+  position: absolute;
+  transition-duration: .2s;
+}
+#projects .frame-top {
+  width: 0%;
+  top: 1em;
+  left: 1em;
+  height: 1px;
+}
+#projects .proj-box:hover .frame-top {
+  width: calc(96%);
+}
+#projects .frame-bottom {
+  bottom: 1em;
+  right: 1em;
+  height: 1px;
+}
+#projects .proj-box:hover .frame-bottom {
+  width: calc(96%);
+}
+#projects .frame-left {
+  height: 0%;
+  top: 1em;
+  left: 1em;
+  width: 1px;
+}
+#projects .proj-box:hover .frame-left {
+  height: calc(96%);
+}
+#projects .frame-right {
+  height: 0%;
+  bottom: 1em;
+  right: 1em;
+  width: 1px;
+}
+#projects .proj-box:hover .frame-right {
+  height: calc(96%);
+}
 .side-nav {
   position: fixed;
   width: 8%;
