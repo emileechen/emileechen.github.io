@@ -205,6 +205,7 @@ img.smaller {
   width: calc(96%);
 }
 #projects .frame-bottom {
+  width: 0%;
   bottom: 1em;
   right: 1em;
   height: 1px;
