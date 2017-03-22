@@ -13,7 +13,7 @@ body, html {
 	color: #4a4a4a;
 	font-size: 1.1rem;
 	line-height: 1.8rem;
-	background-color: white;
+	background-color: black;
 	text-align: justify;
 	margin: 0;
 }
@@ -34,7 +34,7 @@ a:hover {
 h1 {
 	font-family: @accentfont;
 	font-weight: bold;
-	letter-spacing: 0.025rem;
+	letter-spacing: 0.1rem;
 	margin: 4rem 0 2.5rem 0;
 	font-size: 1.4rem;
 	text-transform: uppercase;
@@ -42,15 +42,24 @@ h1 {
 h2 {
 	font-family: @accentfont;
 	font-weight: bold;
-	margin-top: 2.25rem;
+	margin-top: 2.5rem;
 	margin-bottom: 1rem;
 	font-size: 1.2rem;
 	text-transform: uppercase;
 }
 h3 {
 	font-family: @accentfont;
+	margin-top: 1.5rem;
 	margin-bottom: .25rem;
 	font-size: 1.2rem;
+}
+h4 {
+	font-family: @accentfont;
+	margin-top: 1.25rem;
+	margin-bottom: .25rem;
+	font-size: 1rem;
+	text-transform: uppercase;
+
 }
 
 .hidden {
@@ -77,11 +86,71 @@ img.smaller {
 	width: 125px;
 }
 
+
+.container-frame {
+	position: fixed;
+	background-color: black;
+}
+.container-frame-top {
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 5px;
+}
+.container-frame-right {
+	top: 0;
+	right: 0;
+	width: 5px;
+	height: 100vh;
+}
+.container-frame-btm {
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+	height: 5px;
+}
+.container-frame-left {
+	top: 0;
+	left: 0;
+	width: 5px;
+	height: 100vh;
+}
+
+
 .container {
 	height: auto;
-	padding: 5rem 0 2rem 0;
+	min-height: calc(100vh - 5rem);
+	padding: 3rem 0 2rem 0;
 	display: flex;
 	justify-content: center;
+	background-color: white;
+
+	.nav {
+		text-align: right;
+		width: 80%;
+		margin-top: -1rem;
+		padding: 1rem 10%;
+		max-width: 1000px;
+		flex-basis: auto;
+		position: fixed;
+		background-color: rgba(255, 255, 255, 0.8);
+		z-index: 100;
+
+
+		.nav-btn {
+			margin: 0 10px 0 10px;
+			text-align: center;
+			display: inline-block;
+			width: 5em;
+			border: solid rgba(255, 255, 255, 0) 3px;
+			font-weight: bold;
+			font-size: 0.9rem;
+			text-transform: uppercase;
+		}
+		.nav-btn:hover{
+			border-color: black;
+		}
+	}
 
 	.side {
 		flex: 1;
@@ -90,12 +159,12 @@ img.smaller {
 		width: 80%;
 		max-width: 1000px;
 		flex-basis: auto;
+		padding-top: 100px;
 
 		.footer {
 			width: 100%;
-			padding: 5rem 0 2rem 0;
+			margin: 5rem 0 2rem 0;
 			font-size: 0.9rem;
-			margin: auto;
 		}
 	}
 }
@@ -111,13 +180,27 @@ img.smaller {
 }
 
 
-#info {
-	width: 65%;
-	min-width: 400px;
-}
-@media(max-width: 724px) {
+#about {
+	display: flex;
+	justify-content: space-around;
+
 	#info {
-		width: 100%;
+		flex: 2;
+		margin: 0 4rem;
+		margin-top: -1rem;
+	}
+	// @media(max-width: 724px) {
+	// 	#info {
+	// 		width: 100%;
+	// 	}
+	// }
+	#myface {
+		flex: 1;
+		margin-top: 8rem;
+
+		img {
+			width: 100%;
+		}
 	}
 }
 
@@ -128,7 +211,6 @@ img.smaller {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100% + 2rem;
-	// margin-left: -1rem;
 	margin: -1rem 0 0 -1rem;
 	justify-content: space-around;
 
@@ -326,19 +408,26 @@ img.smaller {
 	width: auto;
 	margin: 1rem -2rem;
 	font-size: .9rem;
-	// background-color: #DDDDDD;
 	background-color: white;
-}
-.img-table-box {
-	flex: 1;
-	padding: .5rem 0 0 .5rem;
-}
-.img-table-item {
-	margin: 0 0 -5px 0;
-	position: relative;
-}
-.img-table-item img {
-	width: 100%;
+
+	.img-table-box {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		padding: .5rem 0 0 .5rem;
+
+		.img-table-item {
+			margin: 0 0 -5px 0;
+			position: relative;
+		}
+		.img-table-item img {
+			width: 100%;
+		}
+		.narrow img {
+			width: auto;
+			padding: auto;
+		}
+	}
 }
 .attach {
 	margin-top: -1rem;
