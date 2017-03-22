@@ -4,13 +4,16 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway|Open+Sans|Roboto|Fira+Sans:300);
 
 @purple: #987FC5;
+@blue: #7facc5;
+@grey: #4a4a4a;
 @purple50: rgba(152, 127, 197, 0.8);
 @accentfont: 'Raleway';
+@basicfont: 'Fira Sans', sans-serif;
 
 
 body, html {
-	font-family: 'Fira Sans', sans-serif;
-	color: #4a4a4a;
+	font-family: @basicfont;
+	color: @grey;
 	font-size: 1.1rem;
 	line-height: 1.8rem;
 	background-color: black;
@@ -23,7 +26,7 @@ b {
 }
 
 a {
-	color: #7facc5;
+	color: @blue;
 	text-decoration: none;
 }
 a:hover {
@@ -71,6 +74,12 @@ h4 {
 	display: inline-block;
 }
 
+.font1 {
+	font-family: @basicfont;
+	font-weight: normal;
+	display: inline-block;
+}
+
 
 
 
@@ -88,6 +97,7 @@ img.smaller {
 
 
 .container-frame {
+	z-index: 101;
 	position: fixed;
 	background-color: black;
 }
@@ -180,11 +190,11 @@ img.smaller {
 }
 
 
-#about {
+.about {
 	display: flex;
 	justify-content: space-around;
 
-	#info {
+	.info {
 		flex: 2;
 		margin: 0 4rem;
 		margin-top: -1rem;
@@ -194,12 +204,90 @@ img.smaller {
 	// 		width: 100%;
 	// 	}
 	// }
-	#myface {
+	.myface {
 		flex: 1;
-		margin-top: 8rem;
+		margin-top: 6rem;
 
 		img {
 			width: 100%;
+		}
+
+		.smol {
+			font-size: 0.9rem;
+			.big {
+				display: inline-block;
+				font-size: 1rem;
+				font-weight: bold;
+				color: @purple;
+				text-transform: uppercase;
+				letter-spacing: 0.05rem;
+			}
+		}
+	}
+}
+
+
+#projects2 {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: space-around;
+
+	.proj-item {
+		display: flex;
+		width: 100%;
+		height: 200px;
+		margin: .75rem 0;
+	}
+	.proj-item a:hover {
+		border: none;
+	}
+	.proj-box {
+		display: flex;
+		align-items: center;
+		padding: 2rem;
+		background-size: cover;
+		position: relative;
+		width: 100%;
+
+		.proj-gradient {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to right, rgba(255, 255, 255, 0) 40%, white 70%);
+		}
+	}
+
+	.proj-content {
+		width: 100%;
+		position: relative;
+		text-align: left;
+		transition-duration: .2s;
+		font-size: .9rem;
+		line-height: 1.25rem;
+		padding-left: 70%;
+		color: @grey;
+
+		.proj-title {
+			font-family: @accentfont;
+			font-size: 1.1rem;
+			letter-spacing: 0.025rem;
+			text-transform: lowercase;
+			font-weight: bold;
+			margin: 0 0 1.5rem 0;
+
+			.proj-title-line {
+				margin: 1rem 0;
+				padding-bottom: 0.25rem;
+				border-bottom: 2px solid;
+			}
+		}
+		.proj-tags {
+			font-size: 0.75rem;
+			margin-top: 1rem;
+			text-transform: uppercase;
 		}
 	}
 }
