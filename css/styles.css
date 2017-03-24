@@ -125,10 +125,19 @@ img.smaller {
   border: solid rgba(255, 255, 255, 0) 3px;
   font-weight: bold;
   font-size: 0.9rem;
+  letter-spacing: .05rem;
   text-transform: uppercase;
+  color: #4a4a4a;
 }
-.container .nav .nav-btn:hover {
+.container .nav .click:hover {
   border-color: black;
+}
+.container .nav .current .click:hover {
+  border-color: #4a4a4a;
+  color: green;
+}
+.container .nav a:hover {
+  border: none;
 }
 .container .side {
   flex: 1;
@@ -209,7 +218,7 @@ img.smaller {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 40%, white 70%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 40%, white 65%);
 }
 #projects2 .proj-content {
   width: 100%;
