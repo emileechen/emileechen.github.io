@@ -199,22 +199,40 @@ img.smaller {
   text-transform: uppercase;
   letter-spacing: 0.05rem;
 }
-#projects2 {
+.about .smallface {
+  display: none;
+}
+@media (max-width: 875px) {
+  .about {
+    flex-direction: column;
+  }
+  .about .myface {
+    display: none;
+  }
+  .about .smallface {
+    display: initial;
+    padding: 5rem 20% 0 20%;
+  }
+  .about .smallface img {
+    width: 100%;
+  }
+}
+#projects {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
 }
-#projects2 .proj-item {
+#projects .proj-item {
   display: flex;
   width: 100%;
   height: 200px;
   margin: .75rem 0;
 }
-#projects2 .proj-item a:hover {
+#projects .proj-item a:hover {
   border: none;
 }
-#projects2 .proj-box {
+#projects .proj-box {
   display: flex;
   align-items: center;
   padding: 2rem;
@@ -224,23 +242,23 @@ img.smaller {
   background-size: 120%;
   transition: 0.45s;
 }
-@media (max-width: 840px) {
-  #projects2 .proj-box .proj-gradient {
+@media (max-width: 875px) {
+  #projects .proj-box .proj-gradient {
     display: none;
   }
-  #projects2 .proj-box .proj-content {
+  #projects .proj-box .proj-content {
     padding-left: 10%;
     padding-right: 20%;
     background-color: rgba(255, 255, 255, 0.7);
     transition: 0.45s;
   }
-  #projects2 .proj-box .proj-box:hover .proj-content {
+  #projects .proj-box .proj-box:hover .proj-content {
     padding-left: 20%;
     padding-right: 10%;
     transition: 0.45s;
   }
 }
-#projects2 .proj-box .proj-gradient {
+#projects .proj-box .proj-gradient {
   position: absolute;
   top: 0;
   left: 0;
@@ -251,7 +269,7 @@ img.smaller {
   z-index: 50;
   transition: opacity 0.45s;
 }
-#projects2 .proj-box .proj-gradient:before {
+#projects .proj-box .proj-gradient:before {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, white 60%);
   content: '';
   display: block;
@@ -264,19 +282,19 @@ img.smaller {
   z-index: 49;
   transition: opacity 0.45s;
 }
-#projects2 .proj-box:hover {
+#projects .proj-box:hover {
   background-position: 0;
   transition: 0.45s;
 }
-#projects2 .proj-box:hover .proj-gradient:before {
+#projects .proj-box:hover .proj-gradient:before {
   opacity: 1;
 }
-#projects2 .proj-box:hover .proj-content {
+#projects .proj-box:hover .proj-content {
   padding-left: 65%;
   padding-right: 5%;
   transition: 0.45s;
 }
-#projects2 .proj-content {
+#projects .proj-content {
   width: 100%;
   position: relative;
   text-align: left;
@@ -287,7 +305,7 @@ img.smaller {
   z-index: 51;
   transition: 0.45s;
 }
-#projects2 .proj-content .proj-title {
+#projects .proj-content .proj-title {
   font-family: 'Raleway';
   font-size: 1.1rem;
   letter-spacing: 0.025rem;
@@ -295,176 +313,37 @@ img.smaller {
   font-weight: bold;
   margin: 0 0 1.5rem 0;
 }
-#projects2 .proj-content .proj-title .proj-title-line {
+#projects .proj-content .proj-title .proj-title-line {
   margin: 1rem 0;
   padding-bottom: 0.25rem;
   border-bottom: 2px solid;
 }
-#projects2 .proj-content .proj-tags {
+#projects .proj-content .proj-tags {
   font-size: 0.75rem;
   margin-top: 1rem;
   text-transform: uppercase;
 }
-@media (max-width: 840px) {
-  #projects2 .proj-box .proj-gradient {
+@media (max-width: 875px) {
+  #projects .proj-box .proj-gradient {
     display: none;
   }
-  #projects2 .proj-box .proj-content {
+  #projects .proj-box .proj-content {
     padding: 1rem 0;
     padding-left: 10%;
     padding-right: 20%;
     background-color: rgba(255, 255, 255, 0.8);
     transition: 0.45s;
   }
-  #projects2 .proj-box:hover .proj-content {
+  #projects .proj-box:hover .proj-content {
     padding-left: 20%;
     padding-right: 10%;
     transition: 0.45s;
   }
 }
 @media (max-width: 500px) {
-  #projects2 .proj-content .proj-desc {
+  #projects .proj-content .proj-desc {
     display: none;
   }
-}
-#projects {
-  display: flex;
-  flex-wrap: wrap;
-  width: 102%;
-  margin: -1rem 0 0 -1rem;
-  justify-content: space-around;
-}
-#projects .proj-item {
-  display: flex;
-  padding: 0 0 1rem 1rem;
-  width: calc(31.33333%);
-}
-@media (max-width: 1100px) {
-  #projects .proj-item {
-    width: calc(47%);
-  }
-}
-@media (max-width: 724px) {
-  #projects .proj-item {
-    width: calc(100%);
-  }
-}
-#projects .proj-item:hover {
-  border: 0;
-}
-#projects .proj-item:before {
-  content: '';
-  display: table;
-  padding-top: 100%;
-  float: left;
-  border: 0;
-}
-#projects .proj-link {
-  margin: 0;
-  border: 0;
-}
-#projects .proj-box {
-  display: flex;
-  align-items: center;
-  padding: 2rem;
-  background-size: cover;
-  position: relative;
-  width: 100%;
-}
-#projects .proj-box:before {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  z-index: 0;
-  background-color: #987FC5;
-  opacity: 0;
-  transition-duration: .2s;
-}
-#projects .proj-box:hover:before {
-  display: block;
-  opacity: .8;
-  transition-duration: .2s;
-}
-#projects .proj-box:hover .proj-content {
-  opacity: 1;
-  transition-duration: .2s;
-}
-#projects .proj-content {
-  width: 100%;
-  position: relative;
-  text-align: center;
-  color: white;
-  opacity: 0;
-  transition-duration: .2s;
-  font-size: .9rem;
-  line-height: 1.25rem;
-}
-#projects .proj-content .proj-title {
-  font-family: 'Raleway';
-  margin: 1rem 0;
-  padding: .5rem;
-  border: 2px solid;
-  font-size: 1.25rem;
-  letter-spacing: 0.025rem;
-  text-transform: uppercase;
-  font-weight: normal;
-}
-#projects .proj-content .proj-tags {
-  font-size: 0.8rem;
-  margin-top: 1rem;
-  text-transform: uppercase;
-}
-#projects .frame {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-#projects .frames {
-  background: white;
-  position: absolute;
-  transition-duration: .2s;
-}
-#projects .frame-top {
-  width: 0%;
-  top: 1rem;
-  left: 1rem;
-  height: 1px;
-}
-#projects .proj-box:hover .frame-top {
-  width: calc(96%);
-}
-#projects .frame-bottom {
-  width: 0%;
-  bottom: 1rem;
-  right: 1rem;
-  height: 1px;
-}
-#projects .proj-box:hover .frame-bottom {
-  width: calc(96%);
-}
-#projects .frame-left {
-  height: 0%;
-  top: 1rem;
-  left: 1rem;
-  width: 1px;
-}
-#projects .proj-box:hover .frame-left {
-  height: calc(96%);
-}
-#projects .frame-right {
-  height: 0%;
-  bottom: 1rem;
-  right: 1rem;
-  width: 1px;
-}
-#projects .proj-box:hover .frame-right {
-  height: calc(96%);
 }
 .uhm {
   height: 100vh;
