@@ -182,14 +182,14 @@ img.smaller {
 }
 .about .myface {
   flex: 1;
-  margin-top: 6rem;
+  margin-top: 1rem;
 }
 .about .myface img {
   width: 100%;
 }
 .about .myface .smol {
   font-size: 0.9rem;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 .about .myface .smol .big {
   display: inline-block;
@@ -220,8 +220,8 @@ img.smaller {
   padding: 2rem;
   position: relative;
   width: 100%;
-  background-position: 0;
-  background-size: 80%;
+  background-position: 20%;
+  background-size: 120%;
   transition: 0.45s;
 }
 #projects2 .proj-box .proj-gradient {
@@ -249,7 +249,7 @@ img.smaller {
   transition: opacity 0.45s;
 }
 #projects2 .proj-box:hover {
-  background-position: 20%;
+  background-position: 0;
   transition: 0.45s;
 }
 #projects2 .proj-box:hover .proj-gradient:before {
