@@ -167,7 +167,7 @@ img.smaller {
   font-size: 1.5rem;
 }
 .icon:hover {
-  color: #9cb6c5;
+  color: #7facc5;
   border-bottom: 0;
   padding-bottom: 0;
 }
@@ -223,6 +223,22 @@ img.smaller {
   background-position: 20%;
   background-size: 120%;
   transition: 0.45s;
+}
+@media (max-width: 840px) {
+  #projects2 .proj-box .proj-gradient {
+    display: none;
+  }
+  #projects2 .proj-box .proj-content {
+    padding-left: 10%;
+    padding-right: 20%;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: 0.45s;
+  }
+  #projects2 .proj-box .proj-box:hover .proj-content {
+    padding-left: 20%;
+    padding-right: 10%;
+    transition: 0.45s;
+  }
 }
 #projects2 .proj-box .proj-gradient {
   position: absolute;
@@ -288,6 +304,28 @@ img.smaller {
   font-size: 0.75rem;
   margin-top: 1rem;
   text-transform: uppercase;
+}
+@media (max-width: 840px) {
+  #projects2 .proj-box .proj-gradient {
+    display: none;
+  }
+  #projects2 .proj-box .proj-content {
+    padding: 1rem 0;
+    padding-left: 10%;
+    padding-right: 20%;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: 0.45s;
+  }
+  #projects2 .proj-box:hover .proj-content {
+    padding-left: 20%;
+    padding-right: 10%;
+    transition: 0.45s;
+  }
+}
+@media (max-width: 500px) {
+  #projects2 .proj-content .proj-desc {
+    display: none;
+  }
 }
 #projects {
   display: flex;
@@ -465,13 +503,14 @@ img.smaller {
   width: auto;
   margin: 1rem -2rem;
   font-size: .9rem;
+  line-height: 1.3rem;
   background-color: white;
 }
 .img-table .img-table-box {
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: .5rem 0 0 .5rem;
+  padding: 0 0 0 .5rem;
 }
 .img-table .img-table-box .img-table-item {
   margin: 0 0 -5px 0;
@@ -484,6 +523,11 @@ img.smaller {
   width: auto;
   padding: auto;
 }
+.img-table .img-table-box .cap {
+  width: 80%;
+  text-align: center;
+  padding: .5rem 0;
+}
 .attach {
   margin-top: -1rem;
 }
@@ -494,11 +538,13 @@ img.smaller {
   font-size: .8rem;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.5);
-  padding: .2rem 1.5rem .2rem 1rem;
+  padding: .2rem 1rem;
+  line-height: .8rem;
 }
 .btmrgt {
   text-align: right;
   bottom: 1rem;
+  padding-right: 2rem;
   right: 0;
 }
 .toprgt {

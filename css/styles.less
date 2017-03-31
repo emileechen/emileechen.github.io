@@ -7,6 +7,7 @@
 @blue: #7facc5;
 @grey: #4a4a4a;
 @purple50: rgba(152, 127, 197, 0.8);
+@mid: 900px;
 @accentfont: 'Raleway';
 @basicfont: 'Fira Sans', sans-serif;
 
@@ -201,11 +202,11 @@ img.smaller {
 }
 
 .icon {
-	color: #4a4a4a;
+	color: @grey;
 	font-size: 1.5rem;
 }
 .icon:hover {
-	color: #9cb6c5;
+	color: @blue;
 	border-bottom: 0;
 	padding-bottom: 0;
 }
@@ -274,6 +275,23 @@ img.smaller {
 		background-position: 20%;
 		background-size: 120%;
 		transition: 0.45s;
+
+		@media(max-width: @mid) {
+			.proj-gradient {
+				display: none;
+			}
+			.proj-content {
+				padding-left: 10%;
+				padding-right: 20%;
+				background-color: rgba(255, 255, 255, 70%);
+				transition: 0.45s;
+			}
+			.proj-box:hover .proj-content {
+				padding-left: 20%;
+				padding-right: 10%;
+				transition: 0.45s;
+			}
+		}
 
 		.proj-gradient {
 			position: absolute;
@@ -344,6 +362,34 @@ img.smaller {
 			text-transform: uppercase;
 		}
 	}
+
+	@media(max-width: @mid) {
+		.proj-box {
+			.proj-gradient {
+				display: none;
+			}
+			.proj-content {
+				padding: 1rem 0;
+				padding-left: 10%;
+				padding-right: 20%;
+				background-color: rgba(255, 255, 255, 80%);
+				transition: 0.45s;
+			}
+		}
+		.proj-box:hover .proj-content {
+			padding-left: 20%;
+			padding-right: 10%;
+			transition: 0.45s;
+		}
+	}
+	@media(max-width: 500px) {
+		.proj-content {
+			.proj-desc {
+				display: none;
+			}
+		}
+	}
+
 }
 
 
@@ -550,13 +596,14 @@ img.smaller {
 	width: auto;
 	margin: 1rem -2rem;
 	font-size: .9rem;
+	line-height: 1.3rem;
 	background-color: white;
 
 	.img-table-box {
 		flex: 1;
 		display: flex;
 		justify-content: center;
-		padding: .5rem 0 0 .5rem;
+		padding: 0 0 0 .5rem;
 
 		.img-table-item {
 			margin: 0 0 -5px 0;
@@ -568,6 +615,11 @@ img.smaller {
 		.narrow img {
 			width: auto;
 			padding: auto;
+		}
+		.cap {
+			width: 80%;
+			text-align: center;
+			padding: .5rem 0;
 		}
 	}
 }
@@ -582,11 +634,13 @@ img.smaller {
 	font-size: .8rem;
 	position: absolute;
 	background-color: rgba(255, 255, 255, 0.5);
-	padding: .2rem 1.5rem .2rem 1rem;
+	padding: .2rem 1rem;
+	line-height: .8rem;
 }
 .btmrgt {
 	text-align: right;
 	bottom: 1rem;
+	padding-right: 2rem;
 	right: 0;
 }
 .toprgt {
