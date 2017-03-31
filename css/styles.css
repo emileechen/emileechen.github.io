@@ -128,13 +128,22 @@ img.smaller {
   letter-spacing: .05rem;
   text-transform: uppercase;
   color: #4a4a4a;
+  transition: 0.45s;
 }
-.container .nav .click:hover {
-  border-color: black;
+.container .nav .click .btn-underline {
+  background-color: #987FC5;
+  height: 3px;
+  width: 0%;
+  top: 0;
+  left: 0;
+  transition: 0.45s;
 }
-.container .nav .click:hover .current {
-  border-color: #4a4a4a;
-  color: green;
+.container .nav .click:hover .btn-underline {
+  width: 100%;
+  transition: 0.45s;
+}
+.container .nav .current {
+  border: solid black 3px;
 }
 .container .nav a:hover {
   border: none;
@@ -180,6 +189,7 @@ img.smaller {
 }
 .about .myface .smol {
   font-size: 0.9rem;
+  padding: 0 1rem;
 }
 .about .myface .smol .big {
   display: inline-block;

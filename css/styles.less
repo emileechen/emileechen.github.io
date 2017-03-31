@@ -157,16 +157,26 @@ img.smaller {
 			letter-spacing: .05rem;
 			text-transform: uppercase;
 			color: @grey;
+			transition: 0.45s;
 		}
-		.click:hover{
-			border-color: black;
+		.click {
+			.btn-underline {
+				background-color: @purple;
+				height: 3px;
+				width: 0%;
+				top: 0;
+				left: 0;
+				transition: 0.45s;
+			}
 		}
-		// .current {
-		// 	border: solid black 3px;
-		// }
-		.click:hover .current {
-			border-color: @grey;
-			color: green;
+		.click:hover {
+			.btn-underline {
+				width: 100%;
+				transition: 0.45s;
+			}
+		}
+		.current {
+			border: solid black 3px;
 		}
 	}
 	.nav a:hover {
@@ -225,6 +235,7 @@ img.smaller {
 
 		.smol {
 			font-size: 0.9rem;
+			padding: 0 1rem;
 			.big {
 				display: inline-block;
 				font-size: 1rem;
