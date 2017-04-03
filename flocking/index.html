@@ -40,50 +40,101 @@
 				<h1>Flocking</h1>
 
 					<p>
+						<a href="https://github.com/emileechen/flocking" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
+					</p>
+
+					<p>
 						This project is done in collaboration with <a href="http://www.kellykcho.com/" target="_blank">Kelly Cho</a>.
 					</p>
 
 					<h2>I. Overview</h2>
 
 						<p>
-							Text.
+							The behaviour of a group of animals, for example schooling fish or flocking birds, is one that can be easily observed in nature, but perhaps not so simple to describe in computer animation. Instead of individually animating or scripting the motion of each agent, a  system of agents that react dynamically to their surrounding agents is a much better solution to flocking in computer animation.
+						</p>
+
+						<p>
+							An approach involving three steering behaviours (separation, alignment, and cohesion) was first described in Reynolds' 1987 SIGGRAPH paper, <a href="http://www.red3d.com/cwr/papers/1987/boids.html" target="_blank">Flocks, Herds, and Schools: A Distributed Behavioral Model (Reynolds, 1987)</a>. There have been several further papers since, which build upon this model. One of which is Hemelrijk and Hildenbrandt's paper, <a href="https://www.researchgate.net/publication/224010876_Self-Organized_Shape_and_Frontal_Density_of_Fish_Schools" target="_blank">Self‐Organized Shape and Frontal Density of Fish Schools (Hemelrijk and Hildenbrandt, 2007)</a>, which describes refined weights and adds other force factors to the original model in order to more accurate represent schooling fish. We used this paper as the basis for our project.
 						</p>
 
 
 					<h2>II. Live Demo</h2>
-
-						<center><canvas data-processing-sources="flocking.pde"></canvas></center>
-
-						<p>
-							1 - Turn on/off separation <br>
-							2 - Turn on/off alignment <br>
-							3 - Turn on/off alignment <br>
-							4 - Turn on/off radii render <br>
-							5 - Turn on/off dynamic radii <br>
-							LMB - Add agent <br>
-							RMB - Add obstacle
-						</p>
+							
+						<div class="img-table">
+							<div class="img-table-box">
+								<canvas data-processing-sources="flocking.pde"></canvas>
+							</div>
+						</div>
+						<div class="img-table attach narrow">
+							<div class="img-table-box">
+								<br>
+								Controls<br>
+								<br>
+								LMB - Add agent <br>
+								RMB - Add obstacle
+							</div>
+							<div class="img-table-box">
+								1 - Turn on/off separation <br>
+								2 - Turn on/off alignment <br>
+								3 - Turn on/off alignment <br>
+								4 - Turn on/off radii render <br>
+								5 - Turn on/off dynamic radii
+							</div>
+						</div>
 
 
 					<h2>III. Implementation</h2>
 
 						<h3>Steering Forces</h3>
 
+							<p>
+								There are three steering forces that describe the basic movement of an agent.
+							</p>
+
+
 							<ul>
-								<li>Cohesion</li>
-								<li>Alignment</li>
-								<li>Separation</li>
+								<li>Cohesion - toward the average location of its neighbours</li>
+								<li>Alignment - toward the average direction of its neighbours</li>
+								<li>Separation - away from the average location of its neighbours to avoid collision and crowding</li>
 							</ul>
+
+							<h4>Additional Forces</h4>
+
+							<ul>
+								<li>Cruise Speed - toward the average location of its neighbours</li>
+								<li>Random - a small force in a random direction to </li>
+							</ul>
+							
 
 						<h3>Radii of Perception</h3>
 
-							<h4>Density Dependent Radii</h4>
+							<div class="img-table">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/radii.png">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/radii_blindangles.png">
+									</div>
+								</div>
+							</div>
+							<div class="img-table attach">
+								<div class="img-table-box">
+									<div class="cap">
+									Left: Radii visualization; Right: 
+									</div>
+								</div>
+							</div>
+
+							<h4>Blind Angles</h4>
 
 							<p>
 								Text.
 							</p>
 
-							<h4>Blind Angles</h4>
+							<h4>Density Dependent Radii</h4>
 
 							<p>
 								Text.
@@ -98,7 +149,7 @@
 
 					<div class="img-table">
 						<div class="img-table-box">
-							<div class="img-table-item narrow">
+							<div class="img-table-item smaller">
 								<img src="img/obstacles.gif">
 							</div>
 						</div>

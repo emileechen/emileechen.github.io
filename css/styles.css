@@ -379,7 +379,6 @@ img.smaller {
   display: flex;
   justify-content: space-around;
   padding: 0 0 .5rem 0;
-  width: auto;
   margin: 1rem -2rem;
   font-size: .9rem;
   line-height: 1.3rem;
@@ -390,15 +389,20 @@ img.smaller {
   display: flex;
   justify-content: center;
   padding: 0 0 0 .5rem;
+  width: auto;
 }
 .img-table .img-table-box .img-table-item {
+  width: 100%;
   margin: 0 0 -5px 0;
   position: relative;
 }
 .img-table .img-table-box .img-table-item img {
   width: 100%;
 }
-.img-table .img-table-box .narrow img {
+.img-table .img-table-box .smaller {
+  text-align: center;
+}
+.img-table .img-table-box .smaller img {
   width: auto;
   padding: auto;
 }
@@ -406,6 +410,12 @@ img.smaller {
   width: 80%;
   text-align: center;
   padding: .5rem 0;
+}
+.narrow {
+  width: 80%;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .attach {
   margin-top: -1rem;
