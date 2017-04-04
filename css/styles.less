@@ -454,7 +454,7 @@ img.smaller {
 .img-table {
 	display: flex;
 	justify-content: space-around;
-	padding: 0 0 .5rem 0;
+	padding: 0 0 .5rem;
 	margin: 1rem -2rem;
 	font-size: .9rem;
 	line-height: 1.3rem;
@@ -464,7 +464,7 @@ img.smaller {
 		flex: 1;
 		display: flex;
 		justify-content: center;
-		padding: 0 0 0 .5rem;
+		margin: 0 0 0 .5rem;
 		width: auto;
 
 		.img-table-item {
@@ -482,12 +482,10 @@ img.smaller {
 			width: auto;
 			padding: auto;
 		}
-		.cap {
-			width: 80%;
-			text-align: center;
-			padding: .5rem 0;
-		}
 	}
+}
+.wide100 {
+	margin: 1rem 0;
 }
 .narrow {
 	width: 80%;
@@ -495,11 +493,17 @@ img.smaller {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
+.cap {
+	padding-top: .5rem
+}
 .attach {
 	margin-top: -1rem;
 }
 .attach > div{
 	padding-top: 0;
+}
+.centre {
+	text-align: center;
 }
 
 .caption {
@@ -519,6 +523,17 @@ img.smaller {
 	text-align: right;
 	top: 1rem;
 	right: 0;
+}
+
+
+.code-block {
+	font-family: monospace;
+	width: 90%;
+	color: #6f6f6f;
+	background-color: #f1f1f1;
+	border: 1px solid #c1c1c1;
+	margin: 1rem auto;
+	padding: 1rem;
 }
 
 

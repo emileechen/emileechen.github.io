@@ -9,11 +9,12 @@
 	<head>
 		<title>Emilee Chen</title>
 		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/css/prettyprint.css">
 		<link rel="icon" type="image/png" href="/favicon.png">
 	</head>
 
-	<body>
+	<body onload="PR.prettyPrint()">
 
 		<div class="container-frame container-frame-top"></div>
 		<div class="container-frame container-frame-right"></div>
@@ -62,10 +63,10 @@
 							
 						<div class="img-table">
 							<div class="img-table-box">
-								<canvas data-processing-sources="flocking.pde"></canvas>
+								<!-- <canvas data-processing-sources="flocking.pde"></canvas> -->
 							</div>
 						</div>
-						<div class="img-table attach narrow">
+						<div class="img-table attach narrow cap">
 							<div class="img-table-box">
 								<br>
 								Controls<br>
@@ -88,27 +89,58 @@
 						<h3>Steering Forces</h3>
 
 							<p>
-								There are three steering forces that describe the basic movement of an agent.
+								There are three steering forces that describe the basic movement of an agent. Each of these forces take into account a subset of all the other agents to consider in their calculations.
 							</p>
-
 
 							<ul>
 								<li>Cohesion - toward the average location of its neighbours</li>
 								<li>Alignment - toward the average direction of its neighbours</li>
-								<li>Separation - away from the average location of its neighbours to avoid collision and crowding</li>
+								<li>Separation - away from the average location of its neighbours</li>
 							</ul>
+
+							<div class="img-table">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/cohesion.png">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/alignment.png">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/separation.png">
+									</div>
+								</div>
+							</div>
+
+							<p>
+								The cohesion force allows the agents to be able to find each other and move towards each other. The alignment force gives the agents a sense of cohesive direction. The separation force prevents agents from any collisions and over crowding.
+							</p>
 
 							<h4>Additional Forces</h4>
 
 							<ul>
-								<li>Cruise Speed - toward the average location of its neighbours</li>
-								<li>Random - a small force in a random direction to </li>
+								<li>Random Noise - a small force in a random direction to account for stochastic influences</li>
+								<li>Cruise Speed - a force based on all the other forces that keeps the agent from moving too slow or fast</li>
 							</ul>
-							
+
+							<h4>Weights</h4>
+
+							<p>
+								Each of these forces are 
+							</p>
+
 
 						<h3>Radii of Perception</h3>
 
-							<div class="img-table">
+							<p>
+								Each steering force has a radius of perception.
+							</p>
+
+							<div class="img-table narrow">
 								<div class="img-table-box">
 									<div class="img-table-item">
 										<img src="img/radii.png">
@@ -120,11 +152,9 @@
 									</div>
 								</div>
 							</div>
-							<div class="img-table attach">
+							<div class="img-table attach cap">
 								<div class="img-table-box">
-									<div class="cap">
-									Left: Radii visualization; Right: 
-									</div>
+									Left: Radii visualization; Right: Radii visualization with blind angles.
 								</div>
 							</div>
 
@@ -136,14 +166,44 @@
 
 							<h4>Density Dependent Radii</h4>
 
+							<pre class="prettyprint lang-java">
+s = smoothness * Δt;	// Weight for interpolation
+d = max_radius - (influence * num_neighbors(t));	// Density dependent radius
+radius(t + Δt) = max(min_radius, ((1 - s) * radius(t)) + (s * d));</pre>
+
 							<p>
-								Text.
+								The smoothness value determines how quickly the radius is allowed to change per calculation by prioritizing either the current radius or the calculated density dependent radius. The smaller the smoothness value, the smoother the change in radius.
+							</p>
+
+							<p>
+								The influence value determines how many neighbours it requires for the radius to constrict. The larger the influence value, the more quickly the radius reduces. If this value is too large, then the agents display a swirling behaviour since it effectively turns off alignment.
 							</p>
 
 						<h3>Obstacle Avoidance</h3>
 
 						<p>
-							Text.
+							Referencing Craig Reynolds’ paper <a href="http://www.red3d.com/cwr/steer/gdc99/">Steering Behaviors for Autonomous Characters (Reynolds, 1999)</a>, we also implemented obstacle avoidance. While the basic idea is the same as described in this paper, instead of having a rectangular zone of detection in front of each agent, we chose to instead have the obstacle determine this zone.
+						</p>
+
+						<p>
+							Each obstacle has attributes position, radius, and buffer radius. The buffer radius determines how large of a zone around the obstacle our agents should avoid.
+						</p>
+
+						<p>
+							To calculate this obstacle avoidance force (to be referred to as avoidance from now on), every existing obstacle is looped through to find relevant obstacles (must in the agent’s direct path) and then from those obstacles, determine the closest, and therefore most relevant obstacle.
+						</p>
+
+						<p>
+							To determine whether an obstacle is relevant or not:
+						</p>
+
+						<ol>
+							<li>Check whether or not the obstacle is in front of the agent by calculating the dot product of the forward vector and the vector toward the obstacle.</li>
+							<li>Check whether this agent is going to be within the buffer zone in the next time step by projecting the vector from the agent to the obstacle onto the agent’s speed vector and checking if the length of this vector is greater than the sum of the radius and the buffer radius.</li>
+						</ol>
+
+						<p>
+							Once the most relevant obstacle is determined, the avoidance force direction is simply the normal out of the obstacle at the possible point of intersection on the obstacle, if the agent continues on the current trajectory. This can be calculated with a simple line sphere intersection algorithm.
 						</p>
 
 
@@ -161,6 +221,21 @@
 					</div>
 
 
+					<h2>IV. Future Work</h2>
+
+					<p>
+						The next step would be to move this simulation into the 3D realm. All the forces work the same way and should only require changes such as adding pitch and roll forces to keep the agents largely horizontal and right side up.
+					</p>
+
+					<p>
+						Some additional features could include obstacles of different shapes, such as rectangle or lines, and multiple types of agents that flock differently (based on body length, radii, etc.) and do not flock with agents that are not of their same type.
+					</p>
+
+					<p>
+						Ideally, we should also implement a spatially sorted data structure in order to handle simulations of very large number of agents.
+					</p>
+
+
 				<div class="footer">
 					<a href="https://www.instagram.com/emileechen/" class="icon"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 					<a href="https://github.com/emileechen" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
@@ -176,7 +251,9 @@
 		<script type="text/javascript" src="/js/smoothscroll.js"></script>
 		<script type="text/javascript" src="/js/magicstuff.js"></script>
 		<script type="text/javascript" src="/css/less.js"></script>
+		<script type="text/javascript" src="/js/prettify.js"></script>
 		<script type="text/javascript" src="/js/processing.js"></script>
+
 
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
