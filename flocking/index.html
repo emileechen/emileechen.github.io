@@ -130,14 +130,14 @@
 							<h4>Weights</h4>
 
 							<p>
-								Each of these forces are 
+								Each of these forces are weighted with some scaling parameter that determines the importance of each force. Of course, these weights can be changed to simulate different behaviours.
 							</p>
 
 
 						<h3>Radii of Perception</h3>
 
 							<p>
-								Each steering force has a radius of perception.
+								Each steering force has a radius of perception. These radii describe the zones in which each steering force selects the subset of neighbours to act upon.
 							</p>
 
 							<div class="img-table narrow">
@@ -161,13 +161,21 @@
 							<h4>Blind Angles</h4>
 
 							<p>
-								Text.
+								Realistically, an agents's behavior should only be impacted by neighbours it can perceive. Since cohesion motivated mainly through visual cues, there is a blind angle in that radius directly behind the agent. Alignment is influenced primarily through the lateral line system (an organ system found in fish that detects movement, pressure, etc. in the surrounding water), so it has blind angles both in the front and the back.
 							</p>
 
 							<h4>Density Dependent Radii</h4>
 
+							<p>
+								Likewise, an agent's senses is also impacted by its surroundings. While a static radius leads to fairly accurate flocking or schooling, in actuality an agent's radii of perception are limited by the density of its neighbouring agents. For example, a crowded agent would be able to percieve neighbours in a small radius around it than an agent surrounded by only a few neighbours. Therefore, the radii can be better calculated as a linear interpolation of the previous radii and a newly calculated density dependent radii.
+							</p>
+
+							<p>
+								This calculation is done for the cohesion and alignment radii. The separation radius stays constant because an agent's desire to have personal space should not change with the amount of neighbours it has.
+							</p>
+
 							<pre class="prettyprint lang-java">
-s = smoothness * Δt;	// Weight for interpolation
+s = smoothness * Δt;					// Weight for interpolation
 d = max_radius - (influence * num_neighbors(t));	// Density dependent radius
 radius(t + Δt) = max(min_radius, ((1 - s) * radius(t)) + (s * d));</pre>
 
@@ -180,6 +188,18 @@ radius(t + Δt) = max(min_radius, ((1 - s) * radius(t)) + (s * d));</pre>
 							</p>
 
 						<h3>Obstacle Avoidance</h3>
+
+						<p>
+							To make this simulation more interesting, we can make our agents interact with the environment. Obstacles are the most basic form of environment.
+						</p>
+						
+						<div class="img-table">
+							<div class="img-table-box">
+								<div class="img-table-item smaller">
+									<img src="img/obstacles.gif">
+								</div>
+							</div>
+						</div>
 
 						<p>
 							Referencing Craig Reynolds’ paper <a href="http://www.red3d.com/cwr/steer/gdc99/">Steering Behaviors for Autonomous Characters (Reynolds, 1999)</a>, we also implemented obstacle avoidance. While the basic idea is the same as described in this paper, instead of having a rectangular zone of detection in front of each agent, we chose to instead have the obstacle determine this zone.
@@ -205,20 +225,6 @@ radius(t + Δt) = max(min_radius, ((1 - s) * radius(t)) + (s * d));</pre>
 						<p>
 							Once the most relevant obstacle is determined, the avoidance force direction is simply the normal out of the obstacle at the possible point of intersection on the obstacle, if the agent continues on the current trajectory. This can be calculated with a simple line sphere intersection algorithm.
 						</p>
-
-
-					<div class="img-table">
-						<div class="img-table-box">
-							<div class="img-table-item smaller">
-								<img src="img/obstacles.gif">
-							</div>
-						</div>
-					</div>
-					<div class="img-table attach">
-						<div class="img-table-box">
-							Caption
-						</div>
-					</div>
 
 
 					<h2>IV. Future Work</h2>
