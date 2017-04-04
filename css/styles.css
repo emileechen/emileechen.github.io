@@ -2,7 +2,7 @@
 body,
 html {
   font-family: 'Fira Sans', sans-serif;
-  color: #4a4a4a;
+  color: #4A4A4A;
   font-size: 1.1rem;
   line-height: 1.8rem;
   background-color: black;
@@ -13,7 +13,7 @@ b {
   color: #987FC5;
 }
 a {
-  color: #7facc5;
+  color: #7FACC5;
   text-decoration: none;
 }
 a:hover {
@@ -127,7 +127,7 @@ img.smaller {
   font-size: 0.9rem;
   letter-spacing: .05rem;
   text-transform: uppercase;
-  color: #4a4a4a;
+  color: #4A4A4A;
   transition: 0.45s;
 }
 .container .nav .click .btn-underline {
@@ -163,11 +163,12 @@ img.smaller {
   font-size: 0.9rem;
 }
 .icon {
-  color: #4a4a4a;
+  color: #4A4A4A;
+  padding: .1rem;
   font-size: 1.5rem;
 }
 .icon:hover {
-  color: #7facc5;
+  color: #7FACC5;
   border-bottom: 0;
   padding-bottom: 0;
 }
@@ -301,7 +302,7 @@ img.smaller {
   font-size: .9rem;
   line-height: 1.25rem;
   padding-left: 70%;
-  color: #4a4a4a;
+  color: #4A4A4A;
   z-index: 51;
   transition: 0.45s;
 }
