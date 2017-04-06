@@ -1,0 +1,394 @@
+
+			<!-- made by Emilee Chen
+					mar 2017
+						@ emileechen.github.io -->
+
+
+<!doctype html>
+<html>
+	<head>
+		<title>Emilee Chen</title>
+		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/css/prettyprint.css">
+		<link rel="icon" type="image/png" href="/favicon.png">
+	</head>
+
+	<body onload="PR.prettyPrint()">
+
+		<div class="container-frame container-frame-top"></div>
+		<div class="container-frame container-frame-right"></div>
+		<div class="container-frame container-frame-btm"></div>
+		<div class="container-frame container-frame-left"></div>
+
+		<div class="container">
+
+			<div class="nav">
+				<a href="/">
+					<div class="nav-btn click">Work
+						<div class="btn-underline"></div>
+					</div>
+				</a>
+				<a href="/about">
+					<div class="nav-btn click">About
+						<div class="btn-underline"></div>
+					</div>
+				</a>
+			</div>
+
+			<div class="main">
+
+				<h1>Image Alignment</h1>
+
+					<h2>I. Overview</h2>
+
+						<p>
+							From 1907 to 1915, Sergei Mikhailovich Prokudin-Gorskii, a Russian chemist and photographer, travelled around Russia documenting the Russian Empire with colour photography. He was able to do this on black and white film, by taking three exposures of the same scene with red, green, and blue filters. The three photographs can then can be projected through red, green, and blue filters which superimposes into a single, fully coloured photograph when aligned correctly.
+						</p>
+
+						<div class="right">
+							<div class="img-table wide100">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/cathedral_a.jpg">
+									</div>
+								</div>
+							</div>
+							<div class="img-table wide100 attach cap">
+								<div class="img-table-box">
+									The original cathedral.jpg showing the three channels that it will be cropped into.
+								</div>
+							</div>
+						</div>
+
+						<p>
+							The Library of Congress purchased these plates from Prokudin-Gorskii's heirs, and scanned these glass plates and uploaded the collection online. The goal of this project is to write a program that can take these RGB scans and align the three images and combine to display them in full colour the way they were meant to be viewed.
+						</p>
+
+
+					<h2>II. Image Alignment</h2>
+
+						<p>
+							To recreate these photographs, the three separate red, green, and blue filtered images (from now on to be referred to as the R, G, B channels) must be aligned correctly. Since the original images are stacked on top of one another and have artifacts, some preprocessing must be done.
+						</p>
+
+						<p>
+							This is my step by step approach:
+						</p>
+						
+						<ol>
+							<li>
+								Crop the original image into three separate channel images by using <span class="code">height / 3</span> as each channel's height, <span class="code">ch_height</span>.<br>
+								i.e. The red channel would have corners <span class="code">(0, ch_height * 2), (width, ch_height * 2), (width, ch_height * 3), (0, ch_height * 3)</span>
+							</li>
+							<li>
+								Crop each channel by some arbitrary percentage on each side.<br>
+								This is done so that the meat of the image can be considered in the alignment, without the borders and other blemishes affecting any calculations.
+							</li>
+							<li>
+								Align the cropped red and green channels to the blue channel to get (x, y) displacements for both channels. <br>
+								There are many algorithms that can be used to achieve this, and will be discussed below.
+							</li>
+							<li>
+								Apply the displacements onto the uncropped versions of their corresponding channels. <br>
+								The channels without their borders cropped is used instead of the cropped versions to preserve as much of the image as possible.
+							</li>
+							<li>
+								Merge the three channels together into one final image and save.
+							</li>
+						</ol>
+
+						<div class="img-table narrow">
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/cathedral_b.jpg">
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/cathedral_c.jpg">
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/cathedral_d.jpg">
+								</div>
+							</div>
+						</div>
+						<div class="img-table attach cap narrow">
+							<div class="img-table-box">
+								The images above show the area of the channels that will be used in aligning.
+							</div>
+						</div>
+
+						<h3>Na&#xef;ve Algorithms</h3>
+
+							<p>
+								There are many image aligning methods, but the simplest way is to exhaustively compare the R, G, and B channels to find matches in intensity. To align the images, the R and G channels are being compared against the B channel separately in some arbitrary x, y shift range. I chose to use a <b>31 by 31 search range</b> (shifts 15 pixels left, right, up, and down).
+							</p>
+
+							<p>
+								I explored two heuristics to determine the shift amount for the best alignment:
+							</p>
+
+							<h4>Sum of Squared Differences (SSD)</h4>
+
+								<pre class="prettyprint lang-python">ssd = sum( sum( (image1 - image2) ^ 2 ) )</pre>
+
+								<p>
+									The SSD is an enumeration of similarities in colour intensities. The smaller this value, the smaller the difference, and thus, the better the match.
+								</p>
+
+							<h4>Normalized Cross Correlation (NCC)</h4>
+
+								<pre class="prettyprint lang-python">ncc = innerproduct( image1 / ||image1||, image2 / ||image2|| )</pre>
+
+								<p>
+									NCC normalizes the image being shifted, and then takes the inner product of that image and the one it is being compared to as a vector. The larger this value, the closer the two images are, and thus, the better the match.
+								</p>
+
+							<p>
+								Both heuristics were used to align the images below. The result displacements (using SSD and NCC) were the same for each image. The resulting full colour images are displayed below, along with their corresponding file names and full sized images. Note that the displacement values are actually (y, x). e.g. (5, -2) represents shift 5 down, and 2 left.
+							</p>
+
+							<div class="img-table">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/cathedral.jpg">
+										<div class="code caption toprgt">
+											R: (12, 3) <br>
+											G: (5, 2) 
+										</div>
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/monastery.jpg">
+										<div class="code caption toprgt">
+											R: (3, 2) <br>
+											G: (-3, 2) 
+										</div>
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/nativity.jpg">
+										<div class="code caption toprgt">
+											R: (7, 1) <br>
+											G: (3, 1) 
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="img-table attach">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/settlers.jpg">
+										<div class="code caption toprgt">
+											R: (14, -1) <br>
+											G: (7, 1) 
+										</div>
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/tobolsk.jpg">
+										<div class="code caption toprgt">
+											R: (6, 3) <br>
+											G: (3, 3) 
+										</div>
+									</div>
+								</div>
+								<div class="img-table-box">
+								</div>
+							</div>
+
+
+							<div class="data-table narrowest">
+								<div class="data-table-box">
+								</div>
+								<div class="data-table-box title">
+									SSD
+								</div>
+								<div class="data-table-box title">
+									NCC
+								</div>
+							</div>
+							<div class="data-table narrowest attach">
+								<div class="data-table-box title">
+									cathedral.jpg
+								</div>
+								<div class="data-table-box">
+									2.645 seconds
+								</div>
+								<div class="data-table-box">
+									5.768 seconds
+								</div>
+							</div>
+							<div class="data-table narrowest attach">
+								<div class="data-table-box title">
+									monastery.jpg
+								</div>
+								<div class="data-table-box">
+									3.019 seconds
+								</div>
+								<div class="data-table-box">
+									5.315 seconds
+								</div>
+							</div>
+							<div class="data-table narrowest attach">
+								<div class="data-table-box title">
+									nativity.jpg
+								</div>
+								<div class="data-table-box">
+									3.139 seconds
+								</div>
+								<div class="data-table-box">
+									5.248 seconds
+								</div>
+							</div>
+							<div class="data-table narrowest attach">
+								<div class="data-table-box title">
+									settlers.jpg
+								</div>
+								<div class="data-table-box">
+									2.922 seconds
+								</div>
+								<div class="data-table-box">
+									5.181 seconds
+								</div>
+							</div>
+							<div class="data-table narrowest attach">
+								<div class="data-table-box title">
+									tobolsk.jpg
+								</div>
+								<div class="data-table-box">
+									2.947 seconds
+								</div>
+								<div class="data-table-box">
+									6.854 seconds
+								</div>
+							</div>
+
+							<p>
+								Although both methods gave the same displacement result, SSD is a slighty faster calculation than NCC, with SSD completing the alignments in around 3 seconds, and NCC in around 6 seconds.
+							</p>
+
+						<h3>Image Pyramid</h3>
+
+						<p>
+							Exhaustively searching through the entire image works for the previous JPEG files since they were all relatively low resolution.With larger file sizes (the collection has TIFF files that are around 4000 by 3000), the naïve method can no longer get the job done in a reasonable amount of time.
+						</p>
+
+						<p>
+							This is where image pyramids come in. The driving concept is that a smaller image is faster to search through than the original size. An image pyramid is a series of images that are resized smaller and smaller going up the levels of the pyramid. Even though a smaller image would be a lower resolution, it can provide an approximate value to shift for alignment, and further calculations can be done to calculate the smaller scale shifts.
+						</p>
+
+						<p>
+							A couple of values must be set before the process can be used. First, we have to decide how much smaller the resized image will be than the image below. I chose to go with decreasing by <b>a factor of 2</b>. We then have to set the number of levels in the pyramid. I chose to expand the pyramid until the image's width or height is under 200 pixels. For these TIFF files that are around 4000 by 3000, that is 5 levels, including the base (original, unresized image). SSD or NCC will be used, though this time the search will be within a <b>15 by 15 search range</b>.
+						</p>
+
+						<p>
+							This is my step by step approach:
+						</p>
+
+						<ol>
+							<li>
+								Crop the original image to its R, G, B channels and then crop off an arbitrary amount so that we only use the centre of the image to make comparisons.
+							</li>
+							<li>
+								Create an image pyramid for each channel.<br>
+								Size down the width and height by half with each level and did this until the highest level has width less than 200 pixels.
+							</li>
+							<li>
+								Search through a cropped section of each level of the red and green pyramids against the blue pyramid with SSD or NCC to get displacement values.<br>
+								The image has to be cropped smaller or else there is no decrease in computation speed. After testing, the best crop amount seems to be a 200 x 200 pixel patch in the centre. The displacement amount has to be doubled each time we move down a level to preserve the relative displacement.
+							</li>
+							<li>
+								Apply the displacements onto the uncropped versions of their corresponding channels.
+							</li>
+							<li>
+								Merge the three channels together into one final image and save.
+							</li>
+						</ol>
+
+						<div class="img-table">
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/bridge.jpg">
+									<div class="code caption toprgt">
+										R: (69, 8)<br>
+										G: (13, -4)
+									</div>
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/harvesters.jpg">
+									<div class="code caption toprgt">
+										R: (124, 17)<br>
+										G: (60, 19)
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="img-table attach">
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/lady.jpg">
+									<div class="code caption toprgt">
+										R: (112, 10)<br>
+										G: (49, 7)
+									</div>
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/melons.jpg">
+									<div class="code caption toprgt">
+										R: (180, 12)<br>
+										G: (77, 4) 
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<p>
+							In most cases, SSD and NCC gave me the same results. SSD is once again slighty faster than NCC, with SSD at around 15-17 seconds, and NCC at around 20 seconds.
+						</p>
+
+
+
+
+				<div class="footer">
+					<a href="https://www.instagram.com/emileechen/" class="icon"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					<a href="https://github.com/emileechen" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
+					<a href="https://www.linkedin.com/in/emileechen" class="icon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+				</div>
+
+			</div>
+			
+		</div>
+
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/smoothscroll.js"></script>
+		<script type="text/javascript" src="/js/magicstuff.js"></script>
+		<script type="text/javascript" src="/css/less.js"></script>
+		<script type="text/javascript" src="/js/prettify.js"></script>
+		<script type="text/javascript" src="/js/processing.js"></script>
+
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-71298215-2', 'auto');
+			ga('send', 'pageview');
+		</script>
+
+	</body>
+</html>

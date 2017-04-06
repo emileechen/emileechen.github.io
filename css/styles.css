@@ -54,7 +54,7 @@ h4 {
 }
 .code {
   font-family: monospace;
-  display: inline-block;
+  display: inline;
 }
 .font1 {
   font-family: 'Fira Sans', sans-serif;
@@ -376,6 +376,28 @@ img.smaller {
   color: #987FC5;
   font-weight: bold;
 }
+.data-table {
+  display: flex;
+  justify-content: space-around;
+  padding: .5rem 0;
+  margin: 1rem -2rem;
+  font-size: .9rem;
+  line-height: 1.1rem;
+  background-color: white;
+  border-bottom: #CECECE solid 1px;
+}
+.data-table .data-table-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 0 0 .5rem;
+  width: auto;
+}
+.data-table .title {
+  font-weight: bold;
+  color: #987FC5;
+  font-size: 1rem;
+}
 .img-table {
   display: flex;
   justify-content: space-around;
@@ -416,6 +438,13 @@ img.smaller {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.narrowest {
+  width: 50%;
+  min-width: 400px;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .cap {
   padding-top: 0.5rem;
 }
@@ -427,6 +456,13 @@ img.smaller {
 }
 .centre {
   text-align: center;
+}
+.right {
+  width: 25%;
+  min-width: 200px;
+  max-width: 300px;
+  float: right;
+  margin: -1rem 0rem -1rem 2rem;
 }
 .caption {
   font-size: .8rem;
@@ -445,13 +481,4 @@ img.smaller {
   text-align: right;
   top: 1rem;
   right: 0;
-}
-.code-block {
-  font-family: monospace;
-  width: 90%;
-  color: #6f6f6f;
-  background-color: #f1f1f1;
-  border: 1px solid #c1c1c1;
-  margin: 1rem auto;
-  padding: 1rem;
 }
