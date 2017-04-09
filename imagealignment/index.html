@@ -23,18 +23,27 @@
 
 		<div class="container">
 
-			<div class="nav">
-				<a href="/">
-					<div class="nav-btn click">Work
-						<div class="btn-underline"></div>
+			<div class="topbar">
+				<div class="logo">
+					<div class="name">
+						Emilee Chen
 					</div>
-				</a>
-				<a href="/about">
-					<div class="nav-btn click">About
-						<div class="btn-underline"></div>
+					<div class="what">
+						Graphics Software Engineer
 					</div>
-				</a>
+				</div>
+				<div class="nav">
+					<a href="/">
+						<div class="nav-btn click">Work</div>
+					</a>
+					<a href="/about">
+						<div class="nav-btn click">About
+							<div class="btn-underline"></div>
+						</div>
+					</a>
+				</div>
 			</div>
+
 
 			<div class="main">
 
@@ -156,6 +165,7 @@
 									<div class="img-table-item">
 										<img src="img/cathedral.jpg">
 										<div class="code caption toprgt">
+											cathedral.jpg <br>
 											R: (12, 3) <br>
 											G: (5, 2) 
 										</div>
@@ -165,6 +175,7 @@
 									<div class="img-table-item">
 										<img src="img/monastery.jpg">
 										<div class="code caption toprgt">
+											monastery.jpg <br>
 											R: (3, 2) <br>
 											G: (-3, 2) 
 										</div>
@@ -174,6 +185,7 @@
 									<div class="img-table-item">
 										<img src="img/nativity.jpg">
 										<div class="code caption toprgt">
+											nativity.jpg  <br>
 											R: (7, 1) <br>
 											G: (3, 1) 
 										</div>
@@ -185,6 +197,7 @@
 									<div class="img-table-item">
 										<img src="img/settlers.jpg">
 										<div class="code caption toprgt">
+											settlers.jpg <br>
 											R: (14, -1) <br>
 											G: (7, 1) 
 										</div>
@@ -194,6 +207,7 @@
 									<div class="img-table-item">
 										<img src="img/tobolsk.jpg">
 										<div class="code caption toprgt">
+											tobolsk.jpg <br>
 											R: (6, 3) <br>
 											G: (3, 3) 
 										</div>
@@ -202,7 +216,6 @@
 								<div class="img-table-box">
 								</div>
 							</div>
-
 
 							<div class="data-table narrowest">
 								<div class="data-table-box">
@@ -214,7 +227,7 @@
 									NCC
 								</div>
 							</div>
-							<div class="data-table narrowest attach">
+							<div class="data-table narrowest data-attach">
 								<div class="data-table-box title">
 									cathedral.jpg
 								</div>
@@ -225,7 +238,7 @@
 									5.768 seconds
 								</div>
 							</div>
-							<div class="data-table narrowest attach">
+							<div class="data-table narrowest data-attach">
 								<div class="data-table-box title">
 									monastery.jpg
 								</div>
@@ -236,7 +249,7 @@
 									5.315 seconds
 								</div>
 							</div>
-							<div class="data-table narrowest attach">
+							<div class="data-table narrowest data-attach">
 								<div class="data-table-box title">
 									nativity.jpg
 								</div>
@@ -247,7 +260,7 @@
 									5.248 seconds
 								</div>
 							</div>
-							<div class="data-table narrowest attach">
+							<div class="data-table narrowest data-attach">
 								<div class="data-table-box title">
 									settlers.jpg
 								</div>
@@ -258,7 +271,7 @@
 									5.181 seconds
 								</div>
 							</div>
-							<div class="data-table narrowest attach">
+							<div class="data-table narrowest data-attach">
 								<div class="data-table-box title">
 									tobolsk.jpg
 								</div>
@@ -274,7 +287,7 @@
 								Although both methods gave the same displacement result, SSD is a slighty faster calculation than NCC, with SSD completing the alignments in around 3 seconds, and NCC in around 6 seconds.
 							</p>
 
-						<h3>Image Pyramid</h3>
+						<h3>Image Pyramids</h3>
 
 						<p>
 							Exhaustively searching through the entire image works for the previous JPEG files since they were all relatively low resolution.With larger file sizes (the collection has TIFF files that are around 4000 by 3000), the naïve method can no longer get the job done in a reasonable amount of time.
@@ -317,6 +330,7 @@
 								<div class="img-table-item">
 									<img src="img/bridge.jpg">
 									<div class="code caption toprgt">
+										bridge.tif<br>
 										R: (69, 8)<br>
 										G: (13, -4)
 									</div>
@@ -326,6 +340,7 @@
 								<div class="img-table-item">
 									<img src="img/harvesters.jpg">
 									<div class="code caption toprgt">
+										harvesters.tif<br>
 										R: (124, 17)<br>
 										G: (60, 19)
 									</div>
@@ -337,6 +352,7 @@
 								<div class="img-table-item">
 									<img src="img/lady.jpg">
 									<div class="code caption toprgt">
+										lady.tif<br>
 										R: (112, 10)<br>
 										G: (49, 7)
 									</div>
@@ -346,6 +362,7 @@
 								<div class="img-table-item">
 									<img src="img/melons.jpg">
 									<div class="code caption toprgt">
+										melons.tif<br>
 										R: (180, 12)<br>
 										G: (77, 4) 
 									</div>
@@ -353,11 +370,169 @@
 							</div>
 						</div>
 
-
 						<p>
 							In most cases, SSD and NCC gave me the same results. SSD is once again slighty faster than NCC, with SSD at around 15-17 seconds, and NCC at around 20 seconds.
 						</p>
 
+						<div class="data-table narrowest">
+							<div class="data-table-box">
+							</div>
+							<div class="data-table-box title">
+								SSD
+							</div>
+							<div class="data-table-box title">
+								NCC
+							</div>
+						</div>
+						<div class="data-table narrowest data-attach">
+							<div class="data-table-box title">
+								bridge.tif
+							</div>
+							<div class="data-table-box">
+								13.714 seconds
+							</div>
+							<div class="data-table-box">
+								14.021 seconds
+							</div>
+						</div>
+						<div class="data-table narrowest data-attach">
+							<div class="data-table-box title">
+								harvesters.tif
+							</div>
+							<div class="data-table-box">
+								18.645 seconds
+							</div>
+							<div class="data-table-box">
+								20.756 seconds
+							</div>
+						</div>
+						<div class="data-table narrowest data-attach">
+							<div class="data-table-box title">
+								lady.tif
+							</div>
+							<div class="data-table-box">
+								15.062 seconds
+							</div>
+							<div class="data-table-box">
+								19.762 seconds
+							</div>
+						</div>
+						<div class="data-table narrowest data-attach">
+							<div class="data-table-box title">
+								melons.tif
+							</div>
+							<div class="data-table-box">
+								21.746 seconds
+							</div>
+							<div class="data-table-box">
+								20.110 seconds
+							</div>
+						</div>
+
+						<p>
+							However, I did run into an issue with one of the images, emir.tif. Unlike the other images so far, the centre of this image is predominantly blue. As you can observe in the channels, the gown is "dark" in the red channel as there is very little amounts of red in the full colour photo. Since the gown is at completely different ends of the intensity spectrum for the red and blue channels, the algorithm will not align the channels as expected. This prompted me to look into other alignment methods.
+						</p>
+
+
+					<h2>III. Edge Detection</h2>
+
+						<p>
+							Comparison in colour intenstities has its limitations, and does not work in some cases. Edge detection does a comparison between the changes in intensities instead. There are many approaches to edge detection such as Sobel edge detection and Canny edge detection.
+						</p>
+
+						<h3>Sobel Edge Detection</h3>
+
+							<p>
+								The Sobel operator uses a horizontal (x) kernel and a vertical (y) kernel which are convolved with the image to calculate derivates. I implemented my own convolution, but it was slow and took around 20 seconds to apply the Sobel operator on one of the smaller JPEG images. So instead, I used SciPy's <span class="code">signal.convolve2d()</span>.
+							</p>
+
+							<div class="img-table">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/emir_c.jpg">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/emir_d.jpg">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/emir_e.jpg">
+									</div>
+								</div>
+							</div>
+							<div class="img-table attach cap narrow">
+								<div class="img-table-box">
+									These are the R, G, and B images after the Sobel operator are applied to them. Although there are some differences in intensity, the matching algorithms can now use the edges for aligning.
+								</div>
+							</div>
+
+							<p>
+								The process of aligning images with edge detection isn't much different except for an added step. The Sobel operator is applied to each image before comparison using SSD or NCC.
+							</p>
+
+							<div class="img-table">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/emir_a.jpg">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/emir.jpg">
+									</div>
+								</div>
+							</div>
+							<div class="img-table attach cap narrow">
+								<div class="img-table-box">
+									Here is a comparison of emir.tif with and without edge detection. The alignment is dramatically improved.
+								</div>
+							</div>
+
+							<p>
+								Edge detection is also helpful in aligning images that have a lot of colour warping.
+							</p>
+
+							<div class="img-table">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/olgin_bridge_a.jpg">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/olgin_bridge.jpg">
+									</div>
+								</div>
+							</div>
+							<div class="img-table attach cap narrow">
+								<div class="img-table-box">
+									Here is a comparison of olgin_bridge.jpg with and without edge detection.
+								</div>
+							</div>
+
+
+					<h2>IV. Automatic Contrast</h2>
+
+						<p>
+							In some images, certain features may not be as distinguishable as you would like. Increasing the contrast of an image creates a larger difference in luminance.
+						</p>
+
+						<p>
+							The idea of contrast adjustment is that the minimum and maximum intensities are not at 0 and 255 respectively, and the intensity values can be scaled to have them at the true minimum and maximum values. I ran into a problem implementing the filter this way. All the images that I have tested already have 0 and 255 as their minimum and maximum values, so I had to think of another way to find a scaling factor.
+						</p>
+
+						<p>
+							I decided that I would simply create a contrast filter that the user can input a scaling factor for. The filter scales the luminance by some value <span class="code">1 + n</span>, with n being the inputted scaling factor. After playing around with various values, I decided up on <b>0.2</b> as the scaling factor that works the best.
+						</p>
+
+
+					<h2>V. Automatic White Balancing</h2>
+
+
+					<h2>VI. Hubble Space Telescope Imagery</h2>
 
 
 

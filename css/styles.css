@@ -106,18 +106,43 @@ img.smaller {
   justify-content: center;
   background-color: white;
 }
-.container .nav {
-  text-align: right;
+.container .topbar {
+  max-width: 1000px;
+  position: fixed;
   width: 80%;
   margin-top: -3rem;
   padding: 2rem 10% 1rem 10%;
-  max-width: 1000px;
   flex-basis: auto;
-  position: fixed;
+  justify-content: space-between;
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 100;
+  display: flex;
 }
-.container .nav .nav-btn {
+.container .topbar .logo {
+  flex-basis: auto;
+  font-weight: bold;
+  font-size: .8rem;
+}
+.container .topbar .logo .name {
+  display: inline-block;
+  padding-right: .25rem;
+  font-size: 1.4rem;
+  font-family: 'Raleway';
+  letter-spacing: .05rem;
+  text-transform: uppercase;
+}
+.container .topbar .logo .what {
+  display: inline-block;
+  padding-left: .25rem;
+  font-size: 1rem;
+  text-transform: lowercase;
+}
+.container .topbar .nav {
+  text-align: right;
+  flex-basis: auto;
+}
+.container .topbar .nav .nav-btn {
   margin: 0 10px 0 10px;
   text-align: center;
   display: inline-block;
@@ -130,7 +155,7 @@ img.smaller {
   color: #4A4A4A;
   transition: 0.45s;
 }
-.container .nav .click .btn-underline {
+.container .topbar .nav .click .btn-underline {
   background-color: #987FC5;
   height: 3px;
   width: 0%;
@@ -138,14 +163,14 @@ img.smaller {
   left: 0;
   transition: 0.45s;
 }
-.container .nav .click:hover .btn-underline {
+.container .topbar .nav .click:hover .btn-underline {
   width: 100%;
   transition: 0.45s;
 }
-.container .nav .current {
+.container .topbar .nav .current {
   border: solid black 3px;
 }
-.container .nav a:hover {
+.container .topbar .nav a:hover {
   border: none;
 }
 .container .side {
@@ -381,10 +406,10 @@ img.smaller {
   justify-content: space-around;
   padding: .5rem 0;
   margin: 1rem -2rem;
-  font-size: .9rem;
+  font-size: 1rem;
   line-height: 1.1rem;
   background-color: white;
-  border-bottom: #CECECE solid 1px;
+  font-family: monospace;
 }
 .data-table .data-table-box {
   flex: 1;
@@ -394,9 +419,10 @@ img.smaller {
   width: auto;
 }
 .data-table .title {
-  font-weight: bold;
   color: #987FC5;
-  font-size: 1rem;
+  font-weight: bold;
+  font-size: .8rem;
+  font-family: 'Fira Sans', sans-serif;
 }
 .img-table {
   display: flex;
@@ -453,6 +479,10 @@ img.smaller {
 }
 .attach > div {
   padding-top: 0;
+}
+.data-attach {
+  margin-top: -1rem;
+  border-top: #CECECE solid 1px;
 }
 .centre {
   text-align: center;
