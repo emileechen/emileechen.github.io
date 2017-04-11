@@ -29,7 +29,7 @@
 						Emilee Chen
 					</div>
 					<div class="what">
-						Graphics Software Engineer
+						Software Engineer
 					</div>
 				</div>
 				<div class="nav">
@@ -514,7 +514,7 @@
 							</div>
 
 
-					<h2>IV. Automatic Contrast</h2>
+					<h2>IV. Contrast Adjustment</h2>
 
 						<p>
 							In some images, certain features may not be as distinguishable as you would like. Increasing the contrast of an image creates a larger difference in luminance.
@@ -525,14 +525,233 @@
 						</p>
 
 						<p>
-							I decided that I would simply create a contrast filter that the user can input a scaling factor for. The filter scales the luminance by some value <span class="code">1 + n</span>, with n being the inputted scaling factor. After playing around with various values, I decided up on <b>0.2</b> as the scaling factor that works the best.
+							I decided that I would simply create a contrast filter that the user can input a scaling factor for. The filter scales the luminance by some value <span class="code">1 + n</span>, with n being the inputted scaling factor.
 						</p>
+
+						<p>
+							Of course, each image should have a different scaling factor applied, and use a histogram and some illuminance threshold to determine this scaling factor. However, this was not implemented for this project and the value is left as user input.
+						</p>
+
+
+
+						<div class="img-table">
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/entrance_-8.jpg">
+									<div class="code caption toprgt">
+										-0.8
+									</div>
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/entrance_-6.jpg">
+									<div class="code caption toprgt">
+										-0.6
+									</div>
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/entrance_-4.jpg">
+									<div class="code caption toprgt">
+										-0.4
+									</div>
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/entrance_-2.jpg">
+									<div class="code caption toprgt">
+										-0.2
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="img-table attach">
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/entrance.jpg">
+									<div class="code caption toprgt">
+										entrance.jpg<br>
+										R: (12, 2)<br>
+										G: (5, 1)
+									</div>
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/entrance_04.jpg">
+									<div class="code caption toprgt">
+										+0.4
+									</div>
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/entrance_08.jpg">
+									<div class="code caption toprgt">
+										+0.8
+									</div>
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/entrance_12.jpg">
+									<div class="code caption toprgt">
+										+1.2
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="img-table attach cap narrow">
+							<div class="img-table-box">
+								The series of images above is entrance.jpg with various levels of contrast applied to it. The original image seems faded. Increasing the contrast of this image makes it look much clearer.
+							</div>
+						</div>
 
 
 					<h2>V. Automatic White Balancing</h2>
 
+						<p>
+							In some images, the "white-est" colour is the image is not pure white and is rather tinted another colour. White balancing elimintes this tint. This is accomplished by finding the "white-est" RGB value, some (r, g, b), and scaling each R, G, B channel by <span class="code">255/r, 255/g, and 255/b</span> respectively.
+						</p>
+
+						<div class="img-table">
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/bridge.jpg">
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/bridge_a.jpg">
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/tree.jpg">
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/tree_a.jpg">
+								</div>
+							</div>
+						</div>
+						<div class="img-table attach cap narrow">
+							<div class="img-table-box">
+								The images on the left are the originals, and the images on the right are the results after white balancing.
+							</div>
+						</div>
+
+						<p>
+							Although the images above show significant difference that improved the overall quality, white balancing for most the images did not change them very much. This is because the white-est values for these images were close to pure white already. Some examples are shown below.
+						</p>
+
+						<div class="img-table">
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/monastery.jpg">
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/monastery_a.jpg">
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/cathedral.jpg">
+								</div>
+							</div>
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/cathedral_f.jpg">
+								</div>
+							</div>
+						</div>
+						<div class="img-table attach cap narrow">
+							<div class="img-table-box">
+								The images on the left are the originals, and the images on the right are the results after white balancing.
+							</div>
+						</div>
+
 
 					<h2>VI. Hubble Space Telescope Imagery</h2>
+
+					<div class="right right40">
+						<div class="img-table wide100">
+							<div class="img-table-box">
+								<div class="img-table-item">
+									<img src="img/hubble.jpg">
+								</div>
+							</div>
+						</div>
+						<div class="img-table wide100 attach cap">
+							<div class="img-table-box">
+								Final product using the three CYM channels.
+							</div>
+						</div>
+					</div>
+
+					<p>
+						There are other applications of merging several images using individual colour channels. Images taken in astronomy are not necessarily in the visible spectrum, but we can assign these channels some arbitrary colours to create beautifully coloured images. In fact, more than three channels can be used to create a more colourful image. 
+					</p>
+
+					<p>
+						Unlike the images in the Prokudin-Gorskii collection, these images do not need to be aligned as the telescopes used are likely quite stable and quick. I simply applied an arbitrary colour to each image and superimposed them on top of each other. The colours I chose were based on personal preference, and any combination of colours can be used to achieve different results.
+					</p>
+
+					<p>
+						The next steps would be to implement image rotation and cropping to eliminate the outer grey portion.
+					</p>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/hubble_1.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/hubble_2.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/hubble_3.jpg">
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach cap narrow">
+						<div class="img-table-box">
+							The above images are different wavelength images of HST_10419_11 from the <a href="http://hla.stsci.edu/" target="_blank">Hubble Legacy Archive</a>.
+						</div>
+					</div>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/hubble_a.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/hubble_b.jpg">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/hubble_c.jpg">
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach cap narrow">
+						<div class="img-table-box">
+							The same images above after applying magenta (255, 0, 255), cyan (0, 255, 255), and yellow (255, 255, 0) filters on them respectively.
+						</div>
+					</div>
 
 
 

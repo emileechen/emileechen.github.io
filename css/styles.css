@@ -53,8 +53,9 @@ h4 {
   opacity: 0;
 }
 .code {
-  font-family: monospace;
   display: inline;
+  font-family: monospace;
+  font-size: 1.3rem;
 }
 .font1 {
   font-family: 'Fira Sans', sans-serif;
@@ -493,6 +494,10 @@ img.smaller {
   max-width: 300px;
   float: right;
   margin: -1rem 0rem -1rem 2rem;
+}
+.right40 {
+  width: 40%;
+  max-width: 400px;
 }
 .caption {
   font-size: .8rem;
