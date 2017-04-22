@@ -18,7 +18,7 @@ a {
 }
 a:hover {
   border-bottom: 1px solid;
-  margin-bottom: 0.005rem;
+  margin-bottom: -1px;
 }
 h1 {
   font-family: 'Raleway';
@@ -132,6 +132,14 @@ img.smaller {
   font-family: 'Raleway';
   letter-spacing: .05rem;
   text-transform: uppercase;
+}
+.container .topbar .logo .name a {
+  color: #4A4A4A;
+  text-decoration: none;
+}
+.container .topbar .logo .name a:hover {
+  border: 0;
+  margin: 0;
 }
 .container .topbar .logo .what {
   display: inline-block;
