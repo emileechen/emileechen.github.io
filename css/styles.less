@@ -21,6 +21,10 @@ body, html {
 	background-color: black;
 	text-align: justify;
 	margin: 0;
+
+	display: flex;
+	min-width: 100%;
+	min-height: 100%;
 }
 
 b {
@@ -129,8 +133,9 @@ img.smaller {
 
 
 .container {
+	flex: 1;
 	height: auto;
-	min-height: calc(100vh - 5rem);
+	// min-height: calc(100vh - 5rem);
 	padding: 3rem 0 2rem 0;
 	display: flex;
 	justify-content: center;
@@ -449,6 +454,15 @@ img.smaller {
 
 }
 
+
+
+// 4 0 4
+
+.huge {
+	font-size: 5rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
 
 
 

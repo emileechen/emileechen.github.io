@@ -8,6 +8,9 @@ html {
   background-color: black;
   text-align: justify;
   margin: 0;
+  display: flex;
+  min-width: 100%;
+  min-height: 100%;
 }
 b {
   color: #987FC5;
@@ -100,8 +103,8 @@ img.smaller {
   height: 100vh;
 }
 .container {
+  flex: 1;
   height: auto;
-  min-height: calc(95vh);
   padding: 3rem 0 2rem 0;
   display: flex;
   justify-content: center;
@@ -379,6 +382,11 @@ img.smaller {
   #projects .proj-content .proj-desc {
     display: none;
   }
+}
+.huge {
+  font-size: 5rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .uhm {
   height: 100vh;
