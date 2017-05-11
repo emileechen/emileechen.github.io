@@ -1,0 +1,311 @@
+
+			<!-- made by Emilee Chen
+					may 2017
+						@ emileechen.github.io -->
+
+
+<!doctype html>
+<html>
+	<head>
+		<title>Emilee Chen</title>
+		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/css/prettyprint.css">
+		<link rel="icon" type="image/png" href="/favicon.png">
+	</head>
+
+	<body onload="PR.prettyPrint()">
+
+		<div class="container-frame container-frame-top"></div>
+		<div class="container-frame container-frame-right"></div>
+		<div class="container-frame container-frame-btm"></div>
+		<div class="container-frame container-frame-left"></div>
+
+		<div class="container">
+
+			<div class="topbar">
+				<div class="logo">
+					<div class="name">
+						<a href="/">
+						Emilee Chen
+						</a>
+					</div>
+					<div class="what">
+						Software Engineer
+					</div>
+				</div>
+				<div class="nav">
+					<a href="/">
+						<div class="nav-btn click">Work
+							<div class="btn-underline"></div>
+						</div>
+					</a>
+					<a href="/about">
+						<div class="nav-btn click">About
+							<div class="btn-underline"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="main">
+
+				<h1>Procedural Tree Generator</h1>
+
+					<p>
+						<a href="https://github.com/emileechen/trees" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
+					</p>
+
+					<p>
+						This project is done in collaboration with <a href="http://www.kellykcho.com/" target="_blank">Kelly Cho</a>.
+					</p>
+
+					<h2>I. Overview</h2>
+
+						<p>
+							Trees and other organic vegetation usually appear in abundance and in a wide variation, are therefore very difficult to model individually. Instead, it would be much more efficient to be able to describe a species or type of tree and be able to create many unique plants with that specification. Our goal with this project is to procedurally generate natural looking trees.
+						</p>
+
+						<p>
+							In 1968, Aristid Lindenmayer developed a method to simulate the development of multicellular organims called L-Systems that is particularly useful in modeling plants. This method considers a plant to be modular, consisting several branching units or modules, that as a whole emerge as a plant shape. The paper <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.6081" target="_blank">L-systems: from the Theory to Visual Models of Plants (Prusinkiewicz, 1996)</a> uses the L-System in combination with a turtle interpretor to render plants. We use the turtle interpretation of L-Systems described in this paper to create procedurally generated trees.</p>
+
+
+					<h2>II. Live Demo</h2>
+						<!-- 
+						<div class="img-table">
+							<div class="img-table-box">
+								<iframe src="trees.html" width="600px" height="400px"></iframe>
+							</div>
+						</div>
+						 -->
+						<!-- 
+						<div class="img-table">
+							<div class="img-table-box">
+								<canvas data-processing-sources="trees.pde"></canvas>
+							</div>
+						</div>
+						 -->
+						<div class="img-table attach narrow cap">
+							<div class="img-table-box">
+								Controls:<br>
+								<br>
+								LMB - Grow one generation <br>
+								<br>
+								<br>
+								<br>
+							</div>
+							<div class="img-table-box">
+								1 - Cycle through configurations <br>
+								2 - Turn on/off spinning <br>
+								3 - Turn on/off simple render <br>
+								4 - Turn on/off leaves <br>
+								9 - Reset spintable <br>
+								0 - Reset generation
+							</div>
+						</div>
+
+
+					<h2>III. Implementation</h2>
+
+					<p>
+						This project can be separated into two parts: tree generation using L-Systems that produces a string, and tree rending that reads and visualizes this string.
+					</p>
+
+						<h3>Tree Generation</h3>
+
+							<h4>L-System</h4>
+
+							<p>
+								An L-System is a parallel rewriting system that consists of a vocabulary, an axiom, a set of rules, number of iteration steps, and results in a sentence.
+							</p>
+
+							<ul>
+								<li>Vocabulary - the collection of symbols that are the building blocks of this L-System</li>
+								<li>Axiom - the initial state or seed of the tree</li>
+								<li>Generation - the number of iterations the tree has gone through</li>
+								<li>Rule - consists of two strings that are the predecessor and the successor; there can be multiple rules</li>
+								<li>Sentence - the resulting string after <span class="code">n</span> generations that describes a tree</li>
+							</ul>
+
+							<p>
+								With each generation, we sweep through the current sentence and replace all predecessors with their respective successors in accordance to the rules. Below is an example of this process, along with a visualization using a turtle interpretor as described in the next section.
+							</p>
+
+							<div class="img-table narrow attach">
+								<p class="code">
+									Rule: F  &#8594;  F[+F][-F]<br>
+									<br>
+									GEN 0:	F <br>
+									GEN 1:	<b>F</b>[+<b>F</b>][-<b>F</b>] <br>
+									GEN 2:	<b>F[+F][-F]</b> [ + <b>F[+F][-F]</b> ] [ - <b>F[+F][-F]</b> ]
+								</p>
+							</div>
+
+							<div class="img-table narrow">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/pythagorean.png">
+									</div>
+								</div>
+							</div>
+							<div class="img-table attach cap">
+								<div class="img-table-box">
+									7th generation Pythagorean tree.
+								</div>
+							</div>
+
+
+						<h3>Tree Rendering</h3>
+
+							<h4>Turtle Interpreter</h4>
+
+							<p>
+								The strings that are produced by our L-Systems can be efficiently visualized through a turtle interpeter. The turtle draws lines given a series of three commands: location, orientation, and pen on/off. This is percisely what our vocabularly describes.
+							</p>
+
+							<p>
+								The vocabulary and their definitions are listed below:
+							</p>
+
+							<div class="img-table narrow cap">
+								<div class="img-table-box">
+									F - Move forward a step and draw a line segment. <br>
+									L - Draw a leaf cluster. <br>
+									X - Dummy action (does nothing; used for shaping). <br>
+									<br>
+									[ - Push current state onto stack. <br>
+									] - Pop a state from the stack make it a current stack.
+								</div>
+								<div class="img-table-box">
+									+(&theta;) - Turn left by angle &theta; around the U axis. <br>
+									&minus;(&theta;) - Turn right by angle &theta; around the U axis. <br>
+									&amp;(&theta;) - Pitch down by angle &theta; around the L axis. <br>
+									&and;(&theta;) - Pitch up by angle &theta; around the L axis. <br>
+									/(&theta;) - Roll left by angle &theta; around the H axis. <br>
+									\(&theta;) - Roll right by angle &theta; around the H axis.
+								</div>
+							</div>
+
+							<p>
+								The turtle begins at the base and draws as it steps through the sentence, following each instruction, to generate the tree. A transformation matrix is used to keep track of all the operations performed on the turtle.
+							</p>
+
+							<div class="img-table narrow">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/turtle_a.png">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/turtle_b.png">
+									</div>
+								</div>
+							</div>
+
+							<p>
+								The <b>[</b> and <b>]</b> operations are used to create branches in the tree. Processing is capable of keeping track of a stack of transformation matrices. At each <b>[</b>, we simply push the current matrix onto the stack. At each <b>]</b>, we pop a matrix from our stack. This allows the turtle to return to any position and orientation on the tree and continue drawing from there.
+							</p>
+
+							<h4>Extra Shaping</h4>
+
+							<ul>
+								<li>Angle Noise - Allow some noise when assigning angles to each rotating operation to create unique trees</li>
+								<li>Branch Length Reduction - With each generation, shorten the branch length by some amount</li>
+							</ul>
+
+							<h4>Realism</h4>
+
+							<p>
+								While these branching visualizations are reminiscent of real-life trees, the realism can be greatly improved.
+							</p>
+
+							<div class="img-table">
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/render_a.png">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/render_b.png">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/render_c.png">
+									</div>
+								</div>
+								<div class="img-table-box">
+									<div class="img-table-item">
+										<img src="img/render_d.png">
+									</div>
+								</div>
+							</div>
+
+
+					<h2>IV. Results</h2>
+
+					<div class="img-table">
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/result_a.png">
+							</div>
+						</div>
+						<div class="img-table-box">
+							<div class="img-table-item">
+								<img src="img/result_b.png">
+							</div>
+						</div>
+					</div>
+					<div class="img-table attach cap">
+						<div class="img-table-box code">
+							SEED: F<br>
+							RULES: F  &#8594;  F[+FL]&amp;F[\FL]<br>
+							GEN: 4<br>
+							&Theta;: PI/6<br>
+							REDUC: .7<br>
+							LEN: 25
+						</div>
+						<div class="img-table-box code">
+							SEED: XXL<br>
+							RULES: X  &#8594;  F-[&amp;[XL]+X]+F[\FLX]-XL<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F  &#8594;  FF<br>
+							GEN: 4<br>
+							&Theta;: 25&deg;<br>
+							REDUC: .9<br>
+							LEN: 20
+						</div>
+					</div>
+
+
+				<div class="footer">
+					<a href="https://www.instagram.com/emileechen/" class="icon"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					<a href="https://github.com/emileechen" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
+					<a href="https://www.linkedin.com/in/emileechen" class="icon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+				</div>
+
+			</div>
+			
+		</div>
+
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/smoothscroll.js"></script>
+		<script type="text/javascript" src="/js/magicstuff.js"></script>
+		<script type="text/javascript" src="/css/less.js"></script>
+		<script type="text/javascript" src="/js/prettify.js"></script>
+		<script type="text/javascript" src="/js/processing.js"></script>
+
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-71298215-2', 'auto');
+			ga('send', 'pageview');
+		</script>
+
+	</body>
+</html>

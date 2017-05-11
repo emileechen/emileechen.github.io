@@ -67,7 +67,7 @@
 						</p>
 
 						<p>
-							An approach involving three steering behaviours (separation, alignment, and cohesion) was first described in Reynolds' 1987 SIGGRAPH paper, <a href="http://www.red3d.com/cwr/papers/1987/boids.html" target="_blank">Flocks, Herds, and Schools: A Distributed Behavioral Model (Reynolds, 1987)</a>. There have been several further papers since, which build upon this model. One of which is Hemelrijk and Hildenbrandt's paper, <a href="https://www.researchgate.net/publication/224010876_Self-Organized_Shape_and_Frontal_Density_of_Fish_Schools" target="_blank">Self‐Organized Shape and Frontal Density of Fish Schools (Hemelrijk and Hildenbrandt, 2007)</a>, which describes refined weights and adds other force factors to the original model in order to more accurate represent schooling fish. We used this paper as the basis for our project.
+							An approach involving three steering behaviours (separation, alignment, and cohesion) was first described in Reynolds' 1987 SIGGRAPH paper, <a href="http://www.red3d.com/cwr/papers/1987/boids.html" target="_blank">Flocks, Herds, and Schools: A Distributed Behavioral Model (Reynolds, 1987)</a>. There have been several further papers since, which build upon this model. One of which is Hemelrijk and Hildenbrandt's paper, <a href="https://www.researchgate.net/publication/224010876_Self-Organized_Shape_and_Frontal_Density_of_Fish_Schools" target="_blank">Self-Organized Shape and Frontal Density of Fish Schools (Hemelrijk and Hildenbrandt, 2007)</a>, which describes refined weights and adds other force factors to the original model in order to more accurate represent schooling fish. We used this paper as the basis for our project.
 						</p>
 
 
@@ -187,9 +187,9 @@
 							</p>
 
 							<pre class="prettyprint lang-java">
-s = smoothness * Δt;					// Weight for interpolation
+s = smoothness * &Delta;t;					// Weight for interpolation
 d = max_radius - (influence * num_neighbors(t));	// Density dependent radius
-radius(t + Δt) = max(min_radius, ((1 - s) * radius(t)) + (s * d));</pre>
+radius(t + &Delta;t) = max(min_radius, ((1 - s) * radius(t)) + (s * d));</pre>
 
 							<p>
 								The smoothness value determines how quickly the radius is allowed to change per calculation by prioritizing either the current radius or the calculated density dependent radius. The smaller the smoothness value, the smoother the change in radius.

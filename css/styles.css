@@ -255,6 +255,22 @@ img.smaller {
     width: 100%;
   }
 }
+#photos {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+#photos .photo-item {
+  flex: 1;
+  height: 200px;
+}
+#photos .photo-box {
+  width: 100%;
+}
+#photos .photo-content {
+  width: 100%;
+}
 #projects {
   display: flex;
   flex-wrap: wrap;
