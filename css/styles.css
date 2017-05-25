@@ -409,31 +409,6 @@ img.smaller {
   width: auto;
   margin: 5rem;
 }
-.side-nav {
-  position: fixed;
-  width: 8%;
-  height: 0;
-  left: 0;
-  text-align: right;
-  font-size: .8rem;
-  text-transform: uppercase;
-  transition-duration: .2s;
-}
-.side-nav .side-nav-top {
-  position: relative;
-  top: 80vh;
-}
-@media (min-width: 1250px) {
-  .side-nav {
-    left: 42%;
-    margin-left: -550px;
-  }
-}
-.side-nav div a:hover {
-  border-bottom: 0;
-  color: #987FC5;
-  font-weight: bold;
-}
 .data-table {
   display: flex;
   justify-content: space-around;
@@ -548,4 +523,53 @@ img.smaller {
   text-align: right;
   top: 1rem;
   right: 0;
+}
+.blog-main {
+  display: flex;
+  justify-content: space-around;
+}
+.blog-main .blog-content {
+  flex: 4;
+  margin: -3rem 3rem -3rem 0;
+}
+.blog-main .blog-content .blog-container {
+  margin: 3rem 0;
+  padding: 1rem 1rem;
+}
+.blog-main .blog-content .blog-container .blog-head {
+  text-align: center;
+  font-size: .8rem;
+  margin: 1rem;
+}
+.blog-main .blog-content .blog-container .blog-head .blog-title {
+  color: #4A4A4A;
+  font-size: 1.3rem;
+  font-family: 'Raleway';
+  letter-spacing: .05rem;
+  text-transform: uppercase;
+  border-bottom: #CECECE solid 0.1rem;
+  padding-bottom: .5rem;
+  margin: auto;
+  margin-bottom: .5rem;
+  width: 75%;
+}
+.blog-main .blog-content .blog-container .blog-head .blog-sub {
+  display: flex;
+}
+.blog-main .blog-content .blog-container .blog-head .blog-sub .blog-sub-item {
+  flex: 1;
+  text-transform: uppercase;
+}
+.blog-main .blog-content .blog-container .blog-excerpt {
+  margin: 1rem;
+}
+.blog-main .blog-content .blog-container .blog-excerpt .blog-read-more {
+  margin: .5rem 0;
+  font-size: .8rem;
+  line-height: 1rem;
+  text-align: right;
+  text-transform: uppercase;
+}
+.blog-main .blog-side {
+  flex: 1;
 }
