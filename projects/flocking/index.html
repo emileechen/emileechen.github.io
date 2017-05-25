@@ -1,0 +1,215 @@
+---
+layout: default
+title: flocking
+permalink: /projects/flocking/
+processing: true
+---
+			<!-- made by Emilee Chen
+					mar 2017
+						@ emileechen.com
+							emilee.ty.chen@gmail.com -->
+
+
+
+<h1>Flocking</h1>
+
+	<p>
+		<a href="https://github.com/emileechen/flocking" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
+	</p>
+
+	<p>
+		This project is done in collaboration with <a href="http://www.kellykcho.com/" target="_blank">Kelly Cho</a>.
+	</p>
+
+	<h2>I. Overview</h2>
+
+		<p>
+			The behaviour of a group of animals, for example schooling fish or flocking birds, is one that can be easily observed in nature, but perhaps not so simple to describe in computer animation. Instead of individually animating or scripting the motion of each agent, a  system of agents that react dynamically to their surrounding agents is a much better solution to flocking in computer animation.
+		</p>
+
+		<p>
+			An approach involving three steering behaviours (separation, alignment, and cohesion) was first described in Reynolds' 1987 SIGGRAPH paper, <a href="http://www.red3d.com/cwr/papers/1987/boids.html" target="_blank">Flocks, Herds, and Schools: A Distributed Behavioral Model (Reynolds, 1987)</a>. There have been several further papers since, which build upon this model. One of which is Hemelrijk and Hildenbrandt's paper, <a href="https://www.researchgate.net/publication/224010876_Self-Organized_Shape_and_Frontal_Density_of_Fish_Schools" target="_blank">Self-Organized Shape and Frontal Density of Fish Schools (Hemelrijk and Hildenbrandt, 2007)</a>, which describes refined weights and adds other force factors to the original model in order to more accurate represent schooling fish. We used this paper as the basis for our project.
+		</p>
+
+
+	<h2>II. Live Demo</h2>
+			
+		<div class="img-table">
+			<div class="img-table-box">
+				<canvas data-processing-sources="flocking.pde"></canvas>
+			</div>
+		</div>
+		<div class="img-table attach narrow cap">
+			<div class="img-table-box">
+				<br>
+				Controls<br>
+				<br>
+				LMB - Add agent <br>
+				RMB - Add obstacle
+			</div>
+			<div class="img-table-box">
+				1 - Turn on/off separation <br>
+				2 - Turn on/off alignment <br>
+				3 - Turn on/off alignment <br>
+				4 - Turn on/off radii render <br>
+				5 - Turn on/off dynamic radii
+			</div>
+		</div>
+
+
+	<h2>III. Implementation</h2>
+
+		<h3>Steering Forces</h3>
+
+			<p>
+				There are three steering forces that describe the basic movement of an agent. Each of these forces take into account a subset of all the other agents to consider in their calculations.
+			</p>
+
+			<ul>
+				<li>Cohesion - toward the average location of its neighbours</li>
+				<li>Alignment - toward the average direction of its neighbours</li>
+				<li>Separation - away from the average location of its neighbours</li>
+			</ul>
+
+			<div class="img-table">
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/cohesion.png">
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/alignment.png">
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/separation.png">
+					</div>
+				</div>
+			</div>
+
+			<p>
+				The cohesion force allows the agents to be able to find each other and move towards each other. The alignment force gives the agents a sense of cohesive direction. The separation force prevents agents from any collisions and over crowding.
+			</p>
+
+			<h4>Additional Forces</h4>
+
+			<ul>
+				<li>Random Noise - a small force in a random direction to account for stochastic influences</li>
+				<li>Cruise Speed - a force based on all the other forces that keeps the agent from moving too slow or fast</li>
+			</ul>
+
+			<h4>Weights</h4>
+
+			<p>
+				Each of these forces are weighted with some scaling parameter that determines the importance of each force. Of course, these weights can be changed to simulate different behaviours.
+			</p>
+
+
+		<h3>Radii of Perception</h3>
+
+			<p>
+				Each steering force has a radius of perception. These radii describe the zones in which each steering force selects the subset of neighbours to act upon.
+			</p>
+
+			<div class="img-table narrow">
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/radii.png">
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/radii_blindangles.png">
+					</div>
+				</div>
+			</div>
+			<div class="img-table attach cap">
+				<div class="img-table-box">
+					Left: Radii visualization; Right: Radii visualization with blind angles.
+				</div>
+			</div>
+
+			<h4>Blind Angles</h4>
+
+			<p>
+				Realistically, an agents's behavior should only be impacted by neighbours it can perceive. Since cohesion motivated mainly through visual cues, there is a blind angle in that radius directly behind the agent. Alignment is influenced primarily through the lateral line system (an organ system found in fish that detects movement, pressure, etc. in the surrounding water), so it has blind angles both in the front and the back.
+			</p>
+
+			<h4>Density Dependent Radii</h4>
+
+			<p>
+				Likewise, an agent's senses is also impacted by its surroundings. While a static radius leads to fairly accurate flocking or schooling, in actuality an agent's radii of perception are limited by the density of its neighbouring agents. For example, a crowded agent would be able to percieve neighbours in a small radius around it than an agent surrounded by only a few neighbours. Therefore, the radii can be better calculated as a linear interpolation of the previous radii and a newly calculated density dependent radii.
+			</p>
+
+			<p>
+				This calculation is done for the cohesion and alignment radii. The separation radius stays constant because an agent's desire to have personal space should not change with the amount of neighbours it has.
+			</p>
+
+			<pre class="prettyprint lang-java">
+s = smoothness * &Delta;t;					// Weight for interpolation
+d = max_radius - (influence * num_neighbors(t));	// Density dependent radius
+radius(t + &Delta;t) = max(min_radius, ((1 - s) * radius(t)) + (s * d));</pre>
+
+			<p>
+				The smoothness value determines how quickly the radius is allowed to change per calculation by prioritizing either the current radius or the calculated density dependent radius. The smaller the smoothness value, the smoother the change in radius.
+			</p>
+
+			<p>
+				The influence value determines how many neighbours it requires for the radius to constrict. The larger the influence value, the more quickly the radius reduces. If this value is too large, then the agents display a swirling behaviour since it effectively turns off alignment.
+			</p>
+
+		<h3>Obstacle Avoidance</h3>
+
+		<p>
+			To make this simulation more interesting, we can make our agents interact with the environment. Obstacles are the most basic form of environment.
+		</p>
+		
+		<div class="img-table">
+			<div class="img-table-box">
+				<div class="img-table-item smaller">
+					<img src="img/obstacles.gif">
+				</div>
+			</div>
+		</div>
+
+		<p>
+			Referencing Craig Reynolds’ paper <a href="http://www.red3d.com/cwr/steer/gdc99/">Steering Behaviors for Autonomous Characters (Reynolds, 1999)</a>, we also implemented obstacle avoidance. While the basic idea is the same as described in this paper, instead of having a rectangular zone of detection in front of each agent, we chose to instead have the obstacle determine this zone.
+		</p>
+
+		<p>
+			Each obstacle has attributes position, radius, and buffer radius. The buffer radius determines how large of a zone around the obstacle our agents should avoid.
+		</p>
+
+		<p>
+			To calculate this obstacle avoidance force (to be referred to as avoidance from now on), every existing obstacle is looped through to find relevant obstacles (must in the agent’s direct path) and then from those obstacles, determine the closest, and therefore most relevant obstacle.
+		</p>
+
+		<p>
+			To determine whether an obstacle is relevant or not:
+		</p>
+
+		<ol>
+			<li>Check whether or not the obstacle is in front of the agent by calculating the dot product of the forward vector and the vector toward the obstacle.</li>
+			<li>Check whether this agent is going to be within the buffer zone in the next time step by projecting the vector from the agent to the obstacle onto the agent’s speed vector and checking if the length of this vector is greater than the sum of the radius and the buffer radius.</li>
+		</ol>
+
+		<p>
+			Once the most relevant obstacle is determined, the avoidance force direction is simply the normal out of the obstacle at the possible point of intersection on the obstacle, if the agent continues on the current trajectory. This can be calculated with a simple line sphere intersection algorithm.
+		</p>
+
+
+	<h2>IV. Future Work</h2>
+
+	<p>
+		The next step would be to move this simulation into the 3D realm. All the forces work the same way and should only require changes such as adding pitch and roll forces to keep the agents largely horizontal and right side up.
+	</p>
+
+	<p>
+		Some additional features could include obstacles of different shapes, such as rectangle or lines, and multiple types of agents that flock differently (based on body length, radii, etc.) and do not flock with agents that are not of their same type.
+	</p>
+
+	<p>
+		Ideally, we should also implement a spatially sorted data structure in order to handle simulations of very large number of agents.
+	</p>

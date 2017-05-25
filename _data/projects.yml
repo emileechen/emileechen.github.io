@@ -1,0 +1,24 @@
+- id: flocking
+  title: Flocking
+  desc: Simulating the behaviour of schooling or flocking agents through steering behaviours.
+  tags: [Processing, Simulation]
+- id: trees
+  title: Tree Generator
+  desc: Procedurally generating trees using L-System and turtle interpretation.
+  tags: [Processing]
+- id: seamcarving
+  title: Seam Carving
+  desc: Resizing images with energy function based seam removal and insertion.
+  tags: [Python, Photo Manip.]
+- id: facemorphing
+  title: Face Morphing
+  desc: Warping triangulations and cross-dissolving colours of portraits to morph one face into another.
+  tags: [Python, Photo Manip.]
+- id: mosaicing
+  title: Photo Mosaicing
+  desc: Manual and automatic image mosaicing with the Harris interest point detector, rotational invariant features, and RANSAC.
+  tags: [Python, Photo Manip.]
+- id: imagealignment
+  title: Image Alignment
+  desc: Aligning (with SSD, NCC, image pyramids, and edge detection) and compositing R, G, B colour channels.
+  tags: [Python, Photo Manip.]

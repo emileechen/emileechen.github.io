@@ -1,0 +1,41 @@
+---
+layout: default
+title: blog
+permalink: /blog/
+---
+			<!-- made by Emilee Chen
+					may 2017
+						@ emileechen.com
+							emilee.ty.chen@gmail.com -->
+
+
+
+<div class="blog-main">
+	<div class="blog-content">
+		{% for post in site.posts %}
+		{% if post.category != "Personal" %}
+		<div class="blog-container">
+
+			<div class="blog-head">
+				<a href="{{ post.url }}">
+					<div class="blog-title">
+						{{ post.title }}
+						<span class="blog-post-small">{{ post.date | date: '%a, %m/%d/%y' }}</span>
+					</div>
+					
+				</a>
+			</div>
+
+			<div class="blog-excerpt">
+				{{ post.excerpt }}
+
+				<p class="blog-read-more"><a href="{{ post.url }}">Read more</a></p>
+			</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+<!-- 	<div class="blog-side">
+		hello
+	</div> -->
+</div>

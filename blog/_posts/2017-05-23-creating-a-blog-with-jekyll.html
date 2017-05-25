@@ -1,0 +1,122 @@
+---
+layout:   post
+title:    "Creating a Custom Blog with Jekyll"
+date:     2017-05-23 10:25:26 -0700
+category: frontend
+tags:     [jekyll, webdev, frontend]
+---
+
+<p>
+	The thought of starting a blog has beeen running through my mind for quite a while now. Now that I've finally got the time for it (I just graduated!) I figure it's time to finally act on the idea. I hope to write about my experiments and side projects (for both code and art), so keep an eye out! Regardless of future plans, the first order of business is, of course, actually creating a blog, which brings us to where we are now.
+</p>
+
+<p>
+	I've considering using a blogging platform like Wordpress or Tumblr and either embedding it into my website or simply linking to something like Medium. Ultimately, after doing some research and consulting my friends for advice, (thanks, Arlan!) I decided on building my own blog with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>. The benefits are two-fold: I get to have full control over customizing the look of my blog, and it also gives me an opportunity to learn something new (and blog about it).
+</p>
+
+<p>
+	My web experience is not very extensive, it consists mostly of plain HTML and CSS static sites that I build for fun, mixed with some very minimal Meteor and React. Learning something new on my own is always daunting for me, but luckily there are a lot of good tutorials floating around on the internet.
+</p>
+
+<p>
+	I'll be walking through my process of creating this custom Jekyll blog in this post. Of course, there are plenty of <a href="http://jekyllthemes.org/" target="_blank">Jekyll themes</a> out there, if you want something quick. My goal here is to learn to do it myself, so I can use these tools to create exactly what I want. Hopefully it'll help you do the same!
+</p>
+
+
+<h2>Goals</h2>
+	<ul>
+		<li><b>Make a blog with Jekyll</b> that supports:</li>
+		<ul>
+			<li><b>Tags</b> or categories</li>
+			<li>Comments</li>
+		</ul>
+		<li>Must have <b>seamless integration</b> into the rest of my website</li>
+		<ul>
+			<li>Use the same template, CSS, etc.</li>
+		</ul>
+	</ul>
+
+
+<h2>Getting Started</h2>
+
+<p>
+	Installing Jekyll was quite straightforward. Jekyll's documentation has a easy to follow <a href="https://jekyllrb.com/docs/installation/" target="_blank">installation guide</a>, and should have everything you need.
+</p>
+
+<p>
+	Getting Jekyll up and running is pretty simple, too. I poked around with their default template to figure out what everything does, but started with a blank Jekyll site for my blog.
+</p>
+
+<pre class="prettyprint lang-bash">
+# Create a new blank slate Jekyll site and the dir for it to live in: myblog
+jekyll new myblog --blank
+
+# Go into the directory
+cd myblog</pre>
+
+<p>
+	Here are some basic usage commands:
+</p>
+
+<pre class="prettyprint lang-bash">
+# Build the site into _site
+jekyll build
+
+# Build the site and preview it on your local web server at localhost:4000
+jekyll serve</pre>
+
+<p>
+	Your shiny new site should be up and running at <a href="localhost:4000" target="_blank">localhost:4000</a> until you use <span class="code">ctrl-c</span> to kill the server from that same terminal. As you can see, the webpage is entirely blank. (Good!) Jekyll is probably complaining about <span class="code">Configuration file: none</span> in your terminal, which we'll fix prompty.
+</p>
+
+<p>
+	Our initialized Jekyll site is quite bare bones, and we'll have to add a bunch of folders and files to what's been created for us. First, it's important to understand the structure of it all.
+</p>
+
+<pre class="prettyprint lang-bash">
+# Jekyll blank site directory structure
+myblog
+├── _drafts
+├── _layouts
+├── _posts
+├── _site		# This won't exist if you didn't try to build/serve the site
+│   └── index.html
+└── index.html</pre>
+
+<p>
+	<b>What does build mean?</b> This directory that we have here is really just a bucket of information that Jekyll uses to build your website. You tell it what you want, and boom, it generates all the HTML and CSS that your audience actually sees into <span class="code">_site</span>.
+</p>
+
+<p>
+	<b>What's all this weird underscore stuff?</b> That's all the stuff that don't ever make it into our built site.
+</p>
+
+<p>
+	<b>Where do I put my assets and other pages?</b> Everything that's not prepended with an underscore is copied over into <span class="code">_site</span> exactly where you put it.
+</p>
+
+<p>
+	Now, let's add a couple new files and folders into the mix...
+</p>
+
+<pre class="prettyprint lang-bash">
+myblog
+├── _config.yml	# New
+├── _includes		# New
+├── _layouts
+├── _posts
+├── _sass		# New
+├── _site		# This is automatically created for you in the build process
+└── index.html</pre>
+
+<p>
+	The Jekyll documentation's <a href="https://jekyllrb.com/docs/structure/" target="_blank">directory structure</a> page has more in depth descriptions, but here's a quick run down:
+</p>
+
+<ul>
+	<li><span class="code">_config.yml</span> - This is where all the important configuration information (site title, url, etc.) regarding your entire site lives. Jekyll uses this information to compile your site properly.</li>
+	<li><span class="code">_drafts</span> - This is where all your unpublished posts live</li>
+</ul>
+
+
+

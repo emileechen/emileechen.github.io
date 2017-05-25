@@ -1,0 +1,48 @@
+
+@import url(https://fonts.googleapis.com/css?family=Raleway|Open+Sans|Roboto|Inconsolata|Fira+Sans:300);
+
+
+// Fonts
+$basicfont: 'Fira Sans', sans-serif;
+$accentfont: 'Raleway', sans-serif;
+
+
+// Sizes
+$mid: 875px;
+
+$basicfontsize: 1.1rem;
+$fontsize-small: .9rem;
+$fontsize-smaller: .8rem;
+
+$lineheight-small: 1.2rem;
+$lineheight-smaller: 1.1rem;
+
+
+
+$base-font-size: 1em;
+$font-size-title: 2em;
+$font-size-header: 1.4em;
+$font-size-header2: 1.2em;
+$font-size-small: .9em;
+$font-size-smaller: .8em;
+
+$base-line-height: 1.5;
+$line-height-compact: 1.2;
+$letter-spacing: .075rem;
+$base-spacing: $base-line-height * 1em;
+$spacing-small: $base-line-height * .5em;
+$spacing-smaller: $base-line-height * .25em;
+
+
+// Colours
+$white: #FCFCFC;
+$black: #555555;
+
+$purple: #987FC5;
+$midpurple: #BDADDA;
+$lightpurple: #F2EFF7;
+$blue: #7FACC5;
+$grey: #4A4A4A;
+$midgrey: #999999;
+$lightgrey: #CECECE;
+$purple50: rgba(152, 127, 197, 0.8);

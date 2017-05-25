@@ -1,0 +1,12 @@
+
+title: Emilee Chen
+email: emilee.ty.chen@gmail.com
+baseurl: ""
+url: "http://emileechen.com"
+github_username:  emileechen
+
+permalink: pretty
+
+sass:
+  sass_dir: _sass
+  

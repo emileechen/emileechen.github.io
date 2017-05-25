@@ -1,0 +1,70 @@
+---
+layout: default
+title: tags
+permalink: /blog/tags/
+---
+			<!-- made by Emilee Chen
+					may 2017
+						@ emileechen.com
+							emilee.ty.chen@gmail.com -->
+
+
+{% comment %}
+	Grabbing and sorting all the tags from every post
+{% endcomment %}
+
+{% assign raw_tags = "" %}
+{% for post in site.posts %}
+	{% assign temp_tags = post.tags | join:'|' | append:'|' %}
+	{% assign raw_tags = raw_tags | append: temp_tags %}
+{% endfor %}
+{% assign raw_tags = raw_tags | split:'|' | sort %}
+
+
+
+{% comment %}
+	Filtering duplicate and invalid tags
+{% endcomment %}
+
+
+{% assign tags = "" %}
+{% for tag in raw_tags %}
+	{% if tag != "" and tag != " " %}
+		{% if tags == "" %}
+			{% assign tags = tag | split:'|' %}
+		{% endif %}
+		{% unless tags contains tag %}
+			{% assign tags = tags | join:'|' | append:'|' | append:tag | split:'|' %}
+		{% endunless %}
+	{% endif %}
+{% endfor %}
+
+
+
+<h1>{{ page.title }}</h1>
+
+
+{% for tag in tags %}
+	<a class="blog-tag" href="#{{ tag | slugify }}"><i class="fa fa-tag" aria-hidden="true"></i>  {{ tag }}</a>
+{% endfor %}
+
+
+{% for tag in tags %}
+	<h2 id="{{ tag | slugify }}">{{ tag }}</h2>
+	<ul>
+		{% for post in site.posts %}
+			{% if post.tags contains tag %}
+				<li>
+					<a href="{{ post.url }}">
+						{{ post.title }}
+					</a>
+					<span class="blog-post-info">
+						{{ post.date | date: '%a, %m/%d/%y' }}
+					</span>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+{% endfor %}
+
+

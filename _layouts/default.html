@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body onload="PR.prettyPrint()">
+
+    <div class="container-frame container-frame-top"></div>
+    <div class="container-frame container-frame-right"></div>
+    <div class="container-frame container-frame-btm"></div>
+    <div class="container-frame container-frame-left"></div>
+
+    <div class="container">
+
+      {% include header.html %}
+		
+      <div class="main">
+			  {{ content }}
+
+        {% include footer.html %}
+		  </div>
+		
+    </div>
+        
+  {% include scripts.html %}
+
+  </body>
+</html>

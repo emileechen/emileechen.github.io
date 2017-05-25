@@ -1,206 +1,41 @@
-
+---
+layout: default
+title: work
+permalink: /
+---
 			<!-- made by Emilee Chen
-					oct 2016
-						@ emileechen.github.io -->
+					may 2017
+						@ emileechen.com
+							emilee.ty.chen@gmail.com -->
 
 
-<!doctype html>
-<html>
-	<head>
-		<title>Emilee Chen</title>
-		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
-		<link rel="icon" type="image/png" href="/favicon.png">
-	</head>
+<div id="projects">
 
-	<body>
+	{% for proj in site.data.projects %}
 
-		<div class="container-frame container-frame-top"></div>
-		<div class="container-frame container-frame-right"></div>
-		<div class="container-frame container-frame-btm"></div>
-		<div class="container-frame container-frame-left"></div>
-
-		<div class="container">
-
-			<div class="topbar">
-				<div class="logo">
-					<div class="name">
-						<a href="/">
-						Emilee Chen
-						</a>
-					</div>
-					<div class="what">
-						Software Engineer
-					</div>
-				</div>
-				<div class="nav">
-						<div class="nav-btn current">Work</div>
-					<a href="/about">
-						<div class="nav-btn click">About
-							<div class="btn-underline"></div>
-						</div>
-					</a>
+	<div class="proj-item">
+		<a class="proj-box"
+			href="/projects/{{ proj.id }}/"
+			style="background-image: url('/projects/{{ proj.id }}/icon.jpg');">
+			<div class="proj-gradient"></div>
+			<div class="proj-content">
+				<p class="proj-title">
+					<span class="proj-title-line">
+						{{ proj.title }}
+					</span>
+				</p>
+				<p class="proj-desc">
+					{{ proj.desc }}
+				</p>
+				<div class="proj-tags">
+					{% for tag in proj.tags %}
+						{{ tag }}{% if forloop.last == false %}, {% endif %}
+					{% endfor %}
 				</div>
 			</div>
+		</a>
+	</div>
 
-
-			<div class="main">
-
-				<div id="projects">
-
-					<div class="proj-item">
-						<a class="proj-box"
-							href="/flocking/"
-							style="background-image: url('/flocking/icon.jpg');">
-							<div class="proj-gradient"></div>
-							<div class="proj-content">
-								<p class="proj-title">
-									<span class="proj-title-line">
-										Flocking
-									</span>
-								</p>
-								<p class="proj-desc">
-									Simulating the behaviour of schooling or flocking agents through steering behaviours.
-								</p>
-								<div class="proj-tags">
-									Processing, Simulation
-								</div>
-							</div>
-						</a>
-					</div>
-					
-					<div class="proj-item">
-						<a class="proj-box"
-							href="/flocking/"
-							style="background-image: url('/trees/icon.jpg');">
-							<div class="proj-gradient"></div>
-							<div class="proj-content">
-								<p class="proj-title">
-									<span class="proj-title-line">
-										Tree Generator
-									</span>
-								</p>
-								<p class="proj-desc">
-									Procedurally generating trees using L-System and turtle interpretation.
-								</p>
-								<div class="proj-tags">
-									Processing
-								</div>
-							</div>
-						</a>
-					</div>
-
-					<div class="proj-item">
-						<a class="proj-box"
-							href="/seamcarving/"
-							style="background-image: url('/seamcarving/icon.jpg');">
-							<div class="proj-gradient"></div>
-							<div class="proj-content">
-								<p class="proj-title">
-									<span class="proj-title-line">
-										Seam Carving
-									</span>
-								</p>
-								<p class="proj-desc">
-									Resizing images with energy function based seam removal and insertion.
-								</p>
-								<div class="proj-tags">
-									Python, Photo Manip.
-								</div>
-							</div>
-						</a>
-					</div>
-
-					<div class="proj-item">
-						<a class="proj-box"
-							href="/facemorphing/"
-							style="background-image: url('/facemorphing/icon.jpg');">
-							<div class="proj-gradient"></div>
-							<div class="proj-content">
-								<p class="proj-title">
-									<span class="proj-title-line">
-										Face Morphing
-									</span>
-								</p>
-								<p class="proj-desc">
-									Warping triangulations and cross-dissolving colours of portraits to morph one face into another.
-								</p>
-								<div class="proj-tags">
-									Python, Photo Manip.
-								</div>
-							</div>
-						</a>
-					</div>
-
-					<div class="proj-item">
-						<a class="proj-box"
-							href="/mosaicing/"
-							style="background-image: url('/mosaicing/icon.jpg');">
-							<div class="proj-gradient"></div>
-							<div class="proj-content">
-								<p class="proj-title">
-									<span class="proj-title-line">
-										Photo Mosaicing
-									</span>
-								</p>
-								<p class="proj-desc">
-									Manual and automatic image mosaicing with the Harris interest point detector, rotational invariant features, and RANSAC.
-								</p>
-								<div class="proj-tags">
-									Python, Photo Manip.
-								</div>
-							</div>
-						</a>
-					</div>
-
-					<div class="proj-item">
-						<a class="proj-box"
-							href="/imagealignment/"
-							style="background-image: url('/imagealignment/icon.jpg');">
-							<div class="proj-gradient"></div>
-							<div class="proj-content">
-								<p class="proj-title">
-									<span class="proj-title-line">
-										Image Alignment
-									</span>
-								</p>
-								<p class="proj-desc">
-									Aligning (with SSD, NCC, image pyramids, and edge detection) and compositing R, G, B colour channels.
-								</p>
-								<div class="proj-tags">
-									Python, Photo Manip.
-								</div>
-							</div>
-						</a>
-					</div>
-
-				</div>
-
-
-				<div class="footer">
-					<a href="https://www.instagram.com/emileechen/" class="icon"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-					<a href="https://github.com/emileechen" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
-					<a href="https://www.linkedin.com/in/emileechen" class="icon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-				</div>
-
-			</div>
-
-		</div>
-
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/smoothscroll.js"></script>
-		<script type="text/javascript" src="/js/magicstuff.js"></script>
-		<script type="text/javascript" src="/css/less.js"></script>
-
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-			ga('create', 'UA-71298215-2', 'auto');
-			ga('send', 'pageview');
-		</script>
-		
-	</body>
-</html>
+	{% endfor %}
+	
+</div>

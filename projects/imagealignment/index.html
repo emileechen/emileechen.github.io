@@ -1,0 +1,718 @@
+---
+layout: default
+title: imagealignment
+permalink: /projects/imagealignment/
+processing: false
+---
+			<!-- made by Emilee Chen
+					mar 2017
+						@ emileechen.com
+							emilee.ty.chen@gmail.com -->
+
+
+
+<h1>Image Alignment</h1>
+
+	<h2>I. Overview</h2>
+
+		<p>
+			From 1907 to 1915, Sergei Mikhailovich Prokudin-Gorskii, a Russian chemist and photographer, travelled around Russia documenting the Russian Empire with colour photography. He was able to do this on black and white film, by taking three exposures of the same scene with red, green, and blue filters. The three photographs can then can be projected through red, green, and blue filters which superimposes into a single, fully coloured photograph when aligned correctly.
+		</p>
+
+		<div class="right">
+			<div class="img-table wide100">
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/cathedral_a.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="img-table wide100 attach cap">
+				<div class="img-table-box">
+					The original cathedral.jpg showing the three channels that it will be cropped into.
+				</div>
+			</div>
+		</div>
+
+		<p>
+			The Library of Congress purchased these plates from Prokudin-Gorskii's heirs, and scanned these glass plates and uploaded the collection online. The goal of this project is to write a program that can take these RGB scans and align the three images and combine to display them in full colour the way they were meant to be viewed.
+		</p>
+
+
+	<h2>II. Image Alignment</h2>
+
+		<p>
+			To recreate these photographs, the three separate red, green, and blue filtered images (from now on to be referred to as the R, G, B channels) must be aligned correctly. Since the original images are stacked on top of one another and have artifacts, some preprocessing must be done.
+		</p>
+
+		<p>
+			This is my step by step approach:
+		</p>
+		
+		<ol>
+			<li>
+				Crop the original image into three separate channel images by using <span class="code">height / 3</span> as each channel's height, <span class="code">ch_height</span>.<br>
+				i.e. The red channel would have corners <span class="code">(0, ch_height * 2), (width, ch_height * 2), (width, ch_height * 3), (0, ch_height * 3)</span>
+			</li>
+			<li>
+				Crop each channel by some arbitrary percentage on each side.<br>
+				This is done so that the meat of the image can be considered in the alignment, without the borders and other blemishes affecting any calculations.
+			</li>
+			<li>
+				Align the cropped red and green channels to the blue channel to get (x, y) displacements for both channels. <br>
+				There are many algorithms that can be used to achieve this, and will be discussed below.
+			</li>
+			<li>
+				Apply the displacements onto the uncropped versions of their corresponding channels. <br>
+				The channels without their borders cropped is used instead of the cropped versions to preserve as much of the image as possible.
+			</li>
+			<li>
+				Merge the three channels together into one final image and save.
+			</li>
+		</ol>
+
+		<div class="img-table narrow">
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/cathedral_b.jpg">
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/cathedral_c.jpg">
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/cathedral_d.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="img-table attach cap narrow">
+			<div class="img-table-box">
+				The images above show the area of the channels that will be used in aligning.
+			</div>
+		</div>
+
+		<h3>Na&#xef;ve Algorithms</h3>
+
+			<p>
+				There are many image aligning methods, but the simplest way is to exhaustively compare the R, G, and B channels to find matches in intensity. To align the images, the R and G channels are being compared against the B channel separately in some arbitrary x, y shift range. I chose to use a <b>31 by 31 search range</b> (shifts 15 pixels left, right, up, and down).
+			</p>
+
+			<p>
+				I explored two heuristics to determine the shift amount for the best alignment:
+			</p>
+
+			<h4>Sum of Squared Differences (SSD)</h4>
+
+				<pre class="prettyprint lang-python">ssd = sum( sum( (image1 - image2) ^ 2 ) )</pre>
+
+				<p>
+					The SSD is an enumeration of similarities in colour intensities. The smaller this value, the smaller the difference, and thus, the better the match.
+				</p>
+
+			<h4>Normalized Cross Correlation (NCC)</h4>
+
+				<pre class="prettyprint lang-python">ncc = innerproduct( image1 / ||image1||, image2 / ||image2|| )</pre>
+
+				<p>
+					NCC normalizes the image being shifted, and then takes the inner product of that image and the one it is being compared to as a vector. The larger this value, the closer the two images are, and thus, the better the match.
+				</p>
+
+			<p>
+				Both heuristics were used to align the images below. The result displacements (using SSD and NCC) were the same for each image. The resulting full colour images are displayed below, along with their corresponding file names and full sized images. Note that the displacement values are actually (y, x). e.g. (5, -2) represents shift 5 down, and 2 left.
+			</p>
+
+			<div class="img-table">
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/cathedral.jpg">
+						<div class="code caption toprgt">
+							cathedral.jpg <br>
+							R: (12, 3) <br>
+							G: (5, 2) 
+						</div>
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/monastery.jpg">
+						<div class="code caption toprgt">
+							monastery.jpg <br>
+							R: (3, 2) <br>
+							G: (-3, 2) 
+						</div>
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/nativity.jpg">
+						<div class="code caption toprgt">
+							nativity.jpg  <br>
+							R: (7, 1) <br>
+							G: (3, 1) 
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="img-table attach">
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/settlers.jpg">
+						<div class="code caption toprgt">
+							settlers.jpg <br>
+							R: (14, -1) <br>
+							G: (7, 1) 
+						</div>
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/tobolsk.jpg">
+						<div class="code caption toprgt">
+							tobolsk.jpg <br>
+							R: (6, 3) <br>
+							G: (3, 3) 
+						</div>
+					</div>
+				</div>
+				<div class="img-table-box">
+				</div>
+			</div>
+
+			<div class="data-table narrowest">
+				<div class="data-table-box">
+				</div>
+				<div class="data-table-box title">
+					SSD
+				</div>
+				<div class="data-table-box title">
+					NCC
+				</div>
+			</div>
+			<div class="data-table narrowest data-attach">
+				<div class="data-table-box title">
+					cathedral.jpg
+				</div>
+				<div class="data-table-box">
+					2.645 seconds
+				</div>
+				<div class="data-table-box">
+					5.768 seconds
+				</div>
+			</div>
+			<div class="data-table narrowest data-attach">
+				<div class="data-table-box title">
+					monastery.jpg
+				</div>
+				<div class="data-table-box">
+					3.019 seconds
+				</div>
+				<div class="data-table-box">
+					5.315 seconds
+				</div>
+			</div>
+			<div class="data-table narrowest data-attach">
+				<div class="data-table-box title">
+					nativity.jpg
+				</div>
+				<div class="data-table-box">
+					3.139 seconds
+				</div>
+				<div class="data-table-box">
+					5.248 seconds
+				</div>
+			</div>
+			<div class="data-table narrowest data-attach">
+				<div class="data-table-box title">
+					settlers.jpg
+				</div>
+				<div class="data-table-box">
+					2.922 seconds
+				</div>
+				<div class="data-table-box">
+					5.181 seconds
+				</div>
+			</div>
+			<div class="data-table narrowest data-attach">
+				<div class="data-table-box title">
+					tobolsk.jpg
+				</div>
+				<div class="data-table-box">
+					2.947 seconds
+				</div>
+				<div class="data-table-box">
+					6.854 seconds
+				</div>
+			</div>
+
+			<p>
+				Although both methods gave the same displacement result, SSD is a slighty faster calculation than NCC, with SSD completing the alignments in around 3 seconds, and NCC in around 6 seconds.
+			</p>
+
+		<h3>Image Pyramids</h3>
+
+		<p>
+			Exhaustively searching through the entire image works for the previous JPEG files since they were all relatively low resolution.With larger file sizes (the collection has TIFF files that are around 4000 by 3000), the naïve method can no longer get the job done in a reasonable amount of time.
+		</p>
+
+		<p>
+			This is where image pyramids come in. The driving concept is that a smaller image is faster to search through than the original size. An image pyramid is a series of images that are resized smaller and smaller going up the levels of the pyramid. Even though a smaller image would be a lower resolution, it can provide an approximate value to shift for alignment, and further calculations can be done to calculate the smaller scale shifts.
+		</p>
+
+		<p>
+			A couple of values must be set before the process can be used. First, we have to decide how much smaller the resized image will be than the image below. I chose to go with decreasing by <b>a factor of 2</b>. We then have to set the number of levels in the pyramid. I chose to expand the pyramid until the image's width or height is under 200 pixels. For these TIFF files that are around 4000 by 3000, that is 5 levels, including the base (original, unresized image). SSD or NCC will be used, though this time the search will be within a <b>15 by 15 search range</b>.
+		</p>
+
+		<p>
+			This is my step by step approach:
+		</p>
+
+		<ol>
+			<li>
+				Crop the original image to its R, G, B channels and then crop off an arbitrary amount so that we only use the centre of the image to make comparisons.
+			</li>
+			<li>
+				Create an image pyramid for each channel.<br>
+				Size down the width and height by half with each level and did this until the highest level has width less than 200 pixels.
+			</li>
+			<li>
+				Search through a cropped section of each level of the red and green pyramids against the blue pyramid with SSD or NCC to get displacement values.<br>
+				The image has to be cropped smaller or else there is no decrease in computation speed. After testing, the best crop amount seems to be a 200 x 200 pixel patch in the centre. The displacement amount has to be doubled each time we move down a level to preserve the relative displacement.
+			</li>
+			<li>
+				Apply the displacements onto the uncropped versions of their corresponding channels.
+			</li>
+			<li>
+				Merge the three channels together into one final image and save.
+			</li>
+		</ol>
+
+		<div class="img-table">
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/bridge.jpg">
+					<div class="code caption toprgt">
+						bridge.tif<br>
+						R: (69, 8)<br>
+						G: (13, -4)
+					</div>
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/harvesters.jpg">
+					<div class="code caption toprgt">
+						harvesters.tif<br>
+						R: (124, 17)<br>
+						G: (60, 19)
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="img-table attach">
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/lady.jpg">
+					<div class="code caption toprgt">
+						lady.tif<br>
+						R: (112, 10)<br>
+						G: (49, 7)
+					</div>
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/melons.jpg">
+					<div class="code caption toprgt">
+						melons.tif<br>
+						R: (180, 12)<br>
+						G: (77, 4) 
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p>
+			In most cases, SSD and NCC gave me the same results. SSD is once again slighty faster than NCC, with SSD at around 15-17 seconds, and NCC at around 20 seconds.
+		</p>
+
+		<div class="data-table narrowest">
+			<div class="data-table-box">
+			</div>
+			<div class="data-table-box title">
+				SSD
+			</div>
+			<div class="data-table-box title">
+				NCC
+			</div>
+		</div>
+		<div class="data-table narrowest data-attach">
+			<div class="data-table-box title">
+				bridge.tif
+			</div>
+			<div class="data-table-box">
+				13.714 seconds
+			</div>
+			<div class="data-table-box">
+				14.021 seconds
+			</div>
+		</div>
+		<div class="data-table narrowest data-attach">
+			<div class="data-table-box title">
+				harvesters.tif
+			</div>
+			<div class="data-table-box">
+				18.645 seconds
+			</div>
+			<div class="data-table-box">
+				20.756 seconds
+			</div>
+		</div>
+		<div class="data-table narrowest data-attach">
+			<div class="data-table-box title">
+				lady.tif
+			</div>
+			<div class="data-table-box">
+				15.062 seconds
+			</div>
+			<div class="data-table-box">
+				19.762 seconds
+			</div>
+		</div>
+		<div class="data-table narrowest data-attach">
+			<div class="data-table-box title">
+				melons.tif
+			</div>
+			<div class="data-table-box">
+				21.746 seconds
+			</div>
+			<div class="data-table-box">
+				20.110 seconds
+			</div>
+		</div>
+
+		<p>
+			However, I did run into an issue with one of the images, emir.tif. Unlike the other images so far, the centre of this image is predominantly blue. As you can observe in the channels, the gown is "dark" in the red channel as there is very little amounts of red in the full colour photo. Since the gown is at completely different ends of the intensity spectrum for the red and blue channels, the algorithm will not align the channels as expected. This prompted me to look into other alignment methods.
+		</p>
+
+
+	<h2>III. Edge Detection</h2>
+
+		<p>
+			Comparison in colour intenstities has its limitations, and does not work in some cases. Edge detection does a comparison between the changes in intensities instead. There are many approaches to edge detection such as Sobel edge detection and Canny edge detection.
+		</p>
+
+		<h3>Sobel Edge Detection</h3>
+
+			<p>
+				The Sobel operator uses a horizontal (x) kernel and a vertical (y) kernel which are convolved with the image to calculate derivates. I implemented my own convolution, but it was slow and took around 20 seconds to apply the Sobel operator on one of the smaller JPEG images. So instead, I used SciPy's <span class="code">signal.convolve2d()</span>.
+			</p>
+
+			<div class="img-table">
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/emir_c.jpg">
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/emir_d.jpg">
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/emir_e.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="img-table attach cap narrow">
+				<div class="img-table-box">
+					These are the R, G, and B images after the Sobel operator are applied to them. Although there are some differences in intensity, the matching algorithms can now use the edges for aligning.
+				</div>
+			</div>
+
+			<p>
+				The process of aligning images with edge detection isn't much different except for an added step. The Sobel operator is applied to each image before comparison using SSD or NCC.
+			</p>
+
+			<div class="img-table">
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/emir_a.jpg">
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/emir.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="img-table attach cap narrow">
+				<div class="img-table-box">
+					Here is a comparison of emir.tif with and without edge detection. The alignment is dramatically improved.
+				</div>
+			</div>
+
+			<p>
+				Edge detection is also helpful in aligning images that have a lot of colour warping.
+			</p>
+
+			<div class="img-table">
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/olgin_bridge_a.jpg">
+					</div>
+				</div>
+				<div class="img-table-box">
+					<div class="img-table-item">
+						<img src="img/olgin_bridge.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="img-table attach cap narrow">
+				<div class="img-table-box">
+					Here is a comparison of olgin_bridge.jpg with and without edge detection.
+				</div>
+			</div>
+
+
+	<h2>IV. Contrast Adjustment</h2>
+
+		<p>
+			In some images, certain features may not be as distinguishable as you would like. Increasing the contrast of an image creates a larger difference in luminance.
+		</p>
+
+		<p>
+			The idea of contrast adjustment is that the minimum and maximum intensities are not at 0 and 255 respectively, and the intensity values can be scaled to have them at the true minimum and maximum values. I ran into a problem implementing the filter this way. All the images that I have tested already have 0 and 255 as their minimum and maximum values, so I had to think of another way to find a scaling factor.
+		</p>
+
+		<p>
+			I decided that I would simply create a contrast filter that the user can input a scaling factor for. The filter scales the luminance by some value <span class="code">1 + n</span>, with n being the inputted scaling factor.
+		</p>
+
+		<p>
+			Of course, each image should have a different scaling factor applied, and use a histogram and some illuminance threshold to determine this scaling factor. However, this was not implemented for this project and the value is left as user input.
+		</p>
+
+
+
+		<div class="img-table">
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/entrance_-8.jpg">
+					<div class="code caption toprgt">
+						-0.8
+					</div>
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/entrance_-6.jpg">
+					<div class="code caption toprgt">
+						-0.6
+					</div>
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/entrance_-4.jpg">
+					<div class="code caption toprgt">
+						-0.4
+					</div>
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/entrance_-2.jpg">
+					<div class="code caption toprgt">
+						-0.2
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="img-table attach">
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/entrance.jpg">
+					<div class="code caption toprgt">
+						entrance.jpg<br>
+						R: (12, 2)<br>
+						G: (5, 1)
+					</div>
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/entrance_04.jpg">
+					<div class="code caption toprgt">
+						+0.4
+					</div>
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/entrance_08.jpg">
+					<div class="code caption toprgt">
+						+0.8
+					</div>
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/entrance_12.jpg">
+					<div class="code caption toprgt">
+						+1.2
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="img-table attach cap narrow">
+			<div class="img-table-box">
+				The series of images above is entrance.jpg with various levels of contrast applied to it. The original image seems faded. Increasing the contrast of this image makes it look much clearer.
+			</div>
+		</div>
+
+
+	<h2>V. Automatic White Balancing</h2>
+
+		<p>
+			In some images, the "white-est" colour is the image is not pure white and is rather tinted another colour. White balancing elimintes this tint. This is accomplished by finding the "white-est" RGB value, some (r, g, b), and scaling each R, G, B channel by <span class="code">255/r, 255/g, and 255/b</span> respectively.
+		</p>
+
+		<div class="img-table">
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/bridge.jpg">
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/bridge_a.jpg">
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/tree.jpg">
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/tree_a.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="img-table attach cap narrow">
+			<div class="img-table-box">
+				The images on the left are the originals, and the images on the right are the results after white balancing.
+			</div>
+		</div>
+
+		<p>
+			Although the images above show significant difference that improved the overall quality, white balancing for most the images did not change them very much. This is because the white-est values for these images were close to pure white already. Some examples are shown below.
+		</p>
+
+		<div class="img-table">
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/monastery.jpg">
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/monastery_a.jpg">
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/cathedral.jpg">
+				</div>
+			</div>
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/cathedral_f.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="img-table attach cap narrow">
+			<div class="img-table-box">
+				The images on the left are the originals, and the images on the right are the results after white balancing.
+			</div>
+		</div>
+
+
+	<h2>VI. Hubble Space Telescope Imagery</h2>
+
+	<div class="right right40">
+		<div class="img-table wide100">
+			<div class="img-table-box">
+				<div class="img-table-item">
+					<img src="img/hubble.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="img-table wide100 attach cap">
+			<div class="img-table-box">
+				Final product using the three CYM channels.
+			</div>
+		</div>
+	</div>
+
+	<p>
+		There are other applications of merging several images using individual colour channels. Images taken in astronomy are not necessarily in the visible spectrum, but we can assign these channels some arbitrary colours to create beautifully coloured images. In fact, more than three channels can be used to create a more colourful image. 
+	</p>
+
+	<p>
+		Unlike the images in the Prokudin-Gorskii collection, these images do not need to be aligned as the telescopes used are likely quite stable and quick. I simply applied an arbitrary colour to each image and superimposed them on top of each other. The colours I chose were based on personal preference, and any combination of colours can be used to achieve different results.
+	</p>
+
+	<p>
+		The next steps would be to implement image rotation and cropping to eliminate the outer grey portion.
+	</p>
+
+	<div class="img-table">
+		<div class="img-table-box">
+			<div class="img-table-item">
+				<img src="img/hubble_1.jpg">
+			</div>
+		</div>
+		<div class="img-table-box">
+			<div class="img-table-item">
+				<img src="img/hubble_2.jpg">
+			</div>
+		</div>
+		<div class="img-table-box">
+			<div class="img-table-item">
+				<img src="img/hubble_3.jpg">
+			</div>
+		</div>
+	</div>
+	<div class="img-table attach cap narrow">
+		<div class="img-table-box">
+			The above images are different wavelength images of HST_10419_11 from the&nbsp;<a href="http://hla.stsci.edu/" target="_blank">Hubble Legacy Archive</a>.
+		</div>
+	</div>
+
+	<div class="img-table">
+		<div class="img-table-box">
+			<div class="img-table-item">
+				<img src="img/hubble_a.jpg">
+			</div>
+		</div>
+		<div class="img-table-box">
+			<div class="img-table-item">
+				<img src="img/hubble_b.jpg">
+			</div>
+		</div>
+		<div class="img-table-box">
+			<div class="img-table-item">
+				<img src="img/hubble_c.jpg">
+			</div>
+		</div>
+	</div>
+	<div class="img-table attach cap narrow">
+		<div class="img-table-box">
+			The same images above after applying magenta (255, 0, 255), cyan (0, 255, 255), and yellow (255, 255, 0) filters on them respectively.
+		</div>
+	</div>
