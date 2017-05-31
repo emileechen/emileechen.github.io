@@ -1,0 +1,216 @@
+---
+layout:   post
+title:    "Creating a Custom Blog with Jekyll"
+date:     2017-05-23 10:25:26 -0700
+category: webdev
+tags:     [jekyll, webdev]
+---
+
+<p>
+	The thought of starting a blog has beeen running through my mind for quite a while now. Now that I've finally got the time for it (I just graduated!) I figure it's time to finally act on the idea. I hope to write about my experiments and side projects (for both code and art), so keep an eye out! Regardless of future plans, the first order of business is, of course, actually creating a blog, which brings us to where we are now.
+</p>
+
+<p>
+	I've considering using a blogging platform like Wordpress or Tumblr and either embedding it into my website or simply linking to something like Medium. Ultimately, after doing some research and consulting my friends for advice, (thanks, Arlan!) I decided on building my own blog with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>. The benefits are two-fold: I get to have full control over customizing the look of my blog, and it also gives me an opportunity to learn something new (and blog about it).
+</p>
+
+<p>
+	My web experience is not very extensive, it consists mostly of plain HTML and CSS static sites that I build for fun, mixed with some very minimal Meteor and React. Learning something new on my own is always daunting for me, but luckily there are a lot of good tutorials floating around on the internet. That said, what I write is entirely from bashing random keys and booping questionable buttons, so if something isn't quite right, please let me know!
+</p>
+
+<p>
+	I'll be walking through my process of creating this custom Jekyll blog in this post. Of course, there are plenty of <a href="http://jekyllthemes.org/" target="_blank">Jekyll themes</a> out there, if you want something quick. My goal here is to learn to do it myself, so I can use these tools to create exactly what I want. Hopefully it'll help you do the same!
+</p>
+
+
+<h2 id="goals">Goals</h2>
+	<ul>
+		<li><b>Make a blog with Jekyll</b> that supports:</li>
+		<ul>
+			<li><b>Tags</b> or categories</li>
+			<li>Comments</li>
+		</ul>
+		<li>Must have <b>seamless integration</b> into the rest of my website</li>
+		<ul>
+			<li>Use the same template, CSS, etc.</li>
+		</ul>
+	</ul>
+
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>
+	Installing Jekyll was quite straightforward. Jekyll's documentation has a easy to follow <a href="https://jekyllrb.com/docs/installation/" target="_blank">installation guide</a>, and should have everything you need.
+</p>
+
+<p>
+	Getting Jekyll up and running is pretty simple, too. I poked around with their default template to figure out what everything does, but started with a blank Jekyll site for my blog.
+</p>
+
+<pre class="prettyprint lang-bash">
+# Create a new blank slate Jekyll site and the dir for it to live in: myblog
+jekyll new myblog --blank
+
+# Go into the directory
+cd myblog</pre>
+
+<p>
+	Here are some basic usage commands:
+</p>
+
+<pre class="prettyprint lang-bash">
+# Build the site into _site
+jekyll build
+
+# Build the site and preview it on your local web server at localhost:4000
+jekyll serve</pre>
+
+<p>
+	Your shiny new site should be up and running at <a href="localhost:4000" target="_blank">localhost:4000</a> until you use <span class="code">ctrl-c</span> to kill the server from that same terminal. As you can see, the webpage is entirely blank. (Good!) Jekyll is probably complaining about <span class="code">Configuration file: none</span> in your terminal, which we'll fix prompty.
+</p>
+
+
+<h2 id="site-anatomy">Site Anatomy</h2>
+
+<p>
+	Our initialized Jekyll site is quite bare bones, and we'll have to add a bunch of folders and files to what's been created for us. First, it's important to understand the structure of it all.
+</p>
+
+<pre class="prettyprint lang-bash">
+# Jekyll blank site directory structure
+myblog
+├── _drafts
+├── _layouts
+├── _posts
+├── _site		# This won't exist if you didn't try to build/serve the site
+│   └── index.html
+└── index.html</pre>
+
+<p>
+	<b>What does build mean?</b> This directory that we have here is really just a bucket of information that Jekyll uses to build your website. You tell it what you want, and boom, it generates all the HTML and CSS that your audience actually sees and puts it in <span class="code">_site</span>.
+</p>
+
+<p>
+	<b>What's all this weird underscore stuff?</b> That's all the stuff that does not directly compose our built site. That would be things, like templates, that go into the building of the site.
+</p>
+
+<p>
+	<b>Where do I put my assets and other pages?</b> Everything that's not prepended with an underscore is copied over into <span class="code">_site</span> exactly where you put it. (e.g. <span class="code">/index.html</span> will end up as <span class="code">/_site/index.html</span>)
+</p>
+
+<p>
+	Now, let's add a couple new files and folders into the mix...
+</p>
+
+<pre class="prettyprint lang-bash">
+myblog
+├── _config.yml	# New
+├── _drafts
+├── _includes		# New
+├── _layouts
+├── _posts
+├── _sass		# New
+├── _site		# This is automatically created for you in the build process
+└── index.html</pre>
+
+<p>
+	The Jekyll documentation's <a href="https://jekyllrb.com/docs/structure/" target="_blank">directory structure</a> page has more in depth descriptions, but here's a quick run down:
+</p>
+
+<ul>
+	<li><span class="code">_config.yml</span> - This is where all the important configuration information (site title, url, etc.) regarding your entire site lives. Jekyll uses this information to compile your site properly.</li>
+	<li><span class="code">_drafts</span> - This is where all your unpublished posts live. Delete it if you'd like.</li>
+	<li><span class="code">_includes</span> - This is where our partials live. That would be the headers, footers, etc. that can be repeated throughout our site.</li>
+	<li><span class="code">_layouts</span> - Layouts live here.</li>
+	<li><span class="code">_posts</span> - Published posts live here.</li>
+	<li><span class="code">_scss</span> - Sass partials live here. This is NOT where your main SCSS/CSS lives, just the stuff that you would like imported into it.</li>
+	<li><span class="code">_scss</span> - Your generated site lives here.</li>
+</ul>
+
+<p>
+	Of course, create your <span class="code">.gitignore</span> if you need to. Mine looks something like this:
+</p>
+
+<pre class="prettyprint lang-bash">
+.DS_Store
+.jekyll-metadata
+.sass-cache/
+_site/</pre>
+
+<p>
+	Next, let's take a look at that configuration file. This is where we configure the entire Jekyll site. For all available options, take a peek at the <a href="https://jekyllrb.com/docs/configuration/" target="_blank">configuration docs</a>. Here is a real basic <span class="code">_config.yml</span> file:
+</p>
+
+<pre class="prettyprint lang-bash">
+title: Emilee Chen
+baseurl: ""
+url: "http://emileechen.com"
+permalink: pretty
+sass:
+  sass_dir: _sass</pre>
+
+<p>
+	For our purposes, none of these settings are really necessary besides the sass directory (if you're going to use <a href="#sass">sass</a>). This file makes it very easy to customize a Jekyll template, and it's good practice to centralize all your info here. We can also easily <a href="#variables">access this info</a> as variables.
+</p>
+
+
+<h2 id="templates">Templates</h2>
+
+<p>
+	It's finally time to work on how our blog looks!
+</p>
+
+
+<h2 id="pages">Pages</h2>
+
+<p>
+	When Jekyll builds our site, it looks for something called a front matter block in each file. If a front matter block exists, Jekyll will processes the file (by shoving it into a template, filling in all the placeholder variables, etc.).
+</p>
+
+<pre class="prettyprint lang-bash">
+---
+layout: default
+title: My Very Cool Blog
+permalink: /blog/
+---</pre>
+
+<p>
+	Read more about this in the <a href="https://jekyllrb.com/docs/frontmatter/" target="_blank">front matter docs</a>.
+</p>
+
+
+<h2 id="variables">Variables and Liquid</h2>
+
+<p>
+	Jekyll uses <a href="https://github.com/Shopify/liquid/wiki" target="_blank">Liquid</a> to allow us to access all kinds of variables using Liquid <i>objects</i> and do all kinds of fun stuff with <i>tags</i> and <i>filters</i>.
+</p>
+
+<p>
+	Read more about variables in the <a href="https://jekyllrb.com/docs/variables/" target="_blank">Jekyll variables doc</a> and Liquid syntax in the <a href="https://shopify.github.io/liquid/" target="_blank">Liquid docs</a>.
+</p>
+
+
+<h2 id="sass">Sass</h2>
+
+<p>
+	Jekyll will compile your SCSS file at <span class="code">css/styles.scss</span> into a CSS file at <span class="code">_site/css/styles.css</span>.
+</p>
+
+<pre class="prettyprint lang-bash">
+---
+# You can leave a comment here, or leave it blank.
+---</pre>
+
+<p>
+	Remember to <b>include a front matter block</b> (the triple dashes) at the top of your SCSS file. Otherwise your file won't be compiled.
+</p>
+
+<p>
+	Of course, you can just write a plain CSS stylesheet if you'd like. A plain CSS stylesheet won't need ot be compiled by Jekyll, so the front matter block won't be necessary. I prefer SCSS for its nesting and variables functionality.
+</p>
+
+
+<h2 id="references">References</h2>
+
+
+

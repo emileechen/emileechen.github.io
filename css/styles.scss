@@ -20,6 +20,9 @@ body, html {
 b {
 	color: $purple;
 }
+i {
+	color: $purple;
+}
 
 a {
 	color: $blue;
@@ -58,7 +61,13 @@ h4 {
 	margin-bottom: .25rem;
 	font-size: 1rem;
 	text-transform: uppercase;
+}
 
+*[id]:before {
+	display: block;
+	content: " ";
+	margin-top: -8rem;
+	height: 8rem;
 }
 
 .hidden {
@@ -227,6 +236,9 @@ img.smaller {
 			width: 100%;
 			margin: 5rem 0 2rem 0;
 			font-size: 0.9rem;
+			a {	i {
+					color: $grey;
+			}	}
 		}
 	}
 }
