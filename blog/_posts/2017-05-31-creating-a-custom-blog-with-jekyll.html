@@ -1,7 +1,7 @@
 ---
 layout:   post
 title:    "Creating a Custom Blog with Jekyll"
-date:     2017-05-23 10:25:26 -0700
+date:     2017-05-31 10:25:26 -0700
 category: webdev
 tags:     [jekyll, webdev]
 ---
@@ -23,6 +23,7 @@ tags:     [jekyll, webdev]
 </p>
 
 
+
 <h2 id="goals">Goals</h2>
 	<ul>
 		<li><b>Make a blog with Jekyll</b> that supports:</li>
@@ -37,6 +38,7 @@ tags:     [jekyll, webdev]
 	</ul>
 
 
+
 <h2 id="getting-started">Getting Started</h2>
 
 <p>
@@ -44,15 +46,19 @@ tags:     [jekyll, webdev]
 </p>
 
 <p>
-	Getting Jekyll up and running is pretty simple, too. I poked around with their default template to figure out what everything does, but started with a blank Jekyll site for my blog.
+	We'll be creating a Jekyll site that has a blog. We can then throw in whatever existing CSS and other pages that you want from your original site. (You'll see that I use the same <span class="code">index.html</span> and all other pages and assets that I simply copied over from my original site.) If you want, you can even convert everything over to use Jekyll layouts, which is what I ended up doing!
+</p>
+
+<p>
+	Getting Jekyll up and running is pretty simple, too. I poked around their default template to figure out what everything does, but started with a blank Jekyll site for my blog.
 </p>
 
 <pre class="prettyprint lang-bash">
-# Create a new blank slate Jekyll site and the dir for it to live in: myblog
-jekyll new myblog --blank
+# Create a new blank slate Jekyll site and the dir for it to live in: mysite
+jekyll new mysite --blank
 
 # Go into the directory
-cd myblog</pre>
+cd mysite</pre>
 
 <p>
 	Here are some basic usage commands:
@@ -70,6 +76,7 @@ jekyll serve</pre>
 </p>
 
 
+
 <h2 id="site-anatomy">Site Anatomy</h2>
 
 <p>
@@ -78,7 +85,7 @@ jekyll serve</pre>
 
 <pre class="prettyprint lang-bash">
 # Jekyll blank site directory structure
-myblog
+mysite
 ├── _drafts
 ├── _layouts
 ├── _posts
@@ -103,7 +110,7 @@ myblog
 </p>
 
 <pre class="prettyprint lang-bash">
-myblog
+mysite
 ├── _config.yml	# New
 ├── _drafts
 ├── _includes		# New
@@ -111,6 +118,8 @@ myblog
 ├── _posts
 ├── _sass		# New
 ├── _site		# This is automatically created for you in the build process
+├── blog 		# New
+│   └── index.html
 └── index.html</pre>
 
 <p>
@@ -124,7 +133,8 @@ myblog
 	<li><span class="code">_layouts</span> - Layouts live here.</li>
 	<li><span class="code">_posts</span> - Published posts live here.</li>
 	<li><span class="code">_scss</span> - Sass partials live here. This is NOT where your main SCSS/CSS lives, just the stuff that you would like imported into it.</li>
-	<li><span class="code">_scss</span> - Your generated site lives here.</li>
+	<li><span class="code">_site</span> - Your generated site lives here.</li>
+	<li><span class="code">blog</span> - I like to keep a separate folder with all the blog related pages and assets to keep my directory clean.</li>
 </ul>
 
 <p>
@@ -141,7 +151,7 @@ _site/</pre>
 	Next, let's take a look at that configuration file. This is where we configure the entire Jekyll site. For all available options, take a peek at the <a href="https://jekyllrb.com/docs/configuration/" target="_blank">configuration docs</a>. Here is a real basic <span class="code">_config.yml</span> file:
 </p>
 
-<pre class="prettyprint lang-bash">
+<pre class="prettyprint lang-yaml">
 title: Emilee Chen
 baseurl: ""
 url: "http://emileechen.com"
@@ -154,29 +164,129 @@ sass:
 </p>
 
 
-<h2 id="templates">Templates</h2>
+
+<h2 id="front-matter">Front Matter</h2>
 
 <p>
-	It's finally time to work on how our blog looks!
+	Before we can do anything Jekyll related, we must know about front matter. It's Very Important for Jekyll to function and build your site properly.
+</p>
+
+<p>
+	When Jekyll builds, it goes through all the files and looks for something called a front matter block. It's <b>denoted and bounded by a set of triple dashes</b> and <b>must be placed at the very beginning of a file</b>. If a front matter block exists, Jekyll will processes the file (by read it as a layout, shoving the page into a layout, filling in all the placeholder variables, etc.).
+</p>
+
+<pre class="prettyprint lang-html">
+---
+# You can insert comments
+
+# And assign some useful predefined variables like...
+
+# Specifying a layout: (we'll talk about how to create layouts)
+layout: default
+
+# Specifying a permalink: (to ignore the actual location and define a new URL)
+permalink: /blog/
+
+# Sepcifying a title:
+title: A Very Cool Blog
+
+# Even assign custom variables like so:
+jive: some maybe useful information
+---</pre>
+
+<p>
+	Read more about this in the <a href="https://jekyllrb.com/docs/frontmatter/" target="_blank">front matter docs</a>.
 </p>
 
 
-<h2 id="pages">Pages</h2>
+
+<h2 id="layouts">Layouts</h2>
 
 <p>
-	When Jekyll builds our site, it looks for something called a front matter block in each file. If a front matter block exists, Jekyll will processes the file (by shoving it into a template, filling in all the placeholder variables, etc.).
+	It's finally time to work on how our blog looks! Like I said earlier, I'm writing this guide with the goal of integrating this blog into a preexisting site. My current site template consists of a header, which also holds the navigaton, a footer, and some content. You should figure out sections for your layout however you see fit.
 </p>
 
-<pre class="prettyprint lang-bash">
+<div class="img-table">
+	<div class="img-table-box">
+		<div class="img-table-item">
+			<img src="{{ site.baseurl }}/blog/img/site-layout-labels.png">
+		</div>
+	</div>
+</div>
+<div class="img-table attach">
+	<div class="img-table-box">
+		Basic layout of my site.
+	</div>
+</div>
+
+<p>
+	Layouts live in... *drumroll* ... <span class="code">_layouts</span>. Crazy how that one works, eh? Anyway, layouts are exactly what you would expect. Pages with actual content that we make later can use this as a basic template. You can make as many layouts as you'd like.
+</p>
+
+<p>
+	Our first layout is <span class="code">default.html</span>:
+</p>
+
+<xmp class="prettyprint" class="language-html">{% raw %}---
+layout: default		# This is the name of the layout for use later
+---
+<!DOCTYPE html>
+<html>
+  {% include head.html %}		# Insert head tag
+  <body>
+    <div class="container">
+    {% include header.html %}		# Insert a header here
+      <div class="main">
+        {{ content }}			# Insert content here
+
+        {% include footer.html %}	# Insert a footer here
+      </div>
+    </div>
+    {% include scripts.html %}		# Insert any scripts
+  </body>
+</html>
+{% endraw %}
+</xmp>
+
+<p>
+	<b>What are all these curly brackets?!</b> Don't freak out! That's Liquid, a templating language. I'll go over more <a href="#variables">in a bit</a>. For now, just know that <span class="code">&lbrace;% include filename.html %&rbrace;</span> inserts the specified HTML include file (files that live in <span class="code">_includes</span>), and <span class="code">&lbrace;&lbrace; content &rbrace;&rbrace;</span> is where content get inserted when this layout is used.
+</p>
+
+<p>
+	Remember! Jekyll won't know that this is something it should process if you don't put in a front matter block!
+</p>
+
+	<h3>Includes</h3>
+
+<pre class="prettyprint lang-html">
 ---
 layout: default
 title: My Very Cool Blog
 permalink: /blog/
 ---</pre>
 
+
+
+<h2 id="pages">Pages</h2>
+
 <p>
-	Read more about this in the <a href="https://jekyllrb.com/docs/frontmatter/" target="_blank">front matter docs</a>.
+	Our Jekyll blog will have two types of pages: the main page with a list of blog posts and a 
 </p>
+
+
+	<h3>List of Posts</h3>
+
+	<p>
+		The front matter for the main page will look something like this:
+	</p>
+
+<pre class="prettyprint lang-yaml">
+---
+layout: default
+title: My Very Cool Blog
+permalink: /blog/
+---</pre>
+
 
 
 <h2 id="variables">Variables and Liquid</h2>
@@ -190,13 +300,14 @@ permalink: /blog/
 </p>
 
 
+
 <h2 id="sass">Sass</h2>
 
 <p>
 	Jekyll will compile your SCSS file at <span class="code">css/styles.scss</span> into a CSS file at <span class="code">_site/css/styles.css</span>.
 </p>
 
-<pre class="prettyprint lang-bash">
+<pre class="prettyprint lang-html">
 ---
 # You can leave a comment here, or leave it blank.
 ---</pre>
@@ -208,6 +319,7 @@ permalink: /blog/
 <p>
 	Of course, you can just write a plain CSS stylesheet if you'd like. A plain CSS stylesheet won't need ot be compiled by Jekyll, so the front matter block won't be necessary. I prefer SCSS for its nesting and variables functionality.
 </p>
+
 
 
 <h2 id="references">References</h2>

@@ -2,6 +2,7 @@
 layout: default
 title: blog
 permalink: /blog/
+ready: false
 ---
 			<!-- made by Emilee Chen
 					may 2017
@@ -9,13 +10,7 @@ permalink: /blog/
 							emilee.ty.chen@gmail.com -->
 
 
-
-<!-- <center>
-	<p>
-		Blog posts about me, my code, and my art are incoming, hold on tight!
-	</p>
-	<img src="/grad-bear.gif">
-</center> -->
+{% if page.ready == true %}
 
 <div class="blog-main">
  	<div class="blog-content">
@@ -43,3 +38,14 @@ permalink: /blog/
 		{% endfor %}
 	</div>
 </div>
+
+{% else %}
+
+<center>
+	<p>
+		Blog posts about me, my code, and my art are incoming, hold on tight!
+	</p>
+	<img src="/grad-bear.gif">
+</center>
+
+{% endif %}
