@@ -175,7 +175,7 @@ sass:
 	When Jekyll builds, it goes through all the files and looks for something called a front matter block. It's <b>denoted and bounded by a set of triple dashes</b> and <b>must be placed at the very beginning of a file</b>. If a front matter block exists, Jekyll will processes the file (by read it as a layout, shoving the page into a layout, filling in all the placeholder variables, etc.).
 </p>
 
-<pre class="prettyprint lang-html">
+<pre class="prettyprint lang-yaml">
 ---
 # You can insert comments
 
@@ -188,10 +188,10 @@ layout: default
 permalink: /blog/
 
 # Sepcifying a title:
-title: A Very Cool Blog
+title: The Coolest Blog
 
 # Even assign custom variables like so:
-jive: some maybe useful information
+jive: some potentially useful information
 ---</pre>
 
 <p>
@@ -220,14 +220,14 @@ jive: some maybe useful information
 </div>
 
 <p>
-	Layouts live in... *drumroll* ... <span class="code">_layouts</span>. Crazy how that one works, eh? Anyway, layouts are exactly what you would expect. Pages with actual content that we make later can use this as a basic template. You can make as many layouts as you'd like.
+	Layouts live in... *drumroll* ... <span class="code">_layouts</span>. Crazy how that one works, eh? Anyway, layouts are exactly what you would expect. Pages with actual content that we make can later use this as a basic template. You can make as many layouts as you'd like.
 </p>
 
 <p>
 	Our first layout is <span class="code">default.html</span>:
 </p>
 
-<xmp class="prettyprint" class="language-html">{% raw %}---
+<xmp class="prettyprint language-html">{% raw %}---
 layout: default		# This is the name of the layout for use later
 ---
 <!DOCTYPE html>
@@ -235,57 +235,61 @@ layout: default		# This is the name of the layout for use later
   {% include head.html %}		# Insert head tag
   <body>
     <div class="container">
-    {% include header.html %}		# Insert a header here
-      <div class="main">
-        {{ content }}			# Insert content here
-
-        {% include footer.html %}	# Insert a footer here
-      </div>
+      {% include header.html %}		# Insert a header here
+        <div class="main">
+          {{ content }}			# Insert content here
+        </div>
+      {% include footer.html %}		# Insert a footer here
     </div>
-    {% include scripts.html %}		# Insert any scripts
+    {% include scripts.html %}		# Insert scripts here
   </body>
 </html>
 {% endraw %}
 </xmp>
 
 <p>
-	<b>What are all these curly brackets?!</b> Don't freak out! That's Liquid, a templating language. I'll go over more <a href="#variables">in a bit</a>. For now, just know that <span class="code">&lbrace;% include filename.html %&rbrace;</span> inserts the specified HTML include file (files that live in <span class="code">_includes</span>), and <span class="code">&lbrace;&lbrace; content &rbrace;&rbrace;</span> is where content get inserted when this layout is used.
+	<b>What are all these curly brackets?!</b> Don't freak out! That's Liquid, a templating language. I'll go over it more in a bit. For now, just know that <span class="code">&lbrace;% include filename.html %&rbrace;</span> inserts the specified HTML include file (files that live in <span class="code">_includes</span>), and <span class="code">&lbrace;&lbrace; content &rbrace;&rbrace;</span> is where content get inserted when this layout is used.
 </p>
 
 <p>
 	Remember! Jekyll won't know that this is something it should process if you don't put in a front matter block!
 </p>
 
-	<h3>Includes</h3>
-
-<pre class="prettyprint lang-html">
----
-layout: default
-title: My Very Cool Blog
-permalink: /blog/
----</pre>
-
-
-
-<h2 id="pages">Pages</h2>
-
 <p>
-	Our Jekyll blog will have two types of pages: the main page with a list of blog posts and a 
+	Besides the default layout, we also need a layout for blog posts. I named this layout <span class="code">post.html</span>:
 </p>
 
 
-	<h3>List of Posts</h3>
 
-	<p>
-		The front matter for the main page will look something like this:
-	</p>
+<h2 id="includes">Includes</h2>
 
-<pre class="prettyprint lang-yaml">
----
-layout: default
-title: My Very Cool Blog
-permalink: /blog/
----</pre>
+<p>
+	While layouts help us 
+</p>
+
+<p>
+	Our first include file is <span class="code">head.html</span>:
+</p>
+
+<xmp class="prettyprint lang-html">{% raw %}<head>
+  <title>{{ site.title }}</title>
+
+  <link rel="stylesheet" href="{{ "/css/styles.css" | prepend: site.baseurl }}"> 
+  <link rel="icon" type="image/png" href="{{ "/favicon.png" | prepend: site.baseurl }}">
+  
+</head>{% endraw %}</xmp>
+
+<p>
+	<span class="code">header.html</span>:
+</p>
+
+<p>
+	<span class="code">footer.html</span>:
+</p>
+
+<p>
+	<span class="code">nav.html</span>:
+</p>
 
 
 
@@ -301,13 +305,46 @@ permalink: /blog/
 
 
 
+<h2 id="pages">Pages</h2>
+
+<p>
+	Our Jekyll blog will have two types of pages: the main page with a list of blog posts and a 
+</p>
+
+	<h3>List of Posts</h3>
+
+	<p>
+		The front matter for the main page will look something like this:
+	</p>
+
+<pre class="prettyprint lang-yaml">
+---
+layout: default
+title: My Very Cool Blog
+permalink: /blog/
+---</pre>
+
+
+	<h3>Post Pages</h3>
+
+<pre class="prettyprint lang-yaml">
+---
+layout:   post
+title:    "Creating a Custom Blog with Jekyll"
+date:     2017-05-31 10:25:26 -0700
+category: webdev
+tags:     [jekyll, webdev]
+---</pre>
+
+
+
 <h2 id="sass">Sass</h2>
 
 <p>
 	Jekyll will compile your SCSS file at <span class="code">css/styles.scss</span> into a CSS file at <span class="code">_site/css/styles.css</span>.
 </p>
 
-<pre class="prettyprint lang-html">
+<pre class="prettyprint lang-yaml">
 ---
 # You can leave a comment here, or leave it blank.
 ---</pre>

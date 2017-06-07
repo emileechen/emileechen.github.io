@@ -69,21 +69,21 @@ li.L9 {
   .clo {  color: #4d4d4c; }
 
   /* markup tag name */
-  .tag {  color: #c82829; }
+  .tag {  color: $purple; }
 
   /* markup attribute name */
-  .atn {  color: #f5871f; }
+  .atn {  color: $green; }
 
   /* markup attribute value */
-  .atv {  color: #3e999f; }
+  .atv {  color: $blue; }
 
   /* declaration */
-  .dec {  color: #f5871f; }
+  .dec {  color: $green; }
 
   /* variable name */
-  .var {  color: #c82829; }
+  .var {  color: #pink; }
 
   /* function name */
-  .fun {  color: #4271ae; }
+  .fun {  color: $blue; }
   
 }
