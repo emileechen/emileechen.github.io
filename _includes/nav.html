@@ -1,33 +1,17 @@
 <div class="nav">
 
-	{% if page.title == "work" %}
-	<div class="nav-btn current">Work</div>
-	{% else %}
-	<a href="/">
-		<div class="nav-btn click">Work
-			<div class="btn-underline"></div>
-		</div>
-	</a>
-	{% endif %}
+	{% for link in site.navlinks %}
 
-	{% if page.title == "about" %}
-	<div class="nav-btn current">About</div>
+	{% if page.title == link.name %}
+	<div class="nav-btn current">{{ link.name | capitalize }}</div>
 	{% else %}
-	<a href="/about">
-		<div class="nav-btn click">About
+	<a href="{{ link.url }}">
+		<div class="nav-btn click">{{ link.name | capitalize }}
 			<div class="btn-underline"></div>
 		</div>
 	</a>
 	{% endif %}
-
-	{% if page.title == "blog" %}
-	<div class="nav-btn current">Blog</div>
-	{% else %}
-	<a href="/blog">
-		<div class="nav-btn click">Blog
-			<div class="btn-underline"></div>
-		</div>
-	</a>
-	{% endif %}
+	
+	{% endfor %}
 
 </div>

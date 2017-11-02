@@ -3,10 +3,19 @@ title: Emilee Chen
 email: emilee.ty.chen@gmail.com
 baseurl: ""
 url: "http://emileechen.com"
-github_username:  emileechen
+
+css: ["/css/styles.css", "/font-awesome/css/font-awesome.min.css", "/css/prettyprint.css"]
+favicon: "/favicon.png"
 
 permalink: pretty
 
 sass:
   sass_dir: _sass
-  
+
+navlinks:
+  - name: work
+    url: "/"
+  - name: about
+    url: "/about"
+  - name: blog
+    url: "/blog"
