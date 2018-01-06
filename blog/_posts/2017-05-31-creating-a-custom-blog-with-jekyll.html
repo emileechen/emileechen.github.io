@@ -15,7 +15,7 @@ tags:     [jekyll, webdev]
 </p>
 
 <p>
-	My web experience is not very extensive, it consists mostly of plain HTML and CSS static sites that I build for fun, mixed with some very minimal Meteor and React. Learning something new on my own is always daunting for me, but luckily there are a lot of good tutorials floating around on the internet. That said, what I write is entirely from bashing random keys and booping questionable buttons, so if something isn't quite right, please let me know!
+	My web experience is not very extensive: it consists mostly of plain HTML and CSS static sites that I build for fun, mixed with some very minimal Meteor and React. Learning something new on my own is always daunting, but luckily there are a lot of good tutorials floating around on the internet. That said, what I write is entirely from bashing random keys and booping questionable buttons, so if something isn't quite right, please let me know!
 </p>
 
 <p>
@@ -36,6 +36,10 @@ tags:     [jekyll, webdev]
 			<li>Use the same template, CSS, etc.</li>
 		</ul>
 	</ul>
+
+<p>
+	Note: I do gloss over all the HTML and CSS details, so you'll need a decent understand of those to follow along.
+</p>
 
 
 
@@ -120,6 +124,8 @@ mysite
 ├── _site		# This is automatically created for you in the build process
 ├── blog 		# New
 │   └── index.html
+├── css 		# New
+│   └── styles.css
 └── index.html</pre>
 
 <p>
@@ -156,11 +162,23 @@ title: Emilee Chen
 baseurl: ""
 url: "http://emileechen.com"
 permalink: pretty
+
+css: "/css/styles.css"
+favicon: "/favicon.png"
+
+navlinks:
+  - name: work
+    url: "/"
+  - name: about
+    url: "/about"
+  - name: blog
+    url: "/blog"
+
 sass:
   sass_dir: _sass</pre>
 
 <p>
-	For our purposes, none of these settings are really necessary besides the sass directory (if you're going to use <a href="#sass">sass</a>). This file makes it very easy to customize a Jekyll template, and it's good practice to centralize all your info here. We can also easily <a href="#variables">access this info</a> as variables.
+	For our purposes, none of these settings are <i>really</i> necessary besides the sass directory (if you're going to use <a href="#sass">sass</a>). This file makes it very easy to customize a Jekyll template, and it's good practice to centralize all your info here. We can also easily <a href="#variables">access this info</a> as variables to use anywhere on our site. I put a list of the links I want in my navbar as well as the CSS stylesheet and favicon paths here for that reason.
 </p>
 
 
@@ -223,12 +241,14 @@ jive: some potentially useful information
 	Layouts live in... *drumroll* ... <span class="code">_layouts</span>. Crazy how that one works, eh? Anyway, layouts are exactly what you would expect. Pages with actual content that we make can later use this as a basic template. You can make as many layouts as you'd like.
 </p>
 
+
+<h3>/_layouts/default.html</h3>
+
 <p>
 	Our first layout is <span class="code">default.html</span>:
 </p>
 
 <xmp class="prettyprint language-html">{% raw %}---
-layout: default		# This is the name of the layout for use later
 ---
 <!DOCTYPE html>
 <html>
@@ -248,15 +268,44 @@ layout: default		# This is the name of the layout for use later
 </xmp>
 
 <p>
-	<b>What are all these curly brackets?!</b> Don't freak out! That's Liquid, a templating language. I'll go over it more in a bit. For now, just know that <span class="code">&lbrace;% include filename.html %&rbrace;</span> inserts the specified HTML include file (files that live in <span class="code">_includes</span>), and <span class="code">&lbrace;&lbrace; content &rbrace;&rbrace;</span> is where content get inserted when this layout is used.
+	<b>What are all these curly brackets?!</b> Don't freak out! That's Liquid, a templating language. I'll go over it more in a bit. For now, just know that <span class="code">&lbrace;% include filename.html %&rbrace;</span> inserts the specified HTML include file (files that live in <span class="code">_includes</span>), and <span class="code">&lbrace;&lbrace; content &rbrace;&rbrace;</span> is where content get referenced and inserted when this layout is used.
+</p>
+
+<p>
+	<b>What if I don't have any scripts?</b> Then remove <span class="code">&lbrace;&lbrace;% include scripts.html %&rbrace;&rbrace;</span>, and don't make a <span class="code">scripts.html</span>. Make and include what elements make sense for your layout, and no more!
 </p>
 
 <p>
 	Remember! Jekyll won't know that this is something it should process if you don't put in a front matter block!
 </p>
 
+
+<h3>/_layouts/post.html</h3>
+
 <p>
 	Besides the default layout, we also need a layout for blog posts. I named this layout <span class="code">post.html</span>:
+</p>
+
+<xmp class="prettyprint language-html">{% raw %}---
+layout: default					# Use the default layout
+---
+
+<h1>{{ page.title }}</h1>			# Display the title of my post
+
+<p class="blog-post-info">
+  {{ page.date | date: '%a, %b %d, %Y' }}	# Display the published date of my post
+</p>
+
+{{ content }}					# Blog post content will be inserted here!
+{% endraw %}
+</xmp>
+
+<p>
+	<b>Use the default layout?</b> Yup, layouts can use other layouts, too. Here, we build our post layout off of our default layout. It just means we replace <span class="code">&lbrace;&lbrace; content &rbrace;&rbrace;</span> of the default layout with this layout and use the resulting combined layout as our post layout. (Whew... say that three times fast...)
+</p>
+
+<p>
+	<b>Err... <span class="code">&lbrace;&lbrace; page.variable &rbrace;&rbrace;</span>?</b> Every blog post that you publish will have a independent page using this layout, and Liquid lets us grab variables from posts. <span class="code">| date: '%a, %b %d, %Y'</span> is a filter (in this case, a date formatting filter applied on <span class="code">page.date</span>), which will also be explained later.
 </p>
 
 
@@ -264,8 +313,15 @@ layout: default		# This is the name of the layout for use later
 <h2 id="includes">Includes</h2>
 
 <p>
-	While layouts help us 
+	While layouts help us keep the layout of our site/blog consistent, includes help us keep content persistent through all our pages consistent. This would be anything from navbars to scripts. As you can see from the default layout that we've just created, I need to make <span class="code">head.html</span>, <span class="code">header.html</span>, <span class="code">footer.html</span>, and <span class="code">script.html</span> include pages.
 </p>
+
+<p>
+	 Jekyll will freak out about being unable to "locate the included file" if you try to reference an include file that you have not created!
+</p>
+
+
+<h3>/_includes/head.html</h3>
 
 <p>
 	Our first include file is <span class="code">head.html</span>:
@@ -274,21 +330,83 @@ layout: default		# This is the name of the layout for use later
 <xmp class="prettyprint lang-html">{% raw %}<head>
   <title>{{ site.title }}</title>
 
-  <link rel="stylesheet" href="{{ "/css/styles.css" | prepend: site.baseurl }}"> 
-  <link rel="icon" type="image/png" href="{{ "/favicon.png" | prepend: site.baseurl }}">
-  
+  <link rel="stylesheet" href="{{ site.css | prepend: site.baseurl }}"> 
+  <link rel="icon" type="image/png" href="{{ site.favicon | prepend: site.baseurl }}">
 </head>{% endraw %}</xmp>
+
+<p>
+	We put the browser title here, and reference our CSS and favicon here, as you would expect.
+</p>
+
+
+<h3>/_includes/header.html</h3>
 
 <p>
 	<span class="code">header.html</span>:
 </p>
 
+<xmp class="prettyprint lang-html">{% raw %}<div class="header-bar">
+  <div class="header-bar-left">
+    <div class="header-bar-title">
+      <a href="/">Emilee Chen</a>
+    </div>
+    <div class="header-bar-subtitle">
+      Software Engineer
+    </div>
+  </div>
+  {% include nav.html %}
+</div>{% endraw %}</xmp>
+
+<p>
+	Yup, your include can include other includes if you want.
+</p>
+
+
+<h3>/_includes/nav.html</h3>
+
+<p>
+	<span class="code">nav.html</span>:
+</p>
+
+<xmp class="prettyprint lang-html">{% raw %}<div class="nav">
+  {% for link in site.navlinks %}		# Grab that list of links from _config.yml
+    {% if page.title == link.name %}		# If the current page has the same title as this link...
+      <div class="nav-btn current">{{ link.name | capitalize }}</div>
+    {% else %}					# If this is a link to a different page...
+      <a href="{{ link.url }}">
+        <div class="nav-btn click">{{ link.name | capitalize }}
+          <div class="btn-underline"></div>
+        </div>
+     </a>
+    {% endif %}
+  {% endfor %}
+</div>{% endraw %}</xmp>
+
+<p>
+	As you can see by now, Liquid allows us to use if else clauses and for loops, which reduces repeating code greatly. Here, I am looping over a list of links, and either using plain text or an active link depending on whether or not the current page has the same title as the link by comparing <span class="code">page.title</span> and <span class="code">link.name</span>.
+</p>
+
+
+<h3>/_includes/footer.html</h3>
+
 <p>
 	<span class="code">footer.html</span>:
 </p>
 
+<xmp class="prettyprint lang-html">{% raw %}<div class="footer">
+  <a href="https://www.instagram.com/emileechen/" class="icon">
+    <i class="fa fa-instagram" aria-hidden="true"></i>
+  </a>
+  <a href="https://github.com/emileechen" class="icon">
+    <i class="fa fa-github" aria-hidden="true"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/emileechen" class="icon">
+    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+  </a>
+</div>{% endraw %}</xmp>
+
 <p>
-	<span class="code">nav.html</span>:
+	I have a simple, linked three icon footer that uses <a href="http://fontawesome.io/" target="_blank">Font Awesome</a> icons.
 </p>
 
 
@@ -300,7 +418,29 @@ layout: default		# This is the name of the layout for use later
 </p>
 
 <p>
-	Read more about variables in the <a href="https://jekyllrb.com/docs/variables/" target="_blank">Jekyll variables doc</a> and Liquid syntax in the <a href="https://shopify.github.io/liquid/" target="_blank">Liquid docs</a>.
+	To render a variable, wrap it with <span class="code">{% raw %}{{ }}{% endraw %}</span>:
+</p>
+
+<xmp class="prettyprint lang-html">{% raw %}{{ content }}
+{{ site.title }}
+{{ page.excerpt }}{% endraw %}</xmp>
+
+
+<p>
+	Basic programming logic tags are wrapped with <span class="code">{% raw %}{% %}{% endraw %}</span>:
+</p>
+
+<xmp class="prettyprint lang-html">{% raw %}{% if %}
+{% else %}
+{% endif %}
+
+{% assign var = 'some value you want to store' %}
+
+{% for i in (1..n) %}
+{% endfor %}{% endraw %}</xmp>
+
+<p>
+	Read about variables in the <a href="https://jekyllrb.com/docs/variables/" target="_blank">Jekyll variables doc</a> and about Liquid syntax in the <a href="https://shopify.github.io/liquid/" target="_blank">Liquid docs</a>. There are also a lot of cheatsheets online. I particularly enjoy <a href="https://learn.cloudcannon.com/jekyll-cheat-sheet/" target="_blank">this CloudCannon one</a>.
 </p>
 
 
