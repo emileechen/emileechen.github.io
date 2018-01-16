@@ -11,11 +11,11 @@ tags:     [jekyll, webdev]
 </p>
 
 <p>
-	I've considering using a blogging platform like Wordpress or Tumblr and either embedding it into my website or simply linking to something like Medium. Ultimately, after doing some research and consulting my friends for advice, (thanks, Arlan!) I decided on building my own blog with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>. The benefits are two-fold: I get to have full control over customizing the look of my blog, and it also gives me an opportunity to learn something new (and blog about it).
+	I've considering using a blogging platform like Wordpress or Tumblr and either embedding it into my website or simply linking to an external like Medium. Ultimately, after doing some research and consulting my friends for advice, (thanks Arlan!) I decided on building my own blog with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>. The benefits are two-fold: I get to have full control over customizing the look of my blog, and it also gives me an opportunity to learn something new (and blog about it).
 </p>
 
 <p>
-	My web experience is not very extensive: it consists mostly of plain HTML and CSS static sites that I build for fun, mixed with some very minimal Meteor and React. Learning something new on my own is always daunting, but luckily there are a lot of good tutorials floating around on the internet. That said, what I write is entirely from bashing random keys and booping questionable buttons, so if something isn't quite right, please let me know!
+	My web experience is not extensive: it consists mostly of plain HTML and CSS static sites that I build for fun, mixed with some Meteor and React. Learning something new on my own is always daunting, but luckily there are a lot of good tutorials floating around on the internet. That being said, what I write is entirely from bashing random keys and booping questionable buttons, so if something isn't quite right, please let me know!
 </p>
 
 <p>
@@ -33,12 +33,12 @@ tags:     [jekyll, webdev]
 		</ul>
 		<li>Must have <b>seamless integration</b> into the rest of my website</li>
 		<ul>
-			<li>Use the same template, CSS, etc.</li>
+			<li>Use the same templates, CSS, etc.</li>
 		</ul>
 	</ul>
 
 <p>
-	Note: I do gloss over all the HTML and CSS details, so you'll need a decent understand of those to follow along.
+	Note: I do gloss over all the HTML and CSS details, so you'll need some understanding of those to follow along.
 </p>
 
 
@@ -50,7 +50,7 @@ tags:     [jekyll, webdev]
 </p>
 
 <p>
-	We'll be creating a Jekyll site that has a blog. We can then throw in whatever existing CSS and other pages that you want from your original site. (You'll see that I use the same <span class="code">index.html</span> and all other pages and assets that I simply copied over from my original site.) If you want, you can even convert everything over to use Jekyll layouts, which is what I ended up doing!
+	We'll be creating a brand new Jekyll site that has a blog. We can then throw in whatever existing CSS and other pages that you want from your original site. (You'll see that I use the same <span class="code">index.html</span> and all other pages and assets that I simply copied over from my original site.) If you want, you can even convert everything over to use Jekyll layouts, which is what I ended up doing!
 </p>
 
 <p>
@@ -102,7 +102,7 @@ mysite
 </p>
 
 <p>
-	<b>What's all this weird underscore stuff?</b> That's all the stuff that does not directly compose our built site. That would be things, like templates, that go into the building of the site.
+	<b>What's all this weird underscore stuff?</b> That's all the stuff that does not directly compose our built site. That would be things like templates that are the buidling blocks of the site.
 </p>
 
 <p>
@@ -140,11 +140,12 @@ mysite
 	<li><span class="code">_posts</span> - Published posts live here.</li>
 	<li><span class="code">_scss</span> - Sass partials live here. This is NOT where your main SCSS/CSS lives, just the stuff that you would like imported into it.</li>
 	<li><span class="code">_site</span> - Your generated site lives here.</li>
-	<li><span class="code">blog</span> - I like to keep a separate folder with all the blog related pages and assets to keep my directory clean.</li>
+	<li><span class="code">blog</span> - I like to keep a separate folder with all the blog related pages and assets to keep my directory clean and separated from the rest of my site.</li>
+	<li><span class="code">css/...</span> - This is where your actual CSS files live. Note that there is no underscore prepended to this dir name, so it will be copied into your compiled site.</li>
 </ul>
 
 <p>
-	Of course, create your <span class="code">.gitignore</span> if you need to. Mine looks something like this:
+	Of course, create your <span class="code">.gitignore</span> if you need/want to. Mine looks something like this:
 </p>
 
 <pre class="prettyprint lang-bash">
@@ -154,7 +155,11 @@ mysite
 _site/</pre>
 
 <p>
-	Next, let's take a look at that configuration file. This is where we configure the entire Jekyll site. For all available options, take a peek at the <a href="https://jekyllrb.com/docs/configuration/" target="_blank">configuration docs</a>. Here is a real basic <span class="code">_config.yml</span> file:
+	
+</p>
+
+<p>
+	Next, let's take a look at that configuration file. This is where we configure the entire Jekyll site. For all available options, take a peek at the <a href="https://jekyllrb.com/docs/configuration/" target="_blank">configuration docs</a>. Here is a really basic <span class="code">_config.yml</span> file:
 </p>
 
 <pre class="prettyprint lang-yaml">
@@ -186,11 +191,11 @@ sass:
 <h2 id="front-matter">Front Matter</h2>
 
 <p>
-	Before we can do anything Jekyll related, we must know about front matter. It's Very Important for Jekyll to function and build your site properly.
+	Before we can do anything Jekyll related, we must know about front matter. It's <u>Very Important</u> for Jekyll to function and build your site properly.
 </p>
 
 <p>
-	When Jekyll builds, it goes through all the files and looks for something called a front matter block. It's <b>denoted and bounded by a set of triple dashes</b> and <b>must be placed at the very beginning of a file</b>. If a front matter block exists, Jekyll will processes the file (by read it as a layout, shoving the page into a layout, filling in all the placeholder variables, etc.).
+	When Jekyll builds, it goes through all the files in your main directory and looks for something called a front matter block. It's <b>denoted and bounded by a set of triple dashes</b> and <b>must be placed at the very beginning of a file</b>. If a front matter block exists, Jekyll will processes the file (by reading it as a layout, shoving the page into a layout, filling in all the placeholder variables, etc.).
 </p>
 
 <pre class="prettyprint lang-yaml">
@@ -199,13 +204,13 @@ sass:
 
 # And assign some useful predefined variables like...
 
-# Specifying a layout: (we'll talk about how to create layouts)
+# Specifying a layout: (we'll talk about how to create layouts next)
 layout: default
 
 # Specifying a permalink: (to ignore the actual location and define a new URL)
 permalink: /blog/
 
-# Sepcifying a title:
+# Specifying a title:
 title: The Coolest Blog
 
 # Even assign custom variables like so:
@@ -238,7 +243,7 @@ jive: some potentially useful information
 </div>
 
 <p>
-	Layouts live in... *drumroll* ... <span class="code">_layouts</span>. Crazy how that one works, eh? Anyway, layouts are exactly what you would expect. Pages with actual content that we make can later use this as a basic template. You can make as many layouts as you'd like.
+	Layouts live in... *drumroll* ... <span class="code">_layouts</span>. Crazy how that one works, eh? Anyway, layouts are exactly what you would expect. They describe the skeleton of a page that we can later use to fill out with actual content. You can make as many layouts as you'd like, though it's a good idea to reuse templates to keep your site cohesive.
 </p>
 
 
@@ -287,7 +292,7 @@ jive: some potentially useful information
 </p>
 
 <xmp class="prettyprint language-html">{% raw %}---
-layout: default					# Use the default layout
+layout: default					# Use the default layout as a template
 ---
 
 <h1>{{ page.title }}</h1>			# Display the title of my post
@@ -437,10 +442,11 @@ layout: default					# Use the default layout
 {% assign var = 'some value you want to store' %}
 
 {% for i in (1..n) %}
+  {{ i }}<br>
 {% endfor %}{% endraw %}</xmp>
 
 <p>
-	Read about variables in the <a href="https://jekyllrb.com/docs/variables/" target="_blank">Jekyll variables doc</a> and about Liquid syntax in the <a href="https://shopify.github.io/liquid/" target="_blank">Liquid docs</a>. There are also a lot of cheatsheets online. I particularly enjoy <a href="https://learn.cloudcannon.com/jekyll-cheat-sheet/" target="_blank">this CloudCannon one</a>.
+	Read about variables in the <a href="https://jekyllrb.com/docs/variables/" target="_blank">Jekyll variables doc</a> and about Liquid syntax in the <a href="https://shopify.github.io/liquid/" target="_blank">Liquid docs</a>. There are also a lot of cheatsheets online. I particularly enjoy <a href="https://learn.cloudcannon.com/jekyll-cheat-sheet/" target="_blank">CloudCannon's Jekyll Cheat Sheet</a>.
 </p>
 
 
@@ -448,33 +454,96 @@ layout: default					# Use the default layout
 <h2 id="pages">Pages</h2>
 
 <p>
-	Our Jekyll blog will have two types of pages: the main page with a list of blog posts and a 
+	Our Jekyll blog will have three types of pages: the main page with a list of blog posts, our actual blog post pages, and a tags page with a list of tags and their corresponding blog posts.
 </p>
 
-	<h3>List of Posts</h3>
+	<h3>Main Blog Page</h3>
 
 	<p>
-		The front matter for the main page will look something like this:
+		This will be where our audience will land when they click on the <b>Blog</b> link in our navbar. Here we want to display and link to each blog post. We can use a for loop to automatically populate this page with all the posts.
 	</p>
 
-<pre class="prettyprint lang-yaml">
----
+	<p>
+		<span class="code">/blog/index.html</span>:
+	</p>
+
+<xmp class="prettyprint lang-html">{% raw %}---
 layout: default
 title: My Very Cool Blog
 permalink: /blog/
----</pre>
+---
+
+{% for post in site.posts %}		<!-- Loop through all the posts in blog/_posts/ -->
+  <div class="blog-container">		<!-- A div container to wrap around each listing -->
+
+    <!-- Header with post title, category, and date -->
+    <div class="blog-header">
+      <a href="{{ post.url }}">
+        <div class="blog-title">
+
+          {{ post.title }}
+
+          <span class="blog-info">
+            <span class="fa fa-folder-open" aria-hidden="true"></span>
+            {{ post.category | upcase }}
+            <span class="fa fa-clock-o" aria-hidden="true"></span>
+            {{ post.date | date: '%a, %m/%d/%y' }}
+          </span>
+
+        </div>
+      </a>
+    </div>
+
+    <!-- Throw in an excerpt and another link to the post -->
+    <div class="blog-excerpt">
+      {{ post.excerpt }}
+      <p class="blog-read-more"><a href="{{ post.url }}">Read more</a></p>
+    </div>
+
+  </div>
+{% endfor %}{% endraw %}</xmp>
+
+	<p>
+		This HTML file may seem meaty, but most of it is just nesting div containers to stylize this page properly. The most important thing to note is the for loop, <span class="code">{% raw %}{% for post in site.posts %} ... {% endfor %}{% endraw %}</span>. <b>Everything within the opening and closing tags will be repeated for each post.</b> It also allows us access to variables (title, date, category, etc.) that we will be included in each blog post HTML we write. You can even get all kind of fancy with your formatting (cover photos for each post, hover animations, etc.).
+	</p>
+
+	<p>
+		Jekyll conveiently already has a notion of post excerpts, which is defaulted to the first paragraph of your blog post. This can also be manually overriden if you'd like. Read more about that on <a href="https://jekyllrb.com/docs/posts/#post-excerpts" target="_blank">Jekyll's Post excerpts doc</a>.
+	</p>
 
 
 	<h3>Post Pages</h3>
 
-<pre class="prettyprint lang-yaml">
----
+	<p>
+		All of our blog posts that we want published to our site will live in <span class="code">/blog/_posts/</span>. If you want a safe place to house your drafts, they can go in <span class="code">/blog/_drafts/</span>, where the contents will not be built out. For Jekyll to build your blog posts properly, each file much be named appropriately in this format: <span class="code">YEAR-MONTH-DAY-title.MARKUP</span>.
+	</p>
+
+	<p>
+		<span class="code">/blog/_posts/2017-05-31-my-first-blog-post.html</span>:
+	</p>
+
+<xmp class="prettyprint lang-html">---
 layout:   post
-title:    "Creating a Custom Blog with Jekyll"
-date:     2017-05-31 10:25:26 -0700
-category: webdev
-tags:     [jekyll, webdev]
----</pre>
+title:    "My First Blog Post"
+date:     2018-01-15 05:41:26 -0700
+category: personal
+tags:     [fun]
+---
+
+<p>
+  Some really cool content.
+</p></xmp>
+
+	<p>
+		Once again, the front matter is <u>Very Important</u>! It holds all the variables that we were accessing from the list of posts earlier. I decided to organize my posts in two ways: categories and tags. The category will only appear with each post. The tags will be clickable and will take you to the Tags Page. You can of course do yours however you like. The variables are not special keywords so you can customize them as well.
+	</p>
+
+
+	<h3>Tags Page</h3>
+
+	<p>
+		<span class="code">/blog/tags.html</span>:
+	</p>
 
 
 
@@ -484,10 +553,10 @@ tags:     [jekyll, webdev]
 	Jekyll will compile your SCSS file at <span class="code">css/styles.scss</span> into a CSS file at <span class="code">_site/css/styles.css</span>.
 </p>
 
-<pre class="prettyprint lang-yaml">
+<pre class="prettyprint lang-yaml">---
 ---
-# You can leave a comment here, or leave it blank.
----</pre>
+
+@import "variables";</pre>
 
 <p>
 	Remember to <b>include a front matter block</b> (the triple dashes) at the top of your SCSS file. Otherwise your file won't be compiled.
@@ -496,6 +565,10 @@ tags:     [jekyll, webdev]
 <p>
 	Of course, you can just write a plain CSS stylesheet if you'd like. A plain CSS stylesheet won't need ot be compiled by Jekyll, so the front matter block won't be necessary. I prefer SCSS for its nesting and variables functionality.
 </p>
+
+
+
+<h2 id="deployment">Deployment</h2>
 
 
 

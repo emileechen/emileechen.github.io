@@ -18,7 +18,7 @@ layout: default
 		{% assign tags = page.tags | sort %}
 		Tags: 
 		{% for tag in tags %}
-			<a class="blog-tag" href="{{ "/blog/tags/" | prepend: site.baseurl }}#{{ tag | slugify }}"><i class="fa fa-tag" aria-hidden="true"></i>  {{ tag }}</a>
+			<a class="blog-tag" href="{{ "/blog/tags/" | prepend: site.baseurl }}#{{ tag | slugify }}"><b class="fa fa-tag" aria-hidden="true"></b>  {{ tag }}</a>
 			<!-- {% if forloop.last == false %}, {% endif %} -->
 		{% endfor %}
 	</span>

@@ -22,7 +22,16 @@ ready: false
 				<a href="{{ post.url }}">
 					<div class="blog-title">
 						{{ post.title }}
-						<span class="blog-post-small">{{ post.date | date: '%a, %m/%d/%y' }}</span>
+
+						<span class="blog-info">
+							<span class="fa fa-folder-open" aria-hidden="true"></span>
+							{{ post.category | upcase }}
+						</span>
+						<span class="blog-info">
+							<span class="fa fa-clock-o" aria-hidden="true"></span>
+							{{ post.date | date: '%a, %m/%d/%y' }}
+						</span>
+
 					</div>
 					
 				</a>
