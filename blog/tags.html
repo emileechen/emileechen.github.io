@@ -10,24 +10,18 @@ permalink: /blog/tags/
 
 <h1>Tags</h1>
 
-{% assign tags_string = "" %}
-{% for tag in site.tags %}
-	{% assign tag_name = tag | first %}
-	{% assign tags_string = tags_string | append: tag_name | append: ',' %}
+
+{% assign tags_sorted = site.tags | sort %}
+
+{% for tag in tags_sorted %}
+	<a class="blog-tag" href="#{{ tag[0] | slugify }}"><b class="fa fa-tag" aria-hidden="true"></b>  {{ tag[0] }}</a>
 {% endfor %}
 
-{% assign tags_list = tags_string | split: ',' | sort %}
-
-
-{% for tag in tags_list %}
-	<a class="blog-tag" href="#{{ tag | slugify }}"><b class="fa fa-tag" aria-hidden="true"></b>  {{ tag }}</a>
-{% endfor %}
-
-{% for tag in tags_list %}
-	<h2 id="{{ tag | slugify }}">{{ tag }}</h2>
+{% for tag in tags_sorted %}
+	<h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
 	<ul>
 		{% for post in site.posts %}
-			{% if post.tags contains tag %}
+			{% if post.tags contains tag[0] %}
 				<li>
 					<a href="{{ post.url }}">
 						{{ post.title }}

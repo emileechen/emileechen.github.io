@@ -1,13 +1,13 @@
 ---
 layout:   post
 title:    "Creating a Custom Blog with Jekyll"
-date:     2017-05-31 10:25:26 -0700
+date:     2018-01-18 00:10:26 -0800
 category: webdev
 tags:     [jekyll, webdev]
 ---
 
 <p>
-	The thought of starting a blog has beeen running through my mind for quite a while now. Now that I've finally got the time for it (I just graduated!) I figure it's time to finally act on the idea. I hope to write about my experiments and side projects (for both code and art), so keep an eye out! Regardless of future plans, the first order of business is, of course, actually creating a blog, which brings us to where we are now.
+	The thought of starting a blog has beeen running through my mind for quite a while now. I figure it's time to finally act on the idea. I hope to write about my experiments and side projects (for both code and art), so keep an eye out! Regardless of future plans, the first order of business is, of course, actually creating a blog, which brings us to where we are now.
 </p>
 
 <p>
@@ -577,17 +577,17 @@ permalink: /blog/tags/
 
 <!-- Looping through all our tags to create a link to each section -->
 {% for tag in site.tags %}
-  <a class="blog-tag" href="#{{ tag | first | slugify }}">
-    <b class="fa fa-tag" aria-hidden="true"></b>  {{ tag | first }}
+  <a class="blog-tag" href="#{{ tag[0] | slugify }}">
+    <b class="fa fa-tag" aria-hidden="true"></b>  {{ tag[0] }}
   </a>
 {% endfor %}
 
 <!-- Looping through again to list all corresponding posts with their tags -->
 {% for tag in site.tags %}
-  <h2 id="{{ tag | first | slugify }}">{{ tag | first }}</h2>
+  <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
   <ul>
     {% for post in site.posts %}
-      {% if post.tags contains tag %}
+      {% if post.tags contains tag[0] %}
         <li>
           <a href="{{ post.url }}">
             {{ post.title }}
@@ -602,7 +602,7 @@ permalink: /blog/tags/
 {% endfor %}{% endraw %}</xmp>
 
 	<p>
-		You'll see that we use <span class="code">{% raw %}{{ tag | first }}{% endraw %}</span> several times. <b>The global variable <span class="code">site.tags</span> actually holds a nested list</b>, not a list of strings. The first item in the list is the name of the tag, and the second item is actually every single post that has that tag. So, to actually grab the name tags, we need to use <span class="code">{% raw %}{{ tag | first }}{% endraw %}</span>.
+		You'll see that we use <span class="code">{% raw %}{{ tag[0] }}{% endraw %}</span> several times. <b>The global variable <span class="code">site.tags</span> actually holds a list of lists</b>, not a list of strings. The first item in the list is the name of the tag, and the second item is every single post that has that tag. So, to grab the name tags, we need to use <span class="code">{% raw %}{{ tag[0] }}{% endraw %}</span> or <span class="code">{% raw %}{{ tag | first }}{% endraw %}</span>.
 	</p>
 
 	<p>
@@ -610,15 +610,40 @@ permalink: /blog/tags/
 	</p>
 
 	<p>
-		This is all very well and functional, but there is still room for improvement. You might have noticed that your tags are all out of order! That's something we can fix.
+		This is all very well and functional, but there is still room for improvement. You might have noticed that your tags are all out of order. That's something we can fix! It does get a little tricky here, since Liquid does not allow nested tags. What we would like to do is something along the lines of <span class="code">{% raw %}{% for tag in site.tags | sort %}{% endraw %}</span>. However, Liquid forces us to do it in two lines instead:
 	</p>
 
-	<p>
-		Liquid gets a little tricky here, since it does not allow nested tags.
-	</p>
+<xmp class="prettyprint lang-html">{% raw %}<!-- We need to assign our sorted list to a new variable -->
+{% assign tags_sorted = site.tags | sort %}
+
+<!-- Looping through all our tags to create a link to each section -->
+{% for tag in tags_sorted %}
+  <a class="blog-tag" href="#{{ tag[0] | slugify }}">
+    <b class="fa fa-tag" aria-hidden="true"></b>  {{ tag[0] }}
+  </a>
+{% endfor %}
+
+<!-- Looping through again to list all corresponding posts with their tags -->
+{% for tag in tags_sorted %}
+  <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }</h2>
+  <ul>
+    {% for post in site.posts %}
+      {% if post.tags contains tag[0] %}
+        <li>
+          <a href="{{ post.url }}">
+            {{ post.title }}
+          </a>
+          <span class="blog-post-info">
+            {{ post.date | date: '%a, %m/%d/%y' }}
+          </span>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}{% endraw %}</xmp>
 
 	<p>
-		You can see my tags page here.
+		Great! We now have all the basic components of a blog. :) 
 	</p>
 
 
@@ -626,32 +651,85 @@ permalink: /blog/tags/
 <h2 id="sass">Sass</h2>
 
 <p>
-	Jekyll will compile your SCSS file at <span class="code">css/styles.scss</span> into a CSS file at <span class="code">_site/css/styles.css</span>.
+	Sass does not affect the functionality of our blog, but I love it so much I'm going to talk about it a little anyway. I love it mainly because you can assign variables with values such as HEX colours, lengths, and even fonts. Jekyll will compile your SCSS file from <span class="code">css/styles.scss</span> into a CSS file at <span class="code">_site/css/styles.css</span>.
 </p>
 
-<pre class="prettyprint lang-yaml">---
+<p>
+	<span class="code">/_sass/_variables.scss</span>:
+</p>
+
+<xmp class="prettyprint lang-yaml">@import url(https://fonts.googleapis.com/css?family=Raleway|Fira+Sans:300);
+
+// Fonts
+$basicfont: 'Fira Sans', sans-serif;
+$accentfont: 'Raleway', sans-serif;
+
+// Sizes
+$basicfontsize: 1.1rem;
+$fontsize-small: .9rem;
+$fontsize-smaller: .8rem;
+$basiclineheight: 1.8rem;
+$lineheight-small: 1.2rem;
+$lineheight-smaller: 1.1rem;
+
+// Colours
+$purple: #987FC5;
+$blue: #7FACC5;
+$grey: #4A4A4A;</xmp>
+
+<p>
+	<span class="code">/css/styles.scss</span>:
+</p>
+
+<xmp class="prettyprint lang-yaml">---
 ---
 
-@import "variables";</pre>
+@import "variables";		// Imports /_sass/_variables.scss
+
+body, html {
+	font-family: $basicfont;
+	color: $grey;
+	font-size: $basicfontsize;
+	line-height: $basiclineheight;
+	background-color: black;
+	text-align: justify;
+}</xmp>
 
 <p>
-	Remember to <b>include a front matter block</b> (the triple dashes) at the top of your SCSS file. Otherwise your file won't be compiled.
-</p>
-
-<p>
-	Of course, you can just write a plain CSS stylesheet if you'd like. A plain CSS stylesheet won't need ot be compiled by Jekyll, so the front matter block won't be necessary. I prefer SCSS for its nesting and variables functionality.
+	Remember to <b>include a front matter block</b> (the triple dashes) at the top of your Sass file! Of course, you can just write a plain CSS stylesheet if you'd like. A plain CSS stylesheet won't need to be compiled by Jekyll, so the front matter block won't be necessary.
 </p>
 
 
 
 <h2 id="deployment">Deployment</h2>
 
+<p>
+	I have always used GitHub Pages to host my website. Not only is it free, GitHub Pages automatically builds and displays your webpage without any work from you at all. Well, that was surprisingly easy.
+</p>
+
+
+
+<h2 id="closing">Closing</h2>
+
+<p>
+	Phew! We're all done (for now). Now we have a foundation to build upon, we can look into adding more cool features, such as supporting comments and likes. This was a great learning experience for me, and I hope my recounting of this project helps you out as well. <b>Good luck with your creation!</b>
+</p>
+
 
 
 <h2 id="references">References</h2>
 	<ul>
 		<li>
-			https://www.jokecamp.com/blog/listing-jekyll-posts-by-tag/
+			<a href="https://www.jokecamp.com/blog/listing-jekyll-posts-by-tag/" target="_blank">How to list your jekyll posts by tags</a>, Joe Kampschmidt
+		</li>
+		<li>
+			<a href="https://shopify.github.io/liquid/" target="_blank">Liquid Documentation</a>
+		</li>
+		<li>
+			<a href="https://jekyllrb.com/docs/home/" target="_blank">Jekyll Documentation</a>
+		</li>
+		<li>
+			<a href="https://learn.cloudcannon.com/jekyll-cheat-sheet/" target="_blank">Jekyll Cheat Sheet</a>, CloudCannon
 		</li>
 	</ul>
 
