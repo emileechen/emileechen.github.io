@@ -2,7 +2,7 @@
 
 	{% for link in site.navlinks %}
 
-	{% if page.title == link.name %}
+	{% if page.title contains link.name %}
 	<div class="nav-btn current">{{ link.name | capitalize }}</div>
 	{% else %}
 	<a href="{{ link.url }}">

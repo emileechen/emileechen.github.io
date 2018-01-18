@@ -242,6 +242,9 @@ img.smaller {
 			a {	i {
 					color: $grey;
 			}	}
+			a:hover { i {
+				color: $purple;
+			}	}
 		}
 	}
 }

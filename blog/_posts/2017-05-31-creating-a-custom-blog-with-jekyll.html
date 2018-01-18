@@ -46,7 +46,7 @@ tags:     [jekyll, webdev]
 <h2 id="getting-started">Getting Started</h2>
 
 <p>
-	Installing Jekyll was quite straightforward. Jekyll's documentation has a easy to follow <a href="https://jekyllrb.com/docs/installation/" target="_blank">installation guide</a>, and should have everything you need.
+	Installing Jekyll is quite straightforward. Jekyll's documentation has a easy to follow <a href="https://jekyllrb.com/docs/installation/" target="_blank">installation guide</a>, and should have everything you need.
 </p>
 
 <p>
@@ -138,10 +138,10 @@ mysite
 	<li><span class="code">_includes</span> - This is where our partials live. That would be the headers, footers, etc. that can be repeated throughout our site.</li>
 	<li><span class="code">_layouts</span> - Layouts live here.</li>
 	<li><span class="code">_posts</span> - Published posts live here.</li>
-	<li><span class="code">_scss</span> - Sass partials live here. This is NOT where your main SCSS/CSS lives, just the stuff that you would like imported into it.</li>
+	<li><span class="code">_scss</span> - Sass partials live here. This is <b>NOT</b> where your main SCSS/CSS lives, just the stuff that you would like imported into it.</li>
 	<li><span class="code">_site</span> - Your generated site lives here.</li>
 	<li><span class="code">blog</span> - I like to keep a separate folder with all the blog related pages and assets to keep my directory clean and separated from the rest of my site.</li>
-	<li><span class="code">css/...</span> - This is where your actual CSS files live. Note that there is no underscore prepended to this dir name, so it will be copied into your compiled site.</li>
+	<li><span class="code">css</span> - This is where your actual CSS files live. Note that there is no underscore prepended to this dir name, so it will be copied into your compiled site.</li>
 </ul>
 
 <p>
@@ -159,7 +159,7 @@ _site/</pre>
 </p>
 
 <p>
-	Next, let's take a look at that configuration file. This is where we configure the entire Jekyll site. For all available options, take a peek at the <a href="https://jekyllrb.com/docs/configuration/" target="_blank">configuration docs</a>. Here is a really basic <span class="code">_config.yml</span> file:
+	Next, let's take a look at that configuration file. This is where we configure the entire Jekyll site. For all available options, take a peek at the <a href="https://jekyllrb.com/docs/configuration/" target="_blank">configuration doc</a>. Here is a really basic <span class="code">_config.yml</span> file:
 </p>
 
 <pre class="prettyprint lang-yaml">
@@ -218,7 +218,7 @@ jive: some potentially useful information
 ---</pre>
 
 <p>
-	Read more about this in the <a href="https://jekyllrb.com/docs/frontmatter/" target="_blank">front matter docs</a>.
+	Read more about this in the <a href="https://jekyllrb.com/docs/frontmatter/" target="_blank">front matter doc</a>.
 </p>
 
 
@@ -515,7 +515,7 @@ permalink: /blog/
 	<h3>Post Pages</h3>
 
 	<p>
-		All of our blog posts that we want published to our site will live in <span class="code">/blog/_posts/</span>. If you want a safe place to house your drafts, they can go in <span class="code">/blog/_drafts/</span>, where the contents will not be built out. For Jekyll to build your blog posts properly, each file much be named appropriately in this format: <span class="code">YEAR-MONTH-DAY-title.MARKUP</span>.
+		All of our blog posts that we want published to our site will live in <span class="code">/blog/_posts/</span>. If you want a safe place to house your drafts, they can go in <span class="code">/blog/_drafts/</span>, where the contents will not be built out to <span class="code">/_site/</span>. If you want a safe place to house your drafts, they can go in <span class="code">/blog/_drafts/</span>. For Jekyll to build your blog posts properly, each file much be named appropriately in this format: <span class="code">YEAR-MONTH-DAY-title.MARKUP</span>.
 	</p>
 
 	<p>
@@ -535,14 +535,90 @@ tags:     [fun]
 </p></xmp>
 
 	<p>
-		Once again, the front matter is <u>Very Important</u>! It holds all the variables that we were accessing from the list of posts earlier. I decided to organize my posts in two ways: categories and tags. The category will only appear with each post. The tags will be clickable and will take you to the Tags Page. You can of course do yours however you like. The variables are not special keywords so you can customize them as well.
+		Once again, the front matter is <u>Very Important</u>! It holds all the variables that we were accessing from the list of posts earlier. <i>Category</i> and <i>tags</i> are special <b>site variables</b>. This means they have special functionality that we can take advantage of, such as accessing a list of all the tags from any page as <span class="code">{% raw %}{{ site.tags }}{% endraw %}</span> (well... sort of... we have to apply some liquid filters since it returns an array, but I'll show you how to do that in the next section).
+	</p>
+
+	<p>
+		You can have multiple tags and multiple categories. Multiple tags are a great feature, but I have a bone to pick with the option of multiple categories since it creates these really icky, nesting permalinks. <b>Permalinks</b> are the unique URLs that each full blog post are published at. You can, of course, customize them in your <span class="code">_config.yml</span>, but Jekyll's default permalink template is <span class="code">/:categories/:year/:month/:day/:title.html</span>.
+	</p>
+
+	<p>
+		Jekyll simply contatenates all your categories for the permalink. This means that if you've got <span class="code">category: [brunch, dessert]</span>, then your permalink becomes <span class="code">/brunch/dessert/.../title</span>. This, to me, implies that the category of dessert is nested under the category of brunch. I quite dislike this, so I have opted for assinging exactly one category to each post.
+	</p>
+
+	<p>
+		As for permalink templates, I am personally a fan of the <span class="code">pretty</span> option. See Jekyll's <a href="https://jekyllrb.com/docs/permalinks/" target="_blank">permalinks doc</a> for how to configure permalinks.
+	</p>
+
+	<p>
+		Keep in mind that <b>you should not change the category, date (year, month, day), or title</b> of your post after you make it live. If you do, the next time you build the permalink for the blog post will change, and <b>if someone bookmarked that page, the link will break</b>.
 	</p>
 
 
 	<h3>Tags Page</h3>
 
 	<p>
+		It is nice to be able to browse within certain groupings of posts. I have opted to do this with tags instead of categories, but everything below will also work for categories if you use the <span class="code">site.categories</span> variable instead of <span class="code">site.tags</span> as I do below.
+	</p>
+
+	<p>
+		We will create a new page especially for this purpose. There will be a navigation section at the top that is a list of every tag that has been used. Below, each tag will once again be listed, but this time with all their corresponding posts. Each of these navigation tags will be linked to a corresponding anchor in our main section, so that finding a specific list of posts will be easy.
+	</p>
+
+	<p>
 		<span class="code">/blog/tags.html</span>:
+	</p>
+
+<xmp class="prettyprint lang-html">{% raw %}---
+layout: default
+title: blog-tags
+permalink: /blog/tags/
+---
+
+<!-- Looping through all our tags to create a link to each section -->
+{% for tag in site.tags %}
+  <a class="blog-tag" href="#{{ tag | first | slugify }}">
+    <b class="fa fa-tag" aria-hidden="true"></b>  {{ tag | first }}
+  </a>
+{% endfor %}
+
+<!-- Looping through again to list all corresponding posts with their tags -->
+{% for tag in site.tags %}
+  <h2 id="{{ tag | first | slugify }}">{{ tag | first }}</h2>
+  <ul>
+    {% for post in site.posts %}
+      {% if post.tags contains tag %}
+        <li>
+          <a href="{{ post.url }}">
+            {{ post.title }}
+          </a>
+          <span class="blog-post-info">
+            {{ post.date | date: '%a, %m/%d/%y' }}
+          </span>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}{% endraw %}</xmp>
+
+	<p>
+		You'll see that we use <span class="code">{% raw %}{{ tag | first }}{% endraw %}</span> several times. <b>The global variable <span class="code">site.tags</span> actually holds a nested list</b>, not a list of strings. The first item in the list is the name of the tag, and the second item is actually every single post that has that tag. So, to actually grab the name tags, we need to use <span class="code">{% raw %}{{ tag | first }}{% endraw %}</span>.
+	</p>
+
+	<p>
+		The <span class="code">{% raw %}slugify{% endraw %}</span> string filter is used for the names of our anchors. While Jekyll handles spaces in tags nicely, the same cannot be said for HTML! Slugify converts a string to lowercase and removes all spaces and non-alphanumeric characters. Perfect for our anchors.
+	</p>
+
+	<p>
+		This is all very well and functional, but there is still room for improvement. You might have noticed that your tags are all out of order! That's something we can fix.
+	</p>
+
+	<p>
+		Liquid gets a little tricky here, since it does not allow nested tags.
+	</p>
+
+	<p>
+		You can see my tags page here.
 	</p>
 
 
@@ -573,6 +649,10 @@ tags:     [fun]
 
 
 <h2 id="references">References</h2>
-
+	<ul>
+		<li>
+			https://www.jokecamp.com/blog/listing-jekyll-posts-by-tag/
+		</li>
+	</ul>
 
 

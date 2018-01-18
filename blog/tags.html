@@ -1,6 +1,6 @@
 ---
 layout: default
-title: tags
+title: blog-tags
 permalink: /blog/tags/
 ---
 			<!-- made by Emilee Chen
@@ -8,48 +8,22 @@ permalink: /blog/tags/
 						@ emileechen.com
 							emilee.ty.chen@gmail.com -->
 
+<h1>Tags</h1>
 
-{% comment %}
-	Grabbing and sorting all the tags from every post
-{% endcomment %}
-
-{% assign raw_tags = "" %}
-{% for post in site.posts %}
-	{% assign temp_tags = post.tags | join:'|' | append:'|' %}
-	{% assign raw_tags = raw_tags | append: temp_tags %}
-{% endfor %}
-{% assign raw_tags = raw_tags | split:'|' | sort %}
-
-
-
-{% comment %}
-	Filtering duplicate and invalid tags
-{% endcomment %}
-
-
-{% assign tags = "" %}
-{% for tag in raw_tags %}
-	{% if tag != "" and tag != " " %}
-		{% if tags == "" %}
-			{% assign tags = tag | split:'|' %}
-		{% endif %}
-		{% unless tags contains tag %}
-			{% assign tags = tags | join:'|' | append:'|' | append:tag | split:'|' %}
-		{% endunless %}
-	{% endif %}
+{% assign tags_string = "" %}
+{% for tag in site.tags %}
+	{% assign tag_name = tag | first %}
+	{% assign tags_string = tags_string | append: tag_name | append: ',' %}
 {% endfor %}
 
+{% assign tags_list = tags_string | split: ',' | sort %}
 
 
-<h1>{{ page.title }}</h1>
-
-
-{% for tag in tags %}
-	<a class="blog-tag" href="#{{ tag | slugify }}"><i class="fa fa-tag" aria-hidden="true"></i>  {{ tag }}</a>
+{% for tag in tags_list %}
+	<a class="blog-tag" href="#{{ tag | slugify }}"><b class="fa fa-tag" aria-hidden="true"></b>  {{ tag }}</a>
 {% endfor %}
 
-
-{% for tag in tags %}
+{% for tag in tags_list %}
 	<h2 id="{{ tag | slugify }}">{{ tag }}</h2>
 	<ul>
 		{% for post in site.posts %}
@@ -66,5 +40,3 @@ permalink: /blog/tags/
 		{% endfor %}
 	</ul>
 {% endfor %}
-
-
