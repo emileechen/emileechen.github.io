@@ -19,3 +19,5 @@ navlinks:
     url: "/about"
   - name: blog
     url: "/blog"
+
+excerpt_separator: <!--more-->
