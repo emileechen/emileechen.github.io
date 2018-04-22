@@ -567,6 +567,12 @@ img.smaller {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
+.narrower {
+	width: 70%;
+	margin: auto;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
 .narrowest {
 	width: 50%;
 	min-width: 400px;
@@ -579,6 +585,9 @@ img.smaller {
 }
 .attach {
 	margin-top: -2rem;
+}
+.attach-narrow {
+	margin-top: -1rem;
 }
 .attach > div{
 	padding-top: 0;
