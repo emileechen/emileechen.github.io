@@ -14,34 +14,61 @@ ready: true
 
 <div class="blog-main">
  	<div class="blog-content">
+<!-- 
+			<div>
+				<img src={{ "/blog/img/curtain-dress-discountfabrics-01.jpg" | absolute_url }}>
+			</div>
+ -->
+
+
 		{% for post in site.posts %}
 		{% if post.category != "Personal" %}
+
+
+
 		<div class="blog-container">
 
-			<div class="blog-head">
+			{% if post.image %}
+			<div class="blog-img">
 				<a href="{{ post.url }}">
-					<div class="blog-title">
-						{{ post.title }}
-
-						<span class="blog-info">
-							<span class="fa fa-folder-open" aria-hidden="true"></span>
-							{{ post.category | upcase }}
-						</span>
-						<span class="blog-info">
-							<span class="fa fa-clock-o" aria-hidden="true"></span>
-							{{ post.date | date: '%a, %m/%d/%y' }}
-						</span>
-
-					</div>
-					
+				<img class="blog-img-prev" src={{ post.image | absolute_url }}>
 				</a>
 			</div>
+			{% endif %}
 
-			<div class="blog-excerpt">
-				{{ post.excerpt | strip_html | truncatewords:75 }}
+			<div class="blog-text">
 
-				<p class="blog-read-more"><a href="{{ post.url }}">Read more</a></p>
+				<div class="blog-head">
+					<a href="{{ post.url }}">
+						<div class="blog-title">
+
+							{{ post.title }}
+
+							<br>
+							<span class="blog-info">
+								<span class="fa fa-folder-open" aria-hidden="true"></span>
+								{{ post.category | upcase }}
+							</span>
+							<span class="blog-info">
+								<span class="fa fa-clock-o" aria-hidden="true"></span>
+								{{ post.date | date: '%a, %m/%d/%y' }}
+							</span>
+
+						</div>
+						
+					</a>
+				</div>
+
+
+				<div class="blog-excerpt">
+					{{ post.excerpt | strip_html | truncatewords:75 }}
+
+					<p class="blog-read-more"><a href="{{ post.url }}">Read more</a></p>
+				</div>
+					
 			</div>
+
+
 		</div>
 		{% endif %}
 		{% endfor %}

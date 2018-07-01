@@ -16,7 +16,7 @@ layout: default
 <p class="blog-post-info">
 	<span class="blog-post-small">
 		{% assign tags = page.tags | sort %}
-		Tags: 
+		Tagged With: 
 		{% for tag in tags %}
 			<a class="blog-tag" href="{{ "/blog/tags/" | prepend: site.baseurl }}#{{ tag | slugify }}"><b class="fa fa-tag" aria-hidden="true"></b>  {{ tag }}</a>
 			<!-- {% if forloop.last == false %}, {% endif %} -->
