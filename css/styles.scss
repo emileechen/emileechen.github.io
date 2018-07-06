@@ -529,20 +529,20 @@ img.smaller {
 	justify-content: space-around;
 	padding: 0 0 .5rem;
 	margin: 2rem -2rem;
-	font-size: .9rem;
-	line-height: 1.3rem;
 	background-color: white;
+	line-height: 0;
 
 	.img-table-box {
 		flex: 1;
-		display: flex;
 		justify-content: center;
 		margin: 0 0 0 .5rem;
 		width: auto;
 
+		display: flex;
+
 		.img-table-item {
+			flex: 1;
 			width: 100%;
-			margin: 0 0 -5px 0;
 			position: relative;
 		}
 		.img-table-item img {
@@ -556,6 +556,32 @@ img.smaller {
 			padding: auto;
 		}
 	}
+
+	.img-table-box-col {
+		line-height: 0;
+		flex: 1;
+		margin: 0 0 0 .5rem;
+		width: auto;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.img-table-item {
+			width: 100%;
+			margin: 0 0 .5rem 0;
+			position: relative;
+		}
+		.img-table-item img {
+			width: 100%;
+		}
+	}
+}
+.img-table-right40 {
+	width: 40%;
+	float: right;
+	margin: -1rem -2rem -1rem 2rem;
 }
 .wide100 {
 	margin-left: 1rem;
@@ -581,7 +607,9 @@ img.smaller {
 	margin-bottom: 1rem;
 }
 .cap {
-	padding-top: .5rem
+	padding-top: .5rem;
+	font-size: .9rem;
+	line-height: 1.3rem;
 }
 .attach {
 	margin-top: -2rem;
