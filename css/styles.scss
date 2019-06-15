@@ -541,7 +541,7 @@ img.smaller {
 		display: flex;
 
 		.img-table-item {
-			flex: 1;
+			flex: 0 1 auto;
 			width: 100%;
 			position: relative;
 		}
@@ -555,6 +555,9 @@ img.smaller {
 			width: auto;
 			padding: auto;
 		}
+	}
+	.wide {
+		flex: 2;
 	}
 
 	.img-table-box-col {
