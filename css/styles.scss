@@ -593,32 +593,32 @@ img.smaller {
 .narrow {
 	width: 80%;
 	margin: auto;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 .narrower {
 	width: 70%;
 	margin: auto;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 .narrowest {
 	width: 50%;
 	min-width: 400px;
 	margin: auto;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 .cap {
 	padding-top: .5rem;
 	font-size: .9rem;
 	line-height: 1.3rem;
 }
+.text {
+	line-height: 1.4em;
+}
 .attach {
 	margin-top: -2rem;
-}
-.attach-narrow {
-	margin-top: -1rem;
 }
 .attach > div{
 	padding-top: 0;
@@ -642,7 +642,7 @@ img.smaller {
 	max-width: 400px;
 }
 
-.caption {
+.caption {	// over image caption
 	font-size: .8rem;
 	position: absolute;
 	background-color: rgba(255, 255, 255, 0.5);
