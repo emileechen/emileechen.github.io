@@ -527,15 +527,15 @@ img.smaller {
 .img-table {
 	display: flex;
 	justify-content: space-around;
-	padding: 0 0 .5rem;
-	margin: 2rem -2rem;
+	margin: 2rem -.25em;
 	background-color: white;
 	line-height: 0;
 
 	.img-table-box {
 		flex: 1;
 		justify-content: center;
-		margin: 0 0 0 .5rem;
+  		align-items: center;
+  		padding: 0 .25em;
 		width: auto;
 
 		display: flex;
@@ -556,6 +556,9 @@ img.smaller {
 			padding: auto;
 		}
 	}
+	.extra-margin {
+		margin: 0 0 0 1rem;
+	}
 	.wide {
 		flex: 2;
 	}
@@ -563,7 +566,8 @@ img.smaller {
 	.img-table-box-col {
 		line-height: 0;
 		flex: 1;
-		margin: 0 0 0 .5rem;
+		padding: 0 .25em;
+		margin: -.25em 0;
 		width: auto;
 
 		display: flex;
@@ -573,7 +577,7 @@ img.smaller {
 
 		.img-table-item {
 			width: 100%;
-			margin: 0 0 .5rem 0;
+			margin: .25em 0;
 			position: relative;
 		}
 		.img-table-item img {
@@ -584,7 +588,7 @@ img.smaller {
 .img-table-right40 {
 	width: 40%;
 	float: right;
-	margin: -1rem -2rem -1rem 2rem;
+	margin: 1em -2em 1em 2em;
 }
 .wide100 {
 	margin-left: 1rem;
@@ -592,25 +596,19 @@ img.smaller {
 }
 .narrow {
 	width: 80%;
-	margin: auto;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin: 2rem auto;
 }
 .narrower {
 	width: 70%;
-	margin: auto;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin: 2rem auto;
 }
 .narrowest {
 	width: 50%;
 	min-width: 400px;
-	margin: auto;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin: 2rem auto;
 }
 .cap {
-	padding-top: .5rem;
+	padding: .5em 2rem 0 2rem;
 	font-size: .9rem;
 	line-height: 1.3rem;
 }
@@ -618,7 +616,7 @@ img.smaller {
 	line-height: 1.4em;
 }
 .attach {
-	margin-top: -2rem;
+	margin-top: -1.5rem;
 }
 .attach > div{
 	padding-top: 0;
