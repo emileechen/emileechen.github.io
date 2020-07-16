@@ -14,6 +14,7 @@
   white-space: pre-wrap !important;
   font-size: 1rem;
   line-height: 1.2rem;
+  text-align: left;
 }
 
 .pln {
@@ -38,8 +39,8 @@ li.L7,
 li.L8,
 li.L9 {
   padding-left: 1em;
-  background-color: #ffffff;
   list-style-type: decimal;
+  background-color: #f1f1f1;
 }
 
 @media screen {
@@ -69,13 +70,13 @@ li.L9 {
   .clo {  color: #4d4d4c; }
 
   /* markup tag name */
-  .tag {  color: $purple; }
+  .tag {  color: $darkpurple; }
 
   /* markup attribute name */
-  .atn {  color: $green; }
+  .atn {  color: $darkgreen; }
 
   /* markup attribute value */
-  .atv {  color: $blue; }
+  .atv {  color: $darkblue; }
 
   /* declaration */
   .dec {  color: $green; }

@@ -1,0 +1,31 @@
+---
+permalink: /experiments/boba/
+---
+
+<html>
+
+    <head>      
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="bobaMaker.js" defer></script>
+        <title>boba maker</title>
+    </head>
+
+    <body>
+
+        <div>
+            Straw Colour: <input id="strawFillInput" type="color" oninput="configureStraw(this.value, null)">
+            Straw Size: <input id="strawSizeInput" type="range" min="0" max="1" value="1"
+                               oninput="configureStraw(null, this.value)">
+            <br>
+            Drink Colour: <input id="drinkFillInput" type="color" oninput="configureDrink(this.value, null)">
+            Milk: <input id="milkCheckInput" type="checkbox" oninput="configureDrink(null, this.checked)">
+        </div>
+
+        <svg id="dynamicBoba" width="260px" viewBox="0 0 260 600"
+             version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+        </svg>
+
+    </body>
+
+</html>
