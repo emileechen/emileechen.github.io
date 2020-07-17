@@ -1,0 +1,360 @@
+---
+layout:     post
+title:      "Boba Chronicles Pt. I - Animated SVGs"
+date:       2020-07-10 00:05:32 -0800
+category:   webdev
+tags:       [svg, illustration]
+image:      /blog/img/boba-chronicles/sketches.png
+---
+
+<p>
+    For the past half year I've been tracking my bubble tea consumption. Is it to shame myself into drinking less boba? Maybe. Is this madness? Probably. It's been an interesting exercise, at the very least, and is one that I'm likely to continue into the future.
+</p>
+
+<p>
+    The tracking has been done in a Google Sheets. While Sheets allows me to do nifty things like column sums for amount spent and conditional cell fill colours, it's lacking in some other areas. The Sheets mobile app is awkward to use on the go, which is when I want to make new entries. Also, after a few months I had enough data to want to make some more interesting analyses about my boba habits.
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/google-sheets.png" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+<p>
+    Since I am conveniently in between jobs and have time for a side project... I'm going to make an app (or begin making one) where I can track my boba consumption and look at all the data in a pretty and meaningful way.
+</p>
+
+
+
+<h2 id="breakdown">Let's break it down</h2>
+
+<p>
+    There will be many components to this project: new boba entry submission form, different visualizations, and the backend (??? how does one web ???). 
+</p>
+ 
+<p>
+    <ul>
+        <li>Ease of use</li>
+            <ul>
+                <li>Must be mobile friendly</li>
+                <li>Can I still use Google Sheets as my database?</li>
+            </ul>
+        <li>Infographics to answer some interesting questions:</li>
+            <ul>
+                <li>What was the longest boba streak?</li>
+                <li>What was the longest dry spell?</li>
+                <li>Which day of the week am I more likely to get boba?</li>
+            </ul>
+        <li>Pretty visuals</li>
+            <ul>
+                <li>Customizable build a boba submission form</li>
+                <ul>
+                    <li>You should be able to select 'mango jelly' and see mango jelly pieces in your cup. Selecting 'pearls' should replace the mango jelly with pearls.</li>
+                </ul>
+                <li>Animated SVGs! Because pretty!!!</li>
+            </ul>
+    </ul>
+</p>
+
+
+
+<h2 id="sketches">First, we draw</h2>
+
+<p>
+    Pretty visuals is going to be a <i>huge</i> component of this for me. The idea is to have at least two main views: a build-a-boba page and a history page.
+</p>
+
+<p>
+    The build-a-boba page is going to be an interactive page with two panels. One will be a large rendering of a boba drink think you're trying to build, and the other will be a form with drop downs, sliders, etc. that can be used to customize the drink. I did a couple sketches to get a feel for what I might want the large drink to look like. While I'd love to have different cup types, simpler is better in this case, I think.
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/sketches.png" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+<p>
+    For the history page, I want to be able to see all my logged drinks I've had in the past year like a mosaic. These illustrations should be simpler. The focus should really be on overall impact rather than rendering individual drinks. To figure out what this might look like I made some more sketches.
+</p>
+
+<div class="img-table wide100">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/grid-00.png" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/grid-01.png" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+<p>
+    I am pretty happy with how it turned out! I think there's a lot more that can happen with this simple boba grid concept. I want to refine it into a pattern that can be printed on fabric and sew a boba dress! Also, just imagine, a screen printed t-shirt with your unique boba history. &#128571;
+</p>
+
+
+
+<h2 id="svg">Next, we SVG</h2>
+
+<p>
+    Well actually, next I opened up Sketch and recreated my previous boba sketch with vector shapes. The goal is to be able to procedurally create SVG shapes via JavaScript, so the SVGs needs to be neat to make SVG element creation easier later.
+</p>
+
+<div class="img-table">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/sketch-00.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/sketch-01.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/sketch-02.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/sketch-03.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/sketch-04.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/sketch-05.svg" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+<p>
+    After getting the initial shapes down, I selected all my shapes, right clicked, smashed Copy SVG Code, <span class="code">ctrl+p</span>'d into Sublime, and boom, I've got SVG code. Except... what I got out of it didn't look very nice at all.
+</p>
+
+<p>
+    <span class="code">boba.html</span>:
+</p>
+
+<xmp class="prettyprint lang-html linenums"><svg width="260px" height="571px" viewBox="0 0 260 571"
+     version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-520.000000, -90.000000)">
+            <g id="simple2" transform="translate(520.000000, 90.000000)">
+                <polygon id="cup" fill="#F4E7D8" points="11 171 251 171 231 571 31 571"></polygon>
+                <path d="M81,244 C143.833333,244 144,271 217,271 C228.347138,271 237.85799,270.347635 246.092153,269.245712 L231,571 L31,571 L15.350617,258.002927 L20.3677593,255.930887 C35.5227936,249.74251 52.02262,244 81,244 Z" id="tea" fill="#F0D4B5"></path>
+                <rect id="lid" fill="#3B3B3B" x="0" y="151" width="260" height="12"></rect>
+                <polygon id="straw" fill="#3B3B3B" transform="translate(124.979227, 271.370018) scale(-1, 1) rotate(-6.000000) translate(-124.979227, -271.370018) " points="106.979227 1.37001797 142.979227 1.37001797 142.979227 541.370018 106.979227 527.330018"></polygon>
+                <g id="bubbles" transform="translate(47.000000, 452.000000)" fill="#3B3B3B">
+                    <circle id="Oval" cx="40" cy="54" r="18"></circle>
+                    <circle id="Oval" cx="84" cy="54" r="18"></circle>
+                    <circle id="Oval" cx="128" cy="54" r="18"></circle>
+                    <circle id="Oval" cx="18" cy="18" r="18"></circle>
+                    <circle id="Oval" cx="62" cy="18" r="18"></circle>
+                    <circle id="Oval" cx="106" cy="18" r="18"></circle>
+                    <circle id="Oval" cx="150" cy="18" r="18"></circle>
+                    <circle id="Oval" cx="18" cy="90" r="18"></circle>
+                    <circle id="Oval" cx="62" cy="90" r="18"></circle>
+                    <circle id="Oval" cx="106" cy="90" r="18"></circle>
+                    <circle id="Oval" cx="150" cy="90" r="18"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg></xmp>
+
+<p>
+    There are a lot of SVG optimizers out there that I could have used to make this a little more friendly, but I figured I could just use this as a starting point and rewrite the SVG from scratch. Hand coding SVG is pretty similar to using Sketch. I focused on making all the values in point strings nice and being mindful about how I use transforms to place elements.
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/svg-00.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/svg-01.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/svg-02.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/svg-03.svg" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+<p>
+    <span class="code">boba.html</span>:
+</p>
+
+<xmp class="prettyprint lang-html linenums"><svg viewBox="0 0 260 600"
+     version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <polygon id="cup" fill="#F4E7D8" transform="translate(130, 150)"
+             points="-120 0 120 0 100 430 -100 430" />
+    <polygon id="straw" fill="#7FACC5" transform="translate(112, 0)"
+             points="0 0 36 0 36 545 0 560" />
+    <rect id="lid" fill="#3B3B3B" x="0" y="144" width="260" height="16" />
+
+    <defs>
+        <clipPath id="cupClip">
+            <polygon points="-120 20 120 20 100 450 -100 450" />
+        </clipPath>
+    </defs>
+
+    <path id="liquid" fill="#F0D4B5" transform="translate(130, 150)"
+          clip-path="url(#cupClip)"
+          d=" M -130 50,
+              q 75 -20, 130 0
+              q 75 20, 130 0
+              l 0 400
+              l -260 0" />
+
+    <g id="toppings" fill="#3B3B3B" transform="translate(130, 556)">
+        <circle cx="-60" cy="0" r="18" />
+        <circle cx="-20" cy="0" r="18" />
+        <circle cx="20" cy="0" r="18" />
+        <circle cx="60" cy="0" r="18" />
+        <circle cx="-40" cy="-36" r="18" />
+        <circle cx="0" cy="-36" r="18" />
+        <circle cx="40" cy="-36" r="18" />
+        <circle cx="-60" cy="-72" r="18" />
+        <circle cx="-20" cy="-72" r="18" />
+        <circle cx="20" cy="-72" r="18" />
+        <circle cx="60" cy="-72" r="18" />
+    </g>
+</svg></xmp>
+
+<p>
+    Note: SVG tags are self closing, which means that <span class="code">&lt;circle ...>&lt;/circle></span> can be written as <span class="code">&lt;circle ... /></span>. If it makes my code more succinct, I am <i>there</i>.
+</p>
+
+<p>
+    Figuring out how to create the actual 'liquid' portion of the boba was interesting. I wanted to add an interesting 'wave' to the top of the liquid, but I also wanted to avoid hard coding both the liquid shape and the cup shape separately. Instead the liquid shape should rely directly on the cup shape. This future proofs against different cup shapes in the future. To do this, I want get the intersection of the cup and basic liquid shapes.
+</p>
+
+<p>
+    The basic liquid shape is created with an enclosed path. Paths allow you to draw multiple segments of curves. The segment is a quadratic b&eacute;zier curve to create a wave on the surface of the liquid (shown in purple below). The rest of the segments are simple lines enclose the rest of the area.
+</p>
+
+<div class="img-table">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/mask-00.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/mask-01.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/mask-02.svg" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/boba-chronicles/mask-03.svg" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+<p>
+    Note: The shape is clipped <i>before</i> the same transformation is applied to the new shape, so make sure the two shapes are appropriately aligned before the transformation.
+</p>
+
+<p>
+    When the basic liquid shape and the cup shape are superimposed on top of each other, we get this nice tapered liquid in a cup shape. Simply create a <span class="code">clipPath</span> with the one of the shapes nested under it and apply it as a <span class="code">clip-path</span> attribute to the other shape. Since this just gets the intersection of the two shapes, which one is used as the clip path doesn't matter.
+</p>
+
+<p>
+    I initially tried to use masking instead of clipping, but ran into opacity troubles. I had a light brown fill on my mask shape, which was actually applying a opacity mask to the shape as well. It turns out masking is just clipping with opacity, and since I wasn't using the opacity feature, I opted to use clipping instead.
+</p>
+
+
+
+<h2 id="code">Then, we finally get to code</h2>
+
+<p>
+    It's finally time for the fun stuff!! Now that I have already created this SVG twice from scratch, it's time to do it yet another time!!! This time with JavaScript!!!
+</p>
+
+<p>
+    <span class="code">boba.html</span>:
+</p>
+
+<xmp class="prettyprint lang-html linenums"><html>
+    <head>
+        <script src="bobaMaker.js" defer></script>
+    </head>
+
+    <body>
+        <svg id="dynamicBoba" width="260px" viewBox="0 0 260 600"
+             version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink" />
+    </body>
+</html></xmp>
+
+<p>
+    <span class="code">bobaMaker.js</span>:
+</p>
+
+<xmp class="prettyprint lang-js linenums">// Get our SVG element
+boba = document.getElementById("dynamicBoba");
+
+// We're trying to recreate...
+// <rect id="lid" fill="#3B3B3B" x="0" y="144" width="260" height="16" />
+
+// Create a SVG element and set every attribute
+lid = document.createElementNS(svgNS, "rect");
+lid.setAttribute("fill", "#3B3B3B");
+lid.setAttribute("x", 0);
+lid.setAttribute("y", 144);
+lid.setAttribute("width", 260);
+lid.setAttribute("height", 16);
+
+// Append our new shape into our SVG element
+boba.appendChild(lid);
+</xmp>
+
+<p>
+    It's not great to have to explicitly set so many attributes over so many lines, but all of those attributes can now be &#10024; <b>dynamic</b> &#10024;.
+</p>
+
+
+
+<h2 id="references">References</h2>
+
+    <ul>
+        <li>
+            <a href="https://www.w3.org/TR/SVG11/" target="_blank">SVG Docs</a>
+        </li>
+        <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Clipping_and_masking" target="_blank">SVG Tutorial: Clipping and Masking</a>, MDN web docs
+        </li>
+    </ul>
+
+

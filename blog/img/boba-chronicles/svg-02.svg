@@ -1,0 +1,19 @@
+<svg viewBox="0 0 260 600"
+     version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <defs>
+        <clipPath id="cupClip">
+            <polygon points="-120 20 120 20 100 450 -100 450" />
+        </clipPath>
+    </defs>
+
+    <path id="liquid" fill="#F0D4B5" transform="translate(130, 150)"
+          clip-path="url(#cupClip)"
+          d=" M -130 50,
+              q 75 -20, 130 0
+              q 75 20, 130 0
+              l 0 400
+              l -260 0" />
+
+</svg>

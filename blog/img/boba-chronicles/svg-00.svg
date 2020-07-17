@@ -1,0 +1,23 @@
+<svg viewBox="0 0 260 600"
+     version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <polygon id="cup" fill="#F4E7D8" transform="translate(130, 150)"
+             points="-120 0 120 0 100 450 -100 450" />
+    <polygon id="straw" fill="#7FACC5" transform="translate(130, 0)"
+             points="-18 0 18 0 18 545 -18 560" />
+    <rect id="lid" fill="#3B3B3B" x="0" y="144" width="260" height="16" />
+    <g id="toppings" fill="#3B3B3B" transform="translate(130, 556)">
+        <circle cx="-60" cy="0" r="18" />
+        <circle cx="-20" cy="0" r="18" />
+        <circle cx="20" cy="0" r="18" />
+        <circle cx="60" cy="0" r="18" />
+        <circle cx="-40" cy="-36" r="18" />
+        <circle cx="0" cy="-36" r="18" />
+        <circle cx="40" cy="-36" r="18" />
+        <circle cx="-60" cy="-72" r="18" />
+        <circle cx="-20" cy="-72" r="18" />
+        <circle cx="20" cy="-72" r="18" />
+        <circle cx="60" cy="-72" r="18" />
+    </g>
+</svg>
