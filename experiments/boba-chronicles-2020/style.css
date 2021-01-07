@@ -1,0 +1,60 @@
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  height: 95vh;
+  padding: 0 4rem;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: 'Roboto Mono', monospace;
+}
+.title {
+  font-size: 24px;
+}
+
+.month {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.boba {
+  position: relative;
+  height: 4.5em;
+  width: 4.5em;
+  /*margin: .2em;*/
+  padding: .3em;
+
+  border: .5em white solid;
+  background-color: #F0F0F0;
+
+  line-height: 1em;
+  font-size: 13px;
+}
+.boba.empty {
+  background-color: white;
+}
+
+.name {
+  position: relative;
+  overflow-wrap: break-word;
+}
+
+.id_num {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
+  margin-top: 0.1em;
+  margin-right: -0.15em;
+  font-size: 40px;
+  opacity: .6;
+}

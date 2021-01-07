@@ -1,0 +1,44 @@
+---
+permalink: /experiments/boba-chronicles-2020/
+---
+
+<html>
+
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="data.json"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="boba_chronicles.js"defer></script>
+        <title>boba chronicles 2020</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="title">Bobas Drank in 2020: </div>
+            <div>
+                <input type="checkbox" id="show_id" v-model="show_id">
+                <label for="show_id">Show Num</label>
+                <input type="checkbox" id="show_name" v-model="show_name">
+                <label for="show_name">Show Name</label>
+                <input type="checkbox" id="show_no_boba" v-model="show_no_boba">
+                <label for="show_no_boba">Show Empty</label>
+            </div>
+            <div>
+                <span>Border Highlight: </span>
+                <select v-model="border_select">
+                    <option v-for="option in border_options" v-bind:value="option.value">
+                        {{ option.display }}
+                    </option>
+                </select>
+            </div>
+            <div class="month" v-for="month in months">
+                <boba v-for="boba in month"
+                      v-bind="boba">
+                </boba>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,2809 @@
+drinks = [
+    [
+        {
+            "Day": "1",
+            "Month": "1"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "2",
+            "Weekday": "Thursday",
+            "Topping": "Tapioca",
+            "ID": "1",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "1",
+            "Date": "1/2/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Sweetness": "75%",
+            "Price": "$5.50",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "3",
+            "Weekday": "Friday",
+            "Topping": "Tapioca",
+            "ID": "2",
+            "drink_color": "Matcha",
+            "Month": "1",
+            "Date": "1/3/2020",
+            "Drink": "Strawberry Matcha Latte"
+        },
+        {
+            "Sweetness": "75%",
+            "Price": "$5.75",
+            "City": "Beaverton, OR",
+            "topping_color": "Mango",
+            "Store": "Fantastea House",
+            "Rating": "2",
+            "Dairy": "n/a",
+            "Day": "4",
+            "Weekday": "Saturday",
+            "Topping": "Mango Bits",
+            "ID": "3",
+            "drink_color": "Fruit Tea",
+            "Month": "1",
+            "Date": "1/4/2020",
+            "Drink": "Mango Yogurt Green Tea"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "5",
+            "Weekday": "Sunday",
+            "Topping": "Tapioca",
+            "ID": "4",
+            "drink_color": "Milk Tea",
+            "Month": "1",
+            "Date": "1/5/2020",
+            "Drink": "Original Milk Tea"
+        },
+        {
+            "Day": "6",
+            "Month": "1"
+        },
+        {
+            "Sweetness": "30%",
+            "Price": "$4.00",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "OMOMO",
+            "Rating": "3",
+            "Dairy": "Milk",
+            "Day": "7",
+            "Weekday": "Tuesday",
+            "Topping": "",
+            "ID": "5",
+            "drink_color": "Oolong Milk Tea",
+            "Month": "1",
+            "Date": "1/7/2020",
+            "Drink": "Oolong Milk Tea"
+        },
+        {
+            "Day": "8",
+            "Month": "1"
+        },
+        {
+            "Day": "9",
+            "Month": "1"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.25",
+            "City": "Tustin, CA",
+            "topping_color": "",
+            "Store": "HNTea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "10",
+            "Weekday": "Friday",
+            "Topping": "",
+            "ID": "6",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "1",
+            "Date": "1/10/2020",
+            "Drink": "Jasmine Green Tea Latte"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "11",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "7",
+            "drink_color": "Milk Tea",
+            "Month": "1",
+            "Date": "1/11/2020",
+            "Drink": "Hokkaido Milk Tea"
+        },
+        {
+            "Day": "12",
+            "Month": "1"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.25",
+            "City": "Tustin, CA",
+            "topping_color": "",
+            "Store": "HNTea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "13",
+            "Weekday": "Monday",
+            "Topping": "",
+            "ID": "8",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "1",
+            "Date": "1/13/2020",
+            "Drink": "Jasmine Green Tea Latte"
+        },
+        {
+            "Day": "14",
+            "Month": "1"
+        },
+        {
+            "Day": "15",
+            "Month": "1"
+        },
+        {
+            "Day": "16",
+            "Month": "1"
+        },
+        {
+            "Day": "17",
+            "Month": "1"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "2",
+            "Dairy": "Milk",
+            "Day": "18",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "9",
+            "drink_color": "Milk Tea",
+            "Month": "1",
+            "Date": "1/18/2020",
+            "Drink": "Honey Milk Tea"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.25",
+            "City": "Tustin, CA",
+            "topping_color": "",
+            "Store": "HNTea",
+            "Rating": "5",
+            "Dairy": "n/a",
+            "Day": "19",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "10",
+            "drink_color": "Strawberry Tea",
+            "Month": "1",
+            "Date": "1/19/2020",
+            "Drink": "Strawberry Jasmine Tea"
+        },
+        {
+            "Day": "20",
+            "Month": "1"
+        },
+        {
+            "Day": "21",
+            "Month": "1"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "free",
+            "City": "Tustin, CA",
+            "topping_color": "",
+            "Store": "HNTea",
+            "Rating": "5",
+            "Dairy": "n/a",
+            "Day": "22",
+            "Weekday": "Wednesday",
+            "Topping": "",
+            "ID": "11",
+            "drink_color": "Strawberry Tea",
+            "Month": "1",
+            "Date": "1/22/2020",
+            "Drink": "Strawberry Jasmine Tea"
+        },
+        {
+            "Day": "23",
+            "Month": "1"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "gift",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "3",
+            "Dairy": "Soy",
+            "Day": "24",
+            "Weekday": "Friday",
+            "Topping": "Tapioca",
+            "ID": "12",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "1",
+            "Date": "1/24/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "25",
+            "Month": "1"
+        },
+        {
+            "Day": "26",
+            "Month": "1"
+        },
+        {
+            "Sweetness": "100%",
+            "Price": "$3.75",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "27",
+            "Weekday": "Monday",
+            "Topping": "",
+            "ID": "13",
+            "drink_color": "Green Tea",
+            "Month": "1",
+            "Date": "1/27/2020",
+            "Drink": "Green Tea"
+        },
+        {
+            "Day": "28",
+            "Month": "1"
+        },
+        {
+            "Day": "29",
+            "Month": "1"
+        },
+        {
+            "Day": "30",
+            "Month": "1"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "free",
+            "City": "Tustin, CA",
+            "topping_color": "Tapioca",
+            "Store": "HNTea",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "31",
+            "Weekday": "Friday",
+            "Topping": "Tapioca",
+            "ID": "14",
+            "drink_color": "Fruit Tea",
+            "Month": "1",
+            "Date": "1/31/2020",
+            "Drink": "Passion Peach Green"
+        }
+    ],
+    [
+        {
+            "Sweetness": "25%",
+            "Price": "$4.75",
+            "City": "San Gabriel, CA",
+            "topping_color": "",
+            "Store": "BoBaPoP Tea Bar",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "1",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "15",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "2",
+            "Date": "2/1/2020",
+            "Drink": "Jasmine Green Milk Tea"
+        },
+        {
+            "Day": "2",
+            "Month": "2"
+        },
+        {
+            "Day": "3",
+            "Month": "2"
+        },
+        {
+            "Sweetness": "75%",
+            "Price": "$5.60",
+            "City": "Irvine, CA",
+            "topping_color": "Mango",
+            "Store": "BLKdot Coffee",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "4",
+            "Weekday": "Tuesday",
+            "Topping": "Mango Jelly",
+            "ID": "16",
+            "drink_color": "Fruit Tea",
+            "Month": "2",
+            "Date": "2/4/2020",
+            "Drink": "Mango Delight Tea"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$4.85",
+            "City": "Costa Mesa, CA",
+            "topping_color": "",
+            "Store": "Eightfold",
+            "Rating": "5",
+            "Dairy": "Milk",
+            "Day": "5",
+            "Weekday": "Wednesday",
+            "Topping": "",
+            "ID": "17",
+            "drink_color": "Milk Tea",
+            "Month": "2",
+            "Date": "2/5/2020",
+            "Drink": "Signature Milk Tea"
+        },
+        {
+            "Day": "6",
+            "Month": "2"
+        },
+        {
+            "Day": "7",
+            "Month": "2"
+        },
+        {
+            "Day": "8",
+            "Month": "2"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$4.85",
+            "City": "Costa Mesa, CA",
+            "topping_color": "",
+            "Store": "Eightfold",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "9",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "18",
+            "drink_color": "Milk Tea",
+            "Month": "2",
+            "Date": "2/9/2020",
+            "Drink": "Signature Milk Tea"
+        },
+        {
+            "Day": "10",
+            "Month": "2"
+        },
+        {
+            "Day": "11",
+            "Month": "2"
+        },
+        {
+            "Day": "12",
+            "Month": "2"
+        },
+        {
+            "Day": "13",
+            "Month": "2"
+        },
+        {
+            "Day": "14",
+            "Month": "2"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.32",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "15",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "19",
+            "drink_color": "Milk Tea",
+            "Month": "2",
+            "Date": "2/15/2020",
+            "Drink": "Hokkaido Milk Tea"
+        },
+        {
+            "Day": "16",
+            "Month": "2"
+        },
+        {
+            "Day": "17",
+            "Month": "2"
+        },
+        {
+            "Sweetness": "100%",
+            "Price": "$6.42",
+            "City": "Irvine, CA",
+            "topping_color": "Tapioca",
+            "Store": "The Alley",
+            "Rating": "2",
+            "Dairy": "Milk",
+            "Day": "18",
+            "Weekday": "Tuesday",
+            "Topping": "Tapioca",
+            "ID": "20",
+            "drink_color": "Milk",
+            "Month": "2",
+            "Date": "2/18/2020",
+            "Drink": "Brown Sugar Deerioca Fresh Milk"
+        },
+        {
+            "Day": "19",
+            "Month": "2"
+        },
+        {
+            "Day": "20",
+            "Month": "2"
+        },
+        {
+            "Day": "21",
+            "Month": "2"
+        },
+        {
+            "Sweetness": "40%",
+            "Price": "gift",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Cha For Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "22",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "21",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "2",
+            "Date": "2/22/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.25",
+            "City": "Tustin, CA",
+            "topping_color": "",
+            "Store": "HNTea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "23",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "22",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "2",
+            "Date": "2/23/2020",
+            "Drink": "Jasmine Milk Tea (Hot)"
+        },
+        {
+            "Day": "24",
+            "Month": "2"
+        },
+        {
+            "Day": "25",
+            "Month": "2"
+        },
+        {
+            "Sweetness": "30%",
+            "Price": "$4.75",
+            "City": "Irvina, CA",
+            "topping_color": "Tapioca",
+            "Store": "OMOMO",
+            "Rating": "5",
+            "Dairy": "Milk",
+            "Day": "26",
+            "Weekday": "Wednesday",
+            "Topping": "Tapioca",
+            "ID": "23",
+            "drink_color": "Matcha",
+            "Month": "2",
+            "Date": "2/26/2020",
+            "Drink": "Uji Green Milk Tea"
+        },
+        {
+            "Sweetness": "100%",
+            "Price": "$5.00",
+            "City": "Irvine, CA",
+            "topping_color": "Tapioca",
+            "Store": "7 Leaves",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "27",
+            "Weekday": "Thursday",
+            "Topping": "Tapioca",
+            "ID": "24",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "2",
+            "Date": "2/27/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "28",
+            "Month": "2"
+        },
+        {
+            "Sweetness": "33%",
+            "Price": "$4.35",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "85 Degrees",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "29",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "25",
+            "drink_color": "Strawberry Milk Tea",
+            "Month": "2",
+            "Date": "2/29/2020",
+            "Drink": "Fresh Strawberry Milk Tea"
+        },
+        {},
+        {}
+    ],
+    [
+        {
+            "Sweetness": "25%",
+            "Price": "$5.25",
+            "City": "Tustin, CA",
+            "topping_color": "",
+            "Store": "HNTea",
+            "Rating": "5",
+            "Dairy": "n/a",
+            "Day": "1",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "26",
+            "drink_color": "Strawberry Tea",
+            "Month": "3",
+            "Date": "3/1/2020",
+            "Drink": "Strawberry Jasmine Tea"
+        },
+        {
+            "Day": "2",
+            "Month": "3"
+        },
+        {
+            "Day": "3",
+            "Month": "3"
+        },
+        {
+            "Day": "4",
+            "Month": "3"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$4.85",
+            "City": "Costa Mesa, CA",
+            "topping_color": "",
+            "Store": "Eightfold",
+            "Rating": "5",
+            "Dairy": "Milk",
+            "Day": "5",
+            "Weekday": "Thursday",
+            "Topping": "",
+            "ID": "27",
+            "drink_color": "Milk Tea",
+            "Month": "3",
+            "Date": "3/5/2020",
+            "Drink": "Signature Milk Tea"
+        },
+        {
+            "Day": "6",
+            "Month": "3"
+        },
+        {
+            "Day": "7",
+            "Month": "3"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.25",
+            "City": "Tustin, CA",
+            "topping_color": "",
+            "Store": "HNTea",
+            "Rating": "5",
+            "Dairy": "n/a",
+            "Day": "8",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "28",
+            "drink_color": "Strawberry Tea",
+            "Month": "3",
+            "Date": "3/8/2020",
+            "Drink": "Strawberry Jasmine Tea"
+        },
+        {
+            "Day": "9",
+            "Month": "3"
+        },
+        {
+            "Day": "10",
+            "Month": "3"
+        },
+        {
+            "Day": "11",
+            "Month": "3"
+        },
+        {
+            "Day": "12",
+            "Month": "3"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "T to Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "13",
+            "Weekday": "Friday",
+            "Topping": "",
+            "ID": "29",
+            "drink_color": "Oolong Milk Tea",
+            "Month": "3",
+            "Date": "3/13/2020",
+            "Drink": "Tie Guan Ying Tea Latte"
+        },
+        {
+            "Day": "14",
+            "Month": "3"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.25",
+            "City": "Tustin, CA",
+            "topping_color": "",
+            "Store": "HNTea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "15",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "30",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "3",
+            "Date": "3/15/2020",
+            "Drink": "Jasmine Green Tea Latte"
+        },
+        {
+            "Day": "16",
+            "Month": "3"
+        },
+        {
+            "Day": "17",
+            "Month": "3"
+        },
+        {
+            "Sweetness": "30%",
+            "Price": "free",
+            "City": "Irvine, CA",
+            "topping_color": "Tapioca",
+            "Store": "OMOMO",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "18",
+            "Weekday": "Wednesday",
+            "Topping": "Tapioca",
+            "ID": "31",
+            "drink_color": "Matcha",
+            "Month": "3",
+            "Date": "3/18/2020",
+            "Drink": "Uji Green Milk Tea"
+        },
+        {
+            "Sweetness": "100%",
+            "Price": "$4.75",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "7 Leaves",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "19",
+            "Weekday": "Thursday",
+            "Topping": "",
+            "ID": "32",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "3",
+            "Date": "3/19/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "20",
+            "Month": "3"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "5",
+            "Dairy": "Milk",
+            "Day": "21",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "33",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "3",
+            "Date": "3/21/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Day": "22",
+            "Month": "3"
+        },
+        {
+            "Day": "23",
+            "Month": "3"
+        },
+        {
+            "Day": "24",
+            "Month": "3"
+        },
+        {
+            "Sweetness": "",
+            "Price": "$4.75",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "7 Leaves",
+            "Rating": "5",
+            "Dairy": "Oat (BYO)",
+            "Day": "25",
+            "Weekday": "Wednesday",
+            "Topping": "",
+            "ID": "34",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "3",
+            "Date": "3/25/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "26",
+            "Month": "3"
+        },
+        {
+            "Day": "27",
+            "Month": "3"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$4.25",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Sunright",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "28",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "35",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "3",
+            "Date": "3/28/2020",
+            "Drink": "4 Seasons Milk Tea"
+        },
+        {
+            "Day": "29",
+            "Month": "3"
+        },
+        {
+            "Day": "30",
+            "Month": "3"
+        },
+        {
+            "Day": "31",
+            "Month": "3"
+        }
+    ],
+    [
+        {
+            "Day": "1",
+            "Month": "4"
+        },
+        {
+            "Day": "2",
+            "Month": "4"
+        },
+        {
+            "Day": "3",
+            "Month": "4"
+        },
+        {
+            "Sweetness": "",
+            "Price": "$4.75",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "7 Leaves",
+            "Rating": "4",
+            "Dairy": "Oat (BYO)",
+            "Day": "4",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "36",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "4",
+            "Date": "4/4/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "5",
+            "Month": "4"
+        },
+        {
+            "Day": "6",
+            "Month": "4"
+        },
+        {
+            "Day": "7",
+            "Month": "4"
+        },
+        {
+            "Day": "8",
+            "Month": "4"
+        },
+        {
+            "Day": "9",
+            "Month": "4"
+        },
+        {
+            "Day": "10",
+            "Month": "4"
+        },
+        {
+            "Day": "11",
+            "Month": "4"
+        },
+        {
+            "Day": "12",
+            "Month": "4"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "13",
+            "Weekday": "Monday",
+            "Topping": "",
+            "ID": "37",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "4",
+            "Date": "4/13/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Day": "14",
+            "Month": "4"
+        },
+        {
+            "Day": "15",
+            "Month": "4"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.00",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "One Zo",
+            "Rating": "3",
+            "Dairy": "n/a",
+            "Day": "16",
+            "Weekday": "Thursday",
+            "Topping": "",
+            "ID": "38",
+            "drink_color": "Fruit Tea",
+            "Month": "4",
+            "Date": "4/16/2020",
+            "Drink": "One Zo Mixed Fruit Tea"
+        },
+        {
+            "Day": "17",
+            "Month": "4"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "18",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "39",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "4",
+            "Date": "4/18/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Day": "19",
+            "Month": "4"
+        },
+        {
+            "Day": "20",
+            "Month": "4"
+        },
+        {
+            "Day": "21",
+            "Month": "4"
+        },
+        {
+            "Day": "22",
+            "Month": "4"
+        },
+        {
+            "Day": "23",
+            "Month": "4"
+        },
+        {
+            "Day": "24",
+            "Month": "4"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "25",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "40",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "4",
+            "Date": "4/25/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Day": "26",
+            "Month": "4"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Irvine, CA",
+            "topping_color": "Tapioca",
+            "Store": "Orobae",
+            "Rating": "3",
+            "Dairy": "Milk",
+            "Day": "27",
+            "Weekday": "Monday",
+            "Topping": "Tapioca",
+            "ID": "41",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "4",
+            "Date": "4/27/2020",
+            "Drink": "Honey Gyokuro Milk Tea"
+        },
+        {
+            "Day": "28",
+            "Month": "4"
+        },
+        {
+            "Day": "29",
+            "Month": "4"
+        },
+        {
+            "Day": "30",
+            "Month": "4"
+        },
+        {}
+    ],
+    [
+        {
+            "Day": "1",
+            "Month": "5"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "2",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "42",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "5",
+            "Date": "5/2/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Day": "3",
+            "Month": "5"
+        },
+        {
+            "Day": "4",
+            "Month": "5"
+        },
+        {
+            "Day": "5",
+            "Month": "5"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$6.00",
+            "City": "Irvine, CA",
+            "topping_color": "Tapioca",
+            "Store": "Orobae",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "6",
+            "Weekday": "Wednesday",
+            "Topping": "Tapioca",
+            "ID": "43",
+            "drink_color": "Oolong Milk Tea",
+            "Month": "5",
+            "Date": "5/6/2020",
+            "Drink": "Roasted Oolong Milk Tea"
+        },
+        {
+            "Day": "7",
+            "Month": "5"
+        },
+        {
+            "Day": "8",
+            "Month": "5"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "3",
+            "Dairy": "Milk",
+            "Day": "9",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "44",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "5",
+            "Date": "5/9/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Day": "10",
+            "Month": "5"
+        },
+        {
+            "Day": "11",
+            "Month": "5"
+        },
+        {
+            "Day": "12",
+            "Month": "5"
+        },
+        {
+            "Sweetness": "100%",
+            "Price": "$4.65",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Orobae",
+            "Rating": "2",
+            "Dairy": "n/a",
+            "Day": "13",
+            "Weekday": "Wednesday",
+            "Topping": "",
+            "ID": "45",
+            "drink_color": "Fruit Tea",
+            "Month": "5",
+            "Date": "5/13/2020",
+            "Drink": "Mango Alisan Oolong"
+        },
+        {
+            "Day": "14",
+            "Month": "5"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.25",
+            "City": "Tustin, CA",
+            "topping_color": "",
+            "Store": "HNTea",
+            "Rating": "3",
+            "Dairy": "n/a",
+            "Day": "15",
+            "Weekday": "Friday",
+            "Topping": "",
+            "ID": "46",
+            "drink_color": "Strawberry Tea",
+            "Month": "5",
+            "Date": "5/15/2020",
+            "Drink": "Strawberry Jasmine Tea"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "3",
+            "Dairy": "Milk",
+            "Day": "16",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "47",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "5",
+            "Date": "5/16/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Day": "17",
+            "Month": "5"
+        },
+        {
+            "Day": "18",
+            "Month": "5"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$6.00",
+            "City": "Irvine, CA",
+            "topping_color": "Tapioca",
+            "Store": "Orobae",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "19",
+            "Weekday": "Tuesday",
+            "Topping": "Light Tapioca",
+            "ID": "48",
+            "drink_color": "Milk Tea",
+            "Month": "5",
+            "Date": "5/19/2020",
+            "Drink": "Honey Assam Milk Tea"
+        },
+        {
+            "Day": "20",
+            "Month": "5"
+        },
+        {
+            "Day": "21",
+            "Month": "5"
+        },
+        {
+            "Day": "22",
+            "Month": "5"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "3",
+            "Dairy": "Milk",
+            "Day": "23",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "49",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "5",
+            "Date": "5/23/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.45",
+            "City": "Rowland Heights, CA",
+            "topping_color": "",
+            "Store": "Yifang Taiwan Fruit Tea",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "24",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "50",
+            "drink_color": "Fruit Tea",
+            "Month": "5",
+            "Date": "5/24/2020",
+            "Drink": "Yifang Fruit Tea"
+        },
+        {
+            "Day": "25",
+            "Month": "5"
+        },
+        {
+            "Day": "26",
+            "Month": "5"
+        },
+        {
+            "Day": "27",
+            "Month": "5"
+        },
+        {
+            "Day": "28",
+            "Month": "5"
+        },
+        {
+            "Day": "29",
+            "Month": "5"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "3",
+            "Dairy": "Milk",
+            "Day": "30",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "51",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "5",
+            "Date": "5/30/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Day": "31",
+            "Month": "5"
+        }
+    ],
+    [
+        {
+            "Day": "1",
+            "Month": "6"
+        },
+        {
+            "Day": "2",
+            "Month": "6"
+        },
+        {
+            "Day": "3",
+            "Month": "6"
+        },
+        {
+            "Day": "4",
+            "Month": "6"
+        },
+        {
+            "Day": "5",
+            "Month": "6"
+        },
+        {
+            "Day": "6",
+            "Month": "6"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.33",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Boiling Point",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "7",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "52",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "6",
+            "Date": "6/7/2020",
+            "Drink": "Honey Green Milk Tea"
+        },
+        {
+            "Day": "8",
+            "Month": "6"
+        },
+        {
+            "Day": "9",
+            "Month": "6"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.00",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "T to Tea",
+            "Rating": "3",
+            "Dairy": "n/a",
+            "Day": "10",
+            "Weekday": "Wednesday",
+            "Topping": "",
+            "ID": "53",
+            "drink_color": "Strawberry Tea",
+            "Month": "6",
+            "Date": "6/10/2020",
+            "Drink": "Grapefruit Tea"
+        },
+        {
+            "Day": "11",
+            "Month": "6"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.00",
+            "City": "Irvine, CA",
+            "topping_color": "",
+            "Store": "Orobae",
+            "Rating": "4",
+            "Dairy": "Milk",
+            "Day": "12",
+            "Weekday": "Friday",
+            "Topping": "",
+            "ID": "54",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "6",
+            "Date": "6/12/2020",
+            "Drink": "Rising Phoenix"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Berkeley, CA",
+            "topping_color": "Lemon",
+            "Store": "Asha Tea House",
+            "Rating": "5",
+            "Dairy": "n/a",
+            "Day": "13",
+            "Weekday": "Saturday",
+            "Topping": "Extra Lemon Gimlet",
+            "ID": "55",
+            "drink_color": "Jasmine Tea",
+            "Month": "6",
+            "Date": "6/13/2020",
+            "Drink": "Lemon Jasmine Green Tea"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "14",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "56",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "6",
+            "Date": "6/14/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "15",
+            "Month": "6"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "16",
+            "Weekday": "Tuesday",
+            "Topping": "",
+            "ID": "57",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "6",
+            "Date": "6/16/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "17",
+            "Month": "6"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "18",
+            "Weekday": "Thursday",
+            "Topping": "",
+            "ID": "58",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "6",
+            "Date": "6/18/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "19",
+            "Month": "6"
+        },
+        {
+            "Sweetness": "25%",
+            "Price": "free",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "3",
+            "Dairy": "n/a",
+            "Day": "20",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "60",
+            "drink_color": "Strawberry Tea",
+            "Month": "6",
+            "Date": "6/20/2020",
+            "Drink": "Strawberry Jasmime Tea"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "21",
+            "Weekday": "Sunday",
+            "Topping": "",
+            "ID": "61",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "6",
+            "Date": "6/21/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "22",
+            "Month": "6"
+        },
+        {
+            "Day": "23",
+            "Month": "6"
+        },
+        {
+            "Day": "24",
+            "Month": "6"
+        },
+        {
+            "Day": "25",
+            "Month": "6"
+        },
+        {
+            "Day": "26",
+            "Month": "6"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "27",
+            "Weekday": "Saturday",
+            "Topping": "",
+            "ID": "62",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "6",
+            "Date": "6/27/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "28",
+            "Month": "6"
+        },
+        {
+            "Day": "29",
+            "Month": "6"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Almond",
+            "Day": "30",
+            "Weekday": "Tuesday",
+            "Topping": "Light Tapioca",
+            "ID": "63",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "6",
+            "Date": "6/30/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {}
+    ],
+    [
+        {
+            "Day": "1",
+            "Month": "7"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "2",
+            "Weekday": "Thursday",
+            "Topping": "Light Tapioca",
+            "ID": "64",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "7",
+            "Date": "7/2/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "3",
+            "Month": "7"
+        },
+        {
+            "Day": "4",
+            "Month": "7"
+        },
+        {
+            "Day": "5",
+            "Month": "7"
+        },
+        {
+            "Day": "6",
+            "Month": "7"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "7",
+            "Weekday": "Tuesday",
+            "Topping": "Light Tapioca",
+            "ID": "65",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "7",
+            "Date": "7/7/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "8",
+            "Month": "7"
+        },
+        {
+            "Day": "9",
+            "Month": "7"
+        },
+        {
+            "Day": "10",
+            "Month": "7"
+        },
+        {
+            "Day": "11",
+            "Month": "7"
+        },
+        {
+            "Day": "12",
+            "Month": "7"
+        },
+        {
+            "Day": "13",
+            "Month": "7"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "14",
+            "Weekday": "Tuesday",
+            "Topping": "Light Tapioca",
+            "ID": "66",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "7",
+            "Date": "7/14/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "15",
+            "Month": "7"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "free",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "16",
+            "Weekday": "Thursday",
+            "Topping": "Tapioca",
+            "ID": "67",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "7",
+            "Date": "7/16/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "17",
+            "Month": "7"
+        },
+        {
+            "Day": "18",
+            "Month": "7"
+        },
+        {
+            "Day": "19",
+            "Month": "7"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "20",
+            "Weekday": "Monday",
+            "Topping": "Tapioca",
+            "ID": "68",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "7",
+            "Date": "7/20/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "21",
+            "Month": "7"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "22",
+            "Weekday": "Wednesday",
+            "Topping": "Light Tapioca",
+            "ID": "69",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "7",
+            "Date": "7/22/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "23",
+            "Month": "7"
+        },
+        {
+            "Day": "24",
+            "Month": "7"
+        },
+        {
+            "Day": "25",
+            "Month": "7"
+        },
+        {
+            "Sweetness": "75%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "3",
+            "Dairy": "n/a",
+            "Day": "26",
+            "Weekday": "Sunday",
+            "Topping": "Tapioca",
+            "ID": "70",
+            "drink_color": "Black Tea",
+            "Month": "7",
+            "Date": "7/26/2020",
+            "Drink": "Long Island Tea"
+        },
+        {
+            "Day": "27",
+            "Month": "7"
+        },
+        {
+            "Day": "28",
+            "Month": "7"
+        },
+        {
+            "Day": "29",
+            "Month": "7"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "30",
+            "Weekday": "Thursday",
+            "Topping": "Tapioca",
+            "ID": "71",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "7",
+            "Date": "7/30/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "31",
+            "Month": "7"
+        }
+    ],
+    [
+        {
+            "Day": "1",
+            "Month": "8"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "gift",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "2",
+            "Weekday": "Sunday",
+            "Topping": "Light Tapioca",
+            "ID": "72",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "8",
+            "Date": "8/2/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "3",
+            "Month": "8"
+        },
+        {
+            "Day": "4",
+            "Month": "8"
+        },
+        {
+            "Day": "5",
+            "Month": "8"
+        },
+        {
+            "Day": "6",
+            "Month": "8"
+        },
+        {
+            "Day": "7",
+            "Month": "8"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "8",
+            "Weekday": "Saturday",
+            "Topping": "Tapioca",
+            "ID": "73",
+            "drink_color": "Milk",
+            "Month": "8",
+            "Date": "8/8/2020",
+            "Drink": "Coconut Smoothie"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "9",
+            "Weekday": "Sunday",
+            "Topping": "Tapioca",
+            "ID": "74",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "8",
+            "Date": "8/9/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "10",
+            "Month": "8"
+        },
+        {
+            "Day": "11",
+            "Month": "8"
+        },
+        {
+            "Day": "12",
+            "Month": "8"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "n/a",
+            "Day": "13",
+            "Weekday": "Thursday",
+            "Topping": "Tapioca",
+            "ID": "76",
+            "drink_color": "Jasmine Tea",
+            "Month": "8",
+            "Date": "8/13/2020",
+            "Drink": "Jasmine Pear Tea"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "n/a",
+            "Day": "14",
+            "Weekday": "Friday",
+            "Topping": "",
+            "ID": "78",
+            "drink_color": "Jasmine Tea",
+            "Month": "8",
+            "Date": "8/14/2020",
+            "Drink": "Jasmine Pear Tea"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "15",
+            "Weekday": "Saturday",
+            "Topping": "Tapioca",
+            "ID": "79",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "8",
+            "Date": "8/15/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "16",
+            "Month": "8"
+        },
+        {
+            "Day": "17",
+            "Month": "8"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "18",
+            "Weekday": "Tuesday",
+            "Topping": "Tapioca",
+            "ID": "80",
+            "drink_color": "Jasmine Tea",
+            "Month": "8",
+            "Date": "8/18/2020",
+            "Drink": "Jasmine Pear Tea"
+        },
+        {
+            "Day": "19",
+            "Month": "8"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "20",
+            "Weekday": "Thursday",
+            "Topping": "Tapioca",
+            "ID": "81",
+            "drink_color": "Jasmine Tea",
+            "Month": "8",
+            "Date": "8/20/2020",
+            "Drink": "Jasmine Pear Tea"
+        },
+        {
+            "Day": "21",
+            "Month": "8"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "22",
+            "Weekday": "Saturday",
+            "Topping": "Tapioca",
+            "ID": "82",
+            "drink_color": "Jasmine Tea",
+            "Month": "8",
+            "Date": "8/22/2020",
+            "Drink": "Jasmine Pear Tea"
+        },
+        {
+            "Day": "23",
+            "Month": "8"
+        },
+        {
+            "Day": "24",
+            "Month": "8"
+        },
+        {
+            "Day": "25",
+            "Month": "8"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "26",
+            "Weekday": "Wednesday",
+            "Topping": "Tapioca",
+            "ID": "83",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "8",
+            "Date": "8/26/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "27",
+            "Month": "8"
+        },
+        {
+            "Day": "28",
+            "Month": "8"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "29",
+            "Weekday": "Saturday",
+            "Topping": "Tapioca",
+            "ID": "84",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "8",
+            "Date": "8/29/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "30",
+            "Month": "8"
+        },
+        {
+            "Day": "31",
+            "Month": "8"
+        }
+    ],
+    [
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "1",
+            "Weekday": "Tuesday",
+            "Topping": "Tapioca",
+            "ID": "85",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "9",
+            "Date": "9/1/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "2",
+            "Month": "9"
+        },
+        {
+            "Day": "3",
+            "Month": "9"
+        },
+        {
+            "Day": "4",
+            "Month": "9"
+        },
+        {
+            "Day": "5",
+            "Month": "9"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "6",
+            "Weekday": "Sunday",
+            "Topping": "Tapioca",
+            "ID": "86",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "9",
+            "Date": "9/6/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "7",
+            "Month": "9"
+        },
+        {
+            "Day": "8",
+            "Month": "9"
+        },
+        {
+            "Day": "9",
+            "Month": "9"
+        },
+        {
+            "Day": "10",
+            "Month": "9"
+        },
+        {
+            "Day": "11",
+            "Month": "9"
+        },
+        {
+            "Day": "12",
+            "Month": "9"
+        },
+        {
+            "Day": "13",
+            "Month": "9"
+        },
+        {
+            "Day": "14",
+            "Month": "9"
+        },
+        {
+            "Day": "15",
+            "Month": "9"
+        },
+        {
+            "Day": "16",
+            "Month": "9"
+        },
+        {
+            "Day": "17",
+            "Month": "9"
+        },
+        {
+            "Day": "18",
+            "Month": "9"
+        },
+        {
+            "Day": "19",
+            "Month": "9"
+        },
+        {
+            "Day": "20",
+            "Month": "9"
+        },
+        {
+            "Sweetness": "100%",
+            "Price": "$24.75",
+            "City": "Hillsboro, OR",
+            "topping_color": "",
+            "Store": "Zero Degrees",
+            "Rating": "3",
+            "Dairy": "Milk",
+            "Day": "21",
+            "Weekday": "Monday",
+            "Topping": "",
+            "ID": "87",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "9",
+            "Date": "9/21/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "22",
+            "Month": "9"
+        },
+        {
+            "Day": "23",
+            "Month": "9"
+        },
+        {
+            "Day": "24",
+            "Month": "9"
+        },
+        {
+            "Day": "25",
+            "Month": "9"
+        },
+        {
+            "Day": "26",
+            "Month": "9"
+        },
+        {
+            "Day": "27",
+            "Month": "9"
+        },
+        {
+            "Day": "28",
+            "Month": "9"
+        },
+        {
+            "Day": "29",
+            "Month": "9"
+        },
+        {
+            "Day": "30",
+            "Month": "9"
+        },
+        {}
+    ],
+    [
+        {
+            "Day": "1",
+            "Month": "10"
+        },
+        {
+            "Day": "2",
+            "Month": "10"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Grass Jelly",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "3",
+            "Weekday": "Saturday",
+            "Topping": "Grass Jelly",
+            "ID": "88",
+            "drink_color": "Ruby Tea",
+            "Month": "10",
+            "Date": "10/3/2020",
+            "Drink": "Ruby and Jack"
+        },
+        {
+            "Day": "4",
+            "Month": "10"
+        },
+        {
+            "Day": "5",
+            "Month": "10"
+        },
+        {
+            "Day": "6",
+            "Month": "10"
+        },
+        {
+            "Day": "7",
+            "Month": "10"
+        },
+        {
+            "Day": "8",
+            "Month": "10"
+        },
+        {
+            "Day": "9",
+            "Month": "10"
+        },
+        {
+            "Day": "10",
+            "Month": "10"
+        },
+        {
+            "Day": "11",
+            "Month": "10"
+        },
+        {
+            "Day": "12",
+            "Month": "10"
+        },
+        {
+            "Sweetness": "100%",
+            "Price": "free",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "13",
+            "Weekday": "Tuesday",
+            "Topping": "",
+            "ID": "89",
+            "drink_color": "Ruby Tea",
+            "Month": "10",
+            "Date": "10/13/2020",
+            "Drink": "Ruby and Jack"
+        },
+        {
+            "Sweetness": "100%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "n/a",
+            "Day": "14",
+            "Weekday": "Wednesday",
+            "Topping": "",
+            "ID": "90",
+            "drink_color": "Matcha",
+            "Month": "10",
+            "Date": "10/14/2020",
+            "Drink": "Green Mary"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "15",
+            "Weekday": "Thursday",
+            "Topping": "Tapioca",
+            "ID": "91",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "10",
+            "Date": "10/15/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "16",
+            "Month": "10"
+        },
+        {
+            "Day": "17",
+            "Month": "10"
+        },
+        {
+            "Day": "18",
+            "Month": "10"
+        },
+        {
+            "Day": "19",
+            "Month": "10"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "gift",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "20",
+            "Weekday": "Tuesday",
+            "Topping": "Tapioca",
+            "ID": "92",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "10",
+            "Date": "10/20/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "21",
+            "Month": "10"
+        },
+        {
+            "Day": "22",
+            "Month": "10"
+        },
+        {
+            "Day": "23",
+            "Month": "10"
+        },
+        {
+            "Day": "24",
+            "Month": "10"
+        },
+        {
+            "Day": "25",
+            "Month": "10"
+        },
+        {
+            "Day": "26",
+            "Month": "10"
+        },
+        {
+            "Day": "27",
+            "Month": "10"
+        },
+        {
+            "Day": "28",
+            "Month": "10"
+        },
+        {
+            "Day": "29",
+            "Month": "10"
+        },
+        {
+            "Day": "30",
+            "Month": "10"
+        },
+        {
+            "Day": "31",
+            "Month": "10"
+        }
+    ],
+    [
+        {
+            "Day": "1",
+            "Month": "11"
+        },
+        {
+            "Day": "2",
+            "Month": "11"
+        },
+        {
+            "Day": "3",
+            "Month": "11"
+        },
+        {
+            "Day": "4",
+            "Month": "11"
+        },
+        {
+            "Day": "5",
+            "Month": "11"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "6",
+            "Weekday": "Friday",
+            "Topping": "Tapioca",
+            "ID": "93",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "11",
+            "Date": "11/6/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "7",
+            "Month": "11"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "3",
+            "Dairy": "Soy",
+            "Day": "8",
+            "Weekday": "Sunday",
+            "Topping": "Tapioca",
+            "ID": "94",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "11",
+            "Date": "11/8/2020",
+            "Drink": "Jasmine Milk Tea (hot)"
+        },
+        {
+            "Day": "9",
+            "Month": "11"
+        },
+        {
+            "Day": "10",
+            "Month": "11"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "11",
+            "Weekday": "Wednesday",
+            "Topping": "Tapioca",
+            "ID": "95",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "11",
+            "Date": "11/11/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "12",
+            "Month": "11"
+        },
+        {
+            "Day": "13",
+            "Month": "11"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "14",
+            "Weekday": "Saturday",
+            "Topping": "Tapioca",
+            "ID": "96",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "11",
+            "Date": "11/14/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "15",
+            "Month": "11"
+        },
+        {
+            "Day": "16",
+            "Month": "11"
+        },
+        {
+            "Day": "17",
+            "Month": "11"
+        },
+        {
+            "Day": "18",
+            "Month": "11"
+        },
+        {
+            "Day": "19",
+            "Month": "11"
+        },
+        {
+            "Day": "20",
+            "Month": "11"
+        },
+        {
+            "Day": "21",
+            "Month": "11"
+        },
+        {
+            "Day": "22",
+            "Month": "11"
+        },
+        {
+            "Day": "23",
+            "Month": "11"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "2",
+            "Dairy": "Milk",
+            "Day": "24",
+            "Weekday": "Tuesday",
+            "Topping": "",
+            "ID": "97",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "11",
+            "Date": "11/24/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "25",
+            "Weekday": "Wednesday",
+            "Topping": "",
+            "ID": "98",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "11",
+            "Date": "11/25/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "26",
+            "Month": "11"
+        },
+        {
+            "Day": "27",
+            "Month": "11"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "free",
+            "City": "Beaverton, OR",
+            "topping_color": "Grass Jelly",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "28",
+            "Weekday": "Saturday",
+            "Topping": "Grass Jelly",
+            "ID": "99",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "11",
+            "Date": "11/28/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Day": "29",
+            "Month": "11"
+        },
+        {
+            "Day": "30",
+            "Month": "11"
+        },
+        {}
+    ],
+    [
+        {
+            "Day": "1",
+            "Month": "12"
+        },
+        {
+            "Day": "2",
+            "Month": "12"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "3",
+            "Weekday": "Thursday",
+            "Topping": "Tapioca",
+            "ID": "100",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "12",
+            "Date": "12/3/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "4",
+            "Month": "12"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$6.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "5",
+            "Dairy": "Soy",
+            "Day": "5",
+            "Weekday": "Saturday",
+            "Topping": "Tapioca",
+            "ID": "101",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "12",
+            "Date": "12/5/2020",
+            "Drink": "Jasmine Milk Tea (extra shot)"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "6",
+            "Weekday": "Sunday",
+            "Topping": "Tapioca",
+            "ID": "102",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "12",
+            "Date": "12/6/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "7",
+            "Month": "12"
+        },
+        {
+            "Day": "8",
+            "Month": "12"
+        },
+        {
+            "Day": "9",
+            "Month": "12"
+        },
+        {
+            "Day": "10",
+            "Month": "12"
+        },
+        {
+            "Day": "11",
+            "Month": "12"
+        },
+        {
+            "Day": "12",
+            "Month": "12"
+        },
+        {
+            "Day": "13",
+            "Month": "12"
+        },
+        {
+            "Day": "14",
+            "Month": "12"
+        },
+        {
+            "Day": "15",
+            "Month": "12"
+        },
+        {
+            "Day": "16",
+            "Month": "12"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "Tapioca",
+            "Store": "Bubble N Tea",
+            "Rating": "4",
+            "Dairy": "Soy",
+            "Day": "17",
+            "Weekday": "Thursday",
+            "Topping": "Tapioca",
+            "ID": "103",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "12",
+            "Date": "12/17/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Sweetness": "50%",
+            "Price": "$5.00",
+            "City": "Beaverton, OR",
+            "topping_color": "",
+            "Store": "Bubble N Tea",
+            "Rating": "3",
+            "Dairy": "Soy",
+            "Day": "18",
+            "Weekday": "Friday",
+            "Topping": "",
+            "ID": "104",
+            "drink_color": "Jasmine Milk Tea",
+            "Month": "12",
+            "Date": "12/18/2020",
+            "Drink": "Jasmine Milk Tea"
+        },
+        {
+            "Day": "19",
+            "Month": "12"
+        },
+        {
+            "Day": "20",
+            "Month": "12"
+        },
+        {
+            "Day": "21",
+            "Month": "12"
+        },
+        {
+            "Day": "22",
+            "Month": "12"
+        },
+        {
+            "Day": "23",
+            "Month": "12"
+        },
+        {
+            "Day": "24",
+            "Month": "12"
+        },
+        {
+            "Day": "25",
+            "Month": "12"
+        },
+        {
+            "Day": "26",
+            "Month": "12"
+        },
+        {
+            "Day": "27",
+            "Month": "12"
+        },
+        {
+            "Day": "28",
+            "Month": "12"
+        },
+        {
+            "Day": "29",
+            "Month": "12"
+        },
+        {
+            "Day": "30",
+            "Month": "12"
+        },
+        {
+            "Day": "31",
+            "Month": "12"
+        }
+    ]
+]

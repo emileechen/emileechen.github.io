@@ -1,0 +1,104 @@
+ID,Date,Weekday,Store,City,Drink,Dairy,Sweetness,Topping,Price,Rating,Month,Day,drink_color,topping_color
+1,1/2/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,25%,Tapioca,$5.00,5,1,2,Jasmine Milk Tea,Tapioca
+2,1/3/2020,Friday,Bubble N Tea,"Beaverton, OR",Strawberry Matcha Latte,Soy,75%,Tapioca,$5.50,5,1,3,Matcha,Tapioca
+3,1/4/2020,Saturday,Fantastea House,"Beaverton, OR",Mango Yogurt Green Tea,n/a,75%,Mango Bits,$5.75,2,1,4,Fruit Tea,Mango
+4,1/5/2020,Sunday,Bubble N Tea,"Beaverton, OR",Original Milk Tea,Soy,25%,Tapioca,$5.00,4,1,5,Milk Tea,Tapioca
+5,1/7/2020,Tuesday,OMOMO,"Irvine, CA",Oolong Milk Tea,Milk,30%,,$4.00,3,1,7,Oolong Milk Tea,
+6,1/10/2020,Friday,HNTea,"Tustin, CA",Jasmine Green Tea Latte,Soy,25%,,$5.25,5,1,10,Jasmine Milk Tea,
+7,1/11/2020,Saturday,Boiling Point,"Irvine, CA",Hokkaido Milk Tea,Milk,50%,,$5.00,4,1,11,Milk Tea,
+8,1/13/2020,Monday,HNTea,"Tustin, CA",Jasmine Green Tea Latte,Soy,25%,,$5.25,4,1,13,Jasmine Milk Tea,
+9,1/18/2020,Saturday,Boiling Point,"Irvine, CA",Honey Milk Tea,Milk,50%,,$5.33,2,1,18,Milk Tea,
+10,1/19/2020,Sunday,HNTea,"Tustin, CA",Strawberry Jasmine Tea,n/a,25%,,$5.25,5,1,19,Strawberry Tea,
+11,1/22/2020,Wednesday,HNTea,"Tustin, CA",Strawberry Jasmine Tea,n/a,25%,,free,5,1,22,Strawberry Tea,
+12,1/24/2020,Friday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,25%,Tapioca,gift,3,1,24,Jasmine Milk Tea,Tapioca
+13,1/27/2020,Monday,Boiling Point,"Irvine, CA",Green Tea,n/a,100%,,$3.75,4,1,27,Green Tea,
+14,1/31/2020,Friday,HNTea,"Tustin, CA",Passion Peach Green,n/a,25%,Tapioca,free,4,1,31,Fruit Tea,Tapioca
+15,2/1/2020,Saturday,BoBaPoP Tea Bar,"San Gabriel, CA",Jasmine Green Milk Tea,Milk,25%,,$4.75,4,2,1,Jasmine Milk Tea,
+16,2/4/2020,Tuesday,BLKdot Coffee,"Irvine, CA",Mango Delight Tea,n/a,75%,Mango Jelly,$5.60,4,2,4,Fruit Tea,Mango
+17,2/5/2020,Wednesday,Eightfold,"Costa Mesa, CA",Signature Milk Tea,Milk,25%,,$4.85,5,2,5,Milk Tea,
+18,2/9/2020,Sunday,Eightfold,"Costa Mesa, CA",Signature Milk Tea,Milk,25%,,$4.85,4,2,9,Milk Tea,
+19,2/15/2020,Saturday,Boiling Point,"Irvine, CA",Hokkaido Milk Tea,Milk,50%,,$5.32,4,2,15,Milk Tea,
+20,2/18/2020,Tuesday,The Alley,"Irvine, CA",Brown Sugar Deerioca Fresh Milk,Milk,100%,Tapioca,$6.42,2,2,18,Milk,Tapioca
+21,2/22/2020,Saturday,Cha For Tea,"Irvine, CA",Honey Green Milk Tea,Soy,40%,,gift,4,2,22,Jasmine Milk Tea,
+22,2/23/2020,Sunday,HNTea,"Tustin, CA",Jasmine Milk Tea (Hot),Soy,25%,,$5.25,5,2,23,Jasmine Milk Tea,
+23,2/26/2020,Wednesday,OMOMO,"Irvina, CA",Uji Green Milk Tea,Milk,30%,Tapioca,$4.75,5,2,26,Matcha,Tapioca
+24,2/27/2020,Thursday,7 Leaves,"Irvine, CA",Jasmine Milk Tea,Milk,100%,Tapioca,$5.00,4,2,27,Jasmine Milk Tea,Tapioca
+25,2/29/2020,Saturday,85 Degrees,"Irvine, CA",Fresh Strawberry Milk Tea,Milk,33%,,$4.35,4,2,29,Strawberry Milk Tea,
+26,3/1/2020,Sunday,HNTea,"Tustin, CA",Strawberry Jasmine Tea,n/a,25%,,$5.25,5,3,1,Strawberry Tea,
+27,3/5/2020,Thursday,Eightfold,"Costa Mesa, CA",Signature Milk Tea,Milk,25%,,$4.85,5,3,5,Milk Tea,
+28,3/8/2020,Sunday,HNTea,"Tustin, CA",Strawberry Jasmine Tea,n/a,25%,,$5.25,5,3,8,Strawberry Tea,
+29,3/13/2020,Friday,T to Tea,"Irvine, CA",Tie Guan Ying Tea Latte,Soy,25%,,$5.33,5,3,13,Oolong Milk Tea,
+30,3/15/2020,Sunday,HNTea,"Tustin, CA",Jasmine Green Tea Latte,Soy,25%,,$5.25,4,3,15,Jasmine Milk Tea,
+31,3/18/2020,Wednesday,OMOMO,"Irvine, CA",Uji Green Milk Tea,Milk,30%,Tapioca,free,4,3,18,Matcha,Tapioca
+32,3/19/2020,Thursday,7 Leaves,"Irvine, CA",Jasmine Milk Tea,Milk,100%,,$4.75,4,3,19,Jasmine Milk Tea,
+33,3/21/2020,Saturday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,5,3,21,Jasmine Milk Tea,
+34,3/25/2020,Wednesday,7 Leaves,"Irvine, CA",Jasmine Milk Tea,Oat (BYO),,,$4.75,5,3,25,Jasmine Milk Tea,
+35,3/28/2020,Saturday,Sunright,"Irvine, CA",4 Seasons Milk Tea,Milk,25%,,$4.25,4,3,28,Jasmine Milk Tea,
+36,4/4/2020,Saturday,7 Leaves,"Irvine, CA",Jasmine Milk Tea,Oat (BYO),,,$4.75,4,4,4,Jasmine Milk Tea,
+37,4/13/2020,Monday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,4,4,13,Jasmine Milk Tea,
+38,4/16/2020,Thursday,One Zo,"Irvine, CA",One Zo Mixed Fruit Tea,n/a,25%,,$5.00,3,4,16,Fruit Tea,
+39,4/18/2020,Saturday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,4,4,18,Jasmine Milk Tea,
+40,4/25/2020,Saturday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,4,4,25,Jasmine Milk Tea,
+41,4/27/2020,Monday,Orobae,"Irvine, CA",Honey Gyokuro Milk Tea,Milk,50%,Tapioca,$6.00,3,4,27,Jasmine Milk Tea,Tapioca
+42,5/2/2020,Saturday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,4,5,2,Jasmine Milk Tea,
+43,5/6/2020,Wednesday,Orobae,"Irvine, CA",Roasted Oolong Milk Tea,Milk,25%,Tapioca,$6.00,4,5,6,Oolong Milk Tea,Tapioca
+44,5/9/2020,Saturday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,3,5,9,Jasmine Milk Tea,
+45,5/13/2020,Wednesday,Orobae,"Irvine, CA",Mango Alisan Oolong,n/a,100%,,$4.65,2,5,13,Fruit Tea,
+46,5/15/2020,Friday,HNTea,"Tustin, CA",Strawberry Jasmine Tea,n/a,25%,,$5.25,3,5,15,Strawberry Tea,
+47,5/16/2020,Saturday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,3,5,16,Jasmine Milk Tea,
+48,5/19/2020,Tuesday,Orobae,"Irvine, CA",Honey Assam Milk Tea,Milk,25%,Light Tapioca,$6.00,4,5,19,Milk Tea,Tapioca
+49,5/23/2020,Saturday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,3,5,23,Jasmine Milk Tea,
+50,5/24/2020,Sunday,Yifang Taiwan Fruit Tea,"Rowland Heights, CA",Yifang Fruit Tea,n/a,50%,,$6.45,4,5,24,Fruit Tea,
+51,5/30/2020,Saturday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,3,5,30,Jasmine Milk Tea,
+52,6/7/2020,Sunday,Boiling Point,"Irvine, CA",Honey Green Milk Tea,Milk,50%,,$5.33,4,6,7,Jasmine Milk Tea,
+53,6/10/2020,Wednesday,T to Tea,"Irvine, CA",Grapefruit Tea,n/a,25%,,$5.00,3,6,10,Strawberry Tea,
+54,6/12/2020,Friday,Orobae,"Irvine, CA",Rising Phoenix,Milk,25%,,$5.00,4,6,12,Jasmine Milk Tea,
+55,6/13/2020,Saturday,Asha Tea House,"Berkeley, CA",Lemon Jasmine Green Tea,n/a,50%,Extra Lemon Gimlet,$6.00,5,6,13,Jasmine Tea,Lemon
+56,6/14/2020,Sunday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,25%,,$5.00,4,6,14,Jasmine Milk Tea,
+57,6/16/2020,Tuesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,,$5.00,5,6,16,Jasmine Milk Tea,
+58,6/18/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,,$5.00,5,6,18,Jasmine Milk Tea,
+59,6/20/2020,Saturday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,,$5.00,4,6,20,Jasmine Milk Tea,
+60,6/20/2020,Saturday,Bubble N Tea,"Beaverton, OR",Strawberry Jasmime Tea,n/a,25%,,free,3,6,20,Strawberry Tea,
+61,6/21/2020,Sunday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,,$5.00,4,6,21,Jasmine Milk Tea,
+62,6/27/2020,Saturday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,,$5.00,4,6,27,Jasmine Milk Tea,
+63,6/30/2020,Tuesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Almond,50%,Light Tapioca,$5.00,4,6,30,Jasmine Milk Tea,Tapioca
+64,7/2/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Light Tapioca,$6.00,5,7,2,Jasmine Milk Tea,Tapioca
+65,7/7/2020,Tuesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Light Tapioca,$6.00,5,7,7,Jasmine Milk Tea,Tapioca
+66,7/14/2020,Tuesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Light Tapioca,$6.00,5,7,14,Jasmine Milk Tea,Tapioca
+67,7/16/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,free,4,7,16,Jasmine Milk Tea,Tapioca
+68,7/20/2020,Monday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,7,20,Jasmine Milk Tea,Tapioca
+69,7/22/2020,Wednesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Light Tapioca,$6.00,4,7,22,Jasmine Milk Tea,Tapioca
+70,7/26/2020,Sunday,Bubble N Tea,"Beaverton, OR",Long Island Tea,n/a,75%,Tapioca,$6.00,3,7,26,Black Tea,Tapioca
+71,7/30/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,7,30,Jasmine Milk Tea,Tapioca
+72,8/2/2020,Sunday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Light Tapioca,gift,4,8,2,Jasmine Milk Tea,Tapioca
+73,8/8/2020,Saturday,Bubble N Tea,"Beaverton, OR",Coconut Smoothie,n/a,50%,Tapioca,$5.00,4,8,8,Milk,Tapioca
+74,8/9/2020,Sunday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,8,9,Jasmine Milk Tea,Tapioca
+76,8/13/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Pear Tea,n/a,50%,Tapioca,$6.00,5,8,13,Jasmine Tea,Tapioca
+77,8/14/2020,Friday,Bubble N Tea,"Beaverton, OR",Jasmine Pear Tea,n/a,50%,Tapioca,$6.00,5,8,14,Jasmine Tea,Tapioca
+78,8/14/2020,Friday,Bubble N Tea,"Beaverton, OR",Jasmine Pear Tea,n/a,50%,,$6.00,5,8,14,Jasmine Tea,
+79,8/15/2020,Saturday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,8,15,Jasmine Milk Tea,Tapioca
+80,8/18/2020,Tuesday,Bubble N Tea,"Beaverton, OR",Jasmine Pear Tea,n/a,50%,Tapioca,$6.00,4,8,18,Jasmine Tea,Tapioca
+81,8/20/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Pear Tea,n/a,50%,Tapioca,$6.00,4,8,20,Jasmine Tea,Tapioca
+82,8/22/2020,Saturday,Bubble N Tea,"Beaverton, OR",Jasmine Pear Tea,n/a,50%,Tapioca,$6.00,4,8,22,Jasmine Tea,Tapioca
+83,8/26/2020,Wednesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,8,26,Jasmine Milk Tea,Tapioca
+84,8/29/2020,Saturday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,8,29,Jasmine Milk Tea,Tapioca
+85,9/1/2020,Tuesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,Tapioca,$5.00,4,9,1,Jasmine Milk Tea,Tapioca
+86,9/6/2020,Sunday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,9,6,Jasmine Milk Tea,Tapioca
+87,9/21/2020,Monday,Zero Degrees,"Hillsboro, OR",Jasmine Milk Tea,Milk,100%,,$24.75,3,9,21,Jasmine Milk Tea,
+88,10/3/2020,Saturday,Bubble N Tea,"Beaverton, OR",Ruby and Jack,n/a,50%,Grass Jelly,$6.00,4,10,3,Ruby Tea,Grass Jelly
+89,10/13/2020,Tuesday,Bubble N Tea,"Beaverton, OR",Ruby and Jack,n/a,100%,,free,4,10,13,Ruby Tea,
+90,10/14/2020,Wednesday,Bubble N Tea,"Beaverton, OR",Green Mary,n/a,100%,,$6.00,4,10,14,Matcha,
+91,10/15/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,10,15,Jasmine Milk Tea,Tapioca
+92,10/20/2020,Tuesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,Tapioca,gift,5,10,20,Jasmine Milk Tea,Tapioca
+93,11/6/2020,Friday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,11,6,Jasmine Milk Tea,Tapioca
+94,11/8/2020,Sunday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (hot),Soy,50%,Tapioca,$5.00,3,11,8,Jasmine Milk Tea,Tapioca
+95,11/11/2020,Wednesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,5,11,11,Jasmine Milk Tea,Tapioca
+96,11/14/2020,Saturday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,4,11,14,Jasmine Milk Tea,Tapioca
+97,11/24/2020,Tuesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Milk,50%,,$6.00,2,11,24,Jasmine Milk Tea,
+98,11/25/2020,Wednesday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,,$6.00,4,11,25,Jasmine Milk Tea,
+99,11/28/2020,Saturday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Grass Jelly,free,5,11,28,Jasmine Milk Tea,Grass Jelly
+100,12/3/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,Tapioca,$5.00,4,12,3,Jasmine Milk Tea,Tapioca
+101,12/5/2020,Saturday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea (extra shot),Soy,50%,Tapioca,$6.00,5,12,5,Jasmine Milk Tea,Tapioca
+102,12/6/2020,Sunday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,Tapioca,$5.00,4,12,6,Jasmine Milk Tea,Tapioca
+103,12/17/2020,Thursday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,Tapioca,$5.00,4,12,17,Jasmine Milk Tea,Tapioca
+104,12/18/2020,Friday,Bubble N Tea,"Beaverton, OR",Jasmine Milk Tea,Soy,50%,,$5.00,3,12,18,Jasmine Milk Tea,
