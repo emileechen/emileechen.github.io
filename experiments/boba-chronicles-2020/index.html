@@ -33,10 +33,19 @@ permalink: /experiments/boba-chronicles-2020/
                     </option>
                 </select>
             </div>
-            <div class="month" v-for="month in months">
-                <boba v-for="boba in month"
-                      v-bind="boba">
-                </boba>
+            <div v-if="show_no_boba">
+                <div class="month" v-for="month in months">
+                    <boba v-for="boba in month"
+                          v-bind="boba">
+                    </boba>
+                </div>
+            </div>
+            <div class="month" v-else>
+                <template v-for="month in months">
+                    <boba v-for="boba in month"
+                          v-bind="boba">
+                    </boba>
+                </template>
             </div>
         </div>
     </body>

@@ -1,68 +1,25 @@
 
-// var colorPalette = [
-//   '#8e7dbe',
-//   '#d88c9a',
-//   '#e8e9a1',
-//   '#6b9ac4',
-//   '#b8f2e6',
-//   '#faae7b',
-//   '#949cdf',
-//   '#f4d35e',
-//   '#8fc0a9',
-//   '#a7c5eb',
-//   '#cdb4db',
-//   '#ffb7c3',
-//   '#b0f2b4',
-// ];
+// var colorPalette = ["#8e7cbe", "#5eb3ea", "#26496d", "#5ddcb2", "#0c5f31", "#83ec66", "#36a620", "#a3c0a6", "#3330b7", "#f6adff", "#9d0d6c", "#f849b6", "#69345e", "#a261f6", "#c712e8", "#dfd945"];
+// var colorPalette = ['#a68dc9', '#ad5e9d', '#6C5394', '#cc7fa8', '#f87574', '#d88c9a', '#f07a62', '#fcac62', '#fed37c', '#e8e180', '#bae485', '#97ce88', '#5f8a6e', '#7bbfb1', '#87e6e3', '#7bc5d8', '#6b9ac4', '#26496d'];
+var colorPalette = [
+'#a68dc9', '#7bc5d8', '#7bbfb1', '#ad5e9d', '#f87574', '#7bba6a',
+'#6C5394', '#d88c9a', '#6b9ac4', '#5f8a6e', '#e8e180', '#26496d',
+'#cc7fa8', '#fed37c', '#bae485', '#fff1b5', '#b4f0ee', '#fcac62'];
 
-// var colorPalette = [
-//   '#C2776F',
-//   '#C47A80',
-//   '#C18091',
-//   '#B888A1',
-//   '#AB91AE',
-//   '#9A9AB7',
-//   '#89A3BA',
-//   '#79ACB8',
-//   '#6FB3B1',
-//   '#6DB9A6',
-//   '#76BD98',
-//   '#86C089',
-//   '#9AC17B',
-//   '#B2C170',
-//   '#CABF6A',
-//   '#E1BC6A',
-// ];
-
-
-// var colorPalette = [
-//   '#AB91AE',
-//   '#C2776F',
-//   '#79ACB8',
-//   '#9AC17B',
-//   '#E1BC6A',
-//   '#C47A80',
-//   '#6DB9A6',
-//   '#89A3BA',
-//   '#B2C170',
-//   '#C18091',
-//   '#9A9AB7',
-//   '#6FB3B1',
-//   '#86C089',
-//   '#CABF6A',
-//   '#B888A1',
-//   '#76BD98',
-// ];
-
-var colorPalette = ["#8e7cbe", "#5eb3ea", "#26496d", "#5ddcb2", "#0c5f31", "#83ec66", "#36a620", "#a3c0a6", "#3330b7", "#f6adff", "#9d0d6c", "#f849b6", "#69345e", "#a261f6", "#c712e8", "#dfd945"];
-
+var priceColors = [
+  '#5f8a6e',
+  '#7b8f58',
+  '#a48d48',
+  '#d2834f',
+  '#f87574',
+];
 
 var drinkColors = {
   'Milk': '#FDFFF5',
   'Milk Tea': '#c1905e',
   'Jasmine Milk Tea': '#f0c88c',
   'Oolong Milk Tea': '#b69675',
-  'Strawberry Milk Tea': '#D9AA94',
+  'Strawberry Milk Tea': '#db9179',
   'Matcha': '#86945e',
   'Green Tea': '#BF6D24',
   'Black Tea': '#702f13',
