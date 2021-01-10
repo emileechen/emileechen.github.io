@@ -16,31 +16,47 @@ permalink: /experiments/boba-chronicles-2020/
 
     <body>
         <div id="app">
-            <div class="title">Bobas Drank in 2020: </div>
-            <div>
-                <input type="checkbox" id="show_id" v-model="show_id">
-                <label for="show_id">Show Num</label>
-                <input type="checkbox" id="show_name" v-model="show_name">
-                <label for="show_name">Show Name</label>
-                <input type="checkbox" id="show_no_boba" v-model="show_no_boba">
-                <label for="show_no_boba">Show Empty</label>
+            <div class="menubar">
+                <div class="title">Bobas Drank in 2020: <b>{{ total }}</b>!</div>
+                <div>
+                    <input type="checkbox" id="show_id" v-model="show_id">
+                    <label for="show_id">Show Num</label>
+                    <input type="checkbox" id="show_price" v-model="show_price">
+                    <label for="show_price">Show Price</label>
+                    <input type="checkbox" id="show_name" v-model="show_name">
+                    <label for="show_name">Show Name</label>
+                    <input type="checkbox" id="show_no_boba" v-model="show_no_boba">
+                    <label for="show_no_boba">Calendar View</label>
+                </div>
+                <div>
+                    <span>Border Highlight: </span>
+                    <select v-model="border_select">
+                        <option v-for="option in border_options" v-bind:value="option.value">
+                            {{ option.display }}
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <div v-if="border_select == 'store'" class="legend">
+                        <explainpls v-for="(store, name) in stores"
+                                    v-bind:data=store
+                                    v-bind:name=name>
+                    </div>
+                    <div v-if="border_select == 'city'" class="legend">
+                        <explainpls v-for="(city, name) in cities"
+                                    v-bind:data=city
+                                    v-bind:name=name>
+                    </div>
+                </div>
             </div>
-            <div>
-                <span>Border Highlight: </span>
-                <select v-model="border_select">
-                    <option v-for="option in border_options" v-bind:value="option.value">
-                        {{ option.display }}
-                    </option>
-                </select>
-            </div>
-            <div v-if="show_no_boba">
+            <div class="months" v-if="show_no_boba">
                 <div class="month" v-for="month in months">
                     <boba v-for="boba in month"
                           v-bind="boba">
                     </boba>
                 </div>
             </div>
-            <div class="month" v-else>
+            <div class="all-bobas" v-else>
                 <template v-for="month in months">
                     <boba v-for="boba in month"
                           v-bind="boba">

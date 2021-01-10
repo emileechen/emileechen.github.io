@@ -17,3 +17,4 @@ for drink in rows:
 with open(json_file, 'w') as f:
     f.write('drinks = ')
     json.dump(drinks, f, indent=4)
+    f.write('\ntotal = ' + str(len(rows)))

@@ -7,30 +7,66 @@ body {
 }
 
 #app {
-  height: 95vh;
+  height: 100vh;
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
 
   font-family: 'Roboto Mono', monospace;
 }
+.menubar {
+  padding: 1em;
+  width: 50vw;
+}
 .title {
   font-size: 24px;
 }
 
+.legend {
+  margin: 0.2em -.3em;
+  width: 50vw;
+}
+.legend div {
+  display: inline-block;
+  margin: .2em .3em;
+  padding: .15em .7em;
+  border-radius: .25em;
+}
+
+.all-bobas {
+  display: flex;
+  justify-content:flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  padding: 0 4em;
+}
+.all-bobas .boba {
+  height: 5em;
+  width: 5em;
+  padding: .5em;
+  border: .5em white solid;
+/*  height: 3.5vw;
+  width: 3.5vw;
+  padding: .4vw;
+  border: .4vw white solid;*/
+}
+
+.months {
+  display: flex;
+  flex-direction: column;
+}
 .month {
   display: flex;
   justify-content: flex-start;
   height: auto;
-  flex-wrap: wrap;
 }
 
 .boba {
   float: left;
-  overflow: hidden;
+  overflow: show;
 
   position: relative;
   height: 2.2vw;
@@ -51,9 +87,29 @@ body {
   background-color: white;
 }
 
+
+@media only screen and (orientation:portrait) {
+  .months {
+    display: flex;
+    flex-direction: row;
+  }
+  .month {
+    flex-direction: column;
+  }
+  .boba {
+    height: 2.1vh;
+    width: 2.1vh;
+    padding: .2vh;
+    border: .2vh white solid;
+  }
+}
+
 .name {
   position: relative;
-  overflow-wrap: break-word;
+/*  overflow-wrap: break-word;*/
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .id_num {
@@ -61,8 +117,16 @@ body {
   height: 100%;
   right: 0;
   top: 0;
-  margin-top: 0.1em;
-  margin-right: -0.15em;
-  font-size: 2.5em;
-  opacity: .6;
+  padding: .1em;
+  font-size: 1.5em;
+/*  opacity: .6;*/
+}
+
+.price {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.1em;
+  font-size: 1em;
+/*  opacity: .6;*/
 }
