@@ -1,18 +1,18 @@
 ---
 layout:     post
-title:      "Boba Chronicles Pt. I - Animated SVGs"
+title:      "Boba Chronicles Pt. I - SVGs"
 date:       2020-07-10 00:05:32 -0800
 category:   webdev
 tags:       [svg, illustration]
 image:      /blog/img/boba-chronicles/sketches.png
 ---
-
+ 
 <p>
     For the past half year I've been tracking my bubble tea consumption. Is it to shame myself into drinking less boba? Maybe. Is this madness? Probably. It's been an interesting exercise, at the very least, and is one that I'm likely to continue into the future.
 </p>
 
 <p>
-    The tracking has been done in a Google Sheets. While Sheets allows me to do nifty things like column sums for amount spent and conditional cell fill colours, it's lacking in some other areas. The Sheets mobile app is awkward to use on the go, which is when I want to make new entries. Also, after a few months I had enough data to want to make some more interesting analyses about my boba habits.
+    The tracking was done in a Google Sheets. While Sheets allows me to do nifty things like column sums for amount spent and conditional cell fill colours, it's lacking in some other areas. The Sheets mobile app is awkward to use on the go, which is when I want to make new entries. Also, after a few months I had enough data to want to make some more interesting analyses about my boba habits.
 </p>
 
 <div class="img-table narrow">
@@ -34,7 +34,7 @@ image:      /blog/img/boba-chronicles/sketches.png
 <p>
     There will be many components to this project: new boba entry submission form, different visualizations, and the backend (??? how does one web ???). 
 </p>
- 
+
 <p>
     <ul>
         <li>Ease of use</li>
@@ -248,7 +248,7 @@ image:      /blog/img/boba-chronicles/sketches.png
 </svg></xmp>
 
 <p>
-    Note: SVG tags are self closing, which means that <span class="code">&lt;circle ...>&lt;/circle></span> can be written as <span class="code">&lt;circle ... /></span>. If it makes my code more succinct, I am <i>there</i>.
+    Note: SVG tags are self closing, which means that <span class="code">&lt;circle ...>&lt;/circle></span> can be written as <span class="code">&lt;circle ... /></span>.
 </p>
 
 <p>
@@ -299,7 +299,7 @@ image:      /blog/img/boba-chronicles/sketches.png
 <h2 id="code">Then, we finally get to code</h2>
 
 <p>
-    It's finally time for the fun stuff!! Now that I have already created this SVG twice from scratch, it's time to do it yet another time!!! This time with JavaScript!!!
+    Now that I have created this SVG twice from scratch, it's time to do it yet another time!!! This time with JavaScript!!!
 </p>
 
 <p>
@@ -323,13 +323,13 @@ image:      /blog/img/boba-chronicles/sketches.png
 </p>
 
 <xmp class="prettyprint lang-js linenums">// Get our SVG element
-boba = document.getElementById("dynamicBoba");
+var boba = document.getElementById("dynamicBoba");
 
 // We're trying to recreate...
 // <rect id="lid" fill="#3B3B3B" x="0" y="144" width="260" height="16" />
 
-// Create a SVG element and set every attribute
-lid = document.createElementNS(svgNS, "rect");
+// Create a SVG element and set every attribute individually
+var lid = document.createElementNS(svgNS, "rect");
 lid.setAttribute("fill", "#3B3B3B");
 lid.setAttribute("x", 0);
 lid.setAttribute("y", 144);
@@ -341,9 +341,83 @@ boba.appendChild(lid);
 </xmp>
 
 <p>
-    It's not great to have to explicitly set so many attributes over so many lines, but all of those attributes can now be &#10024; <b>dynamic</b> &#10024;.
+    It's not great to have to explicitly set so many attributes over so many lines, but all of those attributes now has the potential to be &#10024; <b>dynamic</b> &#10024;. I can now keep track of all my SVG elements and write callbacks to change any of their attributes.
 </p>
 
+<p>
+    The first thing I did after transferring my SVG HTML tags to JavaScipt was to create variables to keep track of information I was hard coding previously, like height, width, radius of pearls, etc. This way I can change the height of the cup, if need be, and not have to figure out where else I was using the cup height in some other element's transformation attributes.
+</p>
+
+<p>
+    I also tossed in a for loop to generate my pearls. This was actually a little tricky to do generically, since I wanted have a staggered effect for every other row of pearls.
+</p>
+
+<p>
+    <span class="code">bobaMaker.js</span>:
+</p>
+
+<xmp class="prettyprint lang-js linenums">// Define some useful variables
+var boba = {
+    width: 260,
+    height: 600,
+    svg: null,
+}
+
+var pearls = {
+    size: 32,
+    padding: 4,
+    rows: 3,
+    columns: 4,
+    svg: null,
+    group: null,
+}
+
+boba.svg = document.getElementById("dynamicBoba");
+
+// Create a group to hold all our pearls
+pearls.group = document.createElementNS(svgNS, "g");
+// Place the group at the centre of the cup and some amount above the bottom of the cup
+pearls.setAttribute("transform",
+    `translate(
+            ${boba.width/2},
+            ${boba.height - pearls.size/2 - pearls.padding*2})`
+    );
+
+// Create a base pearl shape
+pearls.svg = document.createElementNS(svgNS, "circle");
+pearls.svg.setAttribute("r", pearls.size);
+pearls.svg.setAttribute("cx", "0");
+pearls.svg.setAttribute("cy", "0");
+
+// For loop magic
+for (let y = 0; y < rows; y++) {
+
+    // Stagger the toppings by making even rows have one less pearl
+    let cols = pearls.columns;
+    if (y % 2 != 0) {
+        cols = pearls.columns - 1;
+    }
+
+    for (let x = -1. * (cols/2 -0.5); x <= (cols/2 -0.5) ; x+=1.) {
+        let pearl = pearls.svg.cloneNode();
+        let localX = x * (pearls.padding + pearls.size);
+        let localY = -1 * y * pearls.size;
+        pearl.setAttribute("transform", `translate(${localX}, ${localY})`);
+        toppings.appendChild(pearl);
+    }
+}
+
+// Throw our pearls group onto the SVG
+boba.appendChild(pearls.group);
+</xmp>
+
+<p>
+    Picking a good local zero (transformation reference point) is incredibly important here! 
+</p>
+
+<p>
+    And voila. I now have a boba SVG that's ready to become dynamic.
+</p>
 
 
 <h2 id="references">References</h2>
@@ -356,5 +430,4 @@ boba.appendChild(lid);
             <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Clipping_and_masking" target="_blank">SVG Tutorial: Clipping and Masking</a>, MDN web docs
         </li>
     </ul>
-
 
