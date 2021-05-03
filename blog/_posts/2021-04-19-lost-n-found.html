@@ -1,0 +1,245 @@
+---
+layout:     post
+title:      "Lost And Found"
+permalink:  /blog/lost-n-found/
+category:   gamedev
+tags:       [phaser]
+image:      /blog/img/lost-n-found/001.gif
+---
+
+
+
+<h2 id="day3">Day 9 - Custom collisions
+    <span class="blog-post-subheader">
+        May 02, 2021
+    </span>
+</h2>
+
+<p>
+    Many days of Google-ing later I conclude that there doesn't seem to be a built in way to specify custom bounds on Sprites. Oh well. I made my own <span class="code">Resource.intersects</span> function that tests intersection on all of that its defined rectangle bounds.
+</p>
+
+<div class="img-table">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/008.png" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/009.png" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+
+
+<h2 id="day3">Day 8 - One more tree
+    <span class="blog-post-subheader">
+        April 28, 2021
+    </span>
+</h2>
+
+<p>
+    I saw a pretty cherry blossom (?) tree across the street so I made it into pixels.
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/007.png" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+
+
+<h2 id="day3">Day 7 - Decorations
+    <span class="blog-post-subheader">
+        April 28, 2021
+    </span>
+</h2>
+
+<p>
+    Started making a new Decorations class, which is similar to the Resource class but cannot be harvested.
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/006.png" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+
+
+<h2 id="day3">Day 6 - Housekeeping
+    <span class="blog-post-subheader">
+        April 26, 2021
+    </span>
+</h2>
+
+<p>
+    <ul>
+        <li>Discovered that there's a difference between <span class="code">Phaser.Game</span> and <span class="code">Phaser.Scene</span></li>
+        <li>Read some tutorials:</li>
+            <ul>
+                <li>
+                    <a href="https://www.patchesoft.com/phaser-3-title-screen-tutorial" target="_blank">Phaser 3 HTML5 Title Screen Tutorial</a>, Patchesoft
+                </li>
+                <li>
+                    <a href="https://garycheetham.com/2016/03/18/organise-files-phaserjs-project/" target="_blank">How Do I Organise Files in A Phaser.js Project?</a>, Gary Cheetham
+                </li>
+            </ul>
+        <li>Subclassed <span class="code">Phaser.GameObjects.Sprite</span> to make a "Resource" class (to be renamed?) for trees, bushes, rocks, etc. that will be harvest-able.</li>
+        <li>When you delete a texture in a Scene, Phaser tries to compensate with other textures and it looks funny.</li>
+    </ul>
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/005.png" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+
+
+<h2 id="day3">Day 5 - More pixels
+    <span class="blog-post-subheader">
+        April 23, 2021
+    </span>
+</h2>
+
+<p>
+    More trees and bushes! And some grass! And a new cat! And scaled down and recoloured the original tree and bush to match!
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/004.png" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+
+
+<h2 id="day4">Day 4 - Random trees and bushes
+    <span class="blog-post-subheader">
+        April 21, 2021
+    </span>
+</h2>
+
+<p>
+    Tossed in a for loop to make tree and bushes randomly placed on the canvas.
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/003.gif" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+
+
+<h2 id="day3">Day 3 - You can walk behind things
+    <span class="blog-post-subheader">
+        April 19, 2021
+    </span>
+</h2>
+
+<p>
+    <ul>
+        <li>Don't walk outside the canvas and disappear</li>
+        <li>When you walk "behind" something, place the player sprite behind the tree/bush image</li>
+            <ul>
+                <li>Everything now has to have a depth value. (Everything was defaulted to 0).</li>
+                <li>Depth is just the bottom y-value (in world space) of the tree/bush/player. If the bottom of a thing is lower than the bottom of another thing, the first thing should display on top.</li>
+            </ul>
+        <li>Make bushes/trees go transparent is the player is behind them.</li>
+            <ul>
+                <li>Inspired by how you walk behind objects in Cozy Grove. Loving that game so far.</li>
+                <li>Currently using <span class="code">Phaser.Geom.Intersects.RectangleToRectangle</span> to see if a tree's bounds and the player's bounds intersect. This isn't great because the game might think the player and a tree is intersecting (because of their images' rectangular bounds) while they are not <i>visually</i> intersecting.</li>
+                <li>Maybe each different object can have some defined bounds that is more visually representative.</li>
+            </ul>
+    </ul>
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/002.gif" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+
+
+<h2 id="day2">Day 2 - You can walk around
+    <span class="blog-post-subheader">
+        April 18, 2021
+    </span>
+</h2>
+
+<p>
+    It's a new day and it's time to toss something into my little game world. Except... I've got no assets. However! I do have a husband, so I got him to draw a bush and a tree in Procreate for me. He made a big fuss about not being an artist before producing me these fantastic plants. Something about getting people who don't ever draw to draw something gives me life.
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/chris-tree.png" | absolute_url }}>
+        </div>
+    </div>
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/chris-bush.png" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+<p>
+    I took them into Krita and traced over them and made them pixel-y because I don't want to deal with partial opacity issues. I also threw a block-y cat sprite together to use as the player.
+</p>
+
+<p>
+    It was actually kind of difficult to just toss something onto the canvas. It seems like everyone who uses Phaser uses its physics system. And somehow by wanting to make my game more simple I've made it more complicated because I can't find any tutorials.
+</p>
+
+<p>
+    Oh well. So it goes. After some experimentation I was able to hard code in some trees and bushes onto the canvas and create a player sprite that takes your arrow key inputs to move around.
+</p>
+
+<div class="img-table narrow">
+    <div class="img-table-box">
+        <div class="img-table-item">
+            <img src={{ "/blog/img/lost-n-found/001.gif" | absolute_url }}>
+        </div>
+    </div>
+</div>
+
+
+
+<h2 id="day1">Day 1 - Starting things up
+    <span class="blog-post-subheader">
+        April 17, 2021
+    </span>
+</h2>
+
+<p>
+    Every once in a while I try to make a game and I rarely make it very far. I think I do learn a bunch of things in the process, so let's try again anyway! I'll be using this blog post as a rolling brain dump of progress, ideas, etc.
+</p>
+
+<p>
+    I've been feeling very stuck lately. I think it's because I corner myself into a situation where I'm trying to really maximize the situation, and I end up being very frustrated because how do you even know which option will give you the most value without trying anything? I am trying to apply a "remove barriers to entry" philosophy these situations. I always find the hardest part of any project is to start. Where do I begin? What framework do I use? I told myself to just go with something I'm already familiar with to make it easier to start. I've been doing a lot of web, and a quick Google search told me that Phaser common web game framework. And no, I won't be asking if it's the <i>best</i> one. Phaser it is.
+</p>
+
+<p>
+    I started up a new repo, installed Phaser, and called it a day.
+</p>
+

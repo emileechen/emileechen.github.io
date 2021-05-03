@@ -777,6 +777,13 @@ img.smaller {
 	line-height: $lineheight-smaller;
 	font-family: $basicfont;
 }
+.blog-post-subheader {
+	color: $midgrey;
+	font-size: $fontsize-small;
+	line-height: $lineheight-small;
+	font-family: $basicfont;
+	padding-left: .7rem;
+}
 
 .blog-tag {
 	margin: .2rem .3rem;
