@@ -26,7 +26,7 @@ ready: true
 			{% if post.image %}
 			<div class="blog-img">
 				<a href="{{ post.url }}">
-				<img class="blog-img-prev" src={{ post.image | absolute_url }}>
+				<img class="blog-img-prev" src={{ post.image | relative_url }}>
 				</a>
 			</div>
 			{% endif %}
