@@ -2,7 +2,7 @@
 title: Emilee Chen
 email: emilee.ty.chen@gmail.com
 baseurl: ""
-url: "http://emileechen.com"
+url: "https://emileechen.com"
 
 css: ["/css/styles.css", "/font-awesome/css/font-awesome.min.css", "/css/prettyprint.css"]
 favicon: "/favicon.png"
